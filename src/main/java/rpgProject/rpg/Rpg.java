@@ -1,6 +1,12 @@
 package rpgProject.rpg;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.Objective;
+import rpgProject.commands.QuestToggle;
+import rpgProject.eventListeners.BlockClickEvent;
+import rpgProject.eventListeners.InventoryEventListener;
+
+import java.util.Objects;
 
 public final class Rpg extends JavaPlugin {
 
@@ -10,6 +16,9 @@ public final class Rpg extends JavaPlugin {
         getLogger().info("RPG plugin loading!");
         getLogger().info("RPG plugin loaded!");
 
+        registerEvents();
+        getCommands();
+
     }
 
     @Override
@@ -17,4 +26,14 @@ public final class Rpg extends JavaPlugin {
         // Plugin shutdown logic
         getLogger().info("RPG plugin disabled");
     }
+
+    private void getCommands(){
+        Objects.requireNonNull(getCommand("quests")).setExecutor(new QuestToggle());
+    }
+
+    private void registerEvents(){
+        getServer().getPluginManager().registerEvents(new InventoryEventListener(), this);
+        getServer().getPluginManager().registerEvents(new BlockClickEvent(), this);
+    }
+
 }

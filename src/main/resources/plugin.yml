@@ -3,3 +3,6 @@ version: '${project.version}'
 main: rpgProject.rpg.Rpg
 api-version: 1.18
 authors: [ Cucumbersaurus, Behappy ]
+
+commands:
+  quests:

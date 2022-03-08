@@ -7,7 +7,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import rpgProject.baseClass.GuiBase;
 
-public class GuiListener implements Listener {
+public class InventoryEventListener implements Listener {
 
     @EventHandler
     public void guiClick(InventoryClickEvent e){
@@ -22,4 +22,3 @@ public class GuiListener implements Listener {
     }
 
 }
-
