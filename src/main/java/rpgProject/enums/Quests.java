@@ -24,7 +24,14 @@ public enum Quests {
     RAIDDDD("긴급 수비전", QuestType.MAIN, Arrays.asList(Quests.NULL), 14),
     COUTNRY_ROADS_TAKE_ME_HOME("다시 고향으로", QuestType.MAIN, Arrays.asList(Quests.NULL), 15),
     UH_SORRY("징벌적 정의", QuestType.MAIN, Arrays.asList(Quests.NULL), 16),
-    HIDDEN_PASSAGES("숩겨진 통로", QuestType.MAIN, Arrays.asList(Quests.NULL), 17);
+    HIDDEN_PASSAGES("숩겨진 통로", QuestType.MAIN, Arrays.asList(Quests.NULL), 17),
+    LETS_GOOO("대륙을 잇는 지하통로", QuestType.MAIN, Arrays.asList(Quests.NULL), 18),
+    RAISZO_THE_PORT("항구마을 라이조", QuestType.MAIN, Arrays.asList(Quests.NULL), 19),
+    BOLB_ATTAQUE("수중 군사기지", QuestType.MAIN, Arrays.asList(Quests.NULL), 20),
+    YOUR_HIGHNESS("황제의 고민", QuestType.MAIN, Arrays.asList(Quests.NULL), 21),
+    NOT_AN_AND_SHIP("하늘의 함선", QuestType.MAIN, Arrays.asList(Quests.NULL), 22),
+    DEFENCE_COLONY("세트룩스 수비", QuestType.MAIN, Arrays.asList(Quests.NULL), 23),
+    SO_WHATS_THAT_PLACE("틈새의 처편", QuestType.MAIN, Arrays.asList(Quests.NULL), 24);
 
 
     private final String questName;

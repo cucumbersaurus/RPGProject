@@ -1,7 +1,6 @@
 package rpgProject.rpg;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.Objective;
 import rpgProject.commands.QuestToggle;
 import rpgProject.eventListeners.BlockClickEvent;
 import rpgProject.eventListeners.InventoryEventListener;
