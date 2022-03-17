@@ -7,63 +7,74 @@ import org.bukkit.scoreboard.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class QuestListUI {
 
-    public static HashMap<Player, QuestListUI> map = new HashMap<>();
+    public static HashMap<Player, QuestListUI> playerQuestMap_ = new HashMap<>();
 
-    private ArrayList<Score> scoreArray = new ArrayList<>();
+    private ArrayList<Score> scoreArray_ = new ArrayList<>();
 
-    private Scoreboard scoreboard;
+    private Scoreboard scoreboard_;
 
     public QuestListUI(Player p){
-        map.put(p, this);
-        init(p);
+        playerQuestMap_.put(p, this);
+        //init(p);
+        //setScoreboard(p, Arrays.asList("아마도","일단은", "아직", "퀘스트", "없는듯", "히히", "자", "테스트는", "여기까지" ));
     }
 
     public void init(Player p){
         Objective objective;
         Score score;
-        Objective objective1;
-        Score score1;
 
         ScoreboardManager manager = Bukkit.getScoreboardManager();
-        scoreboard = manager.getNewScoreboard();
+        scoreboard_ = manager.getNewScoreboard();
 
-        objective = scoreboard.registerNewObjective("quest", "dummy");
+        objective = scoreboard_.registerNewObjective("quest", "dummy");
         score = objective.getScore("아직 퀘스트 없음");
+        Score score1 = objective.getScore("adsf");
         objective.setDisplayName(ChatColor.YELLOW + "퀘스트 목록");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         score.setScore(0);
-
-        objective1 = scoreboard.registerNewObjective("quest1", "dummy");
-        score1 = objective1.getScore("아직 퀘스트 없음1");
-        objective1.setDisplayName(ChatColor.YELLOW + "퀘스트 목록1");
-        objective1.setDisplaySlot(DisplaySlot.SIDEBAR);
         score1.setScore(1);
 
-        p.setScoreboard(scoreboard);
+        p.setScoreboard(scoreboard_);
 
-        scoreArray.add(score);
+        scoreArray_.add(score);
     }
 
-    public void setContents(ArrayList<String> contents){
-        scoreArray.clear();
+    public void setScoreboard(Player p, List<String> contents){
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        scoreboard_ = manager.getNewScoreboard();
+
+        Objective objective = scoreboard_.registerNewObjective("quest", "dummy");
+        objective.setDisplayName(ChatColor.YELLOW +"퀘스트 목록");
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+
+
+        int len = contents.size();
+        scoreArray_.clear();
+
         for(String s : contents){
-            Objective objective = scoreboard.registerNewObjective("quest", "dummy");
+            len--;
+
             Score score = objective.getScore(s);
+            score.setScore(len);
+            scoreArray_.add(score);
 
         }
+        p.setScoreboard(scoreboard_);
+
     }
 
     public void showScoreboard(){
-        for(Score score : scoreArray) {
+        for(Score score : scoreArray_) {
             score.getObjective().setDisplaySlot(DisplaySlot.SIDEBAR);
         }
     }
 
     public void hideScoreboard(){
-        scoreboard.clearSlot(DisplaySlot.SIDEBAR);
+        scoreboard_.clearSlot(DisplaySlot.SIDEBAR);
     }
 
 }

@@ -5,9 +5,9 @@ import rpgProject.enums.ItemType;
 
 public abstract class ItemBase {
 
-    Material material = Material.getMaterial("AIR");
-    int count = 0;
-    ItemType itemType = ItemType.NULL;
+    Material material_ = Material.getMaterial("AIR");
+    int count_ = 0;
+    ItemType itemType_ = ItemType.NULL;
 
 
 }

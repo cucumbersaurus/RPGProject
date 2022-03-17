@@ -18,18 +18,18 @@ import java.util.Map;
 
 public abstract class GuiBase {
 
-    protected static final Map<Player,GuiBase> guiMap = new HashMap<>();
-    protected Inventory inv;
-    protected Map<Integer,String> slotMap;
+    protected static final Map<Player,GuiBase> guiMap_ = new HashMap<>();
+    protected Inventory inv_;
+    protected Map<Integer,String> slotMap_;
 
-    public static GuiBase getGUI(Player p) { return guiMap.getOrDefault(p, null); }
+    public static GuiBase getGUI(Player p) { return guiMap_.getOrDefault(p, null); }
 
     protected GuiBase(@NotNull Player p, int guiSize, String guiName) {
-        inv = Bukkit.createInventory(null, guiSize, guiName);
-        slotMap = new HashMap<Integer, String>();
+        inv_ = Bukkit.createInventory(null, guiSize, guiName);
+        slotMap_ = new HashMap<Integer, String>();
         init(p);
-        p.openInventory(inv);
-        guiMap.put(p, this);
+        p.openInventory(inv_);
+        guiMap_.put(p, this);
     }
 
     protected abstract void init(@NotNull Player p);
@@ -45,24 +45,24 @@ public abstract class GuiBase {
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
         item.setItemMeta(meta);
-        slotMap.put(slot, value);
-        inv.setItem(slot, item);
+        slotMap_.put(slot, value);
+        inv_.setItem(slot, item);
     }
     protected void setItem(ItemStack item, int slot, String value){
-        slotMap.put(slot, value);
-        inv.setItem(slot, item);
+        slotMap_.put(slot, value);
+        inv_.setItem(slot, item);
     }
 
-    protected String getValue(int slot) {return slotMap.getOrDefault(slot, null);}
+    protected String getValue(int slot) {return slotMap_.getOrDefault(slot, null);}
 
     public void closeGUI(@NotNull InventoryCloseEvent e) {
-        slotMap = null;
-        guiMap.remove((Player) e.getPlayer());
+        slotMap_ = null;
+        guiMap_.remove((Player) e.getPlayer());
     }
 
     public void forceCloseGUI(Player p){
         p.closeInventory();
-        slotMap = null;
-        guiMap.remove((p));
+        slotMap_ = null;
+        guiMap_.remove((p));
     }
 }

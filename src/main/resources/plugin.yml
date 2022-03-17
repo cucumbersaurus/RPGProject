@@ -7,5 +7,6 @@ authors: [ Cucumbersaurus, Behappy ]
 commands:
   quests:
     description: /quests true 또는 /quests false 로 메뉴 표시
-    true:
-    false:
+    commands:
+      true:
+      false:
