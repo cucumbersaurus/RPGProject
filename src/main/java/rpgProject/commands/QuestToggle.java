@@ -21,15 +21,28 @@ public class QuestToggle implements CommandExecutor {
             if(args.length>0&&args.length<17){
                 if(args[0].equals("true")){
 
-                    QuestListUI scoreboardUI = new QuestListUI(p);
+                    if(args.length==1){
+                        QuestListUI.playerQuestMap_.get(p).showScoreboard();
+                        p.sendMessage("shown");
+                        return true;
+                    }
+
+                    QuestListUI scoreboardUI;
+                    if(QuestListUI.playerQuestMap_.getOrDefault(p, null) != null){
+                        scoreboardUI=QuestListUI.playerQuestMap_.get(p);
+                        p.sendMessage("from map");
+                    }
+                    else{
+                        scoreboardUI = new QuestListUI(p);
+                        p.sendMessage("new");
+                    }
+
                     ArrayList  arrayList = new ArrayList();
                     for(int i=1;i< args.length;i++){
                         arrayList.add(args[i]);
                     }
 
-                    scoreboardUI.setScoreboard(p, arrayList);
-                    scoreboardUI.showScoreboard();
-                    QuestListUI.playerQuestMap_.put(p, scoreboardUI);
+                    scoreboardUI.setContents(arrayList);
                 }
                 else if(args[0].equals("false")){
                     QuestListUI scoreboardUI =  QuestListUI.playerQuestMap_.get(p);
