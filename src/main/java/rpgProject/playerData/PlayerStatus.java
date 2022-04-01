@@ -1,10 +1,16 @@
 package rpgProject.playerData;
 
+import com.google.gson.Gson;
+import org.bukkit.entity.Player;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerStatus {
 
+    public static HashMap<Player, PlayerStatus> map = new HashMap<>();
+
+    Player p_;
     private int strength_ = 0;
     private int health_ = 0;
     private int handcraft_ = 0;
@@ -13,6 +19,13 @@ public class PlayerStatus {
     private int attackSpeed_ = 0;
     private int defense_ = 0;
     private int luck_ = 0;
+
+    public PlayerStatus(Player player){
+        p_ = player;
+        map.put(p_, this);
+    }
+
+    public PlayerStatus(){}
 
     public HashMap<String, Integer> serializeStatus(){
         HashMap<String, Integer> map = new HashMap<>(8);
@@ -60,6 +73,19 @@ public class PlayerStatus {
             }
         }
         return status;
+    }
+
+    public String toJson(){
+        Gson gson = new Gson();
+        String statusJson = gson.toJson(this);
+        return statusJson;
+    }
+
+    public static PlayerStatus fromJson(String statusJson){
+        Gson gson = new Gson();
+        PlayerStatus playerStatus = gson.fromJson(statusJson, PlayerStatus.class);
+
+        return playerStatus;
     }
 
     public int getStrength() {

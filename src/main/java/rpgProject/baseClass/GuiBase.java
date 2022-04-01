@@ -18,24 +18,24 @@ import java.util.Map;
 
 public abstract class GuiBase {
 
-    protected static final Map<Player,GuiBase> guiMap_ = new HashMap<>();
-    protected Inventory inv_;
-    protected Map<Integer,String> slotMap_;
+    protected static final Map<Player,GuiBase> guiMap_ = new HashMap<>();//누가 어떤 창을 보고 있는지 저장
+    protected Inventory inv_;//그냥 인벤토리
+    protected Map<Integer,String> slotMap_;//인벤토리 슬롯당 태그 할당
 
     public static GuiBase getGUI(Player p) { return guiMap_.getOrDefault(p, null); }
 
     protected GuiBase(@NotNull Player p, int guiSize, String guiName) {
-        inv_ = Bukkit.createInventory(null, guiSize, guiName);
-        slotMap_ = new HashMap<Integer, String>();
-        init(p);
-        p.openInventory(inv_);
-        guiMap_.put(p, this);
+        inv_ = Bukkit.createInventory(null, guiSize, guiName);//새 인벤토리
+        slotMap_ = new HashMap<Integer, String>();//새 슬롯맵
+        init(p);//상속받은 클래스에서 구현
+        p.openInventory(inv_);//인벤토리 보여주기
+        guiMap_.put(p, this);//맵에 저장
     }
 
     protected abstract void init(@NotNull Player p);
     public abstract void onClick(InventoryClickEvent e);
 
-    protected void setItem(String name, List<String> lore, @NotNull Material m, int amount, int slot, String value, boolean isGlow) {
+    protected void setItem(String name, List<String> lore, @NotNull Material m, int amount, int slot, String value/*슬롯맵에 저장할 태그*/, boolean isGlow) {//특정 슬롯에 특정 아이템 설정
         ItemStack item = new ItemStack(m,amount);
         ItemMeta meta = item.getItemMeta();
         if(name != null) meta.setDisplayName(name);
@@ -53,14 +53,14 @@ public abstract class GuiBase {
         inv_.setItem(slot, item);
     }
 
-    protected String getValue(int slot) {return slotMap_.getOrDefault(slot, null);}
+    protected String getValue(int slot) {return slotMap_.getOrDefault(slot, null);}//인벤토리 슬롯의 태그 반환
 
-    public void closeGUI(@NotNull InventoryCloseEvent e) {
+    public void closeGUI(@NotNull InventoryCloseEvent e) {//인벤토리 닫힐 경우
         slotMap_ = null;
         guiMap_.remove((Player) e.getPlayer());
     }
 
-    public void forceCloseGUI(Player p){
+    public void forceCloseGUI(Player p){//강제로 닫기
         p.closeInventory();
         slotMap_ = null;
         guiMap_.remove((p));
