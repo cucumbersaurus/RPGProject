@@ -1,14 +1,13 @@
-package rpgProject.commands;
+package project.rpg.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import rpgProject.ui.QuestListUI;
+import project.rpg.ui.QuestListUI;
 
 import java.util.ArrayList;
-
 
 public class QuestToggle implements CommandExecutor {
 
@@ -37,7 +36,7 @@ public class QuestToggle implements CommandExecutor {
                         p.sendMessage("new");
                     }
 
-                    ArrayList  arrayList = new ArrayList();
+                    ArrayList<String>  arrayList = new ArrayList<>();
                     for(int i=1;i< args.length;i++){
                         arrayList.add(args[i]);
                     }

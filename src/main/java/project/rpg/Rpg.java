@@ -1,9 +1,12 @@
-package rpgProject.rpg;
+package project.rpg;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import rpgProject.commands.QuestToggle;
-import rpgProject.eventListeners.BlockClickEvent;
-import rpgProject.eventListeners.InventoryEventListener;
+import project.rpg.commands.CreateTmpStatus;
+import project.rpg.commands.QuestToggle;
+import project.rpg.commands.Save;
+import project.rpg.file.FileSystem;
+import project.rpg.listeners.BlockClickEvent;
+import project.rpg.listeners.InventoryEventListener;
 
 import java.util.Objects;
 
@@ -11,28 +14,30 @@ public final class Rpg extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+
         getLogger().info("RPG plugin loading!");
-        getLogger().info("RPG plugin loaded!");
 
         registerEvents();
         getCommands();
+        FileSystem.mkFile();
 
+        getLogger().info("RPG plugin loaded!");
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+
         getLogger().info("RPG plugin disabled");
     }
 
     private void getCommands(){
         Objects.requireNonNull(getCommand("quests")).setExecutor(new QuestToggle());
+        Objects.requireNonNull(getCommand("savef")).setExecutor(new Save());
+        Objects.requireNonNull(getCommand("status")).setExecutor(new CreateTmpStatus());
     }
 
     private void registerEvents(){
         getServer().getPluginManager().registerEvents(new InventoryEventListener(), this);
         getServer().getPluginManager().registerEvents(new BlockClickEvent(), this);
     }
-
 }

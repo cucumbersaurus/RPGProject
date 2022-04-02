@@ -1,6 +1,6 @@
-package rpgProject.items;
+package project.rpg.items;
 
-import rpgProject.baseClass.ItemBase;
+import project.rpg.base.ItemBase;
 
 public abstract class Foods extends ItemBase {
 

@@ -1,4 +1,4 @@
-package rpgProject.ui;
+package project.rpg.ui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -8,10 +8,11 @@ import org.bukkit.scoreboard.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class QuestListUI {
 
-    public static HashMap<Player, QuestListUI> playerQuestMap_ = new HashMap<>();
+    public static Map<Player, QuestListUI> playerQuestMap_ = new HashMap<>();
 
     private final ArrayList<Score> scoreArray_ = new ArrayList<>();
 

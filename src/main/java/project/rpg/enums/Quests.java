@@ -1,4 +1,4 @@
-package rpgProject.enums;
+package project.rpg.enums;
 
 import java.util.ArrayList;
 import java.util.Arrays;

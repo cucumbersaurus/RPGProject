@@ -1,4 +1,4 @@
-package rpgProject.playerData;
+package project.rpg.player.info;
 
 import com.google.gson.Gson;
 import org.bukkit.entity.Player;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class PlayerStatus {
 
-    public static HashMap<Player, PlayerStatus> map = new HashMap<>();
+    public static final Map<Player, PlayerStatus> map_ = new HashMap<>();
 
     Player p_;
     private int strength_ = 0;
@@ -22,12 +22,12 @@ public class PlayerStatus {
 
     public PlayerStatus(Player player){
         p_ = player;
-        map.put(p_, this);
+        map_.put(p_, this);
     }
 
     public PlayerStatus(){}
 
-    public HashMap<String, Integer> serializeStatus(){
+    public Map<String, Integer> serializeStatus(){
         HashMap<String, Integer> map = new HashMap<>(8);
         map.put("strength", strength_);
         map.put("health", health_);
@@ -41,7 +41,7 @@ public class PlayerStatus {
         return map;
     }
 
-    public static PlayerStatus deserializeStatus(HashMap<String, Integer> map){
+    public static PlayerStatus deserializeStatus(Map<String, Integer> map){
         PlayerStatus status = new PlayerStatus();
 
         for(Map.Entry<String, Integer> entry : map.entrySet()){
@@ -70,85 +70,93 @@ public class PlayerStatus {
                 case "luck":
                     status.setLuck(entry.getValue());
                     break;
+                default:
+                    break;
             }
         }
         return status;
     }
 
-    public String toJson(){
+    private String toJson(){
         Gson gson = new Gson();
-        String statusJson = gson.toJson(this);
-        return statusJson;
+        return gson.toJson(this);
+    }
+
+    public static String toJsonFile(){
+        String jsonStr = new String();
+        for (Map.Entry<Player, PlayerStatus> entry : map_.entrySet()){
+            jsonStr = jsonStr + entry.getValue().toJson();
+        }
+        return jsonStr;
     }
 
     public static PlayerStatus fromJson(String statusJson){
         Gson gson = new Gson();
-        PlayerStatus playerStatus = gson.fromJson(statusJson, PlayerStatus.class);
-
-        return playerStatus;
+        return  gson.fromJson(statusJson, PlayerStatus.class);
     }
 
     public int getStrength() {
         return strength_;
     }
 
-    public void setStrength(int strength_) {
-        this.strength_ = strength_;
+    public void setStrength(int strength) {
+        this.strength_ = strength;
     }
 
     public int getHealth() {
         return health_;
     }
 
-    public void setHealth(int health_) {
-        this.health_ = health_;
+    public void setHealth(int health) {
+        this.health_ = health;
     }
 
     public int getHandcraft() {
         return handcraft_;
     }
 
-    public void setHandcraft(int handcraft_) {
-        this.handcraft_ = handcraft_;
+    public void setHandcraft(int handcraft) {
+        this.handcraft_ = handcraft;
     }
 
     public int getAttractiveness() {
         return attractiveness_;
     }
 
-    public void setAttractiveness(int attractiveness_) {
-        this.attractiveness_ = attractiveness_;
+    public void setAttractiveness(int attractiveness) {
+        this.attractiveness_ = attractiveness;
     }
 
     public int getMovementSpeed() {
         return movementSpeed_;
     }
 
-    public void setMovementSpeed(int speed_) {
-        this.movementSpeed_ = speed_;
+    public void setMovementSpeed(int speed) {
+        this.movementSpeed_ = speed;
     }
 
     public int getAttackSpeed() {
         return attackSpeed_;
     }
 
-    public void setAttackSpeed(int attackSpeed_) {
-        this.attackSpeed_ = attackSpeed_;
+    public void setAttackSpeed(int attackSpeed) {
+        this.attackSpeed_ = attackSpeed;
     }
 
     public int getDefense() {
         return defense_;
+
     }
 
-    public void setDefense(int defense_) {
-        this.defense_ = defense_;
+    public void setDefense(int defense) {
+        this.defense_ = defense;
     }
 
     public int getLuck() {
         return luck_;
     }
 
-    public void setLuck(int luck_) {
-        this.luck_ = luck_;
+    public void setLuck(int luck) {
+        this.luck_ = luck;
     }
 }

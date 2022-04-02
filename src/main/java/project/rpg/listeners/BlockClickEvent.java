@@ -1,4 +1,4 @@
-package rpgProject.eventListeners;
+package project.rpg.listeners;
 import org.bukkit.Material;
 import org.bukkit.entity.Pose;
 import org.bukkit.event.EventHandler;
@@ -9,14 +9,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class BlockClickEvent implements Listener {
 
     @EventHandler
-    public void BlockFromTo(BlockFromToEvent e){
+    public void blockFromTo(BlockFromToEvent e){
         if(e.getBlock().getType() == Material.DRAGON_EGG) { //드래곤알 tp 방지
             e.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void PlayerBlockInteract(PlayerInteractEvent e){
+    public void playerBlockInteract(PlayerInteractEvent e){
 
         if(e.getClickedBlock()==null) return;
 
@@ -30,10 +30,8 @@ public class BlockClickEvent implements Listener {
             case ANVIL:
             case CHIPPED_ANVIL:
             case DAMAGED_ANVIL:
-                if(checkInteraction(e)){
-                    //e.setCancelled(true);
-                    //ui 오픈
-                }
+                checkInteraction(e);//e.setCancelled(true);
+//ui 오픈
                 break;
             default:
                 break;

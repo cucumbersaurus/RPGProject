@@ -1,12 +1,14 @@
 name: Rpg
 version: '${project.version}'
-main: rpgProject.rpg.Rpg
+main:  project.rpg.Rpg
 api-version: 1.18
 authors: [ Cucumbersaurus, Behappy ]
 
 commands:
   quests:
     description: /quests true 또는 /quests false 로 메뉴 표시
-    commands:
-      true:
-      false:
+  savef:
+    description: /save status
+  status:
+
+

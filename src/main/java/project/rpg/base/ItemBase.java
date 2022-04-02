@@ -1,7 +1,7 @@
-package rpgProject.baseClass;
+package project.rpg.base;
 
 import org.bukkit.Material;
-import rpgProject.enums.ItemType;
+import project.rpg.enums.ItemType;
 
 public abstract class ItemBase {
 

@@ -1,4 +1,4 @@
-package rpgProject.baseClass;
+package project.rpg.base;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -26,7 +26,7 @@ public abstract class GuiBase {
 
     protected GuiBase(@NotNull Player p, int guiSize, String guiName) {
         inv_ = Bukkit.createInventory(null, guiSize, guiName);//새 인벤토리
-        slotMap_ = new HashMap<Integer, String>();//새 슬롯맵
+        slotMap_ = new HashMap<>();//새 슬롯맵
         init(p);//상속받은 클래스에서 구현
         p.openInventory(inv_);//인벤토리 보여주기
         guiMap_.put(p, this);//맵에 저장
@@ -57,7 +57,7 @@ public abstract class GuiBase {
 
     public void closeGUI(@NotNull InventoryCloseEvent e) {//인벤토리 닫힐 경우
         slotMap_ = null;
-        guiMap_.remove((Player) e.getPlayer());
+        guiMap_.remove(e.getPlayer());
     }
 
     public void forceCloseGUI(Player p){//강제로 닫기
