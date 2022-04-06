@@ -1,8 +1,11 @@
 package project.rpg.player.info;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +13,9 @@ public class PlayerStatus {
 
     public static final Map<Player, PlayerStatus> map_ = new HashMap<>();
 
-    Player p_;
+    static Gson gson_ = new Gson();
+
+    private Player p_;
     private int strength_ = 0;
     private int health_ = 0;
     private int handcraft_ = 0;
@@ -27,8 +32,9 @@ public class PlayerStatus {
 
     public PlayerStatus(){}
 
-    public Map<String, Integer> serializeStatus(){
-        HashMap<String, Integer> map = new HashMap<>(8);
+    public Map<String, Object> serializeStatus(){
+        HashMap<String, Object> map = new HashMap<>(8);
+        map.put("player", gson_.toJson(p_.serialize()));
         map.put("strength", strength_);
         map.put("health", health_);
         map.put("handcraft", handcraft_);
@@ -41,34 +47,36 @@ public class PlayerStatus {
         return map;
     }
 
-    public static PlayerStatus deserializeStatus(Map<String, Integer> map){
+    public static PlayerStatus deserializeStatus(Map<String, Object> map){
         PlayerStatus status = new PlayerStatus();
 
-        for(Map.Entry<String, Integer> entry : map.entrySet()){
+        for(Map.Entry<String, Object> entry : map.entrySet()){
             switch (entry.getKey()){
+                case "player":
+                    status.setPlayer((Player) entry.getValue());
                 case "strength":
-                    status.setStrength(entry.getValue());
+                    status.setStrength((Integer) entry.getValue());
                     break;
                 case "health":
-                    status.setHealth(entry.getValue());
+                    status.setHealth((Integer) entry.getValue());
                     break;
                 case "handcraft":
-                    status.setHandcraft(entry.getValue());
+                    status.setHandcraft((Integer) entry.getValue());
                     break;
                 case "attractiveness":
-                    status.setAttractiveness(entry.getValue());
+                    status.setAttractiveness((Integer) entry.getValue());
                     break;
                 case "movementSpeed":
-                    status.setMovementSpeed(entry.getValue());
+                    status.setMovementSpeed((Integer) entry.getValue());
                     break;
                 case "attackSpeed":
-                    status.setAttackSpeed(entry.getValue());
+                    status.setAttackSpeed((Integer) entry.getValue());
                     break;
                 case "defense":
-                    status.setDefense(entry.getValue());
+                    status.setDefense((Integer) entry.getValue());
                     break;
                 case "luck":
-                    status.setLuck(entry.getValue());
+                    status.setLuck((Integer) entry.getValue());
                     break;
                 default:
                     break;
@@ -77,22 +85,59 @@ public class PlayerStatus {
         return status;
     }
 
+    public JsonObject toJsonObject(){
+        JsonObject object = new JsonObject();
+
+        object.addProperty("player", gson_.toJson(p_.serialize()));
+        object.addProperty("strength", strength_);
+        object.addProperty("health", health_);
+        object.addProperty("handcraft", handcraft_);
+        object.addProperty("attractiveness", attractiveness_);
+        object.addProperty("movementSpeed", movementSpeed_);
+        object.addProperty("attackSpeed", attackSpeed_);
+        object.addProperty("defense", defense_);
+        object.addProperty("luck", luck_);
+
+        /*
+        for (Map.Entry<String, Object> entry : this.serializeStatus().entrySet()){
+            object.addProperty(entry.getKey(), entry.getValue().toString());
+        }
+        */
+
+        return object;
+    }
+
     private String toJson(){
-        Gson gson = new Gson();
-        return gson.toJson(this);
+        return gson_.toJson(this);
     }
 
     public static String toJsonFile(){
-        String jsonStr = new String();
+        //String jsonStr = new String();
+        JsonObject array = new JsonObject();
         for (Map.Entry<Player, PlayerStatus> entry : map_.entrySet()){
-            jsonStr = jsonStr + entry.getValue().toJson();
+            //jsonStr = jsonStr + gson_.toJson(entry.getValue().serializeStatus()) + '|';
+            array.addProperty(entry.getValue().getPlayer().getName(), gson_.toJson(entry.getValue().toJsonObject()) );
+
         }
-        return jsonStr;
+        return array.getAsString();
+    }
+
+    public static void fromJsonFile(String jsonString){
+        ArrayList<Object> list =  gson_.fromJson(jsonString, ArrayList.class);
+        Bukkit.broadcastMessage(list.toString());
     }
 
     public static PlayerStatus fromJson(String statusJson){
         Gson gson = new Gson();
         return  gson.fromJson(statusJson, PlayerStatus.class);
+    }
+
+    public Player getPlayer() {
+        return p_;
+    }
+
+    public void setPlayer(Player p) {
+        this.p_ = p;
     }
 
     public int getStrength() {

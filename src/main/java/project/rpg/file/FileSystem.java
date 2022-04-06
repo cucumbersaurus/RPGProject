@@ -5,10 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import project.rpg.Rpg;
 import project.rpg.player.info.PlayerStatus;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class FileSystem {
 
@@ -27,11 +24,25 @@ public class FileSystem {
     public static void saveStatus() {
 
         try(BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(statusFile))) {
-            String str = PlayerStatus.map_.toString();
+            String str = PlayerStatus.toJsonFile();
             outputStream.write(str.getBytes());
+            outputStream.flush();
+            Bukkit.broadcastMessage("saved");
+            Bukkit.broadcastMessage(PlayerStatus.toJsonFile());
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public static String loadStatus(){
+        String str = null;
+        try(BufferedReader reader = new BufferedReader(new FileReader(statusFile))) {
+            str = reader.readLine();
+            Bukkit.broadcastMessage(str);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return str;
     }
 
 }
