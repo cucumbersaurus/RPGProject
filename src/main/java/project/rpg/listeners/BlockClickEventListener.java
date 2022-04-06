@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-public class BlockClickEvent implements Listener {
+public class BlockClickEventListener implements Listener {
 
     @EventHandler
     public void blockFromTo(BlockFromToEvent e){

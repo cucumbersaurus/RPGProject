@@ -9,7 +9,7 @@ import project.rpg.ui.QuestListUI;
 
 import java.util.ArrayList;
 
-public class QuestToggle implements CommandExecutor {
+public class QuestToggleCommand implements CommandExecutor {
 
 
 

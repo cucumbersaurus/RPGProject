@@ -9,6 +9,8 @@ commands:
     description: /quests true 또는 /quests false 로 메뉴 표시
   savef:
     description: /save status
-  status:
-
-
+  stats:
+    description: stats 커멘드
+    aliases:
+      - st
+    usage: "Usage: /<command> [info/add]"

@@ -1,12 +1,12 @@
 package project.rpg;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import project.rpg.commands.CreateTmpStatus;
-import project.rpg.commands.QuestToggle;
-import project.rpg.commands.Save;
-import project.rpg.file.FileSystem;
-import project.rpg.listeners.BlockClickEvent;
+import project.rpg.commands.QuestToggleCommand;
+import project.rpg.commands.StatusCommand;
+import project.rpg.listeners.BlockClickEventListener;
 import project.rpg.listeners.InventoryEventListener;
+import project.rpg.manager.ArrayManager;
+import project.rpg.manager.FileManager;
 
 import java.util.Objects;
 
@@ -19,7 +19,8 @@ public final class Rpg extends JavaPlugin {
 
         registerEvents();
         getCommands();
-        FileSystem.mkFile();
+        mkObjects();
+        ArrayManager.putJson();
 
         getLogger().info("RPG plugin loaded!");
     }
@@ -27,17 +28,28 @@ public final class Rpg extends JavaPlugin {
     @Override
     public void onDisable() {
 
+        saveObjects();
         getLogger().info("RPG plugin disabled");
     }
 
     private void getCommands(){
-        Objects.requireNonNull(getCommand("quests")).setExecutor(new QuestToggle());
-        Objects.requireNonNull(getCommand("savef")).setExecutor(new Save());
-        Objects.requireNonNull(getCommand("status")).setExecutor(new CreateTmpStatus());
+        Objects.requireNonNull(getCommand("quests")).setExecutor(new QuestToggleCommand());
+        Objects.requireNonNull(getCommand("stats")).setExecutor(new StatusCommand());
     }
 
     private void registerEvents(){
         getServer().getPluginManager().registerEvents(new InventoryEventListener(), this);
-        getServer().getPluginManager().registerEvents(new BlockClickEvent(), this);
+        getServer().getPluginManager().registerEvents(new BlockClickEventListener(), this);
+    }
+
+    private void mkObjects(){
+        FileManager.makeFile();
+        FileManager.makeList();
+    }
+
+    private void saveObjects(){
+        mkObjects();
+        FileManager.saveFile();
+        FileManager.saveList();
     }
 }
