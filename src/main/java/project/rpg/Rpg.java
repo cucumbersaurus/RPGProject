@@ -5,7 +5,6 @@ import project.rpg.commands.QuestToggleCommand;
 import project.rpg.commands.StatusCommand;
 import project.rpg.listeners.BlockClickEventListener;
 import project.rpg.listeners.InventoryEventListener;
-import project.rpg.manager.ArrayManager;
 import project.rpg.manager.FileManager;
 
 import java.util.Objects;
@@ -20,7 +19,7 @@ public final class Rpg extends JavaPlugin {
         registerEvents();
         getCommands();
         mkObjects();
-        ArrayManager.putJson();
+        //ArrayManager.putJson();
 
         getLogger().info("RPG plugin loaded!");
     }
@@ -49,7 +48,7 @@ public final class Rpg extends JavaPlugin {
 
     private void saveObjects(){
         mkObjects();
-        FileManager.saveFile();
         FileManager.saveList();
+        FileManager.saveFile();
     }
 }

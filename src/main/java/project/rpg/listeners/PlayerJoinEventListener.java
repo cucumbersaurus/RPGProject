@@ -8,10 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import project.rpg.manager.AttributeManager;
 import project.rpg.player.info.Status;
 
-import static project.rpg.manager.ArrayManager.Players;
-import static project.rpg.manager.ArrayManager.playerData;
-import static project.rpg.manager.FileManager.jsonFile;
-import static project.rpg.manager.FileManager.jsonList;
+import static project.rpg.manager.ArrayManager.Players_;
+import static project.rpg.manager.ArrayManager.playerData_;
+import static project.rpg.manager.FileManager.jsonFile_;
+import static project.rpg.manager.FileManager.jsonList_;
 
 public class PlayerJoinEventListener implements Listener {
 
@@ -20,23 +20,23 @@ public class PlayerJoinEventListener implements Listener {
         String playerName;
         playerName = e.getPlayer().getName();
         e.setJoinMessage((ChatColor.YELLOW + "앗! 야생의 ") + (ChatColor.GREEN + playerName) + (ChatColor.YELLOW + "(이)가 들어왔다!"));
-        boolean contains = Players.contains(playerName);
+        boolean contains = Players_.contains(playerName);
         if (contains) {
-            if (playerData.get(playerName) == null) {
+            if (playerData_.get(playerName) == null) {
                 Status status = new Status(playerName);
-                playerData.put(playerName, status);
+                playerData_.put(playerName, status);
 
-                jsonFile.put(playerName, status.getMap());
+                jsonFile_.put(playerName, status.getMap());
             }
-            AttributeManager.setAttributes(e.getPlayer(), playerData.get(playerName));
+            AttributeManager.setAttributes(e.getPlayer(), playerData_.get(playerName));
         } else {
             Status status = new Status(playerName);
-            Players.add(playerName);
-            playerData.put(playerName, status);
+            Players_.add(playerName);
+            playerData_.put(playerName, status);
 
-            jsonList.add(playerName);
-            jsonFile.put(playerName, status.getMap());
-            AttributeManager.setAttributes(e.getPlayer(), playerData.get(playerName));
+            jsonList_.add(playerName);
+            jsonFile_.put(playerName, status.getMap());
+            AttributeManager.setAttributes(e.getPlayer(), playerData_.get(playerName));
         }
     }
 
