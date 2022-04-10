@@ -9,13 +9,13 @@ import java.util.Map;
 
 public class ArrayManager {
 
-    public static final List<String> Players = new ArrayList<>();
-    public static final Map<String, Status> playerData= new HashMap<>();
+    public static final List<String> Players_ = new ArrayList<>();
+    public static final Map<String, Status> playerData_ = new HashMap<>();
 
     public static void putJson() throws NullPointerException {
         for (int i = 0; i<FileManager.getList().toArray().length; i++) {
             String needPut = (String) FileManager.getList().toArray()[i];
-            Players.add(needPut);
+            Players_.add(needPut);
 
             try {
 
@@ -36,7 +36,7 @@ public class ArrayManager {
                 }
 
                 Status status = new Status(needPut, hashMap);
-                playerData.put(needPut, status);
+                playerData_.put(needPut, status);
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }

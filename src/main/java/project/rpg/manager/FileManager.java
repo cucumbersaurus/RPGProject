@@ -1,5 +1,9 @@
 package project.rpg.manager;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.JSONArray;
@@ -9,48 +13,46 @@ import org.json.simple.parser.ParseException;
 import project.rpg.Rpg;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
-import static project.rpg.manager.ArrayManager.Players;
+import static project.rpg.manager.ArrayManager.Players_;
 
 public class FileManager {
 
-    public static final JSONObject jsonFile = new JSONObject();
-    public static final JSONArray jsonList = new JSONArray();
-    private static final String FILE_PATH = JavaPlugin.getPlugin(Rpg.class).getDataFolder().toString();
-    private static final File playerDs = new File(FILE_PATH + "playerData/playerDs.json");
+    public static final JSONObject jsonFile_ = new JSONObject();
+    public static final JSONArray jsonList_ = new JSONArray();
+    private static final String FILE_PATH_ = JavaPlugin.getPlugin(Rpg.class).getDataFolder().toString();
+    private static final File playerDs_ = new File(FILE_PATH_ + "/playerData/playerDs.json");
+    private static final String PLAYER = "players";
 
     public static void makeFile() {
-        File f = new File(FILE_PATH + "playerData/playerDs.json");
+        File f = new File(FILE_PATH_ + "playerData/playerDs.json");
         if (f.exists()) {
             Bukkit.getLogger().info("playerDs.json exists");
         } else {
             Bukkit.getLogger().info("playerDs.json not exist");
             Bukkit.getLogger().info("making playerDs.json");
-
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(playerDs))) {
-                writer.write(jsonFile.toJSONString());
-                writer.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            saveFile();
         }
     }
 
     public static void saveFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(playerDs))) {
-            writer.write(jsonFile.toJSONString());
+        JsonObject object = new JsonObject();
+        object.addProperty(PLAYER, jsonList_.toJSONString());
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(playerDs_))) {
+            writer.write(object.getAsString());
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static JSONObject getFile() {
+    public static JsonObject getFile() {
         JSONParser parser = new JSONParser();
-        try (BufferedReader reader = new BufferedReader(new FileReader(playerDs))) {
-            Object obj = parser.parse(reader);
-            return (JSONObject) obj;
+        try (BufferedReader reader = new BufferedReader(new FileReader(playerDs_))) {
+            JsonObject obj = (JsonObject) parser.parse(reader);
+            return obj.get(PLAYER).getAsJsonObject();
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -58,45 +60,32 @@ public class FileManager {
     }
 
     public static void makeList() {
-        if (playerDs.exists()) {
+        if (playerDs_.exists()) {
             Bukkit.getLogger().info("playerList.json exists");
         } else {
             Bukkit.getLogger().info("playerList.json not exist");
             Bukkit.getLogger().info("making playerList.json");
-
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(playerDs))) {
-                writer.write(jsonList.toJSONString());
-                writer.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            saveFile();
         }
     }
 
     public static void saveList() {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(playerDs))) {
-            for(Object obj : Players.toArray()){
-                if (!jsonList.contains(obj)) {
-                    jsonList.add(obj);
-                }
-            }
-            writer.write(jsonList.toJSONString());
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        jsonList_.clear();
+        jsonList_.addAll(Players_);
     }
 
     public static List<String> getList() {
         JSONParser parser = new JSONParser();
-        try(BufferedReader reader = new BufferedReader(new FileReader(playerDs))) {
-            Object obj = parser.parse(reader);
-            JSONArray jsonArray = (JSONArray) obj;
-            return jsonArray;
+        try(BufferedReader reader = new BufferedReader(new FileReader(playerDs_))) {
+            JsonObject obj = (JsonObject) parser.parse(reader);
+
+            JsonArray jsonArray = obj.get(PLAYER).getAsJsonArray();
+            Gson gson = new Gson();
+            return gson.fromJson(jsonArray.toString(), new TypeToken<ArrayList<String>>(){}.getType());
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 
     FileManager() {

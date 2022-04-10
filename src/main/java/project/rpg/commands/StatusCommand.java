@@ -7,8 +7,8 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.manager.AttributeManager;
 
-import static project.rpg.manager.ArrayManager.playerData;
-import static project.rpg.manager.FileManager.jsonFile;
+import static project.rpg.manager.ArrayManager.playerData_;
+import static project.rpg.manager.FileManager.jsonFile_;
 
 public class StatusCommand implements CommandExecutor {
 
@@ -24,42 +24,42 @@ public class StatusCommand implements CommandExecutor {
                 switch (args[1]) {
                     case "strength":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData.get(playername).addStrength(num);
+                        playerData_.get(playername).addStrength(num);
                         break;
                     case "agility":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData.get(playername).addAgility(num);
+                        playerData_.get(playername).addAgility(num);
                         break;
                     case "speed":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData.get(playername).addSpeed(num);
+                        playerData_.get(playername).addSpeed(num);
                         break;
                     case "health":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData.get(playername).addHealth(num);
+                        playerData_.get(playername).addHealth(num);
                         break;
                     case "defense":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData.get(playername).addDefense(num);
+                        playerData_.get(playername).addDefense(num);
                         break;
                     case "luck":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData.get(playername).addLuck(num);
+                        playerData_.get(playername).addLuck(num);
                         break;
                     case "handicraft":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData.get(playername).addHandicraft(num);
+                        playerData_.get(playername).addHandicraft(num);
                         break;
                     case "attractive":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData.get(playername).addAttractive(num);
+                        playerData_.get(playername).addAttractive(num);
                         break;
                     default:
                         sender.sendMessage("오타난 커멘드");
                         break;
                 }
-                jsonFile.put(playername, playerData.get(playername).getMap());
-                AttributeManager.setAttributes(player, playerData.get(playername));
+                jsonFile_.put(playername, playerData_.get(playername).getMap());
+                AttributeManager.setAttributes(player, playerData_.get(playername));
             }
             return true;
         }
