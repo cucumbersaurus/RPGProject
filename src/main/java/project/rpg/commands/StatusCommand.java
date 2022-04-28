@@ -1,5 +1,6 @@
 package project.rpg.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,10 +18,17 @@ public class StatusCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            String playername = player.getPlayer().getName();
+            String playername;
+            if(player.getPlayer()!=null) {
+                playername = player.getPlayer().getName();
+            }
+            else{
+                Bukkit.getLogger().warning("Player is null");
+                return false;
+            }
 
             if ("add".equals(args[0])) {
-                int num = Integer.valueOf(args[2]);
+                int num = Integer.parseInt(args[2]);
                 switch (args[1]) {
                     case "strength":
                         player.sendMessage(args[1] + " is added " + args[2]);
