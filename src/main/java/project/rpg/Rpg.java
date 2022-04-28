@@ -3,6 +3,7 @@ package project.rpg;
 import org.bukkit.plugin.java.JavaPlugin;
 import project.rpg.commands.QuestToggleCommand;
 import project.rpg.commands.StatusCommand;
+import project.rpg.commands.TestCommand;
 import project.rpg.listeners.BlockClickEventListener;
 import project.rpg.listeners.InventoryEventListener;
 import project.rpg.manager.FileManager;
@@ -33,7 +34,8 @@ public final class Rpg extends JavaPlugin {
 
     private void getCommands(){
         Objects.requireNonNull(getCommand("quests")).setExecutor(new QuestToggleCommand());
-        Objects.requireNonNull(getCommand("stats")).setExecutor(new StatusCommand());
+        Objects.requireNonNull(getCommand("status")).setExecutor(new StatusCommand());
+        Objects.requireNonNull((getCommand("test"))).setExecutor(new TestCommand());
     }
 
     private void registerEvents(){

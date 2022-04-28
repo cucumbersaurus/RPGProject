@@ -41,7 +41,7 @@ public class FileManager {
         JsonObject object = new JsonObject();
         object.addProperty(PLAYER, jsonList_.toJSONString());
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(playerDs_))) {
-            writer.write(object.getAsString());
+            writer.write(object.toString());
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
