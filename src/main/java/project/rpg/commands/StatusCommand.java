@@ -18,9 +18,9 @@ public class StatusCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            String playername;
+            String playerName;
             if(player.getPlayer()!=null) {
-                playername = player.getPlayer().getName();
+                playerName = player.getPlayer().getName();
             }
             else{
                 Bukkit.getLogger().warning("Player is null");
@@ -32,42 +32,42 @@ public class StatusCommand implements CommandExecutor {
                 switch (args[1]) {
                     case "strength":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData_.get(playername).addStrength(num);
+                        playerData_.get(playerName).addStrength(num);
                         break;
                     case "agility":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData_.get(playername).addAgility(num);
+                        playerData_.get(playerName).addAgility(num);
                         break;
                     case "speed":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData_.get(playername).addSpeed(num);
+                        playerData_.get(playerName).addSpeed(num);
                         break;
                     case "health":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData_.get(playername).addHealth(num);
+                        playerData_.get(playerName).addHealth(num);
                         break;
                     case "defense":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData_.get(playername).addDefense(num);
+                        playerData_.get(playerName).addDefense(num);
                         break;
                     case "luck":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData_.get(playername).addLuck(num);
+                        playerData_.get(playerName).addLuck(num);
                         break;
                     case "handicraft":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData_.get(playername).addHandicraft(num);
+                        playerData_.get(playerName).addHandicraft(num);
                         break;
                     case "attractive":
                         player.sendMessage(args[1] + " is added " + args[2]);
-                        playerData_.get(playername).addAttractive(num);
+                        playerData_.get(playerName).addAttractive(num);
                         break;
                     default:
                         sender.sendMessage("오타난 커멘드");
                         break;
                 }
-                jsonFile_.put(playername, playerData_.get(playername).getMap());
-                AttributeManager.setAttributes(player, playerData_.get(playername));
+                jsonFile_.put(playerName, playerData_.get(playerName).getMap());
+                AttributeManager.setAttributes(player, playerData_.get(playerName));
             }
             return true;
         }

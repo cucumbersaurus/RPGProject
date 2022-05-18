@@ -9,38 +9,39 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class BlockClickEventListener implements Listener {
 
     @EventHandler
-    public void blockFromTo(BlockFromToEvent e){
-        if(e.getBlock().getType() == Material.DRAGON_EGG) { //드래곤알 tp 방지
-            e.setCancelled(true);
+    public void blockFromTo(BlockFromToEvent event){
+        if(event.getBlock().getType() == Material.DRAGON_EGG) { //드래곤알 tp 방지
+            event.setCancelled(true);
         }
     }
 
     @EventHandler
-    public void playerBlockInteract(PlayerInteractEvent e){
+    public void playerBlockInteract(PlayerInteractEvent event){
 
-        if(e.getClickedBlock()==null) return;
+        if(event.getClickedBlock()==null) return;
 
-        switch (e.getClickedBlock().getType()){
+        switch (event.getClickedBlock().getType()){
             case ENCHANTING_TABLE: //인첸트 테이블 우클릭시 커스텀 ui 보여주기
-                if(checkInteraction(e)){
-                    e.setCancelled(true);
+                if(!isSneaking(event)){
+                    event.setCancelled(true);
                     //ui 오픈
                 }
                 break;
             case ANVIL:
             case CHIPPED_ANVIL:
             case DAMAGED_ANVIL:
-                checkInteraction(e);//e.setCancelled(true);
-//ui 오픈
+                //isSneaking(event);
+                //e.setCancelled(true);
+            //ui 오픈
                 break;
             default:
                 break;
         }
     }
 
-    private boolean checkInteraction(PlayerInteractEvent e){
-        if(e.getAction().isRightClick()){
-            return e.getPlayer().getPose() != Pose.SNEAKING;
+    private boolean isSneaking(PlayerInteractEvent event){//웅크리기+블럭설치시 블럭설치 이벤트 취소 방지
+        if(event.getAction().isRightClick()){
+            return event.getPlayer().getPose() == Pose.SNEAKING;
         }
         return false;
     }

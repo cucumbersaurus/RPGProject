@@ -5,9 +5,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import project.rpg.ui.QuestListUI;
+import project.rpg.ui.ScoreboardUI;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class QuestToggleCommand implements CommandExecutor {
 
@@ -16,43 +17,41 @@ public class QuestToggleCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if(sender instanceof Player){
-            Player p = (Player) sender;
+            Player player = (Player) sender;
             if(args.length>0&&args.length<17){
                 if(args[0].equals("true")){
 
                     if(args.length==1){
-                        QuestListUI.playerQuestMap_.get(p).showScoreboard();
-                        p.sendMessage("shown");
+                        ScoreboardUI.showScoreboard(player);
+                        player.sendMessage("shown");
                         return true;
                     }
 
-                    QuestListUI scoreboardUI;
-                    if(QuestListUI.playerQuestMap_.getOrDefault(p, null) != null){
-                        scoreboardUI=QuestListUI.playerQuestMap_.get(p);
-                        p.sendMessage("from map");
+                    ScoreboardUI scoreboardUI;
+                    if(ScoreboardUI.getScoreboard(player) != null){
+                        scoreboardUI= ScoreboardUI.getScoreboard(player);
+                        player.sendMessage("from map");
                     }
                     else{
-                        scoreboardUI = new QuestListUI(p);
-                        p.sendMessage("new");
+                        scoreboardUI = new ScoreboardUI(player);
+                        player.sendMessage("new");
                     }
 
                     ArrayList<String>  arrayList = new ArrayList<>();
-                    for(int i=1;i< args.length;i++){
-                        arrayList.add(args[i]);
-                    }
+                    arrayList.toArray(Arrays.stream(args).toArray());
 
                     scoreboardUI.setContents(arrayList);
                 }
                 else if(args[0].equals("false")){
-                    QuestListUI scoreboardUI =  QuestListUI.playerQuestMap_.get(p);
-                    scoreboardUI.hideScoreboard();
+                    ScoreboardUI.hideScoreboard(player);
+                    player.sendMessage("hidden");
                 }
             }
             else if(args.length==0){
-                p.sendMessage("/quests <true|false>");
+                player.sendMessage("/quests <true|false>");
             }
             else{
-                p.sendMessage("too short or too long");
+                player.sendMessage("too short or too long");
                 return true;
             }
         }
