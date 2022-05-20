@@ -4,9 +4,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import project.rpg.commands.QuestToggleCommand;
 import project.rpg.commands.StatusCommand;
 import project.rpg.commands.TestCommand;
+import project.rpg.commands.TitleTestCommand;
 import project.rpg.listeners.BlockClickEventListener;
 import project.rpg.listeners.InventoryEventListener;
+import project.rpg.listeners.PlayerJoinEventListener;
+import project.rpg.listeners.PlayerQuitEventListener;
 import project.rpg.manager.FileManager;
+import project.rpg.ui.ActionBarUI;
 
 import java.util.Objects;
 
@@ -20,8 +24,10 @@ public final class Rpg extends JavaPlugin {
         registerEvents();
         getCommands();
         mkObjects();
-        //ArrayManager.putJson();
+        ActionBarUI actionBar = new ActionBarUI(this);
+        actionBar.startActionBar();
 
+        //ArrayManager.putJson();
         getLogger().info("RPG plugin loaded!");
     }
 
@@ -35,10 +41,13 @@ public final class Rpg extends JavaPlugin {
     private void getCommands(){
         Objects.requireNonNull(getCommand("quests")).setExecutor(new QuestToggleCommand());
         Objects.requireNonNull(getCommand("status")).setExecutor(new StatusCommand());
-        Objects.requireNonNull((getCommand("test"))).setExecutor(new TestCommand());
+        Objects.requireNonNull(getCommand("test")).setExecutor(new TestCommand());
+        Objects.requireNonNull(getCommand("titleTest")).setExecutor(new TitleTestCommand());
     }
 
     private void registerEvents(){
+        getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerQuitEventListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryEventListener(), this);
         getServer().getPluginManager().registerEvents(new BlockClickEventListener(), this);
     }
@@ -53,4 +62,10 @@ public final class Rpg extends JavaPlugin {
         FileManager.saveList();
         FileManager.saveFile();
     }
+    /*
+    private void setPlugin(){
+        ActionBarUI.setPlugin(this);
+    }
+    */
+
 }
