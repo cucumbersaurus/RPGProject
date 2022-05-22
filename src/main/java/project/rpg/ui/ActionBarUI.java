@@ -12,14 +12,11 @@ public class ActionBarUI {
 
     protected static final List<Player> _players = new ArrayList<>();
     private final Rpg _plugin;
-    Runnable showActionBar = new Runnable() {
-        @Override
-        public void run() {
-            for (Player p : _players) {
-                String message = "체력 : "  + p.getHealth()*100 + "/" + p.getHealthScale()*100;
-                message += ChatColor.BLUE + "          마나 : 100/100";
-                p.sendActionBar(ChatColor.RED + message);
-            }
+    Runnable showActionBar = () -> {
+        for (Player player : _players) {
+            String message = "체력 : "  + String.format("%.2f", player.getHealth()*100) + "/" + String.format("%.2f", player.getHealthScale()*100);
+            message += ChatColor.BLUE + "          마나 : 100/100";
+            player.sendActionBar(ChatColor.RED + message);
         }
     };
 
@@ -34,6 +31,14 @@ public class ActionBarUI {
         Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, showActionBar, 0);
     }
 
+    public void updateActionBar(Player player) {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, ()->{
+            String message = "체력 : "  + String.format("%.2f", player.getHealth()*100) + "/" + String.format("%.2f", player.getHealthScale()*100);
+            message += ChatColor.BLUE + "          마나 : 100/100";
+            player.sendActionBar(ChatColor.RED + message);
+        }, 0);
+    }
+
     public static void addPlayer(Player player) {
         _players.add(player);
     }
@@ -41,4 +46,5 @@ public class ActionBarUI {
     public static void deletePlayer(Player player) {
         _players.remove(player);
     }
+
 }

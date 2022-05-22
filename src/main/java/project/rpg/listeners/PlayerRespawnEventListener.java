@@ -21,15 +21,10 @@ public class PlayerRespawnEventListener implements Listener {
     public void onPlayerRespawn(PlayerRespawnEvent event){
         Player player = event.getPlayer();
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, new Runnable() {
-            @Override
-            public void run() {
-                player.setHealthScale(ArrayManager.playerData_.getOrDefault(player.getName(), new Status(player)).getHealth()/100.0);
-                //player.setHealthScaled(true);
-                player.setHealth(ArrayManager.playerData_.getOrDefault(player.getName(), new Status(player)).getHealth()/100.0);
-                _plugin.actionBar.updateActionBar();
-                //Bukkit.broadcastMessage("asdfasdsdfasfd");
-            }
+        Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, () -> {
+            player.setHealthScale(ArrayManager.playerData_.getOrDefault(player.getName(), new Status(player)).getHealth()/100.0);
+            player.setHealth(ArrayManager.playerData_.getOrDefault(player.getName(), new Status(player)).getHealth()/100.0);
+            _plugin.actionBar.updateActionBar();
         }, 1);
     }
 

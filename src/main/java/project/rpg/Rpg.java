@@ -7,10 +7,7 @@ import project.rpg.commands.QuestToggleCommand;
 import project.rpg.commands.StatusCommand;
 import project.rpg.commands.TestCommand;
 import project.rpg.commands.TitleTestCommand;
-import project.rpg.listeners.BlockClickEventListener;
-import project.rpg.listeners.InventoryEventListener;
-import project.rpg.listeners.PlayerJoinEventListener;
-import project.rpg.listeners.PlayerQuitEventListener;
+import project.rpg.listeners.*;
 import project.rpg.manager.FileManager;
 import project.rpg.player.PlayerInformation;
 import project.rpg.ui.ActionBarUI;
@@ -57,6 +54,7 @@ public final class Rpg extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InventoryEventListener(), this);
         getServer().getPluginManager().registerEvents(new BlockClickEventListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawnEventListener(this), this);
+        getServer().getPluginManager().registerEvents(new EntityTakeDamageEvent(this), this);
     }
 
     private void mkObjects(){
@@ -71,9 +69,11 @@ public final class Rpg extends JavaPlugin {
     }
 
     private void checkOnlinePlayers(){
-        for(Player player : Bukkit.getOnlinePlayers()){
-            PlayerInformation.makeInfo(player);
-        }
+        Bukkit.getScheduler().scheduleSyncDelayedTask(this, ()->{
+            for(Player player : Bukkit.getOnlinePlayers()){
+                PlayerInformation.makeInfo(player);
+            }
+        }, 0);
     }
     /*
     private void setPlugin(){
