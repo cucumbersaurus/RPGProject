@@ -1,5 +1,7 @@
 package project.rpg;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import project.rpg.commands.QuestToggleCommand;
 import project.rpg.commands.StatusCommand;
@@ -10,11 +12,13 @@ import project.rpg.listeners.InventoryEventListener;
 import project.rpg.listeners.PlayerJoinEventListener;
 import project.rpg.listeners.PlayerQuitEventListener;
 import project.rpg.manager.FileManager;
+import project.rpg.player.PlayerInformation;
 import project.rpg.ui.ActionBarUI;
 
 import java.util.Objects;
 
 public final class Rpg extends JavaPlugin {
+    public ActionBarUI actionBar = new ActionBarUI(this);
 
     @Override
     public void onEnable() {
@@ -24,7 +28,9 @@ public final class Rpg extends JavaPlugin {
         registerEvents();
         getCommands();
         mkObjects();
-        ActionBarUI actionBar = new ActionBarUI(this);
+
+        checkOnlinePlayers();
+
         actionBar.startActionBar();
 
         //ArrayManager.putJson();
@@ -50,6 +56,7 @@ public final class Rpg extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerQuitEventListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryEventListener(), this);
         getServer().getPluginManager().registerEvents(new BlockClickEventListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerRespawnEventListener(this), this);
     }
 
     private void mkObjects(){
@@ -61,6 +68,12 @@ public final class Rpg extends JavaPlugin {
         mkObjects();
         FileManager.saveList();
         FileManager.saveFile();
+    }
+
+    private void checkOnlinePlayers(){
+        for(Player player : Bukkit.getOnlinePlayers()){
+            PlayerInformation.makeInfo(player);
+        }
     }
     /*
     private void setPlugin(){

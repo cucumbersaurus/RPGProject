@@ -1,6 +1,7 @@
 package project.rpg.player.info;
 
 import org.bukkit.entity.Player;
+import project.rpg.manager.ArrayManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +20,7 @@ public class Status {
     private int _defense = 10;  //내구
     private int _expNeedForNextLvl = 0; // 다음 레벨까지 필요경험치량 : (level
     private int _handicraft = 10;  //손재주
-    private int _health = 10;  //체력
+    private int _health = 100;  //체력
     private int _level = 0;  //레벨
     private int _luck = 10;  //행운
     private int _speed = 10;  //신속 * 10)
@@ -43,6 +44,7 @@ public class Status {
     public Status(Player player) {  //생성자
         this._playerName = player.getName();
         _players.put(player, this);
+        ArrayManager.playerData_.put(player.getName(), this);
     }
 
     public Status(String playerName, Map<String,Integer> hashMap) {
