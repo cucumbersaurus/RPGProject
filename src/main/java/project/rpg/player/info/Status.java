@@ -13,7 +13,7 @@ public class Status {
     private String _job;
     private String _playerName;  //사람 이름
 
-    private int _additionalStatusPoint = 0;  //추가 스텟
+    private int _additionalStatusPoint = 1200;  //추가 스텟
     private int _agility = 10;  //민첩
     private int _attractive = 10;  //매력
     private int _currentExp = 0;  //현재 경험치

@@ -17,8 +17,9 @@ public class PlayerRespawnEventListener implements Listener {
         _plugin = plugin;
     }
 
-    @EventHandler
-    public void onPlayerRespawn(PlayerRespawnEvent event){
+    @EventHandler//리스폰시 체력이 최대체력만큼 설정되지 않는 오류를 고치기 위한 코드
+    public void onPlayerRespawn(PlayerRespawnEvent event){//스케줄러를 사용한 이유는 메인 스레드에서 하면 작동이 안됨
+
         Player player = event.getPlayer();
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, () -> {

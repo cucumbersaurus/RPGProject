@@ -1,6 +1,7 @@
 package project.rpg.manager;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static project.rpg.manager.ArrayManager.Players_;
+import static project.rpg.manager.ArrayManager.playerData_;
 
 public class FileManager {
 
@@ -27,17 +29,35 @@ public class FileManager {
     private static final String PLAYER = "players";
 
     public static void makeFile() {
-        File f = new File(FILE_PATH_ + "playerData/playerDs.json");
+        File f = new File(FILE_PATH_ + "/playerData/playerDs.json");
         if (f.exists()) {
             Bukkit.getLogger().info("playerDs.json exists");
         } else {
             Bukkit.getLogger().info("playerDs.json not exist");
-            Bukkit.getLogger().info("making playerDs.json");
+            try {
+                if(f.createNewFile()){
+                    Bukkit.getLogger().info(" playerDs.json made");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             saveFile();
         }
+
     }
 
     public static void saveFile() {
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try(FileWriter writer = new FileWriter(FILE_PATH_ + "/playerData/playerDs.json")) {
+            gson.toJson(playerData_, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Bukkit.broadcastMessage(playerData_.toString());
+
+    /*
         JsonObject object = new JsonObject();
         object.addProperty(PLAYER, jsonList_.toJSONString());
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(playerDs_))) {
@@ -46,6 +66,7 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+     */
     }
 
     public static JsonObject getFile() {

@@ -3,10 +3,7 @@ package project.rpg;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import project.rpg.commands.QuestToggleCommand;
-import project.rpg.commands.StatusCommand;
-import project.rpg.commands.TestCommand;
-import project.rpg.commands.TitleTestCommand;
+import project.rpg.commands.*;
 import project.rpg.listeners.*;
 import project.rpg.manager.FileManager;
 import project.rpg.player.PlayerInformation;
@@ -46,6 +43,7 @@ public final class Rpg extends JavaPlugin {
         Objects.requireNonNull(getCommand("status")).setExecutor(new StatusCommand());
         Objects.requireNonNull(getCommand("test")).setExecutor(new TestCommand());
         Objects.requireNonNull(getCommand("titleTest")).setExecutor(new TitleTestCommand());
+        Objects.requireNonNull(getCommand("savef")).setExecutor(new FileSaveTestCommand());
     }
 
     private void registerEvents(){
