@@ -1,14 +1,14 @@
 package project.rpg.player.info;
 
 import org.bukkit.entity.Player;
-import project.rpg.manager.ArrayManager;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class Status {
 
-    protected static final Map<Player, Status> _players = new HashMap<>();
+    protected static Map<UUID, Status> _players = new HashMap<>();
 
     private String _job;
     private String _playerName;  //사람 이름
@@ -43,8 +43,8 @@ public class Status {
 
     public Status(Player player) {  //생성자
         this._playerName = player.getName();
-        _players.put(player, this);
-        ArrayManager.playerData_.put(player.getName(), this);
+        _players.put(player.getUniqueId(), this);
+        //ArrayManager.playerData_.put(player.getName(), this);
     }
 
     public Status(String playerName, Map<String,Integer> hashMap) {
@@ -53,7 +53,15 @@ public class Status {
     }
 
     public Map<String, Integer> getMap() {
-        return this._statusMap;
+        return _statusMap;
+    }
+
+    public static Map<UUID, Status> getPlayerMap() {
+        return _players;
+    }
+
+    public static void setPlayerMap(Map<UUID, Status> map){
+        _players = map;
     }
 
     public void toMap(){

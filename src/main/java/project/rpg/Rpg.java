@@ -21,13 +21,11 @@ public final class Rpg extends JavaPlugin {
 
         registerEvents();
         getCommands();
-        mkObjects();
+        loadObjects();
 
         checkOnlinePlayers();
-
         actionBar.startActionBar();
 
-        //ArrayManager.putJson();
         getLogger().info("RPG plugin loaded!");
     }
 
@@ -55,14 +53,13 @@ public final class Rpg extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityTakeDamageEvent(this), this);
     }
 
-    private void mkObjects(){
+    private void loadObjects() {
         FileManager.makeFile();
-        FileManager.makeList();
+        FileManager.getFile();
     }
 
     private void saveObjects(){
-        mkObjects();
-        FileManager.saveList();
+        FileManager.makeFile();
         FileManager.saveFile();
     }
 
@@ -73,10 +70,4 @@ public final class Rpg extends JavaPlugin {
             }
         }, 0);
     }
-    /*
-    private void setPlugin(){
-        ActionBarUI.setPlugin(this);
-    }
-    */
-
 }
