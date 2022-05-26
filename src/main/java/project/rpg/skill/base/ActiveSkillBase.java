@@ -8,7 +8,7 @@ public abstract class ActiveSkillBase extends SkillBase{
             this.onEnable();
             this.coolTime = this.skillTime;
         } else {
-            this.player.sendActionBar("쿨타임 중 " + this.coolTime +"초 남음");
+            this.sendActionBar(this.player);
         }
     }
 
