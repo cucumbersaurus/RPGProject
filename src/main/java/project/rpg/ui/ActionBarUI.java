@@ -8,6 +8,8 @@ import project.rpg.Rpg;
 import java.util.ArrayList;
 import java.util.List;
 
+import static project.rpg.player.info.Skill.skills;
+
 public class ActionBarUI {
 
     protected static final List<Player> _players = new ArrayList<>();
@@ -15,7 +17,8 @@ public class ActionBarUI {
     Runnable showActionBar = () -> {
         for (Player player : _players) {
             String message = "체력 : "  + String.format("%.2f", player.getHealth()*100) + "/" + String.format("%.2f", player.getHealthScale()*100);
-            message += ChatColor.BLUE + "          마나 : 100/100";
+            String manaMessage = "          마나 : " + skills.get(player.getName()).getMana() + "/" + skills.get(player.getName()).getMaxMana();
+            message += ChatColor.BLUE + manaMessage;
             player.sendActionBar(ChatColor.RED + message);
         }
     };
@@ -34,7 +37,8 @@ public class ActionBarUI {
     public void updateActionBar(Player player) {
         Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, ()->{
             String message = "체력 : "  + String.format("%.2f", player.getHealth()*100) + "/" + String.format("%.2f", player.getHealthScale()*100);
-            message += ChatColor.BLUE + "          마나 : 100/100";
+            String manaMessage = "          마나 : " + skills.get(player.getName()).getMana() + "/" + skills.get(player.getName()).getMaxMana();
+            message += ChatColor.BLUE + manaMessage;
             player.sendActionBar(ChatColor.RED + message);
         }, 0);
     }

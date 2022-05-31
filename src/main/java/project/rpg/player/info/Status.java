@@ -44,7 +44,6 @@ public class Status {
     public Status(Player player) {  //생성자
         this._playerName = player.getName();
         _players.put(player.getUniqueId(), this);
-        //ArrayManager.playerData_.put(player.getName(), this);
     }
 
     public Status(String playerName, Map<String,Integer> hashMap) {
