@@ -4,11 +4,10 @@ import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import project.rpg.Rpg;
+import project.rpg.player.PlayerInformation;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static project.rpg.player.info.Skill.skills;
 
 public class ActionBarUI {
 
@@ -17,8 +16,7 @@ public class ActionBarUI {
     Runnable showActionBar = () -> {
         for (Player player : _players) {
             String message = "체력 : "  + String.format("%.2f", player.getHealth()*100) + "/" + String.format("%.2f", player.getHealthScale()*100);
-            String manaMessage = "          마나 : " + skills.get(player.getName()).getMana() + "/" + skills.get(player.getName()).getMaxMana();
-            message += ChatColor.BLUE + manaMessage;
+            message += ChatColor.BLUE + "          마나 : " + PlayerInformation.getMana(player) + "/100";
             player.sendActionBar(ChatColor.RED + message);
         }
     };
@@ -27,7 +25,7 @@ public class ActionBarUI {
         _plugin = plugin;
     }
     public void startActionBar() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(_plugin, showActionBar , 0, 40);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(_plugin, showActionBar , 0, 20);
     }
 
     public void updateActionBar() {
@@ -37,8 +35,7 @@ public class ActionBarUI {
     public void updateActionBar(Player player) {
         Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, ()->{
             String message = "체력 : "  + String.format("%.2f", player.getHealth()*100) + "/" + String.format("%.2f", player.getHealthScale()*100);
-            String manaMessage = "          마나 : " + skills.get(player.getName()).getMana() + "/" + skills.get(player.getName()).getMaxMana();
-            message += ChatColor.BLUE + manaMessage;
+            message += ChatColor.BLUE + "          마나 : 100/100";
             player.sendActionBar(ChatColor.RED + message);
         }, 0);
     }

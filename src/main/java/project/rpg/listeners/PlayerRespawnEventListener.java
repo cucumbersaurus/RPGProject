@@ -25,7 +25,7 @@ public class PlayerRespawnEventListener implements Listener {
             player.setHealthScale(Status.getPlayerMap().get(player.getUniqueId()).getHealth()/100.0);
             player.setHealthScaled(true);
             player.setHealth(Status.getPlayerMap().get(player.getUniqueId()).getHealth()/100.0);
-            _plugin.actionBar.updateActionBar();
+            _plugin._actionBar.updateActionBar();
         }, 0);
     }
 
