@@ -6,14 +6,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 import project.rpg.commands.*;
 import project.rpg.listeners.*;
 import project.rpg.manager.FileManager;
+import project.rpg.manager.ItemManager;
 import project.rpg.player.PlayerInformation;
 import project.rpg.ui.ActionBarUI;
 
 import java.util.Objects;
 
 public final class Rpg extends JavaPlugin {
-    public ActionBarUI actionBar = new ActionBarUI(this);
-
+    public ActionBarUI _actionBar = new ActionBarUI(this);
+    public PlayerInformation _playerInformation = new PlayerInformation(this);
     @Override
     public void onEnable() {
 
@@ -23,8 +24,11 @@ public final class Rpg extends JavaPlugin {
         getCommands();
         loadObjects();
 
+        ItemManager.makeItems();
+
         checkOnlinePlayers();
-        actionBar.startActionBar();
+        _actionBar.startActionBar();
+        _playerInformation.startManaRefilling();
 
         getLogger().info("RPG plugin loaded!");
     }
@@ -38,19 +42,21 @@ public final class Rpg extends JavaPlugin {
 
     private void getCommands(){
         Objects.requireNonNull(getCommand("quests")).setExecutor(new QuestToggleCommand());
+        Objects.requireNonNull(getCommand("savef")).setExecutor(new FileSaveTestCommand());
         Objects.requireNonNull(getCommand("status")).setExecutor(new StatusCommand());
         Objects.requireNonNull(getCommand("test")).setExecutor(new TestCommand());
+        Objects.requireNonNull(getCommand("testItem")).setExecutor(new TestItemCommand());
         Objects.requireNonNull(getCommand("titleTest")).setExecutor(new TitleTestCommand());
-        Objects.requireNonNull(getCommand("savef")).setExecutor(new FileSaveTestCommand());
     }
 
     private void registerEvents(){
+        getServer().getPluginManager().registerEvents(new BlockClickEventListener(), this);
+        getServer().getPluginManager().registerEvents(new EntityTakeDamageEventListener(this), this);
+        getServer().getPluginManager().registerEvents(new InventoryEventListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerItemUseEventListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitEventListener(), this);
-        getServer().getPluginManager().registerEvents(new InventoryEventListener(), this);
-        getServer().getPluginManager().registerEvents(new BlockClickEventListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawnEventListener(this), this);
-        getServer().getPluginManager().registerEvents(new EntityTakeDamageEvent(this), this);
     }
 
     private void loadObjects() {

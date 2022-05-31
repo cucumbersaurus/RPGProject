@@ -15,13 +15,13 @@ import java.util.Map;
 
 public class FileManager {
 
-    public static final JSONObject jsonFile_ = new JSONObject();
-    private static final String FILE_PATH_ = JavaPlugin.getPlugin(Rpg.class).getDataFolder().toString();
-    private static final File playerDs_ = new File(FILE_PATH_ + "/playerData/playerDs.json");
-    private static final String PLAYER = "players";
+    public static final JSONObject _jsonFile = new JSONObject();
+    private static final String FILE_PATH = JavaPlugin.getPlugin(Rpg.class).getDataFolder().toString();
+    private static final File _playerDs = new File(FILE_PATH + "/playerData/playerDs.json");
+    private static final String _player = "players";
 
     public static void makeFile() {
-        File f = new File(FILE_PATH_ + "/playerData/playerDs.json");
+        File f = new File(FILE_PATH + "/playerData/playerDs.json");
         if (f.exists()) {
             Bukkit.getLogger().info("playerDs.json exists");
         } else {
@@ -40,7 +40,7 @@ public class FileManager {
     public static void saveFile() {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try(FileWriter writer = new FileWriter(playerDs_)) {
+        try(FileWriter writer = new FileWriter(_playerDs)) {
             gson.toJson(Status.getPlayerMap(), writer);
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,7 +49,7 @@ public class FileManager {
     }
 
     public static void getFile() {
-        try(Reader reader = Files.newBufferedReader(Paths.get(playerDs_.getAbsolutePath()))){
+        try(Reader reader = Files.newBufferedReader(Paths.get(_playerDs.getAbsolutePath()))){
             Gson gson = new Gson();
             Map<?, ?> map =  gson.fromJson(reader, Map.class);
             //여기를 어떻게 처리하지?

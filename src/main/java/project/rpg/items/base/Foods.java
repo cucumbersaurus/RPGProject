@@ -1,10 +1,10 @@
-package project.rpg.items;
+package project.rpg.items.base;
 
 import project.rpg.base.ItemBase;
 
 public abstract class Foods extends ItemBase {
 
-    int hunger_ = 0;
-    int saturation_ = 0;
+    int _hunger = 0;
+    int _saturation = 0;
 
 }

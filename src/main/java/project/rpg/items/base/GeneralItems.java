@@ -1,4 +1,4 @@
-package project.rpg.items;
+package project.rpg.items.base;
 
 import project.rpg.base.ItemBase;
 

@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerLevelChangeEvent;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.player.info.Status;
 
-import static project.rpg.manager.FileManager.jsonFile_;
+import static project.rpg.manager.FileManager._jsonFile;
 
 public class PlayerLevelUpListener implements Listener {
 
@@ -22,7 +22,7 @@ public class PlayerLevelUpListener implements Listener {
             for (int i = 0; i < e.getNewLevel() - e.getOldLevel(); i++) {
                 e.getPlayer().sendMessage(ChatColor.YELLOW + "Level Up!");
                 Status.getPlayerMap().get(player).setLevel();
-                jsonFile_.put(player.getName(), Status.getPlayerMap().get(player).getMap());
+                _jsonFile.put(player.getName(), Status.getPlayerMap().get(player).getMap());
             }
         }
     }
