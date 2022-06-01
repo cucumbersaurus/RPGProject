@@ -1,15 +1,19 @@
 package project.rpg.listeners;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import project.rpg.Rpg;
 import project.rpg.items.Wand;
 import project.rpg.manager.ItemManager;
 import project.rpg.player.PlayerInformation;
+
+import static project.rpg.player.info.Skill._skills;
 
 public class PlayerItemUseEventListener implements Listener {
 
@@ -37,15 +41,14 @@ public class PlayerItemUseEventListener implements Listener {
                 }
             }
         }
-    }
 
-}
-/*Player player = event.getPlayer();
         Action action = event.getAction();
-
         if (action==Action.RIGHT_CLICK_AIR||action==Action.RIGHT_CLICK_BLOCK) {
-            if (player.getItemInHand().getType()== Material.STICK) {
+            if (player.getItemInHand().getType()== Material.FIRE_CHARGE) {
                 event.setCancelled(true);
-                skills.get(player.getName()).useSkill("메테오 스트라이크");
+                _skills.get(player.getName()).useSkill("메테오 스트라이크");
             }
-        }*/
+        }
+
+    }
+}

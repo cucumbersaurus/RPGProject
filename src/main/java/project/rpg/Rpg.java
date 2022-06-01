@@ -45,8 +45,9 @@ public final class Rpg extends JavaPlugin {
         Objects.requireNonNull(getCommand("savef")).setExecutor(new FileSaveTestCommand());
         Objects.requireNonNull(getCommand("status")).setExecutor(new StatusCommand());
         Objects.requireNonNull(getCommand("test")).setExecutor(new TestCommand());
-        Objects.requireNonNull(getCommand("testItem")).setExecutor(new TestItemCommand());
         Objects.requireNonNull(getCommand("titleTest")).setExecutor(new TitleTestCommand());
+        Objects.requireNonNull(getCommand("testItem")).setExecutor(new TestItemCommand());
+        Objects.requireNonNull(getCommand("skill")).setExecutor(new SkillCommand());
     }
 
     private void registerEvents(){
@@ -55,6 +56,7 @@ public final class Rpg extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InventoryEventListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerItemUseEventListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerLevelUpListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitEventListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawnEventListener(this), this);
     }

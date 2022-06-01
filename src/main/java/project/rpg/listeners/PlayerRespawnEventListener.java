@@ -10,7 +10,7 @@ import project.rpg.player.info.Status;
 
 public class PlayerRespawnEventListener implements Listener {
 
-    private Rpg _plugin;
+    private final Rpg _plugin;
 
     public PlayerRespawnEventListener(Rpg plugin){
         _plugin = plugin;

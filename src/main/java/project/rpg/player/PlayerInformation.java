@@ -11,12 +11,12 @@ import project.rpg.ui.ActionBarUI;
 import java.util.HashMap;
 import java.util.Map;
 
-import static project.rpg.player.info.Skill.skills;
+import static project.rpg.player.info.Skill._skills;
 
 public class PlayerInformation {
 
     private static final Map<Player, Integer> _mana = new HashMap<>();
-    private Rpg _plugin;
+    private final Rpg _plugin;
     public static void makeInfo(Player player){
         ActionBarUI.addPlayer(player);
         AttributeManager.setAttributes(player, new Status(player));
@@ -25,7 +25,7 @@ public class PlayerInformation {
         player.setHealthScaled(true);
         player.setHealth(Status.getPlayerMap().get(player.getUniqueId()).getHealth()/100.0);
 
-        skills.put(player.getName(), new Skill());
+        _skills.put(player.getName(), new Skill());
     }
 
     public PlayerInformation(Rpg plugin){
@@ -33,37 +33,37 @@ public class PlayerInformation {
     }
 
     public static void useMana(Player player, int mana){
-        skills.get(player.getName()).useMana(mana);
+        _skills.get(player.getName()).useMana(mana);
     }
 
     public static int getMana(Player player){
-        if (skills.get(player.getName())!=null) {
-            return skills.get(player.getName()).getMana();
+        if (_skills.get(player.getName())!=null) {
+            return _skills.get(player.getName()).getMana();
         } else {
             return 0;
         }
     }
 
     public static int getMaxMana(Player player) {
-        if (skills.get(player.getName())!=null) {
-            return skills.get(player.getName()).getMaxMana();
+        if (_skills.get(player.getName())!=null) {
+            return _skills.get(player.getName()).getMaxMana();
         } else {
             return 0;
         }
     }
 
     public static Map<String, Skill> getManaMap(){
-        return skills;
+        return _skills;
     }
 
     public void startManaRefilling(){
         Bukkit.getScheduler().scheduleSyncRepeatingTask(_plugin, ()->{
             for(Player player : Bukkit.getOnlinePlayers()){
-                if(!skills.containsKey(player.getName())){
-                    skills.put(player.getName(),new Skill(100));
+                if(!_skills.containsKey(player.getName())){
+                    _skills.put(player.getName(), new Skill(100));
                 }
-                else if(skills.get(player.getName()).getMana()<skills.get(player.getName()).getMaxMana()){
-                    skills.get(player.getName()).plusMana();
+                else if(_skills.get(player.getName()).getMana()< _skills.get(player.getName()).getMaxMana()){
+                    _skills.get(player.getName()).plusMana();
                 }
             }
         },10, 10); //마나 회복이 지나치게 느림

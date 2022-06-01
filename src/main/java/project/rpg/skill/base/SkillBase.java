@@ -4,16 +4,16 @@ import org.bukkit.entity.Player;
 
 public abstract class SkillBase implements Operable {
 
-    public String name;
-    public String description;
-    protected Player player;
-    protected int skillTime;
-    protected int coolTime;
+    public String _name;
+    public String _description;
+    protected Player _player;
+    protected int _skillTime;
+    protected int _coolTime;
 
-    public void sendActionBar(Player p) { p.sendActionBar(this.coolTime + "초 남음"); }
+    public void sendActionBar(Player p) { p.sendActionBar(this._coolTime + "초 남음"); }
 
     public void minTime() {
-        if (this.coolTime>0) { --this.coolTime; }
+        if (this._coolTime >0) { --this._coolTime; }
     }
 
 }

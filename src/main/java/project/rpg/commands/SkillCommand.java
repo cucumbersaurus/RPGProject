@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.skill.magic.fire.MeteoStrike;
 
-import static project.rpg.player.info.Skill.skills;
+import static project.rpg.player.info.Skill._skills;
 
 public class SkillCommand implements CommandExecutor {
     @Override
@@ -18,16 +18,16 @@ public class SkillCommand implements CommandExecutor {
 
             if ("add".equals(args[0])) {
                 switch (args[1]) {
-                    case "meteostrike":
+                    case "meteorStrike":
                         player.sendMessage(args[1] + " is added ");
-                        skills.get(player.getName()).addSkill(new MeteoStrike(player));
+                        _skills.get(player.getName()).addSkill(new MeteoStrike(player));
                         break;
                     default:
                         sender.sendMessage("오타난 커멘드");
                         break;
                 }
             } else {
-                sender.sendMessage(command.getUsage());
+                player.sendMessage(command.getUsage());
             }
             return true;
         }

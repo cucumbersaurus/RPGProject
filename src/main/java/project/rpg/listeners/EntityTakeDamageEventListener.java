@@ -9,7 +9,7 @@ import project.rpg.Rpg;
 
 public class EntityTakeDamageEventListener implements Listener {
 
-    private Rpg _plugin;
+    private final Rpg _plugin;
 
     public EntityTakeDamageEventListener(Rpg plugin){
         _plugin = plugin;

@@ -5,6 +5,10 @@ import project.rpg.items.Wand;
 
 public class ItemManager {
 
+    public  ItemManager(){
+
+    }
+
     public static void makeItems(){
         Wand.init();
     }

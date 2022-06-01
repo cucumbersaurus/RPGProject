@@ -7,9 +7,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.player.PlayerInformation;
-import project.rpg.player.info.Skill;
-
-import static project.rpg.player.info.Skill.skills;
 
 
 public class PlayerJoinEventListener implements Listener {

@@ -4,11 +4,11 @@ public abstract class ActiveSkillBase extends SkillBase{
 
     @Override
     public void onClick() {
-        if (this.coolTime == 0) {
+        if (this._coolTime == 0) {
             this.onEnable();
-            this.coolTime = this.skillTime;
+            this._coolTime = this._skillTime;
         } else {
-            this.sendActionBar(this.player);
+            this.sendActionBar(this._player);
         }
     }
 
