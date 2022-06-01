@@ -4,11 +4,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import project.rpg.Rpg;
 import project.rpg.manager.AttributeManager;
+import project.rpg.player.info.Skill;
 import project.rpg.player.info.Status;
 import project.rpg.ui.ActionBarUI;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static project.rpg.player.info.Skill.skills;
 
 public class PlayerInformation {
 
@@ -22,35 +25,47 @@ public class PlayerInformation {
         player.setHealthScaled(true);
         player.setHealth(Status.getPlayerMap().get(player.getUniqueId()).getHealth()/100.0);
 
-        _mana.put(player, 100);
+        skills.put(player.getName(), new Skill());
     }
 
     public PlayerInformation(Rpg plugin){
         _plugin = plugin;
     }
 
-    public static void setMana(Player player, int mana){
-        _mana.put(player, mana);
+    public static void useMana(Player player, int mana){
+        skills.get(player.getName()).useMana(mana);
     }
 
     public static int getMana(Player player){
-        return _mana.getOrDefault(player, 0);
+        if (skills.get(player.getName())!=null) {
+            return skills.get(player.getName()).getMana();
+        } else {
+            return 0;
+        }
     }
 
-    public static Map<Player, Integer> getManaMap(){
-        return _mana;
+    public static int getMaxMana(Player player) {
+        if (skills.get(player.getName())!=null) {
+            return skills.get(player.getName()).getMaxMana();
+        } else {
+            return 0;
+        }
+    }
+
+    public static Map<String, Skill> getManaMap(){
+        return skills;
     }
 
     public void startManaRefilling(){
         Bukkit.getScheduler().scheduleSyncRepeatingTask(_plugin, ()->{
             for(Player player : Bukkit.getOnlinePlayers()){
-                if(!_mana.containsKey(player)){
-                    _mana.put(player, 100);
+                if(!skills.containsKey(player.getName())){
+                    skills.put(player.getName(),new Skill(100));
                 }
-                else if(_mana.get(player)<100){
-                    _mana.put(player, _mana.get(player)+1);
+                else if(skills.get(player.getName()).getMana()<skills.get(player.getName()).getMaxMana()){
+                    skills.get(player.getName()).plusMana();
                 }
             }
-        },20, 20);
+        },10, 10); //마나 회복이 지나치게 느림
     }
 }

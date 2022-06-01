@@ -18,7 +18,6 @@ public class PlayerJoinEventListener implements Listener {
     public void onJoin(@NotNull PlayerJoinEvent event) {
         Player player = event.getPlayer();
         PlayerInformation.makeInfo(player);
-        skills.put(player.getName(), new Skill(player));
 
 
         event.setJoinMessage((ChatColor.YELLOW + "앗! 야생의 ") + (ChatColor.GREEN + player.getName()) + (ChatColor.YELLOW + "(이)가 들어왔다!"));

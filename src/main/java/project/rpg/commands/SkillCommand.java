@@ -5,11 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import project.rpg.manager.AttributeManager;
-import project.rpg.player.info.Status;
 import project.rpg.skill.magic.fire.MeteoStrike;
-
-import java.util.UUID;
 
 import static project.rpg.player.info.Skill.skills;
 
@@ -30,6 +26,8 @@ public class SkillCommand implements CommandExecutor {
                         sender.sendMessage("오타난 커멘드");
                         break;
                 }
+            } else {
+                sender.sendMessage(command.getUsage());
             }
             return true;
         }

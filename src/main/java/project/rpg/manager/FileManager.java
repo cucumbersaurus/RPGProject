@@ -16,12 +16,13 @@ import java.util.Map;
 public class FileManager {
 
     public static final JSONObject _jsonFile = new JSONObject();
-    private static final String FILE_PATH = JavaPlugin.getPlugin(Rpg.class).getDataFolder().toString();
-    private static final File _playerDs = new File(FILE_PATH + "/playerData/playerDs.json");
+    private static final String FILE_PATH = System.getProperty("user.dir") + "/plugins/rpg/playerDs.json";//JavaPlugin.getPlugin(Rpg.class).getDataFolder().toString();
+    private static final File _playerDs = new File(FILE_PATH);
     private static final String _player = "players";
 
     public static void makeFile() {
-        File f = new File(FILE_PATH + "/playerData/playerDs.json");
+        File f = new File(FILE_PATH);
+
         if (f.exists()) {
             Bukkit.getLogger().info("playerDs.json exists");
         } else {
@@ -31,6 +32,7 @@ public class FileManager {
                     Bukkit.getLogger().info(" playerDs.json made");
                 }
             } catch (IOException e) {
+                Bukkit.getLogger().info(FILE_PATH);
                 e.printStackTrace();
             }
             saveFile();

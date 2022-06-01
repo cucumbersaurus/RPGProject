@@ -25,12 +25,29 @@ public class Skill {
         return null;
     }
 
+    public boolean hasSKill(String s) {
+        for (SkillBase skillBase : skillBases) {
+            if (skillBase.name.equals(s)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addSkill(SkillBase s) {
         skillBases.add(s);
     }
 
     public int getMana() {
         return mana;
+    }
+
+    public void plusMana() {
+        this.mana++;
+    }
+
+    public void useMana(int m) {
+        this.mana -= m;
     }
 
     public int getMaxMana() {
@@ -50,9 +67,14 @@ public class Skill {
         }
     }
 
-    public Skill(Player p) {
+    public Skill() {
         skillBases = new ArrayList<>();
         maxMana = 100;
+        mana = maxMana;
+    }
+    public Skill(int m) {
+        skillBases = new ArrayList<>();
+        maxMana = m;
         mana = maxMana;
     }
 

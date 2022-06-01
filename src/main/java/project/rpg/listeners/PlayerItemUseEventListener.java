@@ -25,13 +25,13 @@ public class PlayerItemUseEventListener implements Listener {
         if(event.getItem()!=null) {
             if (ItemManager.isEquals(event.getItem(), Wand._wand)) {
                 if(event.getAction().isRightClick()){
-                    if(PlayerInformation.getMana(player)>10){
+                    if(PlayerInformation.getMana(player)>=10){
                     Location location = player.getLocation();
                         if(player.getTargetBlock(30)!=null){
                             location = player.getTargetBlock(30).getLocation();
                         }
                         player.getWorld().spawnEntity(location, EntityType.LIGHTNING);
-                        PlayerInformation.setMana(player,PlayerInformation.getMana(player)-10);
+                        PlayerInformation.useMana(player,10);
                         _plugin._actionBar.updateActionBar();
                     }
                 }
@@ -40,3 +40,12 @@ public class PlayerItemUseEventListener implements Listener {
     }
 
 }
+/*Player player = event.getPlayer();
+        Action action = event.getAction();
+
+        if (action==Action.RIGHT_CLICK_AIR||action==Action.RIGHT_CLICK_BLOCK) {
+            if (player.getItemInHand().getType()== Material.STICK) {
+                event.setCancelled(true);
+                skills.get(player.getName()).useSkill("메테오 스트라이크");
+            }
+        }*/

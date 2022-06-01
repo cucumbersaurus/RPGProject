@@ -16,7 +16,7 @@ public class ActionBarUI {
     Runnable showActionBar = () -> {
         for (Player player : _players) {
             String message = "체력 : "  + String.format("%.2f", player.getHealth()*100) + "/" + String.format("%.2f", player.getHealthScale()*100);
-            message += ChatColor.BLUE + "          마나 : " + PlayerInformation.getMana(player) + "/100";
+            message += ChatColor.BLUE + "          마나 : " + PlayerInformation.getMana(player) + "/" + PlayerInformation.getMaxMana(player);
             player.sendActionBar(ChatColor.RED + message);
         }
     };
@@ -35,7 +35,7 @@ public class ActionBarUI {
     public void updateActionBar(Player player) {
         Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, ()->{
             String message = "체력 : "  + String.format("%.2f", player.getHealth()*100) + "/" + String.format("%.2f", player.getHealthScale()*100);
-            message += ChatColor.BLUE + "          마나 : 100/100";
+            message += ChatColor.BLUE + "          마나 : "  + PlayerInformation.getMana(player) + "/" + PlayerInformation.getMaxMana(player);
             player.sendActionBar(ChatColor.RED + message);
         }, 0);
     }

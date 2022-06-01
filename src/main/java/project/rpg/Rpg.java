@@ -27,8 +27,8 @@ public final class Rpg extends JavaPlugin {
         ItemManager.makeItems();
 
         checkOnlinePlayers();
-        _actionBar.startActionBar();
         _playerInformation.startManaRefilling();
+        _actionBar.startActionBar();
 
         getLogger().info("RPG plugin loaded!");
     }
