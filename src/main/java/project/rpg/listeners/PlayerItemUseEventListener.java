@@ -34,6 +34,7 @@ public class PlayerItemUseEventListener implements Listener {
                         if(player.getTargetBlock(30)!=null){
                             location = player.getTargetBlock(30).getLocation();
                         }
+                        event.setCancelled(true);
                         player.getWorld().spawnEntity(location, EntityType.LIGHTNING);
                         PlayerInformation.useMana(player,10);
                         _plugin._actionBar.updateActionBar();

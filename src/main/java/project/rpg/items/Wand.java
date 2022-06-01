@@ -29,7 +29,7 @@ public class Wand {
         //enchantments
         meta.addEnchant(Enchantment.LUCK, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
+        //아이템 아이디 설정
         meta.setCustomModelData(ItemType.WAND.getValue());
 
         item.setItemMeta(meta);

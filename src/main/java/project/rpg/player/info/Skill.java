@@ -53,6 +53,8 @@ public class Skill {
 
     public void useSkill(String s) {
         SkillBase skill = getSkill(s);
+        if(skill == null) return;
+
         if (skill instanceof MagicSkillBase) {
             int m = ((MagicSkillBase) skill).getNeedMana();
             if (this._mana >= m) {
