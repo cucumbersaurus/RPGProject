@@ -8,13 +8,14 @@ import project.rpg.listeners.*;
 import project.rpg.manager.FileManager;
 import project.rpg.manager.ItemManager;
 import project.rpg.player.PlayerInformation;
+import project.rpg.player.info.Mana;
 import project.rpg.ui.ActionBarUI;
 
 import java.util.Objects;
 
 public final class Rpg extends JavaPlugin {
     public ActionBarUI _actionBar = new ActionBarUI(this);
-    public PlayerInformation _playerInformation = new PlayerInformation(this);
+    public Mana _mana = new Mana(this);
     @Override
     public void onEnable() {
 
@@ -27,7 +28,7 @@ public final class Rpg extends JavaPlugin {
         ItemManager.makeItems();
 
         checkOnlinePlayers();
-        _playerInformation.startManaRefilling();
+        _mana.startManaRefilling();
         _actionBar.startActionBar();
 
         getLogger().info("RPG plugin loaded!");

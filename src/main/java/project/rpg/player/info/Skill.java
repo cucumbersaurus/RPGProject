@@ -1,5 +1,6 @@
 package project.rpg.player.info;
 
+import org.bukkit.entity.Player;
 import project.rpg.skill.base.MagicSkillBase;
 import project.rpg.skill.base.SkillBase;
 
@@ -9,21 +10,28 @@ import java.util.Map;
 
 public class Skill {
 
-    public static final Map<String, Skill> _skills = new HashMap<>();
+    private static final Map<Player, SkillBase > _skills = new HashMap<>();
+    private final ArrayList<SkillBase> _skillBaseBases;//이거 왜 arraylist 냐 hashmap쓰지
 
-    private final ArrayList<SkillBase> _skillBases;//이거 왜 arraylist 냐 hashmap쓰지
-    private int _mana;
-    private int _maxMana;
+    private int _needMana;
+
+    public static SkillBase getSkill(Player player){
+        return _skills.get(player);
+    }
+
+    public static void setSkill(Player player, SkillBase skill){
+        _skills.put(player, skill);
+    }
 
     public SkillBase getSkill(String s) {
-        for(SkillBase skill : _skillBases) {
-            if(skill._name.equals(s)) return skill;
+        for(SkillBase skillBase : _skillBaseBases) {
+            if(skillBase._name.equals(s)) return skillBase;
         }
         return null;
     }
 
     public boolean hasSKill(String s) {
-        for (SkillBase skillBase : _skillBases) {
+        for (SkillBase skillBase : _skillBaseBases) {
             if (skillBase._name.equals(s)) {
                 return true;
             }
@@ -32,33 +40,16 @@ public class Skill {
     }
 
     public void addSkill(SkillBase s) {
-        _skillBases.add(s);
+        _skillBaseBases.add(s);
     }
 
-    public int getMana() {
-        return _mana;
-    }
-
-    public void plusMana() {
-        this._mana++;
-    }
-
-    public void useMana(int m) {
-        this._mana -= m;
-    }
-
-    public int getMaxMana() {
-        return _maxMana;
-    }
-
-    public void useSkill(String s) {
+    public void useSkill(Player player,  String s) {
         SkillBase skill = getSkill(s);
         if(skill == null) return;
 
         if (skill instanceof MagicSkillBase) {
-            int m = ((MagicSkillBase) skill).getNeedMana();
-            if (this._mana >= m) {
-                this._mana -= m;
+            int mana = ((MagicSkillBase) skill).getNeedMana();
+            if(Mana.useMana(player, mana)){
                 skill.onEnable();
             }
         } else {
@@ -66,15 +57,8 @@ public class Skill {
         }
     }
 
-    public Skill() {
-        _skillBases = new ArrayList<>();
-        _maxMana = 100;
-        _mana = _maxMana;
+    public Skill(Player player, SkillBase skill) {
+        _skills.put(player, skill);
+        _skillBaseBases = new ArrayList<>();
     }
-    public Skill(int m) {
-        _skillBases = new ArrayList<>();
-        _maxMana = m;
-        _mana = _maxMana;
-    }
-
 }

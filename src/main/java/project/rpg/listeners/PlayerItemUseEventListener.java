@@ -11,9 +11,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import project.rpg.Rpg;
 import project.rpg.items.Wand;
 import project.rpg.manager.ItemManager;
-import project.rpg.player.PlayerInformation;
-
-import static project.rpg.player.info.Skill._skills;
+import project.rpg.player.info.Mana;
+import project.rpg.player.info.Skill;
 
 public class PlayerItemUseEventListener implements Listener {
 
@@ -29,14 +28,13 @@ public class PlayerItemUseEventListener implements Listener {
         if(event.getItem()!=null) {
             if (ItemManager.isEquals(event.getItem(), Wand._wand)) {
                 if(event.getAction().isRightClick()){
-                    if(PlayerInformation.getMana(player)>=10){
-                    Location location = player.getLocation();
+                    if(Mana.useMana(player, 10)){
+                        Location location = player.getLocation();
                         if(player.getTargetBlock(30)!=null){
                             location = player.getTargetBlock(30).getLocation();
                         }
                         event.setCancelled(true);
                         player.getWorld().spawnEntity(location, EntityType.LIGHTNING);
-                        PlayerInformation.useMana(player,10);
                         _plugin._actionBar.updateActionBar();
                     }
                 }
@@ -47,7 +45,7 @@ public class PlayerItemUseEventListener implements Listener {
         if (action==Action.RIGHT_CLICK_AIR||action==Action.RIGHT_CLICK_BLOCK) {
             if (player.getItemInHand().getType()== Material.FIRE_CHARGE) {
                 event.setCancelled(true);
-                _skills.get(player.getName()).useSkill("메테오 스트라이크");
+                Skill.getSkill(player).onEnable();
             }
         }
 

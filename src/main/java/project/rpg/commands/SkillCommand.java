@@ -5,9 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import project.rpg.player.info.Skill;
 import project.rpg.skill.magic.fire.MeteoStrike;
-
-import static project.rpg.player.info.Skill._skills;
 
 public class SkillCommand implements CommandExecutor {
     @Override
@@ -20,7 +19,7 @@ public class SkillCommand implements CommandExecutor {
                 switch (args[1]) {
                     case "meteorStrike":
                         player.sendMessage(args[1] + " is added ");
-                        _skills.get(player.getName()).addSkill(new MeteoStrike(player));
+                        Skill.setSkill(player, new MeteoStrike(player));
                         break;
                     default:
                         sender.sendMessage("오타난 커멘드");
