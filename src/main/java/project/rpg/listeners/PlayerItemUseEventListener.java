@@ -26,22 +26,22 @@ public class PlayerItemUseEventListener implements Listener {
         Player player = event.getPlayer();
         if(event.getItem()!=null) {
             if (ItemManager.isEquals(event.getItem(), Wand._wand)) {
+                event.setCancelled(true);
                 if(event.getAction().isRightClick()){
                     if(Mana.useMana(player, 10)){
                         Location location = player.getLocation();
                         if(player.getTargetBlock(30)!=null){
                             location = player.getTargetBlock(30).getLocation();
                         }
-                        event.setCancelled(true);
                         player.getWorld().spawnEntity(location, EntityType.LIGHTNING);
                         _plugin._actionBar.updateActionBar();
                     }
                 }
             }
-            else if (player.getItemInHand().getType() == Material.FIRE_CHARGE) {
+            else if (player.getItemInHand().getType() == Material.FIRE_CHARGE) {//문제점 : 동물(말) 우클릭시 작동 안함
+                event.setCancelled(true);
                 if(Mana.useMana(player, 10)){
-                    event.setCancelled(true);
-                    Skill.getSkill(player).onEnable();
+                    Skill.getSkill(player).getSkillBase().onEnable();
                 }
             }
         }

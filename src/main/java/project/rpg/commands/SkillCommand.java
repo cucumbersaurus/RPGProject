@@ -16,10 +16,10 @@ public class SkillCommand implements CommandExecutor {
             Player player = (Player) sender;
 
             if ("add".equals(args[0])) {
-                switch (args[1]) {
-                    case "meteorStrike":
+                switch (args[1].toLowerCase()) {
+                    case "meteor_strike":
                         player.sendMessage(args[1] + " is added ");
-                        Skill.setSkill(player, new MeteoStrike(player));
+                        Skill.getSkill(player).setSkillBase(new MeteoStrike(player));
                         break;
                     default:
                         sender.sendMessage("오타난 커멘드");

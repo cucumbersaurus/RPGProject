@@ -14,6 +14,9 @@ public class MeteoStrike extends MagicSkillBase {
     @Override
     public void onEnable() {
         for (Entity entity : _player.getNearbyEntities(7, 7, 7)) {
+            if(entity instanceof Player){
+                continue;
+            }
 
             if (entity instanceof LivingEntity) {
                 LivingEntity all = (LivingEntity) entity;
@@ -31,8 +34,9 @@ public class MeteoStrike extends MagicSkillBase {
             }
         }
         for (Player p : _player.getLocation().getNearbyPlayers(7, 7, 7)) {
-            p.playSound(_player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 0.6f, 1);
+            p.playSound(_player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 0.6f, 1);
         }
+        _player.getWorld().spawnParticle(Particle.FLAME, _player.getLocation(), 100, 0.25, 3, 0.25, 0.1);
     }
 
     public MeteoStrike(Player player) {
