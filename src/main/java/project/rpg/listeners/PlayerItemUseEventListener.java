@@ -6,7 +6,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import project.rpg.Rpg;
 import project.rpg.items.Wand;
@@ -39,15 +38,12 @@ public class PlayerItemUseEventListener implements Listener {
                     }
                 }
             }
-        }
-
-        Action action = event.getAction();
-        if (action==Action.RIGHT_CLICK_AIR||action==Action.RIGHT_CLICK_BLOCK) {
-            if (player.getItemInHand().getType()== Material.FIRE_CHARGE) {
-                event.setCancelled(true);
-                Skill.getSkill(player).onEnable();
+            else if (player.getItemInHand().getType() == Material.FIRE_CHARGE) {
+                if(Mana.useMana(player, 10)){
+                    event.setCancelled(true);
+                    Skill.getSkill(player).onEnable();
+                }
             }
         }
-
     }
 }
