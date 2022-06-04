@@ -25,7 +25,7 @@ public class PlayerItemUseEventListener implements Listener {
     public void itemUseEvent(PlayerInteractEvent event){
         Player player = event.getPlayer();
         if(event.getItem()!=null) {
-            if (ItemManager.isEquals(event.getItem(), Wand._wand)) {
+            if (ItemManager.isEquals(event.getItem(), Wand.getItem())) {
                 event.setCancelled(true);
                 if(event.getAction().isRightClick()){
                     if(Mana.useMana(player, 10)){

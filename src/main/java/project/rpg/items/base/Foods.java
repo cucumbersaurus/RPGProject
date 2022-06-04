@@ -1,7 +1,5 @@
 package project.rpg.items.base;
 
-import project.rpg.base.ItemBase;
-
 public abstract class Foods extends ItemBase {
 
     int _hunger = 0;

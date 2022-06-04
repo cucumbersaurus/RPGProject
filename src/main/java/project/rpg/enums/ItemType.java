@@ -6,7 +6,7 @@ public enum ItemType {
     WAND(1);
 
     private final int _value;
-    private ItemType(int value) {
+    ItemType(int value) {
         this._value = value;
     }
 

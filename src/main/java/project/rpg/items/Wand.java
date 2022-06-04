@@ -6,13 +6,13 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import project.rpg.enums.ItemType;
+import project.rpg.items.base.ItemBase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Wand {
+public class Wand extends ItemBase {
 
-    public static ItemStack _wand;
 
     public static void init() {
         createItem();
@@ -33,7 +33,6 @@ public class Wand {
         meta.setCustomModelData(ItemType.WAND.getValue());
 
         item.setItemMeta(meta);
-        _wand = item;
+        _item = item;
     }
-
 }

@@ -15,7 +15,7 @@ public class TestItemCommand implements CommandExecutor {
             if(args.length > 0){
                 switch (args[0]) {
                     case "wand":
-                        player.getInventory().addItem(Wand._wand.clone());
+                        player.getInventory().addItem(Wand.getItem().clone());
                         break;
                 }
             }
