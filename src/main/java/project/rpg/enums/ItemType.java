@@ -7,7 +7,7 @@ public enum ItemType {
 
     private final int _value;
     ItemType(int value) {
-        this._value = value;
+        _value = value;
     }
 
     public int getValue() {

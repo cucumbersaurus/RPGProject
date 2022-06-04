@@ -7,6 +7,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import project.rpg.skill.SkillType;
 import project.rpg.skill.base.MagicSkillBase;
 
 public class MeteoStrike extends MagicSkillBase {
@@ -41,7 +42,7 @@ public class MeteoStrike extends MagicSkillBase {
 
     public MeteoStrike(Player player) {
         this._player = player;
-        this._name = "meteor_strike";
+        this._name = SkillType.METEOR_STRIKE.getSkillName();
         this._description = "반경 7블럭에 적들에게 메테오를 난사한다. 범위 내의 적들에게 스턴 1초와 방어력 50% 감소를 2초간 부여하며 화상효과도 부여한다.";
         this.circle = 4;
         this.needMana = 10;

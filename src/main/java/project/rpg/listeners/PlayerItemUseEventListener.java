@@ -12,8 +12,8 @@ import project.rpg.items.Wand;
 import project.rpg.manager.ItemManager;
 import project.rpg.player.info.Mana;
 import project.rpg.player.info.Skill;
-import project.rpg.skill.SkillDic;
-import project.rpg.skill.magic.fire.MeteoStrike;
+import project.rpg.skill.SkillType;
+import project.rpg.skill.base.SkillBase;
 
 public class PlayerItemUseEventListener implements Listener {
 
@@ -43,7 +43,8 @@ public class PlayerItemUseEventListener implements Listener {
             else if (player.getItemInHand().getType() == Material.FIRE_CHARGE) {//문제점 : 동물(말) 우클릭시 작동 안함
                 event.setCancelled(true);
                 if(Mana.useMana(player, 10)){
-                    Skill.getSkill(player, SkillDic.getName(new MeteoStrike(null))).onEnable();
+                    SkillBase skill =  Skill.getSkill(player, SkillType.METEOR_STRIKE.getSkillName());
+                    if(skill!=null) skill.onEnable();
                 }
             }
         }

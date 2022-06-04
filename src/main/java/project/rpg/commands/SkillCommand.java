@@ -6,7 +6,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.player.info.Skill;
-import project.rpg.skill.magic.fire.MeteoStrike;
 import project.rpg.skill.SkillDic;
 
 
@@ -21,7 +20,7 @@ public class SkillCommand implements CommandExecutor {
 
                 if(SkillDic.isExist(args[1])) {
                     player.sendMessage(args[1] + " is added ");
-                    Skill.addSkill(player,SkillDic.getSkill(player,args[1]));
+                    Skill.addSkill(player, SkillDic.makeSkill(player, args[1]));
                 } else {
                     sender.sendMessage("오타난 커멘드");
                 }

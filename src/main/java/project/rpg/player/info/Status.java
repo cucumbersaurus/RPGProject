@@ -18,7 +18,7 @@ public class Status {
     private int _attractive = 10;  //매력
     private int _currentExp = 0;  //현재 경험치
     private int _defense = 10;  //내구
-    private int _expNeedForNextLvl = 0; // 다음 레벨까지 필요경험치량 : (level
+    private int _expNeedForNextLvl = 0; // 다음 레벨까지 필요경험치량 : (level)
     private int _handicraft = 10;  //손재주
     private int _health = 100;  //체력
     private int _level = 0;  //레벨
