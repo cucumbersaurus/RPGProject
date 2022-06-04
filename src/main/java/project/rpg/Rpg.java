@@ -9,6 +9,7 @@ import project.rpg.manager.FileManager;
 import project.rpg.manager.ItemManager;
 import project.rpg.player.PlayerInformation;
 import project.rpg.player.info.Mana;
+import project.rpg.skill.SkillDic;
 import project.rpg.ui.ActionBarUI;
 
 import java.util.Objects;
@@ -30,6 +31,8 @@ public final class Rpg extends JavaPlugin {
         checkOnlinePlayers();
         _mana.startManaRefilling();
         _actionBar.startActionBar();
+
+        SkillDic.addAll();
 
         getLogger().info("RPG plugin loaded!");
     }
