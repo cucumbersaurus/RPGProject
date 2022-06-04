@@ -63,6 +63,7 @@ public final class Rpg extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerLevelUpListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitEventListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawnEventListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerPotionDrinkEventListener(this), this);
     }
 
     private void loadObjects() {
