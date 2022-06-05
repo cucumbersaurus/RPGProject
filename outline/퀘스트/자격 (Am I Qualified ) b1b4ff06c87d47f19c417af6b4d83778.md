@@ -1,1 +1,0 @@
-# 자격 (Am I Qualified?)
