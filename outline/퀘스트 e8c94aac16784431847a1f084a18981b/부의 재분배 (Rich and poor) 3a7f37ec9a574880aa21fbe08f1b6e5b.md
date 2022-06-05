@@ -1,0 +1,1 @@
+# 부의 재분배 (Rich and poor)
