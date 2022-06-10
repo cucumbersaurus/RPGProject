@@ -1,22 +1,21 @@
-package project.rpg.listeners;
+package project.rpg.listeners
 
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.jetbrains.annotations.NotNull;
-import project.rpg.player.PlayerInformation;
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.TextColor
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerJoinEvent
+import project.rpg.player.PlayerInformation
 
-
-public class PlayerJoinEventListener implements Listener {
-
+class PlayerJoinEventListener : Listener {
     @EventHandler
-    public void onJoin(@NotNull PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        PlayerInformation.makeInfo(player);
-
-
-        event.setJoinMessage((ChatColor.YELLOW + "앗! 야생의 ") + (ChatColor.GREEN + player.getName()) + (ChatColor.YELLOW + "(이)가 들어왔다!"));
+    fun onJoin(event: PlayerJoinEvent) {
+        val player = event.player
+        PlayerInformation.makeInfo(player)
+        event.joinMessage(
+            Component.text("앗 야생의 ").color(TextColor.color(0x55ff55))
+                .append(Component.text(player.name).color(TextColor.color(0xffff55)))
+                .append(Component.text("(이)가 들어왔다!")).color(TextColor.color(0x55ff55))
+        )
     }
 }

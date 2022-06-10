@@ -19,7 +19,7 @@ public class EntityTakeDamageEventListener implements Listener {
     public void onEntityTakeDamage(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player) {
             event.setDamage(event.getDamage()/100.0);
-            _plugin._actionBar.updateActionBar((Player) event.getEntity());
+            _plugin.actionBar.updateActionBar((Player) event.getEntity());
         }
     }
 }

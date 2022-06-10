@@ -36,7 +36,7 @@ public class PlayerItemUseEventListener implements Listener {
                             location = player.getTargetBlock(30).getLocation();
                         }
                         player.getWorld().spawnEntity(location, EntityType.LIGHTNING);
-                        _plugin._actionBar.updateActionBar();
+                        _plugin.actionBar.updateActionBar();
                     }
                 }
             }
@@ -46,7 +46,7 @@ public class PlayerItemUseEventListener implements Listener {
                     if(skill!=null){
                         if(Mana.useMana(player, 10)){
                             skill.onEnable();
-                            _plugin._actionBar.updateActionBar(player);
+                            _plugin.actionBar.updateActionBar(player);
                         }
                 }
             }

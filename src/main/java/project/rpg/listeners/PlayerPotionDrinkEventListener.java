@@ -18,7 +18,7 @@ public class PlayerPotionDrinkEventListener implements Listener {
          Player player = event.getPlayer();
          if(ItemManager.isEquals(event.getItem(), ManaRefillPotion.getItem())){
             Mana.addMana(player, Mana.getMaxMana(player) - Mana.getMana(player));
-             _plugin._actionBar.updateActionBar(player);
+             _plugin.actionBar.updateActionBar(player);
         }
     }
 
