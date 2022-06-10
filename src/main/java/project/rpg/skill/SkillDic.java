@@ -2,7 +2,7 @@ package project.rpg.skill;
 
 import org.bukkit.entity.Player;
 import project.rpg.skill.base.SkillBase;
-import project.rpg.skill.magic.fire.MeteoStrike;
+import project.rpg.skill.magic.fire.MeteorStrike;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ public class SkillDic { //이거 SkillCommand 에서 switch 문 말고 if로 단
 
     public static SkillBase makeSkill(Player player, String skillName) {
         if(skillName.equals(SkillType.METEOR_STRIKE.getSkillName())) {
-            return new MeteoStrike(player);
+            return new MeteorStrike(player);
         }
         return null;
     }

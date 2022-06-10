@@ -1,25 +1,17 @@
-package project.rpg.listeners;
+package project.rpg.listeners
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
-import project.rpg.Rpg;
+import org.bukkit.entity.Player
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.entity.EntityDamageEvent
+import project.rpg.Rpg
 
-
-public class EntityTakeDamageEventListener implements Listener {
-
-    private final Rpg _plugin;
-
-    public EntityTakeDamageEventListener(Rpg plugin){
-        _plugin = plugin;
-    }
-
+class EntityTakeDamageEventListener(private val _plugin: Rpg) : Listener {
     @EventHandler
-    public void onEntityTakeDamage(EntityDamageEvent event) {
-        if (event.getEntity() instanceof Player) {
-            event.setDamage(event.getDamage()/100.0);
-            _plugin.actionBar.updateActionBar((Player) event.getEntity());
+    fun onEntityTakeDamage(event: EntityDamageEvent) {
+        if (event.entity is Player) {
+            event.damage = event.damage / 100.0
+            _plugin.actionBar.updateActionBar(event.entity as Player)
         }
     }
 }

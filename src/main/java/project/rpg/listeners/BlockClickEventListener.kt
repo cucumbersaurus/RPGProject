@@ -1,48 +1,37 @@
-package project.rpg.listeners;
-import org.bukkit.Material;
-import org.bukkit.entity.Pose;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockFromToEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
+package project.rpg.listeners
 
-public class BlockClickEventListener implements Listener {
+import org.bukkit.Material
+import org.bukkit.entity.Pose
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.block.BlockFromToEvent
+import org.bukkit.event.player.PlayerInteractEvent
 
+class BlockClickEventListener : Listener {
     @EventHandler
-    public void blockFromTo(BlockFromToEvent event){
-        if(event.getBlock().getType() == Material.DRAGON_EGG) { //드래곤알 tp 방지
-            event.setCancelled(true);
+    fun blockFromTo(event: BlockFromToEvent) {
+        if (event.block.type == Material.DRAGON_EGG) { //드래곤알 tp 방지
+            event.isCancelled = true
         }
     }
 
     @EventHandler
-    public void playerBlockInteract(PlayerInteractEvent event){
+    fun playerBlockInteract(event: PlayerInteractEvent) {
+        if (event.clickedBlock == null) return
+        when (event.clickedBlock!!.type) {
+            Material.ENCHANTING_TABLE -> if (!isSneaking(event)) {
+                event.isCancelled = true
+                //ui 오픈
+            }
+            Material.ANVIL, Material.CHIPPED_ANVIL, Material.DAMAGED_ANVIL -> {/*ui 오픈*/ }
+            else -> {event.isCancelled = false}
 
-        if(event.getClickedBlock()==null) return;
-
-        switch (event.getClickedBlock().getType()){
-            case ENCHANTING_TABLE: //인첸트 테이블 우클릭시 커스텀 ui 보여주기
-                if(!isSneaking(event)){
-                    event.setCancelled(true);
-                    //ui 오픈
-                }
-                break;
-            case ANVIL:
-            case CHIPPED_ANVIL:
-            case DAMAGED_ANVIL:
-                //isSneaking(event);
-                //e.setCancelled(true);
-            //ui 오픈
-                break;
-            default:
-                break;
         }
     }
 
-    private boolean isSneaking(PlayerInteractEvent event){//웅크리기+블럭설치시 블럭설치 이벤트 취소 방지
-        if(event.getAction().isRightClick()){
-            return event.getPlayer().getPose() == Pose.SNEAKING;
-        }
-        return false;
+    private fun isSneaking(event: PlayerInteractEvent): Boolean { //웅크리기+블럭설치시 블럭설치 이벤트 취소 방지
+        return if (event.action.isRightClick) {
+            event.player.pose == Pose.SNEAKING
+        } else false
     }
 }

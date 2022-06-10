@@ -1,67 +1,75 @@
-package project.rpg.commands;
+package project.rpg.commands
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import project.rpg.manager.AttributeManager;
-import project.rpg.player.info.Status;
+import org.bukkit.command.Command
+import org.bukkit.command.CommandExecutor
+import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
+import project.rpg.manager.AttributeManager
+import project.rpg.player.info.Status
 
-import java.util.UUID;
+class StatusCommand : CommandExecutor {
 
-public class StatusCommand implements CommandExecutor {
+    private lateinit var arg1:String
+    private lateinit var arg2:String
+    private lateinit var player:Player
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            UUID uuid = player.getUniqueId();
+    override fun onCommand(sender: CommandSender, cmd: Command, label: String, args: Array<String>): Boolean {
 
-            if ("add".equals(args[0])) {
-                int num = Integer.parseInt(args[2]);
-                switch (args[1]) {
-                    case "strength":
-                        player.sendMessage(args[1] + " is added " + args[2]);
-                        Status.getPlayerMap().get(uuid).addStrength(num);
-                        break;
-                    case "agility":
-                        player.sendMessage(args[1] + " is added " + args[2]);
-                        Status.getPlayerMap().get(uuid).addAgility(num);
-                        break;
-                    case "speed":
-                        player.sendMessage(args[1] + " is added " + args[2]);
-                        Status.getPlayerMap().get(uuid).addSpeed(num);
-                        break;
-                    case "health":
-                        player.sendMessage(args[1] + " is added " + args[2]);
-                        Status.getPlayerMap().get(uuid).addHealth(num);
-                        break;
-                    case "defense":
-                        player.sendMessage(args[1] + " is added " + args[2]);
-                        Status.getPlayerMap().get(uuid).addDefense(num);
-                        break;
-                    case "luck":
-                        player.sendMessage(args[1] + " is added " + args[2]);
-                        Status.getPlayerMap().get(uuid).addLuck(num);
-                        break;
-                    case "handicraft":
-                        player.sendMessage(args[1] + " is added " + args[2]);
-                        Status.getPlayerMap().get(uuid).addHandicraft(num);
-                        break;
-                    case "attractive":
-                        player.sendMessage(args[1] + " is added " + args[2]);
-                        Status.getPlayerMap().get(uuid).addAttractive(num);
-                        break;
-                    default:
-                        sender.sendMessage("오타난 커멘드");
-                        break;
+        if (sender is Player) {
+            player = sender
+            val uuid = player.uniqueId
+
+            if ("add" == args[0] && args.size>=2) {
+                this.arg1 = args[1]
+                this.arg2 = args[2]
+
+                val num = args[2].toInt()
+                when (args[1]) {
+                    "strength" -> {
+                        sendFeedback(true)
+                        Status.getPlayerMap()[uuid]!!.addStrength(num)
+                    }
+                    "agility" -> {
+                        sendFeedback(true)
+                        Status.getPlayerMap()[uuid]!!.addAgility(num)
+                    }
+                    "speed" -> {
+                        sendFeedback(true)
+                        Status.getPlayerMap()[uuid]!!.addSpeed(num)
+                    }
+                    "health" -> {
+                        sendFeedback(true)
+                        Status.getPlayerMap()[uuid]!!.addHealth(num)
+                    }
+                    "defense" -> {
+                        sendFeedback(true)
+                        Status.getPlayerMap()[uuid]!!.addDefense(num)
+                    }
+                    "luck" -> {
+                        sendFeedback(true)
+                        Status.getPlayerMap()[uuid]!!.addLuck(num)
+                    }
+                    "handicraft" -> {
+                        sendFeedback(true)
+                        Status.getPlayerMap()[uuid]!!.addHandicraft(num)
+                    }
+                    "attractive" -> {
+                        sendFeedback(true)
+                        Status.getPlayerMap()[uuid]!!.addAttractive(num)
+                    }
+                    else -> sendFeedback(false)
                 }
                 //jsonFile_.put(playerName, playerData_.get(playerName).getMap());
-                AttributeManager.setAttributes(player, Status.getPlayerMap().get(uuid));
+                AttributeManager.setAttributes(player, Status.getPlayerMap()[uuid])
             }
-            return true;
+            else sendFeedback(false)
+            return true
         }
-        return false;
+        return false
+    }
+
+    private fun sendFeedback(isSuccess: Boolean){
+        if(isSuccess) player.sendMessage("$arg1 is added $arg2")
+        else player.sendMessage("오타난 커맨드")
     }
 }
