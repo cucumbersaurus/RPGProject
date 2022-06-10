@@ -1,14 +1,22 @@
 package project.rpg.commands
 
-import net.kyori.adventure.text.Component
-import org.bukkit.Bukkit
-import org.bukkit.command.Command
-import org.bukkit.command.CommandExecutor
-import org.bukkit.command.CommandSender
+import io.github.monun.kommand.PluginKommand
+import io.github.monun.kommand.getValue
+import net.kyori.adventure.text.Component.text
+import project.rpg.Rpg
 
-class TestCommand : CommandExecutor {
-    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
-        Bukkit.broadcast(Component.text("테스트 커맨드"))
-        return true
+object TestCommand {
+    fun register(kommand: PluginKommand, plugin: Rpg){
+        kommand.register("test"){
+            executes {
+                sender.sendMessage(text("테스트 성공"))
+            }
+            then("argument" to string()) {
+                executes {
+                    val argument: String by it
+                    player.sendMessage(text("입력값 : $argument"))
+                }
+            }
+        }
     }
 }

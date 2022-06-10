@@ -1,5 +1,6 @@
 package project.rpg
 
+import io.github.monun.kommand.kommand
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
@@ -46,10 +47,12 @@ class Rpg : JavaPlugin() {
             Objects.requireNonNull(getCommand("quests"))!!.setExecutor(QuestToggleCommand())
             Objects.requireNonNull(getCommand("savef"))!!.setExecutor(FileSaveTestCommand())
             Objects.requireNonNull(getCommand("status")!!).setExecutor(StatusCommand())
-            Objects.requireNonNull(getCommand("test"))!!.setExecutor(TestCommand())
             Objects.requireNonNull(getCommand("titleTest"))!!.setExecutor(TitleTestCommand())
             Objects.requireNonNull(getCommand("testItem"))!!.setExecutor(TestItemCommand())
             Objects.requireNonNull(getCommand("skill"))!!.setExecutor(SkillCommand())
+            kommand{
+                TestCommand.register(this, this@Rpg)
+            }
         }
 
     private fun registerEvents() {

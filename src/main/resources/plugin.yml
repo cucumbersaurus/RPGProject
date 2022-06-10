@@ -3,6 +3,12 @@ version: '${project.version}'
 main:  project.rpg.Rpg
 api-version: 1.18
 authors: [ Cucumbersaurus, Behappy ]
+libraries:
+  - io.github.monun:kommand-core:2.11.0
+  - io.github.monun:invfx:3.1.0
+  - org.jetbrains.kotlin:kotlin-stdlib:1.5.21
+  - org.jetbrains.kotlin:kotlin-reflect:1.5.21
+  - org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0
 
 commands:
   quests:
