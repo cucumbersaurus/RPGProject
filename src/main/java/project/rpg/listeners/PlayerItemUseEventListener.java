@@ -41,13 +41,15 @@ public class PlayerItemUseEventListener implements Listener {
                 }
             }
             else if (player.getItemInHand().getType() == Material.FIRE_CHARGE) {//문제점 : 동물(말) 우클릭시 작동 안함
-                event.setCancelled(true);
                 SkillBase skill =  Skill.getSkill(player, SkillType.METEOR_STRIKE.getSkillName());
-                    if(skill!=null){
+                if(skill!=null){
+                    if(event.getAction().isRightClick()){
                         if(Mana.useMana(player, 10)){
                             skill.onEnable();
                             _plugin.actionBar.updateActionBar(player);
+                            event.setCancelled(true);
                         }
+                    }
                 }
             }
         }

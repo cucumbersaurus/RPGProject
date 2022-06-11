@@ -3,9 +3,7 @@ package project.rpg.manager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.JSONObject;
-import project.rpg.Rpg;
 import project.rpg.player.info.Status;
 
 import java.io.*;

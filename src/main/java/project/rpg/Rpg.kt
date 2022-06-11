@@ -24,7 +24,6 @@ class Rpg : JavaPlugin() {
 
         registerEvents()
         registerCommands
-
         loadObjects()
         ItemManager.makeItems()
 
