@@ -1,16 +1,20 @@
 package project.rpg.items.base;
 
 
+import org.bukkit.inventory.ItemStack;
+
 public abstract class ItemBase {
+    protected ItemStack _item;
 
-
-
-    public static void init() {
-
+    public  void ItemBase() {
+        createItem();
     }
 
-    public static void createItem() {
+    public  void createItem() {
+    }
 
+    public ItemStack getItem() {
+        return _item;
     }
 
 }

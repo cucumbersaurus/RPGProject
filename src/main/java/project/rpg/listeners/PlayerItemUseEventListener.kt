@@ -8,7 +8,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import project.rpg.Rpg
-import project.rpg.items.Wand
+import project.rpg.items.ItemType
 import project.rpg.manager.ItemManager
 import project.rpg.player.info.Mana
 import project.rpg.player.info.Skill
@@ -21,7 +21,7 @@ class PlayerItemUseEventListener(private val _plugin: Rpg) : Listener {
         val player = event.player
 
         if (event.item != null) {
-            if (ItemManager.isEquals(event.item, Wand.getItem())) {
+            if (ItemManager.isEquals(event.item, ItemManager.getItem(ItemType.WAND))) {
                 if (event.action.isRightClick && Mana.useMana(player, 10)) {
 
                     var location = player.location
@@ -33,43 +33,33 @@ class PlayerItemUseEventListener(private val _plugin: Rpg) : Listener {
                     _plugin.actionBar.updateActionBar()
                     event.isCancelled = true
                 }
-            } else if (event.item!=null && event.item!!.type == Material.FIRE_CHARGE) { //문제점 : 동물(말) 우클릭시 작동 안함
-                val skill = Skill.getSkill(player, SkillType.METEOR_STRIKE.skillName)
-
-                if (skill != null && event.action.isRightClick && Mana.useMana(player, 10)) {
-                    skill.onEnable()
-                    _plugin.actionBar.updateActionBar(player)
-                    event.isCancelled = true
-                }
-            }
-            else if(event.item != null && event.item!!.type == Material.ARROW){
-                val skill = Skill.getSkill(player, SkillType.TP_ARROW.skillName)
-
-                if(skill != null && event.action.isRightClick && Mana.useMana(player, 5)){
-                    skill.onEnable();
-                    _plugin.actionBar.updateActionBar(player)
-                    event.isCancelled = true
-                }
+            } else {
+                if(useSkill(player, SkillType.METEOR_STRIKE, event, event.item!!, Material.FIRE_CHARGE, 10));
+                else if(useSkill(player, SkillType.TP_ARROW, event, event.item!!, Material.ARROW, 5));
             }
         }
     }
 
-    private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:Material, mana:Int){
+    private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:Material, mana:Int):Boolean{
         val skill = Skill.getSkill(player, skillType.skillName)
-        if(usedItem.type == skillItem && skill != null && event.action.isRightClick && Mana.useMana(player, mana)){
-            skill.onEnable()
+        if(usedItem.type == skillItem && skill != null && Mana.useMana(player, mana)){
+            skill.onEnable(event.action)
             _plugin.actionBar.updateActionBar()
             event.isCancelled = true
+            return true
         }
+        return false
     }
 
-    private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:ItemStack, mana:Int){
+    private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:ItemStack, mana:Int):Boolean {
         val skill = Skill.getSkill(player, skillType.skillName)
-        if(ItemManager.isEquals(usedItem, skillItem) && skill != null && event.action.isRightClick && Mana.useMana(player, mana)){
-            skill.onEnable()
+        if(ItemManager.isEquals(usedItem, skillItem) && skill != null && Mana.useMana(player, mana)){
+            skill.onEnable(event.action)
             _plugin.actionBar.updateActionBar()
             event.isCancelled = true
+            return true
         }
+        return false
     }
 
 }

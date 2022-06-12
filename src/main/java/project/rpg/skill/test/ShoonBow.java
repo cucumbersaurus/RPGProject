@@ -1,13 +1,17 @@
 package project.rpg.skill.test;
 
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.Action;
 import project.rpg.skill.SkillType;
 import project.rpg.skill.base.MagicSkillBase;
 
 public class ShoonBow extends MagicSkillBase {
     @Override
-    public void onEnable(){
+    public void onEnable(Action action) {
         if (this._skillTime==0) {
             _player.getWorld().spawnParticle(Particle.GLOW, _player.getLocation(), 25, 0.5, 1, 0.5, 0.7);
             Location location = null;

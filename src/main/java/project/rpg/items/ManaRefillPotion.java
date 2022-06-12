@@ -12,11 +12,12 @@ public class ManaRefillPotion extends ItemBase {
 
     protected static ItemStack _item;
 
-    public static void init() {
+    public ManaRefillPotion() {
         createItem();
     }
 
-    public static void createItem(){
+    @Override
+    public void createItem(){
         ItemStack item = new ItemStack(Material.POTION, 1);
         ItemMeta meta = item.getItemMeta();
 
@@ -25,17 +26,8 @@ public class ManaRefillPotion extends ItemBase {
         //lore
         meta.setLore(new ArrayList<>(Arrays.asList("이 포션을 마시면", "최대 100의 마나를 회복합니다")));
         //아이템 아이디 설정
-        meta.setCustomModelData(ItemType.MANA_POTION.getValue());
+        meta.setCustomModelData(ItemType.MANA_REFILLING_POTION.getValue());
         item.setItemMeta(meta);
         _item = item;
     }
-
-    public static ItemStack getItem() {
-        return _item;
-    }
-
-    public static void setItem(ItemStack item) {
-        _item = item;
-    }
-
 }

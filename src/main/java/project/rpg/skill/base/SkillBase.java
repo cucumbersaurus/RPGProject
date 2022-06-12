@@ -17,6 +17,7 @@ public abstract class SkillBase implements Operable {
         if (this._coolTime >0) { --this._coolTime; }
     }
 
+
     //public void useSkill(Player player, String skillName) {
 
 }

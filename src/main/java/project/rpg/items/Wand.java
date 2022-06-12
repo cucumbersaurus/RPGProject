@@ -12,13 +12,12 @@ import java.util.Arrays;
 
 public class Wand extends ItemBase {
 
-    protected static ItemStack _item;
-
-    public static void init() {
+    public Wand() {
         createItem();
     }
 
-    public static void createItem(){
+    @Override
+    public void createItem(){
         ItemStack item = new ItemStack(Material.STICK, 1);
         ItemMeta meta = item.getItemMeta();
 
@@ -33,14 +32,6 @@ public class Wand extends ItemBase {
         meta.setCustomModelData(ItemType.WAND.getValue());
 
         item.setItemMeta(meta);
-        _item = item;
-    }
-
-    public static ItemStack getItem() {
-        return _item;
-    }
-
-    public static void setItem(ItemStack item) {
         _item = item;
     }
 }

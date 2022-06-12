@@ -6,6 +6,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.AbstractArrow;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.Action;
 import org.bukkit.util.Vector;
 import project.rpg.material.FIFO;
 import project.rpg.skill.SkillType;
@@ -15,7 +16,7 @@ public class TpArrow extends MagicSkillBase {
     private FIFO<Arrow> thrownArrows = new FIFO<>();
 
     @Override
-    public void onEnable() {
+    public void onEnable(Action action) {
         if (this._coolTime==0) {
             for(Player all : Bukkit.getOnlinePlayers()){
                 all.playSound(_player.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 0.6f, 2);
