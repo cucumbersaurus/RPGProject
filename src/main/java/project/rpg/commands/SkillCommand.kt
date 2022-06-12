@@ -16,7 +16,7 @@ class SkillCommand : CommandExecutor {
                     sender.sendMessage(args[1] + " is added ")
                 }
                 else {
-                    sender.sendMessage("오타난 커멘드")
+                    sender.sendMessage(command.usage)
                 }
             } else {
                 sender.sendMessage(command.usage)

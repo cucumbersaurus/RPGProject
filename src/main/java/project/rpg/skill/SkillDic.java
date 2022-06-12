@@ -25,6 +25,8 @@ public class SkillDic { //이거 SkillCommand 에서 switch 문 말고 if로 단
 
     public static void addAll() {
         _skillList.add(SkillType.METEOR_STRIKE.getSkillName());
+        _skillList.add(SkillType.TP_ARROW.getSkillName());
+        _skillList.add(SkillType.SHOONBOW.getSkillName());
     }
 
     public static boolean isExist(String skillName) {
