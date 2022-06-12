@@ -8,12 +8,12 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.util.Vector;
-import project.rpg.material.FIFO;
+import project.rpg.material.ListQueue;
 import project.rpg.skill.SkillType;
 import project.rpg.skill.base.MagicSkillBase;
 
 public class TpArrow extends MagicSkillBase {
-    private FIFO<Arrow> thrownArrows = new FIFO<>();
+    private ListQueue<Arrow> thrownArrows = new ListQueue<>();
 
     @Override
     public void onEnable(Action action) {

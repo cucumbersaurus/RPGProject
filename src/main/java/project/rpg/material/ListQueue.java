@@ -1,10 +1,10 @@
 package project.rpg.material;
 
-public class FIFO<J> {
+public class ListQueue<T> {
 
     Node first;
 
-    public void add(J n) {
+    public void add(T n) {
         if (first == null) {
             this.first = new Node(n);
         } else {
@@ -16,47 +16,42 @@ public class FIFO<J> {
         }
     }
 
-    public J pop() {
+    public T pop() {
         if (first == null) {
             throw new ArrayIndexOutOfBoundsException("비어있는데 꺼넴");
         } else {
             Node tmp = this.first;
-            J ret = tmp.value;
+            T ret = tmp.value;
             this.first = this.first.pointer;
-            tmp = null;
             return ret;
         }
     }
 
     public boolean isEmpty() {
-        if (this.first == null) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.first == null;
     }
 
     @Override
     public String toString() {
-        String ret = "";
+        StringBuilder ret = new StringBuilder();
         if (first != null) {
-            ret += this.first.value;
+            ret.append(this.first.value);
 
             Node tmp = this.first;
             while (tmp.pointer != null) {
                 tmp = tmp.pointer;
-                ret += " -> ";
-                ret += tmp.value;
+                ret.append(" -> ");
+                ret.append(tmp.value);
             }
         }
-        return ret;
+        return ret.toString();
     }
 
     class Node {
         Node pointer;
-        J value;
+        T value;
 
-        Node(J v) {
+        Node(T v) {
             this.value = v;
         }
     }

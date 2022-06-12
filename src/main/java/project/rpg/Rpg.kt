@@ -11,13 +11,12 @@ import project.rpg.player.PlayerInformation
 import project.rpg.player.info.Mana
 import project.rpg.skill.SkillDic
 import project.rpg.ui.ActionBarUI
-import java.util.*
 
 class Rpg : JavaPlugin() {
 
     @JvmField
-    var actionBar = ActionBarUI(this)
-    var mana = Mana(this)
+    val actionBar = ActionBarUI(this)
+    val mana = Mana(this)
 
     override fun onLoad(){
         loadObjects()
@@ -46,12 +45,12 @@ class Rpg : JavaPlugin() {
 
     private val registerCommands: Unit
         get() {
-            Objects.requireNonNull(getCommand("quests"))!!.setExecutor(QuestToggleCommand())
-            Objects.requireNonNull(getCommand("savef"))!!.setExecutor(FileSaveTestCommand())
-            Objects.requireNonNull(getCommand("status")!!).setExecutor(StatusCommand())
-            Objects.requireNonNull(getCommand("titleTest"))!!.setExecutor(TitleTestCommand())
-            Objects.requireNonNull(getCommand("testItem"))!!.setExecutor(TestItemCommand())
-            Objects.requireNonNull(getCommand("skill"))!!.setExecutor(SkillCommand())
+            getCommand("quests")!!.setExecutor(QuestToggleCommand())
+            getCommand("savef")!!.setExecutor(FileSaveTestCommand())
+            getCommand("status")!!.setExecutor(StatusCommand())
+            getCommand("titleTest")!!.setExecutor(TitleTestCommand())
+            getCommand("testItem")!!.setExecutor(TestItemCommand())
+            getCommand("skill")!!.setExecutor(SkillCommand())
             kommand{
                 TestCommand.register(this, this@Rpg)
             }

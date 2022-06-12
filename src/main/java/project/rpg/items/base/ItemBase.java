@@ -6,10 +6,6 @@ import org.bukkit.inventory.ItemStack;
 public abstract class ItemBase {
     protected ItemStack _item;
 
-    public  void ItemBase() {
-        createItem();
-    }
-
     public  void createItem() {
     }
 
