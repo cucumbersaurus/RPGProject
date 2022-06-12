@@ -1,57 +1,75 @@
-package project.rpg.listeners;
+package project.rpg.listeners
 
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEvent;
-import project.rpg.Rpg;
-import project.rpg.items.Wand;
-import project.rpg.manager.ItemManager;
-import project.rpg.player.info.Mana;
-import project.rpg.player.info.Skill;
-import project.rpg.skill.SkillType;
-import project.rpg.skill.base.SkillBase;
+import org.bukkit.Material
+import org.bukkit.entity.EntityType
+import org.bukkit.entity.Player
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.inventory.ItemStack
+import project.rpg.Rpg
+import project.rpg.items.Wand
+import project.rpg.manager.ItemManager
+import project.rpg.player.info.Mana
+import project.rpg.player.info.Skill
+import project.rpg.skill.SkillType
 
-public class PlayerItemUseEventListener implements Listener {
-
-    private final Rpg _plugin;
-
-    public PlayerItemUseEventListener(Rpg plugin) {
-        _plugin = plugin;
-    }
+class PlayerItemUseEventListener(private val _plugin: Rpg) : Listener {
 
     @EventHandler
-    public void itemUseEvent(PlayerInteractEvent event){
-        Player player = event.getPlayer();
-        if(event.getItem()!=null) {
-            if (ItemManager.isEquals(event.getItem(), Wand.getItem())) {
-                event.setCancelled(true);
-                if(event.getAction().isRightClick()){
-                    if(Mana.useMana(player, 10)){
-                        Location location = player.getLocation();
-                        if(player.getTargetBlock(30)!=null){
-                            location = player.getTargetBlock(30).getLocation();
-                        }
-                        player.getWorld().spawnEntity(location, EntityType.LIGHTNING);
-                        _plugin.actionBar.updateActionBar();
+    fun itemUseEvent(event: PlayerInteractEvent) {
+        val player = event.player
+
+        if (event.item != null) {
+            if (ItemManager.isEquals(event.item, Wand.getItem())) {
+                if (event.action.isRightClick && Mana.useMana(player, 10)) {
+
+                    var location = player.location
+                    if (player.getTargetBlock(30) != null) {
+                        location = player.getTargetBlock(30)!!.location
                     }
+
+                    player.world.spawnEntity(location, EntityType.LIGHTNING)
+                    _plugin.actionBar.updateActionBar()
+                    event.isCancelled = true
+                }
+            } else if (event.item!=null && event.item!!.type == Material.FIRE_CHARGE) { //문제점 : 동물(말) 우클릭시 작동 안함
+                val skill = Skill.getSkill(player, SkillType.METEOR_STRIKE.skillName)
+
+                if (skill != null && event.action.isRightClick && Mana.useMana(player, 10)) {
+                    skill.onEnable()
+                    _plugin.actionBar.updateActionBar(player)
+                    event.isCancelled = true
                 }
             }
-            else if (player.getItemInHand().getType() == Material.FIRE_CHARGE) {//문제점 : 동물(말) 우클릭시 작동 안함
-                SkillBase skill =  Skill.getSkill(player, SkillType.METEOR_STRIKE.getSkillName());
-                if(skill!=null){
-                    if(event.getAction().isRightClick()){
-                        if(Mana.useMana(player, 10)){
-                            skill.onEnable();
-                            _plugin.actionBar.updateActionBar(player);
-                            event.setCancelled(true);
-                        }
-                    }
+            else if(event.item != null && event.item!!.type == Material.ARROW){
+                val skill = Skill.getSkill(player, SkillType.TP_ARROW.skillName)
+
+                if(skill != null && event.action.isRightClick && Mana.useMana(player, 5)){
+                    skill.onEnable();
+                    _plugin.actionBar.updateActionBar(player)
+                    event.isCancelled = true
                 }
             }
         }
     }
+
+    private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:Material, mana:Int){
+        val skill = Skill.getSkill(player, skillType.skillName)
+        if(usedItem.type == skillItem && skill != null && event.action.isRightClick && Mana.useMana(player, mana)){
+            skill.onEnable()
+            _plugin.actionBar.updateActionBar()
+            event.isCancelled = true
+        }
+    }
+
+    private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:ItemStack, mana:Int){
+        val skill = Skill.getSkill(player, skillType.skillName)
+        if(ItemManager.isEquals(usedItem, skillItem) && skill != null && event.action.isRightClick && Mana.useMana(player, mana)){
+            skill.onEnable()
+            _plugin.actionBar.updateActionBar()
+            event.isCancelled = true
+        }
+    }
+
 }

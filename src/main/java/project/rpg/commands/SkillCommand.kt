@@ -1,35 +1,28 @@
-package project.rpg.commands;
+package project.rpg.commands
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import project.rpg.player.info.Skill;
-import project.rpg.skill.SkillDic;
+import org.bukkit.command.Command
+import org.bukkit.command.CommandExecutor
+import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
+import project.rpg.player.info.Skill
+import project.rpg.skill.SkillDic
 
-
-public class SkillCommand implements CommandExecutor {
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (sender instanceof Player) {
-
-            Player player = (Player) sender;
-
-            if ("add".equals(args[0])) {
-
-                if(SkillDic.isExist(args[1])) {
-                    player.sendMessage(args[1] + " is added ");
-                    Skill.addSkill(player, SkillDic.makeSkill(player, args[1]));
-                } else {
-                    sender.sendMessage("오타난 커멘드");
+class SkillCommand : CommandExecutor {
+    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
+        if (sender is Player) {
+            if ("add" == args[0]) {
+                if (SkillDic.isExist(args[1])) {
+                    Skill.addSkill(sender, SkillDic.makeSkill(sender, args[1]))
+                    sender.sendMessage(args[1] + " is added ")
                 }
-
+                else {
+                    sender.sendMessage("오타난 커멘드")
+                }
             } else {
-                player.sendMessage(command.getUsage());
+                sender.sendMessage(command.usage)
             }
-            return true;
+            return true
         }
-        return false;
+        return false
     }
 }
