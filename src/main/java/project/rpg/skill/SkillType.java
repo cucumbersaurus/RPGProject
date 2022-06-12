@@ -3,7 +3,9 @@ package project.rpg.skill;
 public enum SkillType {
 
     NULL("null"),
-    METEOR_STRIKE("meteor_strike");
+    METEOR_STRIKE("meteor_strike"),
+    TP_ARROW("tp_arrow"),
+    SHOONBOW("shoonbow");
 
     private final String _skillName;
 
