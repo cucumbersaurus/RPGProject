@@ -18,7 +18,7 @@ object PlayerInformation {
         Skill(player, null)
     }
 
-    fun deleteInfo(player: Player?) {
+    fun deleteInfo(player: Player) {
         ActionBarUI.deletePlayer(player)
     }
 }
