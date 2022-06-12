@@ -17,6 +17,15 @@ public class TpArrow extends MagicSkillBase {
 
     @Override
     public void onEnable(Action action) {
+        if(action.isRightClick()){
+            onRightClick();
+        }
+        else{
+            onLeftClick();
+        }
+    }
+
+    private void onRightClick() {
         if (this._coolTime==0) {
             for(Player all : Bukkit.getOnlinePlayers()){
                 all.playSound(_player.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 0.6f, 2);

@@ -19,19 +19,22 @@ class Rpg : JavaPlugin() {
     var actionBar = ActionBarUI(this)
     var mana = Mana(this)
 
-    override fun onEnable() {
-        logger.info("RPG plugin loading!")
-
-        registerEvents()
-        registerCommands
+    override fun onLoad(){
         loadObjects()
         ItemManager.makeItems()
 
+        SkillDic.addAll()
+    }
+
+    override fun onEnable() {
+        logger.info("RPG plugin loading!")
         checkOnlinePlayers()
 
-        mana.startManaRefilling()
+        registerEvents()
+        registerCommands
+
         actionBar.startActionBar()
-        SkillDic.addAll()
+        mana.startManaRefilling()
 
         logger.info("RPG plugin loaded!")
     }

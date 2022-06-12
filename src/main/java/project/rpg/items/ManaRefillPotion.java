@@ -10,8 +10,6 @@ import java.util.Arrays;
 
 public class ManaRefillPotion extends ItemBase {
 
-    protected static ItemStack _item;
-
     public ManaRefillPotion() {
         createItem();
     }
