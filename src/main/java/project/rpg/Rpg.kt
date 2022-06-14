@@ -30,7 +30,7 @@ class Rpg : JavaPlugin() {
         checkOnlinePlayers()
 
         registerEvents()
-        registerCommands
+        registerCommands()
 
         actionBar.startActionBar()
         mana.startManaRefilling()
@@ -43,18 +43,17 @@ class Rpg : JavaPlugin() {
         logger.info("RPG plugin disabled")
     }
 
-    private val registerCommands: Unit
-        get() {
+    private fun registerCommands(){
             getCommand("quests")!!.setExecutor(QuestToggleCommand())
             getCommand("savef")!!.setExecutor(FileSaveTestCommand())
             getCommand("status")!!.setExecutor(StatusCommand())
             getCommand("titleTest")!!.setExecutor(TitleTestCommand())
             getCommand("testItem")!!.setExecutor(TestItemCommand())
             getCommand("skill")!!.setExecutor(SkillCommand())
-            kommand{
+            kommand {
                 TestCommand.register(this, this@Rpg)
             }
-        }
+    }
 
     private fun registerEvents() {
         server.pluginManager.registerEvents(BlockClickEventListener(), this)

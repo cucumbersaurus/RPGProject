@@ -3,8 +3,8 @@ package project.rpg.skill;
 import org.bukkit.entity.Player;
 import project.rpg.skill.base.SkillBase;
 import project.rpg.skill.magic.fire.MeteorStrike;
-import project.rpg.skill.test.ShoonBow;
-import project.rpg.skill.test.TpArrow;
+import project.rpg.skill.tmp.ShoonBow;
+import project.rpg.skill.tmp.TpArrow;
 
 import java.util.ArrayList;
 

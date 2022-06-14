@@ -9,9 +9,6 @@ import org.bukkit.inventory.ItemStack
 import project.rpg.items.base.ItemBase
 
 object Wand : ItemBase() {
-    init {
-        createItem()
-    }
 
     override fun createItem() {
         val item = ItemStack(Material.STICK, 1)
@@ -26,7 +23,7 @@ object Wand : ItemBase() {
         meta.addEnchant(Enchantment.LUCK, 1, true)
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS)
         //아이템 아이디 설정
-        meta.setCustomModelData(ItemType.WAND.value)
+        meta.setCustomModelData(Items.WAND.value)
         item.itemMeta = meta
         _item = item
     }

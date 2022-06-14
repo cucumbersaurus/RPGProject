@@ -1,4 +1,4 @@
-package project.rpg.skill.test;
+package project.rpg.skill.tmp;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;

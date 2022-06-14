@@ -9,7 +9,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import project.rpg.Rpg
-import project.rpg.items.ItemType
+import project.rpg.items.Items
 import project.rpg.manager.ItemManager
 import project.rpg.player.info.Mana
 import project.rpg.player.info.Skill
@@ -27,7 +27,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
             if(event.item!!.type == Material.WOODEN_AXE){
                 event.isCancelled = true
             }
-            if (ItemManager.isEquals(event.item, ItemManager.getItem(ItemType.WAND))) {
+            if (ItemManager.isEquals(event.item!!, Items.WAND.item)) {
                 if (event.action.isRightClick && Mana.useMana(player, 10)) {
 
                     var location = player.location
