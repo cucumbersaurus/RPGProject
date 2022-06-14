@@ -7,20 +7,24 @@ import project.rpg.items.ManaRefillPotion;
 import project.rpg.items.Wand;
 import project.rpg.items.base.ItemBase;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class ItemManager {
 
-    private static final Map<ItemType, ItemBase> _itemMap = new HashMap<>();
-    public  ItemManager(){
+    private static final Map<ItemType, ItemBase> _itemMap = new EnumMap<>(ItemType.class);
+    private static final ItemBase _wand = Wand.INSTANCE;
+    private static final ItemBase _manaRefillPotion = ManaRefillPotion.INSTANCE;
 
+    public  ItemManager(){
     }
 
     public static void makeItems(){
 
-        _itemMap.put(ItemType.WAND, new Wand());
-        _itemMap.put(ItemType.MANA_REFILLING_POTION, new ManaRefillPotion());
+        _wand.createItem();
+        _manaRefillPotion.createItem();
+        _itemMap.put(ItemType.WAND, _wand);
+        _itemMap.put(ItemType.MANA_REFILLING_POTION, _manaRefillPotion);
     }
 
     public static boolean isEquals(ItemStack item1, ItemStack item2){

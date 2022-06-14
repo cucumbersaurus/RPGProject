@@ -18,7 +18,7 @@ public class ListQueue<T> {
 
     public T pop() {
         if (first == null) {
-            throw new ArrayIndexOutOfBoundsException("비어있는데 꺼넴");
+            throw new ArrayIndexOutOfBoundsException("Queue is empty");
         } else {
             Node tmp = this.first;
             T ret = tmp.value;
