@@ -25,3 +25,4 @@ commands:
     description: skill 커멘드
     usage: "Usage: /<command> add [스킬이름]"
     aliases: s
+  menu:

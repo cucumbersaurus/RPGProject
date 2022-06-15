@@ -50,6 +50,7 @@ class Rpg : JavaPlugin() {
             getCommand("titleTest")!!.setExecutor(TitleTestCommand())
             getCommand("testItem")!!.setExecutor(TestItemCommand())
             getCommand("skill")!!.setExecutor(SkillCommand())
+            getCommand("menu")!!.setExecutor(MainMenuCommand())
             kommand {
                 TestCommand.register(this, this@Rpg)
             }
