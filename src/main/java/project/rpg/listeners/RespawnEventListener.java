@@ -8,11 +8,11 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import project.rpg.Rpg;
 import project.rpg.player.info.Status;
 
-public class PlayerRespawnEventListener implements Listener {
+public class RespawnEventListener implements Listener {
 
     private final Rpg _plugin;
 
-    public PlayerRespawnEventListener(Rpg plugin){
+    public RespawnEventListener(Rpg plugin){
         _plugin = plugin;
     }
 

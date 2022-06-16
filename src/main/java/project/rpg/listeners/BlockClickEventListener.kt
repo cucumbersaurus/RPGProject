@@ -19,7 +19,7 @@ class BlockClickEventListener : Listener {
     fun playerBlockInteract(event: PlayerInteractEvent) {
         if (event.clickedBlock == null) return
         when (event.clickedBlock!!.type) {
-            Material.ENCHANTING_TABLE -> if (!isSneaking(event)) {
+            Material.ENCHANTING_TABLE -> if (isOnlyInteract(event)) {
                 event.isCancelled = true
                 //ui 오픈
             }
@@ -29,9 +29,9 @@ class BlockClickEventListener : Listener {
         }
     }
 
-    private fun isSneaking(event: PlayerInteractEvent): Boolean { //웅크리기+블럭설치시 블럭설치 이벤트 취소 방지
+    private fun isOnlyInteract(event: PlayerInteractEvent): Boolean { //단순 우클릭만 ui 오픈
         return if (event.action.isRightClick) {
-            event.player.pose == Pose.SNEAKING
+            event.player.pose != Pose.SNEAKING
         } else false
     }
 }

@@ -27,21 +27,45 @@ public abstract class GuiBase {
 
     public static GuiBase getGUI(Player p) { return guiMap_.getOrDefault(p, null); }
 
-    protected GuiBase(@NotNull Player p, int guiSize, Component guiName) {
+    /**
+     * @param player 생성된 gui를 보여줄 플레이어
+     * @param guiSize gui의 크기 (9의 배수가 아닐시 오류가 발생 할 수 있음)
+     * @param guiName 생성된 인벤토리(상자) gui 상단에 표시될 이름
+     */
+    protected GuiBase(@NotNull Player player, int guiSize, Component guiName) {
         _inventory = Bukkit.createInventory(null, guiSize, guiName);//새 인벤토리
         _slotMap = new HashMap<>();//새 슬롯맵
 
-        init(p);//상속받은 클래스에서 구현
-        guiMap_.put(p, this);//맵에 저장
-        p.openInventory(_inventory);//인벤토리 보여주기
+        init(player);//상속받은 클래스에서 구현
+        guiMap_.put(player, this);//맵에 저장
+        player.openInventory(_inventory);//인벤토리 보여주기
     }
 
+    /**
+     * @param player 이 플레이어에게 보여줄 인벤토리(상자)를 초기화
+     */
     protected abstract void init(@NotNull Player player);
+
+
+    /**
+     * @param event 인벤토리 클릭 이벤트
+     *              이벤트 발생시 특정 아이템에 대한 기능 실행 구현(필수 아님)
+     */
     public abstract void onClick(InventoryClickEvent event);
 
+
+    /**
+     * @param name 아이템의 표기 이름
+     * @param lore 아이템의 부연설명
+     * @param material 아이템의 종류
+     * @param amount 아이템의 양
+     * @param slot 아이템을 보여줄 위치
+     * @param value 아이템을 클릭했을때의 식별자 (onClick() 에서 분기문 작성시 식별자)
+     * @param isGlow 아이템에 인첸트 효과를 추가할지
+     */
     @Deprecated
-    protected void setItem(@Nullable String name, @Nullable List<String> lore, @NotNull Material m,  int amount, int slot, @NotNull String value/*슬롯맵에 저장할 태그*/, boolean isGlow) {//특정 슬롯에 특정 아이템 설정
-        ItemStack item = new ItemStack(m,amount);
+    protected void setItem(@Nullable String name, @Nullable List<String> lore, @NotNull Material material,  int amount, int slot, @NotNull String value/*슬롯맵에 저장할 태그*/, boolean isGlow) {//특정 슬롯에 특정 아이템 설정
+        ItemStack item = new ItemStack(material,amount);
         ItemMeta meta = item.getItemMeta();
         if(name != null) meta.setDisplayName(name);
         if(lore != null) meta.setLore(lore);
@@ -54,8 +78,17 @@ public abstract class GuiBase {
         _inventory.setItem(slot, item);
     }
 
-    protected void setItem(Component name, ArrayList<Component> lore, @NotNull Material m, int amount, int slot, @NotNull String value/*슬롯맵에 저장할 태그*/, boolean isGlow) {//특정 슬롯에 특정 아이템 설정
-        ItemStack item = new ItemStack(m,amount);
+    /**
+     * @param name 아이템의 표기 이름 (Component)
+     * @param lore 아이템의 부연설명 (ArrayList< Component >)
+     * @param material 아이템의 종류
+     * @param amount 아이템의 양
+     * @param slot 아이템을 보여줄 위치
+     * @param value 아이템을 클릭했을때의 식별자 (onClick() 에서 분기문 작성시 식별자)
+     * @param isGlow 아이템에 인첸트 효과를 추가할지
+     */
+    protected void setItem(Component name, ArrayList<Component> lore, @NotNull Material material, int amount, int slot, @NotNull String value/*슬롯맵에 저장할 태그*/, boolean isGlow) {//특정 슬롯에 특정 아이템 설정
+        ItemStack item = new ItemStack(material,amount);
         ItemMeta meta = item.getItemMeta();
         if(name != null) meta.displayName(name);
         if(lore != null) meta.lore(lore);
@@ -67,18 +100,35 @@ public abstract class GuiBase {
         _slotMap.put(slot, value);
         _inventory.setItem(slot, item);
     }
+
+    /**
+     * @param item 메타데이터가 설정된 아이템
+     * @param slot 아이템을 보여줄 위치
+     * @param value 아이템을 클릭했을때의 식별자 (onClick() 에서 분기문 작성시 식별자)
+     */
     protected void setItem(ItemStack item, int slot, String value){
         _slotMap.put(slot, value);
         _inventory.setItem(slot, item);
     }
 
+
+    /**
+     * @param slot 인벤토리(상자)에서 아이템의 위치
+     * @return 그 아이템의 식별자
+     */
     protected String getValue(int slot) {return _slotMap.getOrDefault(slot, null);}//인벤토리 슬롯의 태그 반환
 
-    public void closeGUI(@NotNull InventoryCloseEvent e) {//인벤토리 닫힐 경우
+    /**
+     * @param event 인벤토리 닫기 이벤트
+     */
+    public void closeGUI(@NotNull InventoryCloseEvent event) {//인벤토리 닫힐 경우
         _slotMap = null;
-        guiMap_.remove(e.getPlayer());
+        guiMap_.remove(event.getPlayer());
     }
 
+    /**
+     * @param player 강제로 닫을 인벤토리를 보고 있는 플레이어
+     */
     public void forceCloseGUI(Player player){//강제로 닫기
         player.closeInventory();
         _slotMap = null;

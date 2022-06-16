@@ -12,6 +12,7 @@ class EntityTakeDamageEventListener(private val _plugin: Rpg) : Listener {
         if (event.entity is Player) {
             event.damage = event.damage / 100.0
             _plugin.actionBar.updateActionBar(event.entity as Player)
+            _plugin
         }
     }
 }
