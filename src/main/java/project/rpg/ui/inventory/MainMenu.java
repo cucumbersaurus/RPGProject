@@ -1,4 +1,4 @@
-package project.rpg.ui.chest;
+package project.rpg.ui.inventory;
 
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
@@ -7,32 +7,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.NotNull;
-import project.rpg.base.GuiBase;
 
 import static net.kyori.adventure.text.Component.text;
 
 public class MainMenu extends GuiBase {
-
-    private enum Button{
-
-         BACKGROUND("background"),
-         FRIENDS_PARTY("friends_party"),
-         QUESTS("quests"),
-         REINFORCE("reinforce"),
-         CRAFT("craft"),
-         MY_PROFILE("my_profile"),
-         DICTIONARY("dictionary"),
-         WARP("warp"),
-         SETTINGS("settings"),
-         CLOSE("close");
-
-        public final String _name;
-
-        Button(String name) {
-            _name = name;
-        }
-    }
-
 
     public MainMenu(@NotNull Player player){
         super(player, 54,  text("메인 메뉴"));
@@ -92,6 +70,26 @@ public class MainMenu extends GuiBase {
                 break;
             default:
                 break;
+        }
+    }
+
+    private enum Button{
+
+        BACKGROUND("background"),
+        FRIENDS_PARTY("friends_party"),
+        QUESTS("quests"),
+        REINFORCE("reinforce"),
+        CRAFT("craft"),
+        MY_PROFILE("my_profile"),
+        DICTIONARY("dictionary"),
+        WARP("warp"),
+        SETTINGS("settings"),
+        CLOSE("close");
+
+        public final String _name;
+
+        Button(String name) {
+            _name = name;
         }
     }
 }

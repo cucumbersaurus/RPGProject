@@ -1,4 +1,4 @@
-package project.rpg.base;
+package project.rpg.ui.inventory;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;

@@ -31,6 +31,7 @@ class Rpg : JavaPlugin() {
 
         registerEvents()
         registerCommands()
+        registerTabCompleter()
 
         actionBar.startActionBar()
         mana.startManaRefilling()
@@ -44,16 +45,22 @@ class Rpg : JavaPlugin() {
     }
 
     private fun registerCommands(){
-            getCommand("quests")!!.setExecutor(QuestToggleCommand())
-            getCommand("savef")!!.setExecutor(FileSaveTestCommand())
-            getCommand("status")!!.setExecutor(StatusCommand())
-            getCommand("titleTest")!!.setExecutor(TitleTestCommand())
-            getCommand("testItem")!!.setExecutor(TestItemCommand())
-            getCommand("skill")!!.setExecutor(SkillCommand())
-            getCommand("menu")!!.setExecutor(MainMenuCommand())
-            kommand {
-                TestCommand.register(this, this@Rpg)
-            }
+        getCommand("quests")!!.setExecutor(QuestToggleCommand())
+        getCommand("savef")!!.setExecutor(FileSaveTestCommand())
+        getCommand("status")!!.setExecutor(StatusCommand())
+        getCommand("titleTest")!!.setExecutor(TitleTestCommand())
+        getCommand("testItem")!!.setExecutor(TestItemCommand())
+        getCommand("skill")!!.setExecutor(SkillCommand())
+        getCommand("menu")!!.setExecutor(MainMenuCommand())
+        kommand {
+            TestCommand.register(this, this@Rpg)
+        }
+    }
+
+    private fun registerTabCompleter(){
+        getCommand("quests")!!.tabCompleter = QuestToggleCommand()
+        getCommand("skill")!!.tabCompleter = SkillCommand()
+        getCommand("status")!!.tabCompleter = StatusCommand()
     }
 
     private fun registerEvents() {

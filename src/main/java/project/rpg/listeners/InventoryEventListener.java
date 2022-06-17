@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import project.rpg.base.GuiBase;
+import project.rpg.ui.inventory.GuiBase;
 
 public class InventoryEventListener implements Listener {
 

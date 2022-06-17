@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static net.kyori.adventure.text.Component.text;
+
 public class ScoreboardUI {
 
     protected static final Map<Player, ScoreboardUI> _playerQuestMap = new HashMap<>();
@@ -27,7 +29,7 @@ public class ScoreboardUI {
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         _scoreboard = manager.getNewScoreboard();
 
-        Objective objective = _scoreboard.registerNewObjective("quest", "dummy");
+        Objective objective = _scoreboard.registerNewObjective("quest", "dummy", text("quest"));
         objective.setDisplayName(ChatColor.YELLOW +"퀘스트 목록");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 

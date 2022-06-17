@@ -7,6 +7,7 @@ import project.rpg.skill.tmp.ShoonBow;
 import project.rpg.skill.tmp.TpArrow;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SkillDic { //이거 SkillCommand 에서 switch 문 말고 if로 단순화 할려고
 
@@ -31,5 +32,9 @@ public class SkillDic { //이거 SkillCommand 에서 switch 문 말고 if로 단
 
     public static boolean isExist(String skillName) {
         return _skillList.contains(skillName);
+    }
+
+    public static List<String> getSkillList(){
+        return _skillList;
     }
 }
