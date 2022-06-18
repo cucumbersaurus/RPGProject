@@ -27,7 +27,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
             if(event.item!!.type == Material.WOODEN_AXE){
                 event.isCancelled = true
             }
-            if (ItemManager.isEquals(event.item!!, Items.WAND.item)) {
+            if (ItemManager.isEquals(event.item!!, Items.WAND.item!!)) {
                 if (event.action.isRightClick && Mana.useMana(player, 10)) {
 
                     var location = player.location

@@ -25,6 +25,6 @@ object Wand : ItemBase() {
         //아이템 아이디 설정
         meta.setCustomModelData(Items.WAND.value)
         item.itemMeta = meta
-        _item = item
+        super.item = item
     }
 }
