@@ -46,10 +46,10 @@ public class StatusMenu extends GuiBase{
         setItem("방어 defense",Collections.singletonList(""+human.getDefense()),  Material.IRON_CHESTPLATE, 1, 38, "stats.defense", true);
         setItem("행운 luck",Collections.singletonList(""+human.getLuck()),  Material.YELLOW_STAINED_GLASS_PANE, 1, 42, "stats.luck", true);
         setItem("손재주 handicraft",Collections.singletonList(""+human.getHandicraft()),  Material.MAGENTA_STAINED_GLASS_PANE, 1, 48, "stats.handicraft", true);
-        setItem("매력 attractive",Collections.singletonList(""+human.getAttractive()),  Material.PURPLE_STAINED_GLASS_PANE, 1, 50, "stats.attractive", true);
+        setItem("마력 intelligence",Collections.singletonList(""+human.getIntelligence()),  Material.PURPLE_STAINED_GLASS_PANE, 1, 50, "stats.intelligence", true);
         setItem("정보 info", Arrays.asList("================",human.getPlayerName()," "," ", human.getLevel() + ".lv",
                 "hp : " + human.getHealth(), "strength : " + human.getStrength(), "agility : " + human.getAgility(), "defense : " + human.getDefense(),
-                "speed : " + human.getSpeed(), "luck : " + human.getLuck(), "attractiveness : " + human.getAttractive(), "handicraft : " + human.getHandicraft(),
+                "speed : " + human.getSpeed(), "luck : " + human.getLuck(), "intelligence : " + human.getIntelligence(), "handicraft : " + human.getHandicraft(),
                 " ", "more : " + human.getAdditionalStatusPoint(), "================"),  Material.PLAYER_HEAD, 1, 31, "stats.info", false);
 
         setItem("현재 페이지/새로고침",Arrays.asList("현재 페이지를 나타냅니다.", "눌러서 새로고침"),  Material.BEACON, 1, 45, "stats.reload", false);
@@ -110,8 +110,8 @@ public class StatusMenu extends GuiBase{
                 setAttributes(p,human);
                 new StatusMenu(p);
                 break;
-            case "stats.attractive":
-                human.addAttractive(1);
+            case "stats.intelligence":
+                human.addIntelligence(1);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 1);
                 setAttributes(p,human);
                 new StatusMenu(p);

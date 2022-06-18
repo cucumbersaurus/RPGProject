@@ -15,7 +15,7 @@ public class Status {
 
     private int _additionalStatusPoint = 1200;  //추가 스텟
     private int _agility = 10;  //민첩
-    private int _attractive = 10;  //매력
+    private int _intelligence = 10;  //매력
     private int _currentExp = 0;  //현재 경험치
     private int _defense = 10;  //내구
     private int _expNeedForNextLvl = 0; // 다음 레벨까지 필요경험치량 : (level)
@@ -30,7 +30,7 @@ public class Status {
 
     private static final String ADDITIONAL_STATUS_POINT = "additionalStatusPint";
     private static final String AGILITY = "agility";
-    private static final String ATTRACTIVE = "attractive";
+    private static final String INTELLIGENCE = "intelligence";
     private static final String CURRENT_EXP = "currentExp";
     private static final String DEFENSE = "defense";
     private static final String EXP_NEED_FOR_NET_LVL = "expNeedForNextLvl";
@@ -66,7 +66,7 @@ public class Status {
     public void toMap(){
         _statusMap.put(ADDITIONAL_STATUS_POINT, this._additionalStatusPoint);
         _statusMap.put(AGILITY, this._agility);
-        _statusMap.put(ATTRACTIVE, this._attractive);
+        _statusMap.put(INTELLIGENCE, this._intelligence);
         _statusMap.put(CURRENT_EXP, this._currentExp);
         _statusMap.put(DEFENSE, this._defense);
         _statusMap.put(EXP_NEED_FOR_NET_LVL, this._expNeedForNextLvl);
@@ -81,7 +81,7 @@ public class Status {
     public void fromMap(Map<String,Integer> hashMap) {
         this._additionalStatusPoint = hashMap.get(ADDITIONAL_STATUS_POINT);
         this._agility = hashMap.get(AGILITY);
-        this._attractive = hashMap.get(ATTRACTIVE);
+        this._intelligence = hashMap.get(INTELLIGENCE);
         this._currentExp = hashMap.get(CURRENT_EXP);
         this._defense = hashMap.get(DEFENSE);
         this._expNeedForNextLvl = hashMap.get(EXP_NEED_FOR_NET_LVL);
@@ -192,15 +192,15 @@ public class Status {
         }
     }
 
-    public int getAttractive() {
-        return _attractive;
+    public int getIntelligence() {
+        return _intelligence;
     }
 
-    public void addAttractive(int attractive) {
-        if(this._additionalStatusPoint >= attractive) {
-            this._attractive += attractive;
-            this._additionalStatusPoint -= attractive;
-            _statusMap.put(ATTRACTIVE, this._attractive);
+    public void addIntelligence(int intelligence) {
+        if(this._additionalStatusPoint >= intelligence) {
+            this._intelligence += intelligence;
+            this._additionalStatusPoint -= intelligence;
+            _statusMap.put(INTELLIGENCE, this._intelligence);
             _statusMap.put(ADDITIONAL_STATUS_POINT, this._additionalStatusPoint);
         }
     }
@@ -246,7 +246,7 @@ public class Status {
     public String info() {
         return  "\n================\n\n" + this.getPlayerName() + "\n\n" + this.getLevel() + ".lv\n"
                 + "hp : " + this.getHealth() + "\nstrength : " + this.getStrength() + "\nagility : " + this.getAgility() + "\ndefense : " + this.getDefense()
-                + "\nspeed : " + this.getSpeed() + "\nluck : " + this.getLuck() + "\nattractiveness : " + this.getAttractive() + "\nhandicraft : " + this.getHandicraft()
+                + "\nspeed : " + this.getSpeed() + "\nluck : " + this.getLuck() + "\nintelligence : " + this.getIntelligence() + "\nhandicraft : " + this.getHandicraft()
                 + "\n\nmore : " + this.getAdditionalStatusPoint() + "\n================";
     }
 }

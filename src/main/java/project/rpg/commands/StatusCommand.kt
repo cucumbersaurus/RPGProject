@@ -59,9 +59,9 @@ class StatusCommand : CommandExecutor, TabCompleter {
                         sendFeedback(true)
                         Status.getPlayerMap()[uuid]!!.addHandicraft(num)
                     }
-                    "attractive" -> {
+                    "intelligence" -> {
                         sendFeedback(true)
-                        Status.getPlayerMap()[uuid]!!.addAttractive(num)
+                        Status.getPlayerMap()[uuid]!!.addIntelligence(num)
                     }
                     else -> sendFeedback(false)
                 }
@@ -98,7 +98,7 @@ class StatusCommand : CommandExecutor, TabCompleter {
                     recommendation.add("defense")
                     recommendation.add("luck")
                     recommendation.add("handicraft")
-                    recommendation.add("attractive")
+                    recommendation.add("intelligence")
                 }
             }
         }
