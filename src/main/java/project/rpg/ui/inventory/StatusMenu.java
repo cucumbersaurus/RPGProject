@@ -57,13 +57,13 @@ public class StatusMenu extends GuiBase{
     }
 
     @Override
-    public void onClick(InventoryClickEvent e) {
+    public void onClick(InventoryClickEvent event) {
 
-        Player p = (Player) e.getWhoClicked();
-        e.setCancelled(true);
-        String btn = getValue(e.getRawSlot());
+        Player p = (Player) event.getWhoClicked();
+        event.setCancelled(true);
+        String btn = getValue(event.getSlot());
 
-        Status human = Status.getPlayerMap().get(e.getWhoClicked().getUniqueId());
+        Status human = Status.getPlayerMap().get(event.getWhoClicked().getUniqueId());
 
         if(btn==null) return;
 

@@ -57,7 +57,7 @@ public class TpArrow extends MagicSkillBase {
         this._player = p;
         this._name = SkillType.TP_ARROW.getSkillName();
         this._description = "특수한 술식으로 마킹된 공간으로 술자를 역소환하는 술법";
-        this.needMana = 0;
+        this.needMana = 5;
         this.circle = 6;
     }
 }

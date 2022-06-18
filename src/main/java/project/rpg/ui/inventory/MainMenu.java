@@ -46,7 +46,7 @@ public class MainMenu extends GuiBase {
     public void onClick(InventoryClickEvent event) {
         event.setCancelled(true);
         String value = getValue(event.getSlot());
-        switch (Button.valueOf(value)) {
+        switch (Button.getFromName(value)) {
             case BACKGROUND:
                 break;
             case FRIENDS_PARTY:
@@ -91,6 +91,34 @@ public class MainMenu extends GuiBase {
 
         Button(String name) {
             _name = name;
+        }
+
+        public static Button getFromName(String name) {
+
+            switch (name) {
+                case "background":
+                    return BACKGROUND;
+                case "friends_party":
+                    return FRIENDS_PARTY;
+                case "quests":
+                    return QUESTS;
+                case "reinforce":
+                    return REINFORCE;
+                case "craft":
+                    return CRAFT;
+                case "my_profile":
+                    return MY_PROFILE;
+                case "dictionary":
+                    return DICTIONARY;
+                case "warp":
+                    return WARP;
+                case "settings":
+                    return SETTINGS;
+                case "close":
+                    return CLOSE;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + name);
+            }
         }
     }
 }
