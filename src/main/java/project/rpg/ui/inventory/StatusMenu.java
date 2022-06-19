@@ -41,14 +41,14 @@ public class StatusMenu extends GuiBase{
             setItem(text(" "),null,  Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false);
         }
 
-        setItem(text("힘 strength"),new ArrayList<>(Collections.singletonList(text(human.getStrength()))),Material.IRON_SWORD, 1, 12, "stats.strength", true);
+        setItem(text("힘 strength"),new ArrayList<>(Collections.singletonList(text(human.getStrength()))),Material.IRON_AXE, 1, 12, "stats.strength", true);
         setItem(text("신속 speed"),new ArrayList<>(Collections.singletonList(text(human.getSpeed()))),Material.FEATHER, 1, 14, "stats.speed", true);
-        setItem(text("민첩 agility"),new ArrayList<>(Collections.singletonList(text(human.getAgility()))),  Material.BLUE_STAINED_GLASS_PANE, 1, 20, "stats.agility", true);
-        setItem(text("체력 health"),new ArrayList<>(Collections.singletonList(text(human.getHealth()))),  Material.PINK_STAINED_GLASS_PANE, 1, 24, "stats.health", true);
+        setItem(text("민첩 agility"),new ArrayList<>(Collections.singletonList(text(human.getAgility()))),  Material.IRON_SWORD, 1, 20, "stats.agility", true);
+        setItem(text("체력 health"),new ArrayList<>(Collections.singletonList(text(human.getHealth()))),  Material.GOLDEN_APPLE, 1, 24, "stats.health", true);
         setItem(text("방어 defense"),new ArrayList<>(Collections.singletonList(text(human.getDefense()))),  Material.IRON_CHESTPLATE, 1, 38, "stats.defense", true);
-        setItem(text("행운 luck"),new ArrayList<>(Collections.singletonList(text(human.getLuck()))),  Material.YELLOW_STAINED_GLASS_PANE, 1, 42, "stats.luck", true);
-        setItem(text("손재주 handicraft"),new ArrayList<>(Collections.singletonList(text(human.getHandicraft()))),  Material.MAGENTA_STAINED_GLASS_PANE, 1, 48, "stats.handicraft", true);
-        setItem(text("마력 intelligence"),new ArrayList<>(Collections.singletonList(text(human.getIntelligence()))),  Material.PURPLE_STAINED_GLASS_PANE, 1, 50, "stats.intelligence", true);
+        setItem(text("행운 luck"),new ArrayList<>(Collections.singletonList(text(human.getLuck()))),  Material.DIAMOND, 1, 42, "stats.luck", true);
+        setItem(text("손재주 handicraft"),new ArrayList<>(Collections.singletonList(text(human.getHandicraft()))),  Material.IRON_PICKAXE, 1, 48, "stats.handicraft", true);
+        setItem(text("마력 intelligence"),new ArrayList<>(Collections.singletonList(text(human.getIntelligence()))),  Material.BOOK, 1, 50, "stats.intelligence", true);
         setItem(text("정보 info"), new ArrayList<>(Arrays.asList(text("================"),text(human.getPlayerName()),text(" "),text(" "), text(human.getLevel() + ".lv"),
                 text("hp : " + human.getHealth()), text("strength : " + human.getStrength()), text("agility : " + human.getAgility()), text("defense : " + human.getDefense()),
                 text("speed : " + human.getSpeed()), text("luck : " + human.getLuck()), text("intelligence : " + human.getIntelligence()), text("handicraft : " + human.getHandicraft()),
