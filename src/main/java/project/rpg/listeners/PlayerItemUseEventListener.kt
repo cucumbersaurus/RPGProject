@@ -42,6 +42,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
             } else {
                 if(useSkill(player, SkillType.METEOR_STRIKE, event, event.item!!, Material.FIRE_CHARGE));
                 else if(useSkill(player, SkillType.TP_ARROW, event, event.item!!, Material.ARROW));
+                else if(useSkill(player, SkillType.SHOONBOW, event, event.item!!, Material.IRON_SWORD));
             }
         }
     }
