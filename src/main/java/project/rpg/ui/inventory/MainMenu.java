@@ -58,6 +58,7 @@ public class MainMenu extends GuiBase {
             case CRAFT:
                 break;
             case MY_PROFILE:
+                forceCloseGUI((Player)event.getWhoClicked());
                 new StatusMenu((Player) event.getWhoClicked());
                 break;
             case DICTIONARY:

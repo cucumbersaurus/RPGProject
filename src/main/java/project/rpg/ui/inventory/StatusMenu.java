@@ -1,6 +1,5 @@
 package project.rpg.ui.inventory;
 
-import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
