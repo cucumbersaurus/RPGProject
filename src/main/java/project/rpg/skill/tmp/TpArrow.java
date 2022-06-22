@@ -13,7 +13,7 @@ import project.rpg.skill.SkillType;
 import project.rpg.skill.base.MagicSkillBase;
 
 public class TpArrow extends MagicSkillBase {
-    private ListQueue<Arrow> thrownArrows = new ListQueue<>();
+    private final ListQueue<Arrow> thrownArrows = new ListQueue<>();
 
     @Override
     public void onEnable(Action action) {

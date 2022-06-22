@@ -10,8 +10,8 @@ import java.util.Map;
 public class Skill {
 
     private static final Map< Player, Map<String,SkillBase> > _skills = new HashMap<>();  //Map<String,SkillBase>는 저장할때 Skill로 하면 주소값이 저장되서 저러게하면 스킬 목록 알수있음
-    private Map<String, SkillBase> _skillMap = new HashMap<>();  //스킬이 하나 말고 여러개이기 때문   위에 uuid는 나중에
-    private Player _player;
+    private final Map<String, SkillBase> _skillMap = new HashMap<>();  //스킬이 하나 말고 여러개이기 때문   위에 uuid는 나중에
+    private final Player _player;
 
     public static SkillBase[] getSkills(Player player){ //전체 스킬 목록 가져오기
         Map<String, SkillBase> skills = _skills.get(player);
