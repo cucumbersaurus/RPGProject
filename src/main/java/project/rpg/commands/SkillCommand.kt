@@ -40,7 +40,7 @@ class SkillCommand : CommandExecutor, TabCompleter {
             when(args.size){
                 1 -> recommendation.add("add")
                 2 -> {
-                    recommendation.addAll(SkillDic.getSkillList())
+                    recommendation.addAll(SkillDic.skillList)
                 }
             }
         }
