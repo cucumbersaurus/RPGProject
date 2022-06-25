@@ -71,7 +71,6 @@ class Rpg : JavaPlugin() {
         server.pluginManager.registerEvents(InventoryEventListener(), this)
         server.pluginManager.registerEvents(PlayerItemUseEventListener(this), this)
         server.pluginManager.registerEvents(PlayerJoinEventListener(), this)
-        server.pluginManager.registerEvents(PlayerLevelUpListener(), this)
         server.pluginManager.registerEvents(PlayerQuitEventListener(), this)
         server.pluginManager.registerEvents(RespawnEventListener(this), this)
         server.pluginManager.registerEvents(PlayerPotionDrinkEventListener(this), this)
