@@ -21,4 +21,9 @@ object PlayerInformation {
     fun deleteInfo(player: Player) {
         ActionBarUI.deletePlayer(player)
     }
+
+    @JvmStatic
+    fun updateHealth( player: Player){
+        player.healthScale = Status.getPlayerMap()[player.uniqueId]!!.health / 100.0
+    }
 }

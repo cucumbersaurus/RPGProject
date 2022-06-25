@@ -1,9 +1,12 @@
 package project.rpg.player.info;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import project.rpg.player.PlayerInformation;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Status {
@@ -150,6 +153,7 @@ public class Status {
             this._additionalStatusPoint -= health;
             _statusMap.put(HEALTH, this._health);
             _statusMap.put(ADDITIONAL_STATUS_POINT, this._additionalStatusPoint);
+            PlayerInformation.updateHealth(Objects.requireNonNull(Bukkit.getPlayer(_playerName)));
         }
     }
 
