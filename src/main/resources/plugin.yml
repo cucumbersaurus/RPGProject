@@ -26,4 +26,5 @@ commands:
     usage: "Usage: /<command> add [스킬이름]"
     aliases: s
   menu:
+  craft:
   level:

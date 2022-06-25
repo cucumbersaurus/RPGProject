@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,7 +61,7 @@ public abstract class GuiBase {
      * @param value 아이템을 클릭했을때의 식별자 (onClick() 에서 분기문 작성시 식별자)
      * @param isGlow 아이템에 인첸트 효과를 추가할지
      */
-    protected void setItem(Component name, ArrayList<Component> lore, @NotNull Material material, int amount, int slot, @NotNull String value/*슬롯맵에 저장할 태그*/, boolean isGlow) {//특정 슬롯에 특정 아이템 설정
+    protected void setItem(Component name, @Nullable ArrayList<Component> lore, @NotNull Material material, int amount, int slot, @NotNull String value/*슬롯맵에 저장할 태그*/, boolean isGlow) {//특정 슬롯에 특정 아이템 설정
         ItemStack item = new ItemStack(material,amount);
         ItemMeta meta = item.getItemMeta();
         if(name != null) meta.displayName(name);
@@ -84,6 +85,13 @@ public abstract class GuiBase {
         _inventory.setItem(slot, item);
     }
 
+    /**
+     *
+     * @param slot 아이템을 삭제할 슬롯
+     */
+    protected void removeItem(int slot){
+        _inventory.clear(slot);
+    }
 
     /**
      * @param slot 인벤토리(상자)에서 아이템의 위치

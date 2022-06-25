@@ -4,7 +4,7 @@ import io.github.monun.kommand.kommand
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
-import project.rpg.listeners.*
+import project.rpg.events.listeners.*
 import project.rpg.manager.FileManager
 import project.rpg.manager.ItemManager
 import project.rpg.player.PlayerInformation
@@ -53,6 +53,7 @@ class Rpg : JavaPlugin() {
         getCommand("skill")!!.setExecutor(SkillCommand())
         getCommand("menu")!!.setExecutor(MainMenuCommand())
         getCommand("level")!!.setExecutor(LevelCommand())
+        getCommand("craft")!!.setExecutor(CraftCommand())
         kommand {
             TestCommand.register(this, this@Rpg)
         }

@@ -1,4 +1,4 @@
-package project.rpg.listeners;
+package project.rpg.events.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

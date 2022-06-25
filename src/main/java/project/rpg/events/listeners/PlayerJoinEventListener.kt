@@ -1,4 +1,4 @@
-package project.rpg.listeners
+package project.rpg.events.listeners
 
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor

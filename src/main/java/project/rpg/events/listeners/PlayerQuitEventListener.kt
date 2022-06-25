@@ -1,4 +1,4 @@
-package project.rpg.listeners
+package project.rpg.events.listeners
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
