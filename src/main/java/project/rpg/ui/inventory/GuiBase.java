@@ -12,11 +12,9 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public abstract class GuiBase {
@@ -52,31 +50,6 @@ public abstract class GuiBase {
      *              이벤트 발생시 특정 아이템에 대한 기능 실행 구현(필수 아님)
      */
     public abstract void onClick(InventoryClickEvent event);
-
-
-    /**
-     * @param name 아이템의 표기 이름
-     * @param lore 아이템의 부연설명
-     * @param material 아이템의 종류
-     * @param amount 아이템의 양
-     * @param slot 아이템을 보여줄 위치
-     * @param value 아이템을 클릭했을때의 식별자 (onClick() 에서 분기문 작성시 식별자)
-     * @param isGlow 아이템에 인첸트 효과를 추가할지
-     */
-    @Deprecated
-    protected void setItem(@Nullable String name, @Nullable List<String> lore, @NotNull Material material,  int amount, int slot, @NotNull String value/*슬롯맵에 저장할 태그*/, boolean isGlow) {//특정 슬롯에 특정 아이템 설정
-        ItemStack item = new ItemStack(material,amount);
-        ItemMeta meta = item.getItemMeta();
-        if(name != null) meta.setDisplayName(name);
-        if(lore != null) meta.setLore(lore);
-        if(isGlow) {
-            meta.addEnchant(Enchantment.LURE, 1, false);
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        }
-        item.setItemMeta(meta);
-        _slotMap.put(slot, value);
-        _inventory.setItem(slot, item);
-    }
 
     /**
      * @param name 아이템의 표기 이름 (Component)

@@ -19,17 +19,17 @@ public class MainMenu extends GuiBase {
     @Override
     protected void init(@NotNull Player player) {
         for(int i = 0; i < 54; i++){
-            setItem(" ", null, Material.WHITE_STAINED_GLASS_PANE, 1, i, Button.BACKGROUND._name, false);
+            setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, Button.BACKGROUND._name, false);
         }
-        setItem("친구/파티", null, Material.SKELETON_SKULL, 1, 10, Button.FRIENDS_PARTY._name, false);
-        setItem("퀘스트", null, Material.MOJANG_BANNER_PATTERN, 1, 12, Button.QUESTS._name, false);
-        setItem("강화", null, Material.ANVIL, 1, 14, Button.REINFORCE._name, false);
-        setItem("제작", null, Material.CRAFTING_TABLE, 1, 16, Button.CRAFT._name, false);
+        setItem(text("친구/파티"), null, Material.SKELETON_SKULL, 1, 10, Button.FRIENDS_PARTY._name, false);
+        setItem(text("퀘스트"), null, Material.MOJANG_BANNER_PATTERN, 1, 12, Button.QUESTS._name, false);
+        setItem(text("강화"), null, Material.ANVIL, 1, 14, Button.REINFORCE._name, false);
+        setItem(text("제작"), null, Material.CRAFTING_TABLE, 1, 16, Button.CRAFT._name, false);
         setItem(getPlayerHead(player), 28, Button.MY_PROFILE._name);
-        setItem("도감", null, Material.KNOWLEDGE_BOOK, 1, 30,Button. DICTIONARY._name, false);
-        setItem("워프", null, Material.NETHER_STAR, 1, 32, Button.WARP._name, false);
-        setItem("설정", null, Material.FIREWORK_STAR, 1, 34, Button.SETTINGS._name, false);
-        setItem("닫기", null, Material.BARRIER, 1, 49, Button.CLOSE._name, false);
+        setItem(text("도감"), null, Material.KNOWLEDGE_BOOK, 1, 30,Button. DICTIONARY._name, false);
+        setItem(text("워프"), null, Material.NETHER_STAR, 1, 32, Button.WARP._name, false);
+        setItem(text("설정"), null, Material.FIREWORK_STAR, 1, 34, Button.SETTINGS._name, false);
+        setItem(text("닫기"), null, Material.BARRIER, 1, 49, Button.CLOSE._name, false);
 
     }
 
