@@ -2,6 +2,7 @@ package project.rpg.player
 
 import org.bukkit.entity.Player
 import project.rpg.manager.AttributeManager
+import project.rpg.player.info.Levels
 import project.rpg.player.info.Mana
 import project.rpg.player.info.Skill
 import project.rpg.player.info.Status
@@ -15,6 +16,7 @@ object PlayerInformation {
         player.isHealthScaled = true
         player.health = Status.getPlayerMap()[player.uniqueId]!!.health / 100.0
         Mana.addPlayer(player)
+        Levels.addPlayer(player)
         Skill(player, null)
     }
 

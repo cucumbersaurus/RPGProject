@@ -1,49 +1,73 @@
 package project.rpg.player.info;
 
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Levels {
 
-    private int _needForNextLev;
-    private int _currentLevel;
-    private int _exp;
+    private static final Map<Player, Map<String, Long>> _players = new HashMap<>();
+    private final Map<String, Long> _levels = new HashMap<>();
 
-    public int getNeedForNextLev() {
-        return _needForNextLev;
+    public static final String EXP = "exp";
+    public static final String LEVEL = "level";
+
+    public static Map<Player, Map<String, Long>> getAllMap() {
+        return _players;
     }
 
-    public void setNeedForNextLev(int needForNextLev) {
-        this._needForNextLev = needForNextLev;
+    public static Map<String, Long> getPlayerMap(Player player){
+        return _players.get(player);
     }
 
-    public int getExp() {
-        return _exp;
+    public static void savePlayerMap(Player player, int level) {
+        getPlayerMap(player).put(LEVEL, (long) level);
+        _players.put(player,getPlayerMap(player));
     }
 
-    public void setExp(int exp) {
-        this._exp = exp;
+    public static void savePlayerMap(Player player, long exp) {
+        getPlayerMap(player).put(EXP,exp);
+        _players.put(player,getPlayerMap(player));
     }
 
-    public int getCurrentLevel() {
-        return _currentLevel;
+    public static void savePlayerMap(Player player, int level, long exp) {
+        getPlayerMap(player).put(EXP,exp);
+        getPlayerMap(player).put(LEVEL, (long) level);
+        _players.put(player,getPlayerMap(player));
     }
 
-    public void setCurrentLevel(int currentLevel) {
-        this._currentLevel = currentLevel;
+    public static void addPlayer(Player player){
+        savePlayerMap(player,0,0);
     }
 
-    public void addCurrentLevel(int level) {
-        this._currentLevel += level;
+    public static long getNeedForNextLev(Player player) {
+        long currentLevel = getPlayerMap(player).get(LEVEL);
+        return 5 * ( currentLevel*currentLevel + currentLevel );
     }
 
-    public Levels(int level, int exp) {
-        this._currentLevel = level;
-        this._exp = exp;
-        this._needForNextLev = level*10;
+    public static void addExp(Player player, long exp) {
+        savePlayerMap(player, _players.get(player).get(EXP)+exp);
+
+        while (ifLevelUp(player)) {
+            levelUp(player,exp);
+        }
+
     }
 
-    public void levelUp() {
-        this._currentLevel += 1;
-        this._exp = this._exp - this._needForNextLev;
-        this._needForNextLev = this._currentLevel *10;
+    public static boolean ifLevelUp(Player player) {
+        long exp = getPlayerMap(player).get(EXP);
+        if (exp >= getNeedForNextLev(player)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void levelUp(Player player,long exp) {
+        savePlayerMap(player,getPlayerMap(player).get(LEVEL).intValue()+1);
+        savePlayerMap(player,getPlayerMap(player).get(EXP)-getNeedForNextLev(player));
+        player.sendMessage(ChatColor.YELLOW + "Level Up!");
     }
 
 }

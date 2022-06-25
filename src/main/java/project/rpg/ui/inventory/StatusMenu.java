@@ -5,6 +5,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
+import project.rpg.player.info.Levels;
 import project.rpg.player.info.Status;
 
 import java.util.ArrayList;
@@ -52,8 +53,8 @@ public class StatusMenu extends GuiBase{
         setItem(text("행운 luck"), new ArrayList<>(Collections.singletonList(text(_status.getLuck()))), Material.DIAMOND, 1, 42, "stats.luck", true);
         setItem(text("손재주 handicraft"), new ArrayList<>(Collections.singletonList(text(_status.getHandicraft()))), Material.IRON_PICKAXE, 1, 48, "stats.handicraft", true);
         setItem(text("마력 intelligence"), new ArrayList<>(Collections.singletonList(text(_status.getIntelligence()))), Material.BOOK, 1, 50, "stats.intelligence", true);
-        setItem(text("정보 info"), new ArrayList<>(Arrays.asList(text("================"), text(_status.getPlayerName()), text(" "), text(" "), text(_status.getLevel() + ".lv"),
-                                                               text("hp : " + _status.getHealth()), text("strength : " + _status.getStrength()), text("agility : " + _status.getAgility()), text("defense : " + _status.getDefense()),
+        setItem(text("정보 info"), new ArrayList<>(Arrays.asList(text("================"), text(_status.getPlayerName()),text(Levels.getPlayerMap(_player).get(Levels.LEVEL) + ".lv"), text(Levels.getPlayerMap(_player).get(Levels.EXP) + " / " + Levels.getNeedForNextLev(player)) , text(" "), text(" "),
+                text("hp : " + _status.getHealth()), text("strength : " + _status.getStrength()), text("agility : " + _status.getAgility()), text("defense : " + _status.getDefense()),
                                                                text("speed : " + _status.getSpeed()), text("luck : " + _status.getLuck()), text("intelligence : " + _status.getIntelligence()), text("handicraft : " + _status.getHandicraft()),
                                                                text(" "), text("more : " + _status.getAdditionalStatusPoint()), text("================"))), Material.PLAYER_HEAD, 1, 31, "stats.info", false);
         setItem(text("현재 페이지/새로고침"),new ArrayList<>(Arrays.asList(text("현재 페이지를 나타냅니다."), text("눌러서 새로고침"))),  Material.BEACON, 1, 45, "stats.reload", false);
