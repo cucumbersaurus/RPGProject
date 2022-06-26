@@ -54,6 +54,7 @@ class Rpg : JavaPlugin() {
         getCommand("menu")!!.setExecutor(MainMenuCommand())
         getCommand("level")!!.setExecutor(LevelCommand())
         getCommand("craft")!!.setExecutor(CraftCommand())
+        getCommand("friend")!!.setExecutor(FriendCommand())
         kommand {
             TestCommand.register(this, this@Rpg)
         }

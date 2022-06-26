@@ -28,3 +28,7 @@ commands:
   menu:
   craft:
   level:
+  friend:
+    description: friend 커멘드
+    usage: "Usage: /<command> [add/accept] [사람이름]"
+    aliases: p
