@@ -23,16 +23,7 @@ public class EnforceMenu extends GuiBase{
         for(int i = 0; i < 54; i++){
             setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, "enforce.background", false);
         }
-        setItem(text("친구/파티"), null, Material.SKELETON_SKULL, 1, 31, "enforce.enable", false);
-    }
-
-    private ItemStack getPlayerHead(@NotNull Player player) {
-        ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta meta = (SkullMeta) playerHead.getItemMeta();
-        meta.setOwningPlayer(player);
-        meta.displayName(text("내 프로필").color(TextColor.color(0xffff55)));
-        playerHead.setItemMeta(meta);
-        return playerHead;
+        setItem(text("강화하기"), null, Material.ANVIL, 1, 31, "enforce.enable", false);
     }
 
     @Override
