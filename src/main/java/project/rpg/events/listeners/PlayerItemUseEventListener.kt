@@ -48,7 +48,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
     }
 
     private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:Material):Boolean{
-        val skill = Skill.getSkill(player, skillType.skillName)
+        val skill:SkillBase? = Skill.getSkill(player, skillType.skillName)
         if(skill != null && skill is MagicSkillBase){
             if(usedItem.type == skillItem && Mana.useMana(player, skill.needMana)){
                 return executeSkill(skill, event.action, event)
@@ -63,7 +63,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
     }
 
     private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:ItemStack, mana:Int):Boolean {
-        val skill = Skill.getSkill(player, skillType.skillName)
+        val skill:SkillBase? = Skill.getSkill(player, skillType.skillName)
         if(ItemManager.isEquals(usedItem, skillItem) && skill != null && Mana.useMana(player, mana)){
             return executeSkill(skill, event.action ,  event)
         }

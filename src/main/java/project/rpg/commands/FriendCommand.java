@@ -25,7 +25,7 @@ public class FriendCommand implements CommandExecutor {
                         sender.sendMessage(command.getUsage());
                 }
             } else if(args.length == 1 && args[0].equals("list")) {
-                sender.sendMessage(Friend.get_friends().toString());
+                sender.sendMessage(Friend.getFriends().toString());
             }
         }
         return false;

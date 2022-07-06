@@ -8,65 +8,71 @@ import java.util.Map;
 
 public class Levels {
 
-    private static final Map<Player, Map<String, Long>> _players = new HashMap<>();
+    private static final Map<Player, Levels> _players = new HashMap<>();
     private final Map<String, Long> _levels = new HashMap<>();
 
-    public static final String EXP = "exp";
-    public static final String LEVEL = "level";
+    private long _exp = 0;
+    private int _level = 0;
 
-    public static Map<Player, Map<String, Long>> getAllMap() {
+    public static Map<Player, Levels> getAllMap() {
         return _players;
     }
 
-    public static Map<String, Long> getPlayerMap(Player player){
+    public static Levels getLevels(Player player){
         return _players.get(player);
     }
 
-    public static void savePlayerMap(Player player, int level) {
-        getPlayerMap(player).put(LEVEL, (long) level);
-        _players.put(player,getPlayerMap(player));
+    public static void setLevel(Player player, int level) {
+        Levels playerLevel = getLevels(player);
+        playerLevel._level = level;
+        //_players.put(player, playerLevel);
     }
 
-    public static void savePlayerMap(Player player, long exp) {
-        getPlayerMap(player).put(EXP,exp);
-        _players.put(player,getPlayerMap(player));
+    public static void setExp(Player player, long exp) {
+        Levels playerLevel = getLevels(player);
+        playerLevel._exp=exp;
+        //_players.put(player,playerLevel);
     }
 
-    public static void savePlayerMap(Player player, int level, long exp) {
-        getPlayerMap(player).put(EXP,exp);
-        getPlayerMap(player).put(LEVEL, (long) level);
-        _players.put(player,getPlayerMap(player));
+    public static void setLevels(Player player, int level, long exp) {
+        setLevel(player, level);
+        setExp(player, exp) ;
+    }
+
+    public int getLevel() {
+        return _level;
+    }
+
+    public long getExp() {
+        return _exp;
     }
 
     public static void addPlayer(Player player){
-        savePlayerMap(player,0,0);
+        setLevels(player, 0, 0);
     }
 
     public static long getNeedForNextLev(Player player) {
-        long currentLevel = getPlayerMap(player).get(LEVEL);
+        long currentLevel = getLevels(player)._level;
         return 5 * ( currentLevel*currentLevel + currentLevel );
     }
 
     public static void addExp(Player player, long exp) {
-        savePlayerMap(player, _players.get(player).get(EXP)+exp);
+        setExp(player, _players.get(player)._exp+exp);
 
-        while (ifLevelUp(player)) {
+        while (hasEnoughExp(player)) {
             levelUp(player,exp);
         }
 
     }
 
-    public static boolean ifLevelUp(Player player) {
-        long exp = getPlayerMap(player).get(EXP);
-        if (exp >= getNeedForNextLev(player)) {
-            return true;
-        }
-        return false;
+    public static boolean hasEnoughExp(Player player) {
+        long exp = getLevels(player)._exp;
+        return exp >= getNeedForNextLev(player);
     }
 
     public static void levelUp(Player player,long exp) {
-        savePlayerMap(player,getPlayerMap(player).get(LEVEL).intValue()+1);
-        savePlayerMap(player,getPlayerMap(player).get(EXP)-getNeedForNextLev(player));
+        setLevel(player, getLevels(player)._level + 1);
+        setExp(player, getLevels(player)._exp - getNeedForNextLev(player));
         player.sendMessage(ChatColor.YELLOW + "Level Up!");
     }
 

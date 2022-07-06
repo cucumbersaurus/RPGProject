@@ -5,6 +5,7 @@ import project.rpg.skill.base.SkillBase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Skill {
@@ -13,7 +14,7 @@ public class Skill {
     private final Map<String, SkillBase> _skillMap = new HashMap<>();  //스킬이 하나 말고 여러개이기 때문   위에 uuid는 나중에
     private final Player _player;
 
-    public static SkillBase[] getSkills(Player player){ //전체 스킬 목록 가져오기
+    public static List<SkillBase> getSkills(Player player){ //전체 스킬 목록 가져오기
         Map<String, SkillBase> skills = _skills.get(player);
         ArrayList<SkillBase> retSkills = new ArrayList<>();
 
@@ -21,7 +22,7 @@ public class Skill {
             retSkills.add(skills.get(key));
         }
 
-        return (SkillBase[]) retSkills.toArray();
+        return retSkills;
     }
 
     public static SkillBase getSkill(Player player,String skillName){ //특정 스킬 가져오기

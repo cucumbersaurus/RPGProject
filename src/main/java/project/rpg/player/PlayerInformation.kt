@@ -6,6 +6,7 @@ import project.rpg.player.info.Levels
 import project.rpg.player.info.Mana
 import project.rpg.player.info.Skill
 import project.rpg.player.info.Status
+import project.rpg.skill.magic.fire.MeteorStrike
 import project.rpg.ui.ActionBarUI
 
 object PlayerInformation {
@@ -17,7 +18,7 @@ object PlayerInformation {
         player.health = Status.getPlayerMap()[player.uniqueId]!!.health / 100.0
         Mana.addPlayer(player)
         Levels.addPlayer(player)
-        Skill(player, null)
+        Skill(player,  MeteorStrike(player))
     }
 
     fun deleteInfo(player: Player) {
