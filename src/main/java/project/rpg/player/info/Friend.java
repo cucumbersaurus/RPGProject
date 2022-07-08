@@ -19,8 +19,10 @@ public class Friend {
                 sender.sendMessage(ChatColor.BLUE + invitee.getName() + "에게 친구 요청을 보냈습니다");
                 invitee.sendMessage(ChatColor.BLUE + sender.getName() + "(이)가 친구 요청을 보냈습니다");
             }
-            sender.sendMessage(ChatColor.RED + invitee.getName() + "은(는) 서버에 들어와 있지 않습니다");
-            return false;
+            else {
+                sender.sendMessage(ChatColor.RED + invitee.getName() + "은(는) 없는 플레이어이거나 서버에 들어와 있지 않습니다");
+            }
+            return true;
         } else if (_friends.contain(invitee, sender)) {
             acceptFriend(sender, invitee);
             return true;
@@ -30,7 +32,7 @@ public class Friend {
             sender.sendMessage(ChatColor.RED + "이미 " + invitee.getName() + "와 친구입니다");
         }
         sender.sendMessage(ChatColor.RED + "전에 " + invitee.getName() + "에게 친구 요청을 보낸 적이 있습니다");
-        return false;
+        return true;
     }
 
     public static boolean addFriend(Player sender, String inv) {

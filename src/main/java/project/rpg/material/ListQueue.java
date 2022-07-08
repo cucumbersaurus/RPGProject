@@ -6,9 +6,9 @@ public class ListQueue<T> {
 
     public void add(T n) {
         if (first == null) {
-            this.first = new Node(n);
+            first = new Node(n);
         } else {
-            Node tmp = this.first;
+            Node tmp = first;
             while (tmp.pointer != null) {
                 tmp = tmp.pointer;
             }
@@ -28,7 +28,7 @@ public class ListQueue<T> {
     }
 
     public boolean isEmpty() {
-        return this.first == null;
+        return first == null;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ListQueue<T> {
         if (first != null) {
             ret.append(this.first.value);
 
-            Node tmp = this.first;
+            Node tmp = first;
             while (tmp.pointer != null) {
                 tmp = tmp.pointer;
                 ret.append(" -> ");

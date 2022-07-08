@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.player.info.Levels;
+import project.rpg.player.info.Mana;
 import project.rpg.player.info.Status;
 
 import java.util.ArrayList;
@@ -100,6 +101,7 @@ public class StatusMenu extends GuiBase{
                 break;
             case "stats.intelligence":
                 _status.addIntelligence(1);
+                Mana.reloadMaxMana((Player) event.getWhoClicked());
                 reloadUi();
                 break;
             case "stats.reload":

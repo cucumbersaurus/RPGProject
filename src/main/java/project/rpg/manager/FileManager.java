@@ -45,7 +45,6 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Bukkit.broadcastMessage(Status.getPlayerMap().toString());
     }
 
     public static void getFile() {

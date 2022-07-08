@@ -72,8 +72,8 @@ public class Levels {
     }
 
     public static void levelUp(Player player,long exp) {
-        setLevel(player, getLevels(player)._level + 1);
         setExp(player, getLevels(player)._exp - getNeedForNextLev(player));
+        setLevel(player, getLevels(player)._level + 1);
         player.sendMessage(ChatColor.YELLOW + "Level Up!");
     }
 

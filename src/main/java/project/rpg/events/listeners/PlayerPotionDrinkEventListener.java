@@ -9,6 +9,8 @@ import project.rpg.items.Items;
 import project.rpg.manager.ItemManager;
 import project.rpg.player.info.Mana;
 
+import java.util.Objects;
+
 public class PlayerPotionDrinkEventListener implements Listener {
 
     private final Rpg _plugin;
@@ -16,8 +18,14 @@ public class PlayerPotionDrinkEventListener implements Listener {
     @EventHandler
     public void playerPotionDrinkEvent(PlayerItemConsumeEvent event){
          Player player = event.getPlayer();
-         if(ItemManager.isEquals(event.getItem(), Items.MANA_REFILLING_POTION.getItem())){
-            Mana.addMana(player, Mana.getMaxMana(player) - Mana.getMana(player));
+         if(ItemManager.isEquals(event.getItem(), Objects.requireNonNull(Items.MANA_REFILLING_POTION.getItem()))){
+             int leftUntilFull = Mana.getMaxMana(player) - Mana.getMana(player);
+             if(leftUntilFull>=100){
+                 Mana.addMana(player, 100);
+             }
+             else {
+                 Mana.addMana(player, Mana.getMaxMana(player) - Mana.getMana(player));
+             }
              _plugin.actionBar.updateActionBar(player);
         }
     }

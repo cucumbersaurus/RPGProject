@@ -18,7 +18,7 @@ public class Status {
 
     private int _additionalStatusPoint = 1200;  //추가 스텟
     private int _agility = 10;  //민첩
-    private int _intelligence = 10;  //매력
+    private int _intelligence = 10;  //마력
     private int _defense = 10;  //내구
     private int _handicraft = 10;  //손재주
     private int _health = 100;  //체력
