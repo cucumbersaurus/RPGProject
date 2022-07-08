@@ -8,18 +8,18 @@ import java.util.Map;
 
 public class Levels {
 
-    private static final Map<Player, Levels> _players = new HashMap<>();
+    private static final Map<Player, Levels> _playerMap = new HashMap<>();
     private final Map<String, Long> _levels = new HashMap<>();
 
     private long _exp = 0;
     private int _level = 0;
 
     public static Map<Player, Levels> getAllMap() {
-        return _players;
+        return _playerMap;
     }
 
     public static Levels getLevels(Player player){
-        return _players.get(player);
+        return _playerMap.get(player);
     }
 
     public static void setLevel(Player player, int level) {
@@ -34,7 +34,7 @@ public class Levels {
         //_players.put(player,playerLevel);
     }
 
-    public static void setLevels(Player player, int level, long exp) {
+    public static void setData(Player player, int level, long exp) {
         setLevel(player, level);
         setExp(player, exp) ;
     }
@@ -47,8 +47,9 @@ public class Levels {
         return _exp;
     }
 
+    @Deprecated
     public static void addPlayer(Player player){
-        setLevels(player, 0, 0);
+        setData(player, 0, 0);
     }
 
     public static long getNeedForNextLev(Player player) {
@@ -57,7 +58,7 @@ public class Levels {
     }
 
     public static void addExp(Player player, long exp) {
-        setExp(player, _players.get(player)._exp+exp);
+        setExp(player, _playerMap.get(player)._exp+exp);
 
         while (hasEnoughExp(player)) {
             levelUp(player,exp);
@@ -74,6 +75,12 @@ public class Levels {
         setLevel(player, getLevels(player)._level + 1);
         setExp(player, getLevels(player)._exp - getNeedForNextLev(player));
         player.sendMessage(ChatColor.YELLOW + "Level Up!");
+    }
+
+    public Levels(Player player, int level, long exp) {
+        _level = level;
+        _exp = exp;
+        _playerMap.put(player, this);
     }
 
 }
