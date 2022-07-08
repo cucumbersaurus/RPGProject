@@ -17,8 +17,8 @@ object PlayerInformation {
         player.isHealthScaled = true
         player.health = Status.getPlayerMap()[player.uniqueId]!!.health / 100.0
         Mana.addPlayer(player)
-        Levels.addPlayer(player)
         Skill(player,  MeteorStrike(player))
+        Levels.addPlayer(player)
     }
 
     fun deleteInfo(player: Player) {

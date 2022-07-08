@@ -3,31 +3,29 @@ package project.rpg.player.info;
 import org.bukkit.entity.Player;
 import project.rpg.skill.base.SkillBase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Skill {
 
-    private static final Map< Player, Map<String,SkillBase> > _skills = new HashMap<>();  //Map<String,SkillBase>는 저장할때 Skill로 하면 주소값이 저장되서 저러게하면 스킬 목록 알수있음
+    private static final Map< Player, Skill> _skills = new HashMap<>();
+
     private final Map<String, SkillBase> _skillMap = new HashMap<>();  //스킬이 하나 말고 여러개이기 때문   위에 uuid는 나중에
     private final Player _player;
 
-    public static List<SkillBase> getSkills(Player player){ //전체 스킬 목록 가져오기
-        Map<String, SkillBase> skills = _skills.get(player);
-        ArrayList<SkillBase> retSkills = new ArrayList<>();
+    public static List<SkillBase> getSkillList(Player player){ //전체 스킬 목록 가져오기
+        Skill skills = _skills.get(player);
 
-        for (String key : skills.keySet()) {
-            retSkills.add(skills.get(key));
-        }
+        return (List<SkillBase>) skills.getSkillMap().values();
+    }
 
-        return retSkills;
+    public Map<String, SkillBase> getSkillMap(){
+        return _skillMap;
     }
 
     public static SkillBase getSkill(Player player,String skillName){ //특정 스킬 가져오기
-        Map<String, SkillBase> skills = _skills.get(player);
-
+        Map<String, SkillBase> skills = Skill._skills.get(player).getSkillMap();
         if (skills.containsKey(skillName)) {
             return skills.get(skillName);
         }
@@ -39,17 +37,13 @@ public class Skill {
     }
 
     public static void addSkill(Player player, SkillBase skill){  //스킬 추가하기 static  addPlayer 동합
+        Map<String, SkillBase> skills = _skills.get(player).getSkillMap();
         if (_skills.containsKey(player)) {
-            Map<String, SkillBase> skills = _skills.get(player);
             skills.put(skill._name, skill);
-            _skills.put(player, skills);
         } else {
             if (skill!=null) {
-                Map<String, SkillBase> skills = new HashMap<>();
+                skills = new HashMap<>();
                 skills.put(skill._name, skill);
-                _skills.put(player, skills);
-            } else {
-                _skills.put(player, new HashMap<>());
             }
         }
     }
@@ -63,11 +57,8 @@ public class Skill {
     }
 
     public Skill(Player player, SkillBase skill) {
+        _skills.put(player, this);
         _player = player;
-        addSkill(player,skill);
+        addSkill(player, skill);
     }
-    public Skill(Player player) {
-        _player = player;
-    }
-
 }
