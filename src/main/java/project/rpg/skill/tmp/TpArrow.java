@@ -1,5 +1,7 @@
 package project.rpg.skill.tmp;
 
+import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.title.Title;
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -12,45 +14,70 @@ import project.rpg.material.ListQueue;
 import project.rpg.skill.SkillType;
 import project.rpg.skill.base.MagicSkillBase;
 
+import static net.kyori.adventure.text.Component.text;
+
 public class TpArrow extends MagicSkillBase {
     private final ListQueue<Arrow> thrownArrows = new ListQueue<>();
 
     @Override
-    public void onEnable(Action action) {
+    public void onEnable(Player player, Action action) {
         if(action.isRightClick()){
-            onRightClick();
+            onRightClick(player);
         }
         else{
-            onLeftClick();
+            onLeftClick(player);
         }
     }
 
-    private void onRightClick() {
+    private void onRightClick(Player player) {
         if (this._coolTime==0) {
             for(Player all : Bukkit.getOnlinePlayers()){
                 all.playSound(_player.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 0.6f, 2);
             }
             Vector direction = _player.getLocation().getDirection();
-            if (!thrownArrows.isEmpty()) {
-                Arrow arrow = thrownArrows.pop();
+            Arrow arrow = getNextValidArrow();
+            if(arrow==null){
+                player.showTitle(Title.title(text(" "), text("소환되어있는 화살이 없습니다!").color(TextColor.color(0xff5555))));
+                return;
+            }
+            else {
                 arrow.remove();
                 _player.teleport(arrow.getLocation().setDirection(direction));
+                _player.getWorld().spawnParticle(Particle.GLOW, _player.getLocation(), 100, 0.5, 1, 0.5);
             }
-
-            _player.getWorld().spawnParticle(Particle.GLOW, _player.getLocation(), 100, 0.5, 1, 0.5);
-
             this._coolTime = this._skillTime;
-
         }
+        player.sendMessage(text("남은 화살 수 : ").append(text(thrownArrows.getSize())));
     }
 
-    public void onLeftClick() {
+    public void onLeftClick(Player player) {
+        if(thrownArrows.getSize()>=10){
+            Arrow poppedArrow = getNextValidArrow();
+            if(poppedArrow!=null){
+                for(Player all : Bukkit.getOnlinePlayers()){
+                    all.spawnParticle(Particle.CLOUD, poppedArrow.getLocation(), 10, 0.02, 0.02, 0.02, 0.1 );
+                }
+                poppedArrow.remove();
+            }
+        }
+
         Arrow arrow = _player.launchProjectile(Arrow.class);
         arrow.setKnockbackStrength(3);
         arrow.setGravity(true);
         arrow.setPickupRule(AbstractArrow.PickupRule.DISALLOWED);
         arrow.setVelocity(_player.getLocation().getDirection().multiply(5));
         thrownArrows.add(arrow);
+
+        player.sendMessage(text("남은 화살 수 : ").append(text(thrownArrows.getSize())));
+    }
+
+    private Arrow getNextValidArrow(){
+        if(thrownArrows.isEmpty()) return null;
+        Arrow arrow = thrownArrows.pop();
+        while(!arrow.isValid()){
+            arrow=thrownArrows.pop();
+        }
+        return arrow;
     }
 
     public TpArrow(Player p){

@@ -11,7 +11,7 @@ import project.rpg.skill.base.MagicSkillBase;
 
 public class ShoonBow extends MagicSkillBase {
     @Override
-    public void onEnable(Action action) {
+    public void onEnable(Player player, Action action) {
         if (this._skillTime==0) {
             _player.getWorld().spawnParticle(Particle.GLOW, _player.getLocation(), 25, 0.5, 1, 0.5, 0.7);
             Location location = null;

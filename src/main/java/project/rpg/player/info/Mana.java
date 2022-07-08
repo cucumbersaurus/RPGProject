@@ -29,7 +29,7 @@ public class Mana {
     }
 
     public static void addPlayer(Player player){
-        int maxMana = Status.getPlayerMap().get(player.getUniqueId()).getIntelligence()*10;
+        int maxMana = Status.getPlayer(player).getIntelligence()*10;
         _mana.put(player, maxMana);
         _maxMana.put(player, maxMana);
     }
@@ -59,7 +59,7 @@ public class Mana {
     }
 
     public static void reloadMaxMana(Player player){
-        _maxMana.put(player, Status.getPlayerMap().get(player.getUniqueId()).getIntelligence()*10);
+        _maxMana.put(player, Status.getPlayer(player).getIntelligence()*10);
     }
 
     public void startManaRefilling(){

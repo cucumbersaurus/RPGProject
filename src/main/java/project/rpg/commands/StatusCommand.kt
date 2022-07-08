@@ -18,7 +18,6 @@ class StatusCommand : CommandExecutor, TabCompleter {
 
         if (sender is Player) {
             player = sender
-            val uuid = player.uniqueId
 
             if ("add" == args[0] ) {
                 if(args.size <= 2) {
@@ -33,40 +32,40 @@ class StatusCommand : CommandExecutor, TabCompleter {
                 when (args[1]) {
                     "strength" -> {
                         sendFeedback(true)
-                        Status.getPlayerMap()[uuid]!!.addStrength(num)
+                        Status.getPlayer(player).addStrength(num)
                     }
                     "agility" -> {
                         sendFeedback(true)
-                        Status.getPlayerMap()[uuid]!!.addAgility(num)
+                        Status.getPlayer(player).addAgility(num)
                     }
                     "speed" -> {
                         sendFeedback(true)
-                        Status.getPlayerMap()[uuid]!!.addSpeed(num)
+                        Status.getPlayer(player).addSpeed(num)
                     }
                     "health" -> {
                         sendFeedback(true)
-                        Status.getPlayerMap()[uuid]!!.addHealth(num)
+                        Status.getPlayer(player).addHealth(num)
                     }
                     "defense" -> {
                         sendFeedback(true)
-                        Status.getPlayerMap()[uuid]!!.addDefense(num)
+                        Status.getPlayer(player).addDefense(num)
                     }
                     "luck" -> {
                         sendFeedback(true)
-                        Status.getPlayerMap()[uuid]!!.addLuck(num)
+                        Status.getPlayer(player).addLuck(num)
                     }
                     "handicraft" -> {
                         sendFeedback(true)
-                        Status.getPlayerMap()[uuid]!!.addHandicraft(num)
+                        Status.getPlayer(player).addHandicraft(num)
                     }
                     "intelligence" -> {
                         sendFeedback(true)
-                        Status.getPlayerMap()[uuid]!!.addIntelligence(num)
+                        Status.getPlayer(player).addIntelligence(num)
                     }
                     else -> sendFeedback(false)
                 }
                 //jsonFile_.put(playerName, playerData_.get(playerName).getMap());
-                AttributeManager.setAttributes(player, Status.getPlayerMap()[uuid])
+                AttributeManager.setAttributes(player, Status.getPlayer(player))
             }
             else sendFeedback(false)
             return true

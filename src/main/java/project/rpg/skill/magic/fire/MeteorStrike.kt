@@ -11,7 +11,7 @@ import project.rpg.skill.SkillType
 import project.rpg.skill.base.MagicSkillBase
 
 class MeteorStrike(player: Player?) : MagicSkillBase() {
-    override fun onEnable(action: Action) {
+    override fun onEnable(player:Player, action: Action) {
         for (entity in _player.getNearbyEntities(7.0, 7.0, 7.0)) {
             if (entity is Player) {
                 continue

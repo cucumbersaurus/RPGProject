@@ -3,6 +3,7 @@ package project.rpg.material;
 public class ListQueue<T> {
 
     Node first;
+    int size = 0;
 
     public void add(T n) {
         if (first == null) {
@@ -14,6 +15,7 @@ public class ListQueue<T> {
             }
             tmp.pointer = new Node(n);
         }
+        size++;
     }
 
     public T pop() {
@@ -23,6 +25,7 @@ public class ListQueue<T> {
             Node tmp = this.first;
             T ret = tmp.value;
             this.first = this.first.pointer;
+            size--;
             return ret;
         }
     }
@@ -45,6 +48,10 @@ public class ListQueue<T> {
             }
         }
         return ret.toString();
+    }
+
+    public int getSize() {
+        return size;
     }
 
     class Node {

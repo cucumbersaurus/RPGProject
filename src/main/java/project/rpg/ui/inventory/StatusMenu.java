@@ -32,7 +32,7 @@ public class StatusMenu extends GuiBase{
     protected void init(@NotNull Player player)
     {
         _player = player;
-        _status = Status.getPlayerMap().get(player.getUniqueId());
+        _status = Status.getPlayer(player);
         for(int i=0;i<54;i++){
             setItem(text(" "),null,  Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1, i, "stats.background", false);
         }
@@ -120,6 +120,4 @@ public class StatusMenu extends GuiBase{
         setAttributes(_player, _status);
         init(_player);
     }
-
-
 }

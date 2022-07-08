@@ -11,14 +11,17 @@ import project.rpg.ui.ActionBarUI
 
 object PlayerInformation {
     fun makeInfo(player: Player) {
-        ActionBarUI.addPlayer(player)
         AttributeManager.setAttributes(player, Status(player))
-        player.healthScale = Status.getPlayerMap()[player.uniqueId]!!.health / 100.0
+
+        player.healthScale = Status.getPlayer(player).health / 100.0
         player.isHealthScaled = true
-        player.health = Status.getPlayerMap()[player.uniqueId]!!.health / 100.0
+        player.health = Status.getPlayer(player).health / 100.0
+
         Mana.addPlayer(player)
         Skill(player,  MeteorStrike(player))
         Levels(player, 0, 0);
+
+        ActionBarUI.addPlayer(player)
     }
 
     fun deleteInfo(player: Player) {
@@ -27,6 +30,6 @@ object PlayerInformation {
 
     @JvmStatic
     fun updateHealth( player: Player){
-        player.healthScale = Status.getPlayerMap()[player.uniqueId]!!.health / 100.0
+        player.healthScale = Status.getPlayer(player).health / 100.0
     }
 }

@@ -50,13 +50,17 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
     private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:Material):Boolean{
         val skill:SkillBase? = Skill.getSkill(player, skillType.skillName)
         if(skill != null && skill is MagicSkillBase){
-            if(usedItem.type == skillItem && Mana.useMana(player, skill.needMana)){
-                return executeSkill(skill, event.action, event)
+            if(usedItem.type == skillItem){        event.isCancelled=true
+                event.isCancelled=true
+                if(Mana.useMana(player, skill.needMana)){
+                    return executeSkill(player, skill, event.action, event)
+                }
             }
         }
         else {
             if (usedItem.type == skillItem && skill != null && Mana.useMana(player, 0)) {
-                return executeSkill(skill, event.action, event)
+
+                return executeSkill(player, skill, event.action, event)
             }
         }
         return false
@@ -64,17 +68,19 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
 
     private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:ItemStack, mana:Int):Boolean {
         val skill:SkillBase? = Skill.getSkill(player, skillType.skillName)
-        if(ItemManager.isEquals(usedItem, skillItem) && skill != null && Mana.useMana(player, mana)){
-            return executeSkill(skill, event.action ,  event)
+        if(ItemManager.isEquals(usedItem, skillItem) && skill != null){
+            event.isCancelled=true
+            if(Mana.useMana(player, mana)){
+                return executeSkill(player, skill, event.action ,  event)
+            }
         }
         return false
     }
 
-    private fun executeSkill(skill:SkillBase, action: Action, event:PlayerInteractEvent):Boolean{
+    private fun executeSkill(player:Player, skill:SkillBase, action: Action, event:PlayerInteractEvent):Boolean{
         try{
-            skill.onEnable(action)
+            skill.onEnable(player, action)
             plugin.actionBar.updateActionBar(event.player)
-            event.isCancelled = true
             return true
         }
         catch (exception:java.lang.Exception){

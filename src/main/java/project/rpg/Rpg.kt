@@ -19,7 +19,7 @@ class Rpg : JavaPlugin() {
     val mana = Mana(this)
 
     override fun onLoad(){
-        loadObjects()
+        //loadObjects()
         ItemManager.makeItems()
 
         SkillDic.addAll()
@@ -40,7 +40,7 @@ class Rpg : JavaPlugin() {
     }
 
     override fun onDisable() {
-        saveObjects()
+        //saveObjects()
         logger.info("RPG plugin disabled")
     }
 

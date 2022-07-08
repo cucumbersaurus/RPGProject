@@ -1,12 +1,10 @@
 package project.rpg.player.info;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import project.rpg.player.PlayerInformation;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 
 public class Status {
@@ -14,7 +12,7 @@ public class Status {
     protected static Map<UUID, Status> _players = new HashMap<>();
 
     private String _job;
-    private String _playerName;  //사람 이름
+    private final Player _player;  //사람 이름
 
     private int _additionalStatusPoint = 1200;  //추가 스텟
     private int _agility = 10;  //민첩
@@ -39,12 +37,12 @@ public class Status {
     private static final String STRENGTH = "strength";
 
     public Status(Player player) {  //생성자
-        this._playerName = player.getName();
+        this._player = player;
         _players.put(player.getUniqueId(), this);
     }
 
-    public Status(String playerName, Map<String,Integer> hashMap) {
-        this._playerName = playerName;
+    public Status(Player player, Map<String,Integer> hashMap) {
+        this._player = player;
         fromMap(hashMap);
     }
 
@@ -54,6 +52,10 @@ public class Status {
 
     public static Map<UUID, Status> getPlayerMap() {
         return _players;
+    }
+
+    public static Status getPlayer(Player player) {
+        return _players.get(player.getUniqueId());
     }
 
     public static void setPlayerMap(Map<UUID, Status> map){
@@ -141,7 +143,7 @@ public class Status {
             this._additionalStatusPoint -= health;
             _statusMap.put(HEALTH, this._health);
             _statusMap.put(ADDITIONAL_STATUS_POINT, this._additionalStatusPoint);
-            PlayerInformation.updateHealth(Objects.requireNonNull(Bukkit.getPlayer(_playerName)));
+            PlayerInformation.updateHealth(_player);
         }
     }
 
@@ -207,11 +209,7 @@ public class Status {
     }
 
     public String getPlayerName() {
-        return this._playerName;
-    }
-
-    public void setPlayerName(String playerName) {
-        this._playerName = playerName;
+        return this._player.getName();
     }
 
 }
