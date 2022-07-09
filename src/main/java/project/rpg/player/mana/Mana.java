@@ -1,7 +1,6 @@
 package project.rpg.player.mana;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import project.rpg.Rpg;
 import project.rpg.player.Human;
 

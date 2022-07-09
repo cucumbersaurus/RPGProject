@@ -51,6 +51,15 @@ public class Stats {  //스텟
         }
     }
 
+    public int getStatus(String name) {
+        StatusBase status = _status.get(name);
+        if (status == null) {
+            throw new StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나");
+        } else {
+            return status.getValue();
+        }
+    }
+
     public void minAdditionalStatusPoint(int amount) {  //잔여 스텟 쓰기
         this._additionalStatusPoint -= amount;
     }

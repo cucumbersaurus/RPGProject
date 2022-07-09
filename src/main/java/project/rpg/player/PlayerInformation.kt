@@ -1,25 +1,22 @@
 package project.rpg.player
 
 import org.bukkit.entity.Player
-import project.rpg.manager.AttributeManager
-import project.rpg.player.info.Levels
-import project.rpg.player.info.Mana
 import project.rpg.player.info.Skill
-import project.rpg.player.info.Status
+import project.rpg.player.status.base.StatusName
 import project.rpg.skill.magic.fire.MeteorStrike
 import project.rpg.ui.ActionBarUI
 
 object PlayerInformation {
     fun makeInfo(player: Player) {
-        AttributeManager.setAttributes(player, Status(player))
+        Human.addPlayer(player)
 
-        player.healthScale = Status.getPlayer(player).health / 100.0
+        Human.getPlayer(player).stats.reloadMap()
+
+        player.healthScale = Human.getPlayer(player).stats.getStatus(StatusName.HEALTH.name) / 100.0
         player.isHealthScaled = true
-        player.health = Status.getPlayer(player).health / 100.0
+        player.health = Human.getPlayer(player).stats.getStatus(StatusName.HEALTH.name) / 100.0
 
-        Mana.addPlayer(player)
         Skill(player,  MeteorStrike(player))
-        Levels(player, 0, 0);
 
         ActionBarUI.addPlayer(player)
     }
@@ -30,6 +27,6 @@ object PlayerInformation {
 
     @JvmStatic
     fun updateHealth( player: Player){
-        player.healthScale = Status.getPlayer(player).health / 100.0
+        player.healthScale = Human.getPlayer(player).stats.getStatus(StatusName.HEALTH.name) / 100.0
     }
 }

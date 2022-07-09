@@ -5,8 +5,8 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
-import project.rpg.manager.AttributeManager
-import project.rpg.player.info.Status
+import project.rpg.player.Human
+import project.rpg.player.status.base.StatusName
 
 class StatusCommand : CommandExecutor, TabCompleter {
 
@@ -18,6 +18,7 @@ class StatusCommand : CommandExecutor, TabCompleter {
 
         if (sender is Player) {
             player = sender
+            var status = Human.getPlayer(player).stats
 
             if ("add" == args[0] ) {
                 if(args.size <= 2) {
@@ -32,40 +33,40 @@ class StatusCommand : CommandExecutor, TabCompleter {
                 when (args[1]) {
                     "strength" -> {
                         sendFeedback(true)
-                        Status.getPlayer(player).addStrength(num)
+                        status.addStatus(StatusName.STRENGTH.name,num)
                     }
                     "agility" -> {
                         sendFeedback(true)
-                        Status.getPlayer(player).addAgility(num)
+                        status.addStatus(StatusName.AGILITY.name,num)
                     }
                     "speed" -> {
                         sendFeedback(true)
-                        Status.getPlayer(player).addSpeed(num)
+                        status.addStatus(StatusName.SPEED.name,num)
                     }
                     "health" -> {
                         sendFeedback(true)
-                        Status.getPlayer(player).addHealth(num)
+                        status.addStatus(StatusName.HEALTH.name,num)
                     }
                     "defense" -> {
                         sendFeedback(true)
-                        Status.getPlayer(player).addDefense(num)
+                        status.addStatus(StatusName.DEFENSE.name,num)
                     }
                     "luck" -> {
                         sendFeedback(true)
-                        Status.getPlayer(player).addLuck(num)
+                        status.addStatus(StatusName.LUCK.name,num)
                     }
                     "handicraft" -> {
                         sendFeedback(true)
-                        Status.getPlayer(player).addHandicraft(num)
+                        status.addStatus(StatusName.HANDICRAFT.name,num)
                     }
                     "intelligence" -> {
                         sendFeedback(true)
-                        Status.getPlayer(player).addIntelligence(num)
+                        status.addStatus(StatusName.INTELLIGENCE.name,num)
                     }
                     else -> sendFeedback(false)
                 }
                 //jsonFile_.put(playerName, playerData_.get(playerName).getMap());
-                AttributeManager.setAttributes(player, Status.getPlayer(player))
+                status.reloadMap()
             }
             else sendFeedback(false)
             return true

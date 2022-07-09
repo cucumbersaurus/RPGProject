@@ -8,7 +8,7 @@ import project.rpg.events.listeners.*
 import project.rpg.manager.FileManager
 import project.rpg.manager.ItemManager
 import project.rpg.player.PlayerInformation
-import project.rpg.player.info.Mana
+import project.rpg.player.mana.Mana
 import project.rpg.skill.SkillDic
 import project.rpg.ui.ActionBarUI
 
@@ -16,7 +16,6 @@ class Rpg : JavaPlugin() {
 
     @JvmField
     val actionBar = ActionBarUI(this)
-    val mana = Mana(this)
 
     override fun onLoad(){
         //loadObjects()
@@ -34,7 +33,7 @@ class Rpg : JavaPlugin() {
         registerTabCompleter()
 
         actionBar.startActionBar()
-        mana.startManaRefilling()
+        Mana.startManaRefilling(this)
 
         logger.info("RPG plugin loaded!")
     }

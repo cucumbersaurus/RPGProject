@@ -12,7 +12,7 @@ public class Level {  //레벨
     private Player _player;  //레벨 업 채팅 보낼 때 필요
 
     public long getNeedForNextLev() {  //다음까지 남은 경험치
-        return 5 * ( this._level*this._level + this._level );
+        return 5 * (this._level * this._level + this._level);
     }
 
     public boolean hasEnoughExp() {  //경험치 충분한지 확인

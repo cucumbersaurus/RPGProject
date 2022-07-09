@@ -1,21 +1,20 @@
 package project.rpg.ui
 
-import net.md_5.bungee.api.ChatColor
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import project.rpg.Rpg
-import project.rpg.player.info.Mana
+import project.rpg.player.Human
 
 class ActionBarUI(private val _plugin: Rpg) {
     var showActionBar = Runnable {
         for (player in _players) {
+            var mana = Human.getPlayer(player).mana
             var message = "체력 : " + String.format("%.2f", player.health * 100) + "/" + String.format(
                 "%.2f",
                 player.healthScale * 100
             )
-            message += ChatColor.BLUE.toString() + "          마나 : " + Mana.getMana(player) + "/" + Mana.getMaxMana(
-                player
-            )
+            message += ChatColor.BLUE.toString() + "          마나 : " + mana.mana + "/" + mana.maxMana
             player.sendActionBar(ChatColor.RED.toString() + message)
         }
     }
@@ -30,13 +29,12 @@ class ActionBarUI(private val _plugin: Rpg) {
 
     fun updateActionBar(player: Player) {
         Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, {
+            var mana = Human.getPlayer(player).mana
             var message = "체력 : " + String.format("%.2f", player.health * 100) + "/" + String.format(
                 "%.2f",
                 player.healthScale * 100
             )
-            message += ChatColor.BLUE.toString() + "          마나 : " + Mana.getMana(player) + "/" + Mana.getMaxMana(
-                player
-            )
+            message += ChatColor.BLUE.toString() + "          마나 : " + mana.mana + "/" + mana.maxMana
             player.sendActionBar(ChatColor.RED.toString() + message)
         }, 0)
     }

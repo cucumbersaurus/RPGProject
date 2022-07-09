@@ -24,7 +24,7 @@ public class Human {  //사람
         _playerMap.put(player.getUniqueId(),new Human(player));
     }
 
-    public Human getPlayer(Player player) {
+    public static Human getPlayer(Player player) {
         return _playerMap.get(player.getUniqueId());
     }
 
