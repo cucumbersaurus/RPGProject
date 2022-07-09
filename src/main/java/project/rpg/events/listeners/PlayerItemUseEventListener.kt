@@ -10,6 +10,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import project.rpg.Rpg
 import project.rpg.items.Items
+import project.rpg.items.Wand
 import project.rpg.manager.ItemManager
 import project.rpg.player.Human
 import project.rpg.player.info.Skill
@@ -30,13 +31,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
             }
             if (ItemManager.isEquals(event.item!!, Items.WAND.item!!)) {
                 if (event.action.isRightClick && mana.useMana(10)) {
-
-                    var location = player.location
-                    if (player.getTargetBlock(30) != null) {
-                        location = player.getTargetBlock(30)!!.location
-                    }
-
-                    player.world.spawnEntity(location, EntityType.LIGHTNING)
+                    Wand.onEnable(player)
                     plugin.actionBar.updateActionBar()
                     event.isCancelled = true
                 }

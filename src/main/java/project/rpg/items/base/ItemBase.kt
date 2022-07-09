@@ -1,5 +1,6 @@
 package project.rpg.items.base
 
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 abstract class ItemBase {
@@ -7,4 +8,5 @@ abstract class ItemBase {
         protected set
 
     abstract fun createItem()
+    open fun onEnable(player : Player) {}
 }

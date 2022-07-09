@@ -4,6 +4,8 @@ import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
+import org.bukkit.entity.EntityType
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.base.ItemBase
@@ -26,5 +28,14 @@ object Wand : ItemBase() {
         meta.setCustomModelData(Items.WAND.value)
         item.itemMeta = meta
         super.item = item
+    }
+
+    override fun onEnable(player : Player) {
+        var location = player.location
+        if (player.getTargetBlock(30) != null) {
+            location = player.getTargetBlock(30)!!.location
+        }
+
+        player.world.spawnEntity(location, EntityType.LIGHTNING)
     }
 }
