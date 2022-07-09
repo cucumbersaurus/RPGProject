@@ -10,7 +10,7 @@ public abstract class StatusBase {  //스텟 베이스
 
     public abstract void effect(Player player);  //스텟 효과
 
-    public boolean addValue(int amount, Stats status){  //스텟 더하기
+    public boolean addValue(int amount, Stats status, Player player){  //스텟 더하기
         if(status.getAdditionalStatusPoint() >= amount) {
             this._value += amount;
             status.minAdditionalStatusPoint(amount);
@@ -27,9 +27,9 @@ public abstract class StatusBase {  //스텟 베이스
         return _value;
     }
 
-    protected StatusBase(String name) {
+    protected StatusBase(StatusName status) {
         this._value = 10;
-        this._name = name;
+        this._name = status.getName();
     }
 
 }

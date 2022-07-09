@@ -23,9 +23,9 @@ public class RespawnEventListener implements Listener {
         Player player = event.getPlayer();
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, () -> {
-            player.setHealthScale(Human.getPlayer(player).getStats().getStatus(StatusName.HEALTH.getName())/100.0);
+            player.setHealthScale(Human.getPlayer(player).getStats().getStatus(StatusName.HEALTH)/10.0);
             player.setHealthScaled(true);
-            player.setHealth(Human.getPlayer(player).getStats().getStatus(StatusName.HEALTH.getName())/100.0);
+            player.setHealth(Human.getPlayer(player).getStats().getStatus(StatusName.HEALTH)/10.0);
             _plugin.actionBar.updateActionBar();
         }, 0);
     }

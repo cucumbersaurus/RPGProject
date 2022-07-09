@@ -13,7 +13,7 @@ public class Human {  //사람
 
     public static HashMap<UUID,Human> _playerMap = new HashMap<>();  //이 해쉬맵 하나로 모든 데이터 관리!!
 
-    private Player _player;
+    private final Player _player;
 
     private Name _name;
     private Stats _stats;
@@ -21,7 +21,12 @@ public class Human {  //사람
     private Level _level;
 
     public static void addPlayer(Player player) {
-        _playerMap.put(player.getUniqueId(),new Human(player));
+        Human human = new Human(player);
+        _playerMap.put(player.getUniqueId(),human);
+        human._name = new Name(player);
+        human._stats = new Stats(player);
+        human._mana = new Mana();
+        human._level = new Level(player);
     }
 
     public static Human getPlayer(Player player) {

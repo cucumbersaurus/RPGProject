@@ -12,9 +12,9 @@ object PlayerInformation {
 
         Human.getPlayer(player).stats.reloadMap()
 
-        player.healthScale = Human.getPlayer(player).stats.getStatus(StatusName.HEALTH.name) / 100.0
+        player.healthScale = Human.getPlayer(player).stats.getStatus(StatusName.HEALTH) / 10.0
         player.isHealthScaled = true
-        player.health = Human.getPlayer(player).stats.getStatus(StatusName.HEALTH.name) / 100.0
+        player.health = Human.getPlayer(player).stats.getStatus(StatusName.HEALTH) / 10.0
 
         Skill(player,  MeteorStrike(player))
 
@@ -27,6 +27,6 @@ object PlayerInformation {
 
     @JvmStatic
     fun updateHealth( player: Player){
-        player.healthScale = Human.getPlayer(player).stats.getStatus(StatusName.HEALTH.name) / 100.0
+        player.healthScale = Human.getPlayer(player).stats.getStatus(StatusName.HEALTH) / 10.0
     }
 }

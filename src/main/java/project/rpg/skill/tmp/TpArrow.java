@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.util.Vector;
 import project.rpg.material.ListQueue;
+import project.rpg.player.Human;
 import project.rpg.skill.SkillType;
 import project.rpg.skill.base.MagicSkillBase;
 
@@ -38,6 +39,7 @@ public class TpArrow extends MagicSkillBase {
             Arrow arrow = getNextValidArrow();
             if(arrow==null){
                 player.showTitle(Title.title(text(" "), text("소환되어있는 화살이 없습니다!").color(TextColor.color(0xff5555))));
+                Human.getPlayer(player).getMana().addMana(this.needMana);
                 return;
             }
             else {

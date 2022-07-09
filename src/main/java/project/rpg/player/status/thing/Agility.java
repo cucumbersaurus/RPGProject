@@ -8,7 +8,7 @@ import project.rpg.player.status.base.StatusName;
 public class Agility extends StatusBase {   //공격 속도
 
     public Agility() {
-        super(StatusName.AGILITY.getName());
+        super(StatusName.AGILITY);
     }
 
     @Override

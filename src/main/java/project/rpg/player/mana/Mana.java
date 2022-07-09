@@ -52,6 +52,7 @@ public class Mana {  //마나
     }
 
     public Mana() {
+
     }
 
     {

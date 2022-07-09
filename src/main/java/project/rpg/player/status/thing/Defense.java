@@ -8,7 +8,7 @@ import project.rpg.player.status.base.StatusName;
 public class Defense extends StatusBase {   //내구
 
     public Defense() {
-        super(StatusName.DEFENSE.getName());
+        super(StatusName.DEFENSE);
     }
 
     @Override

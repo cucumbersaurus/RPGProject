@@ -5,35 +5,35 @@ import project.rpg.player.status.base.StatusBase;
 import project.rpg.player.status.base.StatusName;
 import project.rpg.player.status.thing.*;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class Stats {  //스텟
 
-    private Player _player;
+    private final Player _player;
 
-    private Agility _agility = new Agility();
-    private Defense _defense = new Defense();
-    private Handicraft _handicraft = new Handicraft();
-    private Health _health = new Health();
-    private Intelligence _intelligence = new Intelligence();
-    private Luck _luck = new Luck();
-    private Speed _speed = new Speed();
-    private Strength _strength = new Strength();
+    private final Agility _agility = new Agility();
+    private final Defense _defense = new Defense();
+    private final Handicraft _handicraft = new Handicraft();
+    private final Health _health = new Health();
+    private final Intelligence _intelligence = new Intelligence();
+    private final Luck _luck = new Luck();
+    private final Speed _speed = new Speed();
+    private final Strength _strength = new Strength();
 
-    private Map<String, StatusBase> _status = new HashMap<>(8);
+    private final Map<StatusName, StatusBase> _status = new EnumMap<>(StatusName.class);
 
     private int _additionalStatusPoint;
 
     public void saveMap() {  //전체 저장
-        _status.put(StatusName.AGILITY.getName(), _agility);
-        _status.put(StatusName.DEFENSE.getName(), _defense);
-        _status.put(StatusName.HANDICRAFT.getName(), _handicraft);
-        _status.put(StatusName.HEALTH.getName(), _health);
-        _status.put(StatusName.INTELLIGENCE.getName(), _intelligence);
-        _status.put(StatusName.LUCK.getName(), _luck);
-        _status.put(StatusName.SPEED.getName(), _speed);
-        _status.put(StatusName.STRENGTH.getName(), _strength);
+        _status.put(StatusName.AGILITY, _agility);
+        _status.put(StatusName.DEFENSE, _defense);
+        _status.put(StatusName.HANDICRAFT, _handicraft);
+        _status.put(StatusName.HEALTH, _health);
+        _status.put(StatusName.INTELLIGENCE, _intelligence);
+        _status.put(StatusName.LUCK, _luck);
+        _status.put(StatusName.SPEED, _speed);
+        _status.put(StatusName.STRENGTH, _strength);
     }
 
     public void reloadMap() {  //적용 Attribute 매니져 없애
@@ -42,16 +42,16 @@ public class Stats {  //스텟
         }
     }
 
-    public boolean addStatus(String name, int amount) {  //스텟 늘리기
+    public boolean addStatus(StatusName  name, int amount) {  //스텟 늘리기
         StatusBase status = _status.get(name);
         if (status == null) {
             throw new StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나");
         } else {
-            return status.addValue(amount,this);
+            return status.addValue(amount,this, _player);
         }
     }
 
-    public int getStatus(String name) {
+    public int getStatus(StatusName name) {
         StatusBase status = _status.get(name);
         if (status == null) {
             throw new StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나");
@@ -74,10 +74,7 @@ public class Stats {  //스텟
 
     public Stats(Player player) {
         this._player = player;
-    }
-
-    {
-        this._additionalStatusPoint = 10;
+        this._additionalStatusPoint = 1000;//실제로는 10으로 할 예정, 지금은 테스트 용으로 많이 둠
         this.saveMap();
     }
 

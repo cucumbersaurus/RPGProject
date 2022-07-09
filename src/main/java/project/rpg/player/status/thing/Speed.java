@@ -8,7 +8,7 @@ import project.rpg.player.status.base.StatusName;
 public class Speed extends StatusBase {   //발 빠르기
 
     public Speed() {
-        super(StatusName.SPEED.getName());
+        super(StatusName.SPEED);
     }
 
     @Override

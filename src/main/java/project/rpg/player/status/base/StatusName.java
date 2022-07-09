@@ -11,7 +11,7 @@ public enum StatusName {
     SPEED("speed"),   //신속 달리기 속도
     STRENGTH("strength");  //힘 물리 데미지
 
-    private String value;
+    private final String value;
 
     StatusName(String v){
         this.value = v;

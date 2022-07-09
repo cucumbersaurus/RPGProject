@@ -8,7 +8,7 @@ import project.rpg.player.status.base.StatusName;
 public class Strength extends StatusBase {   //힘
 
     public Strength() {
-        super(StatusName.STRENGTH.getName());
+        super(StatusName.STRENGTH);
     }
 
     @Override

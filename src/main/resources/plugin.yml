@@ -18,7 +18,7 @@ commands:
   status:
     description: status 커멘드
     usage: "Usage: /<command> [info/add]"
-  test:
+  user:
   titleTest:
   testItem:
   skill:
