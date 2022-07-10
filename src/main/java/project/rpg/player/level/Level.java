@@ -21,7 +21,7 @@ public class Level {  //레벨
 
     public void levelUp() {   //레벨업!
         this._exp = this._exp - getNeedForNextLev();
-        _playerMap.get(_player.getUniqueId()).getStats().addAdditionalStatusPoint(5);
+        _playerMap.get(_player.getUniqueId()).getStatus().addAdditionalStatusPoint(5);
         _level++;
         _player.sendMessage(ChatColor.YELLOW + "Level Up!");
     }

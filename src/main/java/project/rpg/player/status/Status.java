@@ -8,7 +8,7 @@ import project.rpg.player.status.thing.*;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class Stats {  //스텟
+public class Status {  //스텟
 
     private final Player _player;
 
@@ -72,7 +72,7 @@ public class Stats {  //스텟
         return _additionalStatusPoint;
     }
 
-    public Stats(Player player) {
+    public Status(Player player) {
         this._player = player;
         this._additionalStatusPoint = 1000;//실제로는 10으로 할 예정, 지금은 테스트 용으로 많이 둠
         this.saveMap();

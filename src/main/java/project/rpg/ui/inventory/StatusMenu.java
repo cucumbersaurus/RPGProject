@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.player.Human;
-import project.rpg.player.status.Stats;
+import project.rpg.player.status.Status;
 import project.rpg.player.status.base.StatusName;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import static net.kyori.adventure.text.Component.text;
 public class StatusMenu extends GuiBase{
 
     private Human _human;
-    private Stats _status;
+    private Status _status;
     private Player _player;
 
     public StatusMenu(@NotNull Player player) {
@@ -30,7 +30,7 @@ public class StatusMenu extends GuiBase{
     {
         _player = player;
         _human = Human.getPlayer(player);
-        _status = _human.getStats();
+        _status = _human.getStatus();
         for(int i=0;i<54;i++){
             setItem(text(" "),null,  Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1, i, "stats.background", false);
         }
@@ -130,7 +130,7 @@ public class StatusMenu extends GuiBase{
 
     private void reloadUi() {
         _player.playSound(_player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 1);
-        _human.getStats().reloadMap();
+        _human.getStatus().reloadMap();
         init(_player);
     }
 }

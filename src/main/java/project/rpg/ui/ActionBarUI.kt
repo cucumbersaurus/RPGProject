@@ -15,7 +15,7 @@ class ActionBarUI(private val _plugin: Rpg) {
     }
 
     fun startActionBar() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(_plugin, showActionBar, 0, 10)
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(_plugin, showActionBar, 20, 10)
     }
 
     fun updateActionBar() {

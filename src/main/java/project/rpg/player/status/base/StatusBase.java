@@ -1,7 +1,7 @@
 package project.rpg.player.status.base;
 
 import org.bukkit.entity.Player;
-import project.rpg.player.status.Stats;
+import project.rpg.player.status.Status;
 
 public abstract class StatusBase {  //스텟 베이스
 
@@ -10,7 +10,7 @@ public abstract class StatusBase {  //스텟 베이스
 
     public abstract void effect(Player player);  //스텟 효과
 
-    public boolean addValue(int amount, Stats status, Player player){  //스텟 더하기
+    public boolean addValue(int amount, Status status, Player player){  //스텟 더하기
         if(status.getAdditionalStatusPoint() >= amount) {
             this._value += amount;
             status.minAdditionalStatusPoint(amount);

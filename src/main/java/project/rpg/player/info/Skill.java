@@ -55,9 +55,8 @@ public class Skill {
         return getSkill(_player,skillName);
     }
 
-    public Skill(Player player, SkillBase skill) {
+    public Skill(Player player) {
         _skills.put(player, this);
         _player = player;
-        addSkill(player, skill);
     }
 }

@@ -3,7 +3,7 @@ package project.rpg.player.status.thing;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import project.rpg.player.PlayerInformation;
-import project.rpg.player.status.Stats;
+import project.rpg.player.status.Status;
 import project.rpg.player.status.base.StatusBase;
 import project.rpg.player.status.base.StatusName;
 
@@ -16,7 +16,7 @@ public class Health extends StatusBase {   //체력
     }
 
     @Override
-    public boolean addValue(int amount, Stats status, Player player){  //스텟 더하기
+    public boolean addValue(int amount, Status status, Player player){  //스텟 더하기
         if(status.getAdditionalStatusPoint() >= amount) {
             this._value += amount;
             status.minAdditionalStatusPoint(amount);

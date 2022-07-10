@@ -35,7 +35,6 @@ class Rpg : JavaPlugin() {
         actionBar.startActionBar()
         Mana.startManaRefilling(this)
 
-        logger.info("RPG plugin loaded!")
     }
 
     override fun onDisable() {
@@ -91,6 +90,7 @@ class Rpg : JavaPlugin() {
             for (player in Bukkit.getOnlinePlayers()) {
                 PlayerInformation.makeInfo(player)
             }
-        }, 0)
+            logger.info("RPG plugin loading completed")
+        }, 10)
     }
 }

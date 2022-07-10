@@ -1,8 +1,10 @@
 package project.rpg.player.mana;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import project.rpg.Rpg;
 import project.rpg.player.Human;
+import project.rpg.player.status.base.StatusName;
 
 import static project.rpg.player.Human._playerMap;
 
@@ -51,12 +53,9 @@ public class Mana {  //마나
         return _maxMana;
     }
 
-    public Mana() {
-
-    }
-
-    {
-        this._mana = 100;
-        this._maxMana = 100;
+    public Mana(Player player) {
+        int mana=Human.getPlayer(player).getStatus().getStatus(StatusName.INTELLIGENCE);
+        this._mana = mana;
+        this._maxMana =mana;
     }
 }

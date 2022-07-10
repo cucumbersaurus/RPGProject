@@ -18,7 +18,7 @@ class StatusCommand : CommandExecutor, TabCompleter {
 
         if (sender is Player) {
             player = sender
-            var status = Human.getPlayer(player).stats
+            var status = Human.getPlayer(player).status
 
             if ("add" == args[0] ) {
                 if(args.size <= 2) {
