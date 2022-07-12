@@ -8,8 +8,6 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import project.rpg.Rpg
-import project.rpg.items.Items
-import project.rpg.items.Wand
 import project.rpg.manager.ItemManager
 import project.rpg.player.User
 import project.rpg.player.info.Skill
