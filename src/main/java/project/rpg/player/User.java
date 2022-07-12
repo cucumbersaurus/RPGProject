@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class Human {  //사람
+public class User {  //사람
 
-    public static final Map<UUID, Human> _playerMap = new HashMap<>();  //이 해쉬맵 하나로 모든 데이터 관리!!
+    public static final Map<UUID, User> _playerMap = new HashMap<>();  //이 해쉬맵 하나로 모든 데이터 관리!!
 
     private final Player _player;
 
@@ -21,13 +21,13 @@ public class Human {  //사람
     private final Mana _mana;
     private final Level _level;
 
-    public static Human newHuman(Player player) {
-        Human human = new Human(player);
-        _playerMap.put(player.getUniqueId(), human);
-        return human;
+    public static User newHuman(Player player) {
+        User user = new User(player);
+        _playerMap.put(player.getUniqueId(), user);
+        return user;
     }
 
-    public static Human getPlayer(Player player) {
+    public static User getPlayer(Player player) {
         return _playerMap.get(player.getUniqueId());
     }
 
@@ -51,7 +51,7 @@ public class Human {  //사람
         return _level;
     }
 
-    private  Human(Player player) {
+    private User(Player player) {
         this._player = player;
         this._name = new Name(player);
         this._status = new Status(player);

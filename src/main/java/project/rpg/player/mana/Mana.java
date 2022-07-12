@@ -3,10 +3,10 @@ package project.rpg.player.mana;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import project.rpg.Rpg;
-import project.rpg.player.Human;
+import project.rpg.player.User;
 import project.rpg.player.status.base.StatusName;
 
-import static project.rpg.player.Human._playerMap;
+import static project.rpg.player.User._playerMap;
 
 public class Mana {  //마나
 
@@ -15,8 +15,8 @@ public class Mana {  //마나
 
     public static void startManaRefilling(Rpg plugin){  //어짜피 인스턴스 변수 보다 이게 나을 듯
         Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, ()->{
-            for(Human human : _playerMap.values()){
-                if(human.getMana()._mana < human.getMana()._maxMana)  human.getMana().addMana(1);
+            for(User user : _playerMap.values()){
+                if(user.getMana()._mana < user.getMana()._maxMana)  user.getMana().addMana(1);
             }
         }, 10, 10);
     }
@@ -54,7 +54,7 @@ public class Mana {  //마나
     }
 
     public Mana(Player player) {
-        int mana=Human.getPlayer(player).getStatus().getStatus(StatusName.INTELLIGENCE);
+        int mana= User.getPlayer(player).getStatus().getStatus(StatusName.INTELLIGENCE);
         this._mana = mana;
         this._maxMana =mana;
     }

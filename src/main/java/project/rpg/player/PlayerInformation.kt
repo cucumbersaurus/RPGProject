@@ -7,12 +7,12 @@ import project.rpg.ui.ActionBarUI
 
 object PlayerInformation {
     fun makeInfo(player: Player) {
-        val human = Human.newHuman(player)
-        human.status.reloadMap()
+        val user = User.newHuman(player)
+        user.status.reloadMap()
 
-        player.healthScale = Human.getPlayer(player).status.getStatus(StatusName.HEALTH) / 10.0
+        player.healthScale = User.getPlayer(player).status.getStatus(StatusName.HEALTH) / 10.0
         player.isHealthScaled = true
-        player.health = Human.getPlayer(player).status.getStatus(StatusName.HEALTH) / 10.0
+        player.health = User.getPlayer(player).status.getStatus(StatusName.HEALTH) / 10.0
 
         Skill(player)
 
@@ -25,6 +25,6 @@ object PlayerInformation {
 
     @JvmStatic
     fun updateHealth( player: Player){
-        player.healthScale = Human.getPlayer(player).status.getStatus(StatusName.HEALTH) / 10.0
+        player.healthScale = User.getPlayer(player).status.getStatus(StatusName.HEALTH) / 10.0
     }
 }

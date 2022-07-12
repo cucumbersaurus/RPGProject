@@ -5,7 +5,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
-import project.rpg.player.Human;
+import project.rpg.player.User;
 import project.rpg.player.status.Status;
 import project.rpg.player.status.base.StatusName;
 
@@ -17,7 +17,7 @@ import static net.kyori.adventure.text.Component.text;
 
 public class StatusMenu extends GuiBase{
 
-    private Human _human;
+    private User _user;
     private Status _status;
     private Player _player;
 
@@ -29,8 +29,8 @@ public class StatusMenu extends GuiBase{
     protected void init(@NotNull Player player)
     {
         _player = player;
-        _human = Human.getPlayer(player);
-        _status = _human.getStatus();
+        _user = User.getPlayer(player);
+        _status = _user.getStatus();
         for(int i=0;i<54;i++){
             setItem(text(" "),null,  Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1, i, "stats.background", false);
         }
@@ -55,9 +55,9 @@ public class StatusMenu extends GuiBase{
 
         setItem(text("정보 info"), new ArrayList<>(Arrays.asList(
                 text("================"),
-                text(_human.getName().getName()),
-                text(_human.getLevel().getLevel()+ ".lv"),
-                text(_human.getLevel().getExp() + " / " + _human.getLevel().getNeedForNextLev()) ,
+                text(_user.getName().getName()),
+                text(_user.getLevel().getLevel()+ ".lv"),
+                text(_user.getLevel().getExp() + " / " + _user.getLevel().getNeedForNextLev()) ,
                 text(" "),
                 text(" "),
                 text("hp : " + _status.getStatus(StatusName.HEALTH)),
@@ -130,7 +130,7 @@ public class StatusMenu extends GuiBase{
 
     private void reloadUi() {
         _player.playSound(_player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 1);
-        _human.getStatus().reloadMap();
+        _user.getStatus().reloadMap();
         init(_player);
     }
 }

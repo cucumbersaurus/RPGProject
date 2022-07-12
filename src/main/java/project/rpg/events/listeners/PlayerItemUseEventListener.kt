@@ -1,7 +1,6 @@
 package project.rpg.events.listeners
 
 import org.bukkit.Material
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -12,7 +11,7 @@ import project.rpg.Rpg
 import project.rpg.items.Items
 import project.rpg.items.Wand
 import project.rpg.manager.ItemManager
-import project.rpg.player.Human
+import project.rpg.player.User
 import project.rpg.player.info.Skill
 import project.rpg.skill.SkillType
 import project.rpg.skill.base.MagicSkillBase
@@ -23,7 +22,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
     @EventHandler
     fun itemUseEvent(event: PlayerInteractEvent) {
         val player = event.player
-        var mana = Human.getPlayer(player).mana
+        val mana = User.getPlayer(player).mana
 
         if (event.item != null) {
             if(event.item!!.type == Material.WOODEN_AXE){
@@ -48,13 +47,13 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
         if(skill != null && skill is MagicSkillBase){
             if(usedItem.type == skillItem){        event.isCancelled=true
                 event.isCancelled=true
-                if(Human.getPlayer(player).mana.useMana(skill.needMana)){
+                if(User.getPlayer(player).mana.useMana(skill.needMana)){
                     return executeSkill(player, skill, event.action, event)
                 }
             }
         }
         else {
-            if (usedItem.type == skillItem && skill != null && Human.getPlayer(player).mana.useMana(0)) {
+            if (usedItem.type == skillItem && skill != null && User.getPlayer(player).mana.useMana(0)) {
 
                 return executeSkill(player, skill, event.action, event)
             }
@@ -66,7 +65,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
         val skill:SkillBase? = Skill.getSkill(player, skillType.skillName)
         if(ItemManager.isEquals(usedItem, skillItem) && skill != null){
             event.isCancelled=true
-            if(Human.getPlayer(player).mana.useMana(mana)){
+            if(User.getPlayer(player).mana.useMana(mana)){
                 return executeSkill(player, skill, event.action ,  event)
             }
         }

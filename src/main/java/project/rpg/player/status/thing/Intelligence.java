@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import project.rpg.player.status.base.StatusBase;
 import project.rpg.player.status.base.StatusName;
 
-import static project.rpg.player.Human._playerMap;
+import static project.rpg.player.User._playerMap;
 
 public class Intelligence extends StatusBase {   //마력
 

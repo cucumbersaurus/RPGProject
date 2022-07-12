@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import project.rpg.Rpg;
-import project.rpg.player.Human;
+import project.rpg.player.User;
 import project.rpg.player.status.base.StatusName;
 
 public class RespawnEventListener implements Listener {
@@ -23,9 +23,9 @@ public class RespawnEventListener implements Listener {
         Player player = event.getPlayer();
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, () -> {
-            player.setHealthScale(Human.getPlayer(player).getStatus().getStatus(StatusName.HEALTH)/10.0);
+            player.setHealthScale(User.getPlayer(player).getStatus().getStatus(StatusName.HEALTH)/10.0);
             player.setHealthScaled(true);
-            player.setHealth(Human.getPlayer(player).getStatus().getStatus(StatusName.HEALTH)/10.0);
+            player.setHealth(User.getPlayer(player).getStatus().getStatus(StatusName.HEALTH)/10.0);
             _plugin.actionBar.updateActionBar();
         }, 0);
     }

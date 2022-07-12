@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerItemConsumeEvent;
 import project.rpg.Rpg;
 import project.rpg.items.Items;
 import project.rpg.manager.ItemManager;
-import project.rpg.player.Human;
+import project.rpg.player.User;
 import project.rpg.player.mana.Mana;
 
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class PlayerPotionDrinkEventListener implements Listener {
     @EventHandler
     public void playerPotionDrinkEvent(PlayerItemConsumeEvent event){
          Player player = event.getPlayer();
-         Mana mana = Human.getPlayer(player).getMana();
+         Mana mana = User.getPlayer(player).getMana();
          if(ItemManager.isEquals(event.getItem(), Objects.requireNonNull(Items.MANA_REFILLING_POTION.getItem()))){
              int leftUntilFull = mana.getMaxMana() - mana.getMana();
              if(leftUntilFull>=100){

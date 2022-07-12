@@ -3,7 +3,7 @@ package project.rpg.player.level;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import static project.rpg.player.Human._playerMap;
+import static project.rpg.player.User._playerMap;
 
 public class Level {  //레벨
 

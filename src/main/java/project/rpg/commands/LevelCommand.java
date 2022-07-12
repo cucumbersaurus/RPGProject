@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static project.rpg.player.Human._playerMap;
+import static project.rpg.player.User._playerMap;
 
 public class LevelCommand implements CommandExecutor {
 
