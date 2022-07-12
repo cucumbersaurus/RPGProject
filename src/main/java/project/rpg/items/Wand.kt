@@ -9,6 +9,7 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.base.ItemBase
+import project.rpg.player.User
 
 object Wand : ItemBase() {
 
@@ -32,10 +33,13 @@ object Wand : ItemBase() {
 
     override fun onEnable(player : Player) {
         var location = player.location
-        if (player.getTargetBlock(30) != null) {
-            location = player.getTargetBlock(30)!!.location
-        }
+        val mana = User.getPlayer(player).mana
+        if (mana.useMana(10)) {
+            if (player.getTargetBlock(30) != null) {
+                location = player.getTargetBlock(30)!!.location
+            }
 
-        player.world.spawnEntity(location, EntityType.LIGHTNING)
+            player.world.spawnEntity(location, EntityType.LIGHTNING)
+        }
     }
 }

@@ -1,6 +1,7 @@
 package project.rpg.manager
 
 import org.bukkit.inventory.ItemStack
+import project.rpg.items.Items
 import project.rpg.items.ManaRefillPotion
 import project.rpg.items.Wand
 import project.rpg.items.base.ItemBase
@@ -16,6 +17,14 @@ object ItemManager {
 
         //itemMap[Items.WAND] = wand
         //itemMap[Items.MANA_REFILLING_POTION] = manaRefillPotion
+    }
+
+    @JvmStatic
+    fun getItem(value: Int): ItemBase? {
+        for (item in Items.values()) {
+            if (item.value==value) return item._item
+        }
+        return null
     }
 
     @JvmStatic

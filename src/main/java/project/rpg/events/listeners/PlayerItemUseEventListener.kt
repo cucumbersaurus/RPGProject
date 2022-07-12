@@ -28,9 +28,10 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
             if(event.item!!.type == Material.WOODEN_AXE){
                 event.isCancelled = true
             }
-            if (ItemManager.isEquals(event.item!!, Items.WAND.item!!)) {
-                if (event.action.isRightClick && mana.useMana(10)) {
-                    Wand.onEnable(player)
+            if (event.item!!.itemMeta.hasCustomModelData()) {
+                val itemBase = ItemManager.getItem(event.item!!.itemMeta.customModelData)
+                if (event.action.isRightClick && itemBase!=null) {
+                    itemBase.onEnable(player)
                     plugin.actionBar.updateActionBar()
                     event.isCancelled = true
                 }
