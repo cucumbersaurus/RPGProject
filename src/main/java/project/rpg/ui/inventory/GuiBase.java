@@ -21,7 +21,7 @@ import java.util.Map;
 public abstract class GuiBase {
 
     protected static final Map<Player,GuiBase> guiMap_ = new HashMap<>();//누가 어떤 창을 보고 있는지 저장
-    protected Inventory _inventory;//그냥 인벤토리
+    protected final Inventory _inventory;//그냥 인벤토리
     protected Map<Integer,String> _slotMap;//인벤토리 슬롯당 태그 할당
 
     public static GuiBase getGUI(Player p) { return guiMap_.getOrDefault(p, null); }

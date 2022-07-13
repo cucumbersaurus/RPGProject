@@ -24,9 +24,7 @@ public class ShoonBow extends MagicSkillBase {
 
                     location.subtract(location.getDirection()).subtract(location.getDirection());
 
-                    if (location != null) {
-                        _player.teleport(location);
-                    }
+                    _player.teleport(location);
                     this._skillTime = this._coolTime;
                 }
             }

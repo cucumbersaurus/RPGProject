@@ -9,10 +9,10 @@ import java.util.List;
 
 public class Name {  //이름과 칭호
 
-    private Player _player;
+    private final Player _player;
 
-    private String _name;                  //이름
-    private List<TitleBase> titles = new ArrayList<>();   //칭호
+    private final String _name;                  //이름
+    private final List<TitleBase> titles = new ArrayList<>();   //칭호
     private TitleBase selectedTitle = null;  //선택된 칭호
 
     public boolean addTitle(String name) {  //칭호 추가

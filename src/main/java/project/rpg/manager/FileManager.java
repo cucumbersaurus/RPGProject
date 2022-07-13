@@ -5,7 +5,10 @@ import com.google.gson.GsonBuilder;
 import org.bukkit.Bukkit;
 import org.json.simple.JSONObject;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
@@ -51,8 +54,6 @@ public class FileManager {
             Gson gson = new Gson();
             Map<?, ?> map =  gson.fromJson(reader, Map.class);
             //여기를 어떻게 처리하지?
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

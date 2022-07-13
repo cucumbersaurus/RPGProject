@@ -287,7 +287,7 @@ public class CustomItemMetaTest implements ItemMeta {
         return null;
     }
 
-    @NotNull
+
     @Override
     public void setPlaceableKeys(@NotNull Collection<Namespaced> canPlaceOn) {
 

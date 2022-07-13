@@ -31,6 +31,8 @@ object ItemManager {
     fun isEquals(item1: ItemStack, item2: ItemStack): Boolean {
         val meta1 = item1.itemMeta
         val meta2 = item2.itemMeta
-        return if (meta1.hasCustomModelData() && meta2.hasCustomModelData()) meta1.customModelData == meta2.customModelData else false
+        return if (meta1.hasCustomModelData() && meta2.hasCustomModelData()) {
+            meta1.customModelData == meta2.customModelData
+        } else false
     }
 }

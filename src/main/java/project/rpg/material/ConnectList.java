@@ -18,79 +18,69 @@ public class ConnectList<T> {
     }
 
     public boolean connect(T invitee) {
-        if (first==null) {
-            return false;
-        } else {
+        if (first != null) {
             Node tmp = this.first;
             while (tmp.pointer != null) {
                 tmp = tmp.pointer;
-                if (tmp.invitee==invitee) {
+                if (tmp.invitee == invitee) {
                     tmp.connected = true;
                     return true;
                 }
             }
-            return false;
         }
+        return false;
     }
 
     public boolean contains(T sender) {
-        if (first==null) {
-            return false;
-        } else {
+        if (first != null) {
             Node tmp = this.first;
             while (tmp.pointer != null) {
                 tmp = tmp.pointer;
-                if (tmp.sender==sender) {
+                if (tmp.sender == sender) {
                     return true;
                 }
             }
-            return false;
         }
+        return false;
     }
 
     public boolean containi(T invitee) {
-        if (first==null) {
-            return false;
-        } else {
+        if (first != null) {
             Node tmp = this.first;
             while (tmp.pointer != null) {
                 tmp = tmp.pointer;
-                if (tmp.invitee==invitee) {
+                if (tmp.invitee == invitee) {
                     return true;
                 }
             }
-            return false;
         }
+        return false;
     }
 
     public boolean contain(T sender, T invitee) {
-        if (first==null) {
-            return false;
-        } else {
+        if (first != null) {
             Node tmp = this.first;
             while (tmp.pointer != null) {
                 tmp = tmp.pointer;
-                if (tmp.sender==sender && tmp.invitee==invitee) {
+                if (tmp.sender == sender && tmp.invitee == invitee) {
                     return true;
                 }
             }
-            return false;
         }
+        return false;
     }
 
     public boolean connected(T sender, T invitee) {
-        if (first==null) {
-            return false;
-        } else {
+        if (first != null) {
             Node tmp = this.first;
             while (tmp.pointer != null) {
                 tmp = tmp.pointer;
-                if (tmp.sender==sender && tmp.invitee==invitee && tmp.connected) {
+                if (tmp.sender == sender && tmp.invitee == invitee && tmp.connected) {
                     return true;
                 }
             }
-            return false;
         }
+        return false;
     }
 
     @Override
@@ -103,12 +93,12 @@ public class ConnectList<T> {
         } else {
 
             Node tmp = this.first;
-            stringBuilder.append("{" + tmp.sender + "," + tmp.invitee + "}");
+            stringBuilder.append("{").append(tmp.sender).append(",").append(tmp.invitee).append("}");
 
             while (tmp.pointer != null) {
                 tmp = tmp.pointer;
                 stringBuilder.append(" , ");
-                stringBuilder.append("{" + tmp.sender + "," + tmp.invitee + "}");
+                stringBuilder.append("{").append(tmp.sender).append(",").append(tmp.invitee).append("}");
             }
         }
         return stringBuilder.toString();
@@ -117,7 +107,7 @@ public class ConnectList<T> {
     class Node{
 
         Node pointer;
-        T sender;
+        final T sender;
         T invitee;
         boolean connected;
 

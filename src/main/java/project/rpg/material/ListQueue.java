@@ -56,7 +56,7 @@ public class ListQueue<T> {
 
     class Node {
         Node pointer;
-        T value;
+        final T value;
 
         Node(T v) {
             this.value = v;

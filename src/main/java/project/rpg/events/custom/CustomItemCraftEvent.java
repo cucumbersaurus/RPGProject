@@ -7,7 +7,7 @@ import project.rpg.Rpg;
 
 public class CustomItemCraftEvent extends Event {
 
-    public static HandlerList _handlerList = new HandlerList();
+    public static final HandlerList _handlerList = new HandlerList();
     private Rpg _plugin;
 
     public static HandlerList getHandlerList() {

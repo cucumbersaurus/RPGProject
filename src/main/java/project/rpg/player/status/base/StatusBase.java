@@ -5,7 +5,7 @@ import project.rpg.player.status.Status;
 
 public abstract class StatusBase {  //스텟 베이스
 
-    protected String _name;  //스텟 이름
+    protected final String _name;  //스텟 이름
     protected int _value;  //스텟 얼마나 있는지
 
     public abstract void effect(Player player);  //스텟 효과
