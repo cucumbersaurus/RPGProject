@@ -29,7 +29,7 @@ public abstract class StatusBase {  //스텟 베이스
 
     protected StatusBase(StatusName status) {
         this._value = 10;
-        this._name = status.getName();
+        this._name = status.getStatus();
     }
 
 }
