@@ -1,6 +1,7 @@
 package project.rpg.player;
 
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import project.rpg.player.job.Job;
 import project.rpg.player.level.Level;
 import project.rpg.player.mana.Mana;
@@ -23,13 +24,13 @@ public class User {  //사람
     private final Level _level;
     private final Job _job;
 
-    public static User newHuman(Player player) {
+    public static @NotNull User newUser(Player player) {
         User user = new User(player);
         _playerMap.put(player.getUniqueId(), user);
         return user;
     }
 
-    public static User getPlayer(Player player) {
+    public static User getPlayer(@NotNull Player player) {
         return _playerMap.get(player.getUniqueId());
     }
 
@@ -62,7 +63,7 @@ public class User {  //사람
 
         this._name = new Name(player);
         this._status = new Status(player);
-        this._mana = new Mana(player);
+        this._mana = new Mana(player, this._status);
         this._level = new Level(player);
         this._job = new Job(player);
     }

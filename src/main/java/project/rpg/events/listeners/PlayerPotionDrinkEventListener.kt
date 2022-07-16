@@ -1,39 +1,26 @@
-package project.rpg.events.listeners;
+package project.rpg.events.listeners
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerItemConsumeEvent;
-import project.rpg.Rpg;
-import project.rpg.items.Items;
-import project.rpg.manager.ItemManager;
-import project.rpg.player.User;
-import project.rpg.player.mana.Mana;
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerItemConsumeEvent
+import project.rpg.Rpg
+import project.rpg.items.Items
+import project.rpg.manager.ItemManager.isEquals
+import project.rpg.player.User
 
-import java.util.Objects;
-
-public class PlayerPotionDrinkEventListener implements Listener {
-
-    private final Rpg _plugin;
-
+class PlayerPotionDrinkEventListener(private val _plugin: Rpg) : Listener {
     @EventHandler
-    public void playerPotionDrinkEvent(PlayerItemConsumeEvent event){
-         Player player = event.getPlayer();
-         Mana mana = User.getPlayer(player).getMana();
-         if(ItemManager.isEquals(event.getItem(), Objects.requireNonNull(Items.MANA_REFILLING_POTION.getItem()))){
-             int leftUntilFull = mana.getMaxMana() - mana.getMana();
-             if(leftUntilFull>=100){
-                 mana.addMana(100);
-             }
-             else {
-                 mana.addMana((mana.getMaxMana() - mana.getMana()));
-             }
-             _plugin.actionBar.updateActionBar(player);
+    fun playerPotionDrinkEvent(event: PlayerItemConsumeEvent) {
+        val player = event.player
+        val mana = User.getPlayer(player).mana
+        if (isEquals(event.item, Items.MANA_REFILLING_POTION.item!!)) {
+            val leftUntilFull = mana.maxMana - mana.mana
+            if (leftUntilFull >= 100) {
+                mana.addMana(100)
+            } else {
+                mana.addMana(mana.maxMana - mana.mana)
+            }
+            _plugin.actionBar.updateActionBar(player)
         }
     }
-
-    public PlayerPotionDrinkEventListener(Rpg plugin){
-        _plugin = plugin;
-    }
-
 }

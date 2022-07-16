@@ -4,6 +4,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Pose;
 import project.rpg.skill.base.SkillBase;
 
+import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +13,8 @@ public abstract class JobBase {
 
     protected String _name;
     protected String _description;
-    protected List<Jobs> _nextJobs;
-    protected Map<Pose, SkillBase> _jobSkills;
+    protected List<Jobs> _nextJobs = new ArrayList<>();
+    protected Map<Pose, SkillBase> _jobSkills = new EnumMap<>(Pose.class);
 
     protected final Player _player;
 

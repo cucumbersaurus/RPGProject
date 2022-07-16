@@ -1,24 +1,22 @@
-package project.rpg.events.listeners;
+package project.rpg.events.listeners
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import project.rpg.ui.inventory.GuiBase;
+import org.bukkit.entity.Player
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryCloseEvent
+import project.rpg.ui.inventory.GuiBase
 
-public class InventoryEventListener implements Listener {
-
+class InventoryEventListener : Listener {
     @EventHandler
-    public void guiClick(InventoryClickEvent e){
-        GuiBase gui = GuiBase.getGUI((Player) e.getWhoClicked());
-        if(gui!=null) gui.onClick(e);
+    fun guiClick(e: InventoryClickEvent) {
+        val gui = GuiBase.getGUI(e.whoClicked as Player)
+        gui?.onClick(e)
     }
 
     @EventHandler
-    public void guiClose(InventoryCloseEvent e){
-        GuiBase gui = GuiBase.getGUI((Player) e.getPlayer());
-        if(gui!=null) gui.closeGUI(e);
+    fun guiClose(e: InventoryCloseEvent) {
+        val gui = GuiBase.getGUI(e.player as Player)
+        gui?.closeGUI(e)
     }
-
 }

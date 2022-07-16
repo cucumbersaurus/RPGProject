@@ -1,124 +1,80 @@
-package project.rpg.ui.inventory;
+package project.rpg.ui.inventory
 
-import net.kyori.adventure.text.format.TextColor;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
-import org.jetbrains.annotations.NotNull;
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.TextColor
+import org.bukkit.Material
+import org.bukkit.entity.Player
+import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.SkullMeta
 
-import static net.kyori.adventure.text.Component.text;
-
-public class MainMenu extends GuiBase {
-
-    public MainMenu(@NotNull Player player){
-        super(player, 54,  text("메인 메뉴"));
-    }
-
-    @Override
-    protected void init(@NotNull Player player) {
-        for(int i = 0; i < 54; i++){
-            setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, Button.BACKGROUND._name, false);
+class MainMenu(player: Player) : GuiBase(player, 54, Component.text("메인 메뉴")) {
+    override fun init(player: Player) {
+        for (i in 0..53) {
+            setItem(Component.text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, Button.BACKGROUND._name, false)
         }
-        setItem(text("친구/파티"), null, Material.SKELETON_SKULL, 1, 10, Button.FRIENDS_PARTY._name, false);
-        setItem(text("퀘스트"), null, Material.MOJANG_BANNER_PATTERN, 1, 12, Button.QUESTS._name, false);
-        setItem(text("강화"), null, Material.ANVIL, 1, 14, Button.REINFORCE._name, false);
-        setItem(text("제작"), null, Material.CRAFTING_TABLE, 1, 16, Button.CRAFT._name, false);
-        setItem(getPlayerHead(player), 28, Button.MY_PROFILE._name);
-        setItem(text("도감"), null, Material.KNOWLEDGE_BOOK, 1, 30,Button. DICTIONARY._name, false);
-        setItem(text("워프"), null, Material.NETHER_STAR, 1, 32, Button.WARP._name, false);
-        setItem(text("설정"), null, Material.FIREWORK_STAR, 1, 34, Button.SETTINGS._name, false);
-        setItem(text("닫기"), null, Material.BARRIER, 1, 49, Button.CLOSE._name, false);
-
+        setItem(Component.text("친구/파티"), null, Material.SKELETON_SKULL, 1, 10, Button.FRIENDS_PARTY._name, false)
+        setItem(Component.text("퀘스트"), null, Material.MOJANG_BANNER_PATTERN, 1, 12, Button.QUESTS._name, false)
+        setItem(Component.text("강화"), null, Material.ANVIL, 1, 14, Button.REINFORCE._name, false)
+        setItem(Component.text("제작"), null, Material.CRAFTING_TABLE, 1, 16, Button.CRAFT._name, false)
+        setItem(getPlayerHead(player), 28, Button.MY_PROFILE._name)
+        setItem(Component.text("도감"), null, Material.KNOWLEDGE_BOOK, 1, 30, Button.DICTIONARY._name, false)
+        setItem(Component.text("워프"), null, Material.NETHER_STAR, 1, 32, Button.WARP._name, false)
+        setItem(Component.text("설정"), null, Material.FIREWORK_STAR, 1, 34, Button.SETTINGS._name, false)
+        setItem(Component.text("닫기"), null, Material.BARRIER, 1, 49, Button.CLOSE._name, false)
     }
 
-    private ItemStack getPlayerHead(@NotNull Player player) {
-        ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta meta = (SkullMeta) playerHead.getItemMeta();
-        meta.setOwningPlayer(player);
-        meta.displayName(text("내 프로필").color(TextColor.color(0xffff55)));
-        playerHead.setItemMeta(meta);
-        return playerHead;
+    private fun getPlayerHead(player: Player): ItemStack {
+        val playerHead = ItemStack(Material.PLAYER_HEAD)
+        val meta = playerHead.itemMeta as SkullMeta
+        meta.owningPlayer = player
+        meta.displayName(Component.text("내 프로필").color(TextColor.color(0xffff55)))
+        playerHead.itemMeta = meta
+        return playerHead
     }
 
-    @Override
-    public void onClick(InventoryClickEvent event) {
-        event.setCancelled(true);
-        String value = getValue(event.getSlot());
-        switch (Button.getFromName(value)) {
-            case BACKGROUND:
-                break;
-            case FRIENDS_PARTY:
-                break;
-            case QUESTS:
-                break;
-            case REINFORCE:
-                break;
-            case CRAFT:
-                break;
-            case MY_PROFILE:
-                forceCloseGUI((Player)event.getWhoClicked());
-                new StatusMenu((Player) event.getWhoClicked());
-                break;
-            case DICTIONARY:
-                break;
-            case WARP:
-                break;
-            case SETTINGS:
-                break;
-            case CLOSE:
-                forceCloseGUI( (Player) event.getWhoClicked());
-                break;
-            default:
-                break;
+    override fun onClick(event: InventoryClickEvent) {
+        event.isCancelled = true
+        val value = getValue(event.slot)
+        when (Button.getFromName(value)) {
+            Button.BACKGROUND -> {}
+            Button.FRIENDS_PARTY -> {}
+            Button.QUESTS -> {}
+            Button.REINFORCE -> {}
+            Button.CRAFT -> {}
+            Button.MY_PROFILE -> {
+                forceCloseGUI(event.whoClicked as Player)
+                StatusMenu((event.whoClicked as Player))
+            }
+            Button.DICTIONARY -> {}
+            Button.WARP -> {}
+            Button.SETTINGS -> {}
+            Button.CLOSE -> forceCloseGUI(event.whoClicked as Player)
+            else -> {}
         }
     }
 
-    private enum Button{
+    private enum class Button(val _name: String) {
+        BACKGROUND("background"), FRIENDS_PARTY("friends_party"), QUESTS("quests"), REINFORCE("reinforce"), CRAFT("craft"), MY_PROFILE(
+            "my_profile"
+        ),
+        DICTIONARY("dictionary"), WARP("warp"), SETTINGS("settings"), CLOSE("close");
 
-        BACKGROUND("background"),
-        FRIENDS_PARTY("friends_party"),
-        QUESTS("quests"),
-        REINFORCE("reinforce"),
-        CRAFT("craft"),
-        MY_PROFILE("my_profile"),
-        DICTIONARY("dictionary"),
-        WARP("warp"),
-        SETTINGS("settings"),
-        CLOSE("close");
-
-        public final String _name;
-
-        Button(String name) {
-            _name = name;
-        }
-
-        public static Button getFromName(String name) {
-
-            switch (name) {
-                case "background":
-                    return BACKGROUND;
-                case "friends_party":
-                    return FRIENDS_PARTY;
-                case "quests":
-                    return QUESTS;
-                case "reinforce":
-                    return REINFORCE;
-                case "craft":
-                    return CRAFT;
-                case "my_profile":
-                    return MY_PROFILE;
-                case "dictionary":
-                    return DICTIONARY;
-                case "warp":
-                    return WARP;
-                case "settings":
-                    return SETTINGS;
-                case "close":
-                    return CLOSE;
-                default:
-                    throw new IllegalStateException("Unexpected value: " + name);
+        companion object {
+            fun getFromName(name: String): Button {
+                return when (name) {
+                    "background" -> BACKGROUND
+                    "friends_party" -> FRIENDS_PARTY
+                    "quests" -> QUESTS
+                    "reinforce" -> REINFORCE
+                    "craft" -> CRAFT
+                    "my_profile" -> MY_PROFILE
+                    "dictionary" -> DICTIONARY
+                    "warp" -> WARP
+                    "settings" -> SETTINGS
+                    "close" -> CLOSE
+                    else -> throw IllegalStateException("Unexpected value: $name")
+                }
             }
         }
     }
