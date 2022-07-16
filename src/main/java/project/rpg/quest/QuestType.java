@@ -1,4 +1,4 @@
-package project.rpg.enums;
+package project.rpg.quest;
 
 public enum QuestType {
 

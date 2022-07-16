@@ -1,4 +1,4 @@
-package project.rpg.items
+package project.rpg.items.thing
 
 import org.bukkit.Color
 import org.bukkit.Material
@@ -7,8 +7,8 @@ import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.PotionMeta
 import project.rpg.Rpg
+import project.rpg.items.Items
 import project.rpg.items.base.PotionBase
-import project.rpg.manager.ItemManager.isEquals
 import project.rpg.player.User
 import project.rpg.player.mana.Mana
 import java.util.*
@@ -37,7 +37,7 @@ object ManaRefillPotion : PotionBase() {
         val mana = User.getPlayer(player).mana
         val item = event.item
 
-        if (item.itemMeta.customModelData==Items.MANA_REFILLING_POTION.value) {
+        if (item.itemMeta.customModelData== Items.MANA_REFILLING_POTION.value) {
             val leftUntilFull = mana.maxMana - mana.mana
             if (leftUntilFull >= 100) {
                 mana.addMana(100)

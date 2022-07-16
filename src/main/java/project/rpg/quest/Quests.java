@@ -1,4 +1,4 @@
-package project.rpg.enums;
+package project.rpg.quest;
 
 import java.util.ArrayList;
 import java.util.Collections;

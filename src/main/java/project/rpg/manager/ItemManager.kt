@@ -3,8 +3,8 @@ package project.rpg.manager
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.ItemType
 import project.rpg.items.Items
-import project.rpg.items.ManaRefillPotion
-import project.rpg.items.Wand
+import project.rpg.items.thing.ManaRefillPotion
+import project.rpg.items.thing.Wand
 import project.rpg.items.base.ItemBase
 
 object ItemManager {

@@ -1,4 +1,4 @@
-package project.rpg.items
+package project.rpg.items.thing
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
-import project.rpg.items.base.ItemBase
+import project.rpg.items.Items
 import project.rpg.items.base.WeaponBase
 
 object TheMeteor: WeaponBase() {

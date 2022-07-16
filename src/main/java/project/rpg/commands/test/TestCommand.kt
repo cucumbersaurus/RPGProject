@@ -1,4 +1,4 @@
-package project.rpg.commands
+package project.rpg.commands.test
 
 import io.github.monun.kommand.PluginKommand
 import io.github.monun.kommand.getValue

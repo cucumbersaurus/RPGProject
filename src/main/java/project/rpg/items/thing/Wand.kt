@@ -1,4 +1,4 @@
-package project.rpg.items
+package project.rpg.items.thing
 
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor
@@ -9,7 +9,7 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import project.rpg.annotation.skill
-import project.rpg.items.base.ItemBase
+import project.rpg.items.Items
 import project.rpg.items.base.WeaponBase
 import project.rpg.player.User
 
