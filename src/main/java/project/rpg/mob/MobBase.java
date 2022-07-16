@@ -1,4 +1,4 @@
-package project.rpg.base;
+package project.rpg.mob;
 
 public abstract class MobBase {
 

@@ -1,6 +1,7 @@
 package project.rpg.manager
 
 import org.bukkit.inventory.ItemStack
+import project.rpg.items.ItemType
 import project.rpg.items.Items
 import project.rpg.items.ManaRefillPotion
 import project.rpg.items.Wand
@@ -23,6 +24,14 @@ object ItemManager {
     fun getItem(value: Int): ItemBase? {
         for (item in Items.values()) {
             if (item.value==value) return item._item
+        }
+        return null
+    }
+
+    @JvmStatic
+    fun getType(value: Int): ItemType? {
+        for (type in ItemType.values()) {
+            if (type.value==value) return type
         }
         return null
     }

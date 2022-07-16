@@ -8,10 +8,12 @@ import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
+import project.rpg.annotation.skill
 import project.rpg.items.base.ItemBase
+import project.rpg.items.base.WeaponBase
 import project.rpg.player.User
 
-object Wand : ItemBase() {
+object Wand : WeaponBase() {
 
     override fun createItem() {
         val item = ItemStack(Material.STICK, 1)
@@ -31,6 +33,7 @@ object Wand : ItemBase() {
         super.item = item
     }
 
+    @skill(name="lightning")
     override fun onEnable(player : Player) {
         var location = player.location
         val mana = User.getPlayer(player).mana

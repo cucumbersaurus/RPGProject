@@ -8,5 +8,4 @@ abstract class ItemBase {
         protected set
 
     abstract fun createItem()
-    open fun onEnable(player : Player) {}
 }

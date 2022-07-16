@@ -4,9 +4,9 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.PotionMeta
-import project.rpg.items.base.ItemBase
+import project.rpg.items.base.PotionBase
 
-object ManaRefillPotion : ItemBase() {
+object ManaRefillPotion : PotionBase() {
     override fun createItem() {
         val item = ItemStack(Material.POTION, 1)
         val meta = item.itemMeta as PotionMeta
