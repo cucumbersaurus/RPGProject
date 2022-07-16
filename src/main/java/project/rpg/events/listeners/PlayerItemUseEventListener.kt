@@ -8,6 +8,8 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import project.rpg.Rpg
+import project.rpg.items.Types
+import project.rpg.items.base.WeaponBase
 import project.rpg.manager.ItemManager
 import project.rpg.player.User
 import project.rpg.player.info.Skill
@@ -20,18 +22,20 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
     @EventHandler
     fun itemUseEvent(event: PlayerInteractEvent) {
         val player = event.player
-        val mana = User.getPlayer(player).mana
+        //val mana = User.getPlayer(player).mana
 
         if (event.item != null) {
             if(event.item!!.type == Material.WOODEN_AXE){
                 event.isCancelled = true
             }
             if (event.item!!.itemMeta.hasCustomModelData()) {
-                val itemBase = ItemManager.getItem(event.item!!.itemMeta.customModelData)
-                if (event.action.isRightClick && itemBase!=null) {
-                    itemBase.onEnable(player)
-                    plugin.actionBar.updateActionBar()
-                    event.isCancelled = true
+                val item = ItemManager.getItem(event.item!!.itemMeta.customModelData)
+                if (event.action.isRightClick && item!=null && ItemManager.getType(event.item!!.itemMeta.customModelData)==Types.WEAPON) {
+                    if (item is WeaponBase) {
+                        item.onEnable(player)
+                        plugin.actionBar.updateActionBar()
+                        event.isCancelled = true
+                    }
                 }
             } else {
                 if(useSkill(player, SkillType.METEOR_STRIKE, event, event.item!!, Material.FIRE_CHARGE));

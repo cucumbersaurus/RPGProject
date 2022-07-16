@@ -5,5 +5,5 @@ import org.bukkit.event.block.Action;
 
 public interface Operable {
 
-    void onEnable(Player player, Action action);
+    void onEnable(Player player);
 }
