@@ -1,6 +1,7 @@
 package project.rpg.player;
 
 import org.bukkit.entity.Player;
+import project.rpg.player.job.Job;
 import project.rpg.player.level.Level;
 import project.rpg.player.mana.Mana;
 import project.rpg.player.name.Name;
@@ -20,6 +21,7 @@ public class User {  //사람
     private final Status _status;
     private final Mana _mana;
     private final Level _level;
+    private final Job _job;
 
     public static User newHuman(Player player) {
         User user = new User(player);
@@ -51,11 +53,17 @@ public class User {  //사람
         return _level;
     }
 
+    public Job getJob() {
+        return _job;
+    }
+
     private User(Player player) {
         this._player = player;
+
         this._name = new Name(player);
         this._status = new Status(player);
         this._mana = new Mana(player);
         this._level = new Level(player);
+        this._job = new Job(player);
     }
 }
