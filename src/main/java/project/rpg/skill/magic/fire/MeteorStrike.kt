@@ -4,14 +4,13 @@ import org.bukkit.Particle
 import org.bukkit.Sound
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
-import org.bukkit.event.block.Action
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.skill.SkillType
 import project.rpg.skill.base.MagicSkillBase
 
 class MeteorStrike(player: Player?) : MagicSkillBase() {
-    override fun onEnable(player:Player) {
+    override fun onEnable() {
         for (entity in _player.getNearbyEntities(7.0, 7.0, 7.0)) {
             if (entity is Player) {
                 continue

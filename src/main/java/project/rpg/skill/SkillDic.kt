@@ -2,6 +2,7 @@ package project.rpg.skill
 
 import org.bukkit.entity.Player
 import project.rpg.skill.base.SkillBase
+import project.rpg.skill.magic.fire.FlameBurst
 import project.rpg.skill.magic.fire.MeteorStrike
 import project.rpg.skill.tmp.ShoonBow
 import project.rpg.skill.tmp.TpArrow
@@ -13,7 +14,9 @@ object SkillDic {
     fun makeSkill(player: Player?, skillName: String): SkillBase? {
         if (skillName == SkillType.METEOR_STRIKE.skillName) {
             return MeteorStrike(player)
-        } else if (skillName == SkillType.TP_ARROW.skillName) {
+        } else if (skillName == SkillType.FLAME_BURST.skillName) {
+            return FlameBurst(player)
+        }else if (skillName == SkillType.TP_ARROW.skillName) {
             return TpArrow(player)
         } else if (skillName == SkillType.SHOONBOW.skillName) {
             return ShoonBow(player)
@@ -23,6 +26,7 @@ object SkillDic {
 
     fun addAll() {
         _skillList.add(SkillType.METEOR_STRIKE.skillName)
+        _skillList.add(SkillType.FLAME_BURST.skillName)
         _skillList.add(SkillType.TP_ARROW.skillName)
         _skillList.add(SkillType.SHOONBOW.skillName)
     }

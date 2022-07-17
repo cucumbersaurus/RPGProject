@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import project.rpg.player.job.JobBase;
 import project.rpg.player.job.Jobs;
 
-public class Warrior extends JobBase {
+public class SwordsMan extends JobBase { //이름 바꿀예정
 
     @Override
     public void reload() {
@@ -21,8 +21,8 @@ public class Warrior extends JobBase {
         //추가 예정
     }
 
-    public Warrior(Player player) {
-        super(Jobs.WARRIOR.getName(),Jobs.WARRIOR.getDescription(), player);
+    public SwordsMan(Player player) {
+        super(Jobs.SWORDSMAN.getName(),Jobs.SWORDSMAN.getDescription(), player);
     }
 
 }

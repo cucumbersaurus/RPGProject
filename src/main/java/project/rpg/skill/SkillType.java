@@ -4,6 +4,7 @@ public enum SkillType {
 
     NULL("null"),
     METEOR_STRIKE("meteor_strike"),
+    FLAME_BURST("flame_burst"),
     TP_ARROW("tp_arrow"),
     SHOONBOW("shoonbow");
 

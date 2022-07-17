@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import project.rpg.player.job.JobBase;
 import project.rpg.player.job.Jobs;
 
-public class Warrior extends JobBase {
+public class Adventurer extends JobBase {
 
     @Override
     public void reload() {
@@ -13,7 +13,11 @@ public class Warrior extends JobBase {
 
     @Override
     public void setNextJobs() {
-        //추가 예정
+        this._nextJobs.add(Jobs.SWORDSMAN);
+        this._nextJobs.add(Jobs.WARRIOR);
+        this._nextJobs.add(Jobs.THIEF);
+        //궁수
+        //이류무사 dlc
     }
 
     @Override
@@ -21,8 +25,8 @@ public class Warrior extends JobBase {
         //추가 예정
     }
 
-    public Warrior(Player player) {
-        super(Jobs.WARRIOR.getName(),Jobs.WARRIOR.getDescription(), player);
+    public Adventurer(Player player) {
+        super(Jobs.ADVENTURER.getName(),Jobs.ADVENTURER.getDescription(), player);
     }
 
 }

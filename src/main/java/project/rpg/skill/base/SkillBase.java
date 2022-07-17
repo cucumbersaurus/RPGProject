@@ -11,6 +11,7 @@ public abstract class SkillBase implements Operable {
     protected int _skillTime;
     protected int _coolTime;
 
+    public void onEnable(){}
     public void onEnable(Player player, Action action) {}
 
     public void sendActionBar(Player p) { p.sendActionBar(this._coolTime/20 + "초 남음"); }
