@@ -1,5 +1,6 @@
 package project.rpg.player;
 
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.player.job.Job;
@@ -12,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class User {  //사람
+public class User implements ConfigurationSerializable {  //사람
 
     public static final Map<UUID, User> _playerMap = new HashMap<>();  //이 해쉬맵 하나로 모든 데이터 관리!!
 
@@ -36,6 +37,28 @@ public class User {  //사람
 
     public void saveMap() {
         _playerMap.put(_player.getUniqueId(),this);
+    }
+
+    @Override
+    public @NotNull Map<String, Object> serialize(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("player", _player.getName());
+        map.put("name", _name.serialize());
+        map.put("status", _status.serialize());
+        map.put("mana", _mana.serialize());
+        map.put("level", _level.serialize());
+        map.put("job", _job.serialize());
+        return map;
+    }
+
+    public static Map<UUID, Object> serializeAll(){
+        Map<UUID, Object> map = new HashMap<>();
+
+        for(Map.Entry<UUID, User>  entry: _playerMap.entrySet()){
+            map.put(entry.getKey(), entry.getValue().serialize());
+        }
+
+        return map;
     }
 
     public Name getName() {

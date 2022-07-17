@@ -1,9 +1,14 @@
 package project.rpg.player.job;
 
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import project.rpg.player.job.thing.Jobless;
 
-public class Job {
+import java.util.HashMap;
+import java.util.Map;
+
+public class Job implements ConfigurationSerializable {
 
     private JobBase _job;
     private final Player _player;
@@ -21,4 +26,11 @@ public class Job {
         this._job = new Jobless(player);
     }
 
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("player", _player.getName());
+        map.put("job", _job.serialize());
+        return map;
+    }
 }

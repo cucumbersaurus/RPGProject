@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.bukkit.Bukkit;
 import org.json.simple.JSONObject;
+import project.rpg.player.User;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -43,7 +44,7 @@ public class FileManager {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try(FileWriter writer = new FileWriter(_playerDs)) {
-            //gson.toJson(Status.getPlayerMap(), writer);
+            gson.toJson(User.serializeAll(), writer);
         } catch (IOException e) {
             e.printStackTrace();
         }

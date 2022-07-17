@@ -1,13 +1,17 @@
 package project.rpg.player.name;
 
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import project.rpg.player.name.base.TitleBase;
 import project.rpg.player.name.base.TitleName;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Name {  //이름과 칭호
+public class Name implements ConfigurationSerializable {  //이름과 칭호
 
     private final Player _player;
 
@@ -40,6 +44,17 @@ public class Name {  //이름과 칭호
         return false;
     }
 
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", _name);
+
+        for(TitleBase i :titles){
+            map.put(i.getName(), i.serialize());
+        }
+        return map;
+    }
+
     public String getName() {
         return _name;
     }
@@ -56,5 +71,4 @@ public class Name {  //이름과 칭호
         this._player = player;
         this._name = player.getName();
     }
-
 }

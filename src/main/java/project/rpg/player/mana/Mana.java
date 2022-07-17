@@ -1,15 +1,20 @@
 package project.rpg.player.mana;
 
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import project.rpg.Rpg;
 import project.rpg.player.User;
 import project.rpg.player.status.Status;
 import project.rpg.player.status.base.StatusName;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static project.rpg.player.User._playerMap;
 
-public class Mana {  //마나
+public class Mana implements ConfigurationSerializable {  //마나
 
     private int _mana;  //현재 마나
     private int _maxMana;  //최대 마나
@@ -58,5 +63,13 @@ public class Mana {  //마나
         int mana= status.getStatusValues(StatusName.INTELLIGENCE);
         this._mana = mana*10;
         this._maxMana = mana*10;
+    }
+
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("mana", _mana);
+        map.put("maxMana", _maxMana);
+        return map;
     }
 }

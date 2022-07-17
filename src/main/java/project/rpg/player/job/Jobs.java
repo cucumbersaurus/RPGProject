@@ -1,6 +1,12 @@
 package project.rpg.player.job;
 
-public enum Jobs {
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public enum Jobs implements ConfigurationSerializable {
 
     JOBLESS("백수","무직",0),
 
@@ -52,4 +58,14 @@ public enum Jobs {
         this._id = id;
     }
 
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("name", _name);
+        map.put("description", _description);
+        map.put("id", _id);
+
+        return map;
+    }
 }

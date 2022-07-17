@@ -1,14 +1,17 @@
 package project.rpg.player.status;
 
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import project.rpg.player.status.base.StatusBase;
 import project.rpg.player.status.base.StatusName;
 import project.rpg.player.status.thing.*;
 
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 
-public class Status {  //스텟
+public class Status implements ConfigurationSerializable {  //스텟
 
     private final Player _player;
 
@@ -58,6 +61,20 @@ public class Status {  //스텟
         } else {
             return status.getValue();
         }
+    }
+
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("player", _player.getName());
+
+        Map<String, Object> statusMap = new HashMap<>();
+        for(Map.Entry<StatusName, StatusBase> entry : _status.entrySet()) {
+            statusMap.put(entry.getKey().name(), entry.getValue().serialize());
+        }
+        map.put("status", statusMap);
+
+        return map;
     }
 
     public void minAdditionalStatusPoint(int amount) {  //잔여 스텟 쓰기

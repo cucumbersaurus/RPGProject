@@ -1,11 +1,16 @@
 package project.rpg.player.level;
 
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static project.rpg.player.User._playerMap;
 
-public class Level {  //레벨
+public class Level implements ConfigurationSerializable {  //레벨
 
     private long _level;  //레벨
     private long _exp;   //경험치
@@ -44,5 +49,14 @@ public class Level {  //레벨
 
     public Level(Player player) {
         this._player = player;
+    }
+
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("player", _player.getName());
+        map.put("level", _level);
+        map.put("exp", _exp);
+        return map;
     }
 }

@@ -1,9 +1,14 @@
 package project.rpg.player.status.base;
 
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import project.rpg.player.status.Status;
 
-public abstract class StatusBase {  //스텟 베이스
+import java.util.HashMap;
+import java.util.Map;
+
+public abstract class StatusBase implements ConfigurationSerializable {  //스텟 베이스
 
     protected final String _name;  //스텟 이름
     protected int _value;  //스텟 얼마나 있는지
@@ -17,6 +22,14 @@ public abstract class StatusBase {  //스텟 베이스
             return true;
         }
         return false;
+    }
+
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", _name);
+        map.put("value", _value);
+        return map;
     }
 
     public String getName() {

@@ -7,14 +7,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 import project.rpg.items.Items;
 import project.rpg.items.base.ItemBase;
 import project.rpg.player.name.base.TitleBase;
 import project.rpg.player.name.base.TitleName;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 
 import static net.kyori.adventure.text.Component.text;
 
@@ -39,6 +38,15 @@ public class MvpPP extends TitleBase {  //MVP++   https://www.notion.so/MVP-cc9e
         super(player, TitleName.MVPPP.getName(),TitleName.MVPPP.getDescription(),TitleName.MVPPP.getAcquisitionConditions());
     }
 
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("player", _player.getName());
+        map.put("name", _name);
+        map.put("description", _description);
+        map.put("acquisitionConditions", _acquisitionConditions);
+        return map;
+    }
 }
 
 class GoldenTrophy extends ItemBase {  //싱글톤으로

@@ -33,35 +33,35 @@ class StatusCommand : CommandExecutor, TabCompleter {
                 when (args[1]) {
                     "strength" -> {
                         sendFeedback(true)
-                        status.addStatus(StatusName.STRENGTH,num)
+                        status.addStatus(StatusName.STRENGTH, num)
                     }
                     "agility" -> {
                         sendFeedback(true)
-                        status.addStatus(StatusName.AGILITY,num)
+                        status.addStatus(StatusName.AGILITY, num)
                     }
                     "speed" -> {
                         sendFeedback(true)
-                        status.addStatus(StatusName.SPEED,num)
+                        status.addStatus(StatusName.SPEED, num)
                     }
                     "health" -> {
                         sendFeedback(true)
-                        status.addStatus(StatusName.HEALTH,num)
+                        status.addStatus(StatusName.HEALTH, num)
                     }
                     "defense" -> {
                         sendFeedback(true)
-                        status.addStatus(StatusName.DEFENSE,num)
+                        status.addStatus(StatusName.DEFENSE, num)
                     }
                     "luck" -> {
                         sendFeedback(true)
-                        status.addStatus(StatusName.LUCK,num)
+                        status.addStatus(StatusName.LUCK, num)
                     }
                     "handicraft" -> {
                         sendFeedback(true)
-                        status.addStatus(StatusName.HANDICRAFT,num)
+                        status.addStatus(StatusName.HANDICRAFT, num)
                     }
                     "intelligence" -> {
                         sendFeedback(true)
-                        status.addStatus(StatusName.INTELLIGENCE,num)
+                        status.addStatus(StatusName.INTELLIGENCE, num)
                     }
                     else -> sendFeedback(false)
                 }

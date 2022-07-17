@@ -42,7 +42,7 @@ class Rpg : JavaPlugin() {
     }
 
     override fun onDisable() {
-        //saveObjects()
+        saveObjects()
         logger.info("RPG plugin disabled")
     }
 
