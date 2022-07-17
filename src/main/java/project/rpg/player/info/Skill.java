@@ -33,6 +33,7 @@ public class Skill {
     public static void removePlayer(Player player){  //플레이어 삭제
         _skills.remove(player);
     }
+
     public static List<SkillBase> getSkillList(Player player){ //전체 스킬 목록 가져오기
         Skill skills = _skills.get(player);
 

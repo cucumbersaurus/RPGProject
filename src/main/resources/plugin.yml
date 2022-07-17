@@ -31,4 +31,4 @@ commands:
   friend:
     description: friend 커멘드
     usage: "Usage: /<command> [add/accept] [사람이름]"
-    aliases: p
+    aliases: f

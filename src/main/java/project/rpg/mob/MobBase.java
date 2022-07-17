@@ -1,7 +1,7 @@
 package project.rpg.mob;
 
-public abstract class MobBase {
+import org.bukkit.entity.Entity;
 
-
+public abstract class MobBase implements Entity {
 
 }

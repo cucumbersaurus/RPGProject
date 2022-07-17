@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import project.rpg.player.job.JobBase;
 import project.rpg.player.job.Jobs;
 
-public class Warrior extends JobBase {
+public class Warrior extends JobBase { //이름 바꿀예정
 
     @Override
     public void reload() {
