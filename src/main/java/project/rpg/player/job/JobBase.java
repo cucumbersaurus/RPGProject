@@ -56,7 +56,7 @@ public abstract class JobBase implements ConfigurationSerializable {
 
         Map<String, Object> nextJobsMap = new HashMap<>();
         for(Jobs i:_nextJobs){
-            map.put(i.getName(), i.serialize());
+            nextJobsMap.put("name", i.serialize());
         }
         map.put("jobs", nextJobsMap);
         map.put("jobSkills", _jobSkills);

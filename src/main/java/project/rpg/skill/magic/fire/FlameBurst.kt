@@ -1,13 +1,12 @@
 package project.rpg.skill.magic.fire
 
-import org.bukkit.entity.Fireball
 import org.bukkit.entity.Player
 import project.rpg.skill.SkillType
 import project.rpg.skill.base.MagicSkillBase
 
 class FlameBurst(player: Player?) : MagicSkillBase() {
     override fun onEnable() {
-        //val fireball = _player.launchProjectile(Fireball.class, this._player.location.direction)
+        //val fireball = _player.launchProjectile(Fireball, this._player.location.direction)
     }
 
     init {
