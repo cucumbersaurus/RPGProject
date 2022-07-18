@@ -7,9 +7,10 @@ import org.json.simple.JSONObject;
 import project.rpg.player.User;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
@@ -41,10 +42,15 @@ public class FileManager {
     }
 
     public static void saveFile() {
+        try(FileOutputStream out = new FileOutputStream(_playerDs)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String jsonString = gson.toJson(User.serializeAll());
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try(FileWriter writer = new FileWriter(_playerDs)) {
-            gson.toJson(User.serializeAll(), writer);
+            byte[] utf8JsonString = jsonString.getBytes(StandardCharsets.UTF_8);
+
+            out.write(utf8JsonString);
+            out.flush();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

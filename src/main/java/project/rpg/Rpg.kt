@@ -22,7 +22,7 @@ class Rpg : JavaPlugin() {
     val actionBar = ActionBarUI(this)
 
     override fun onLoad(){
-        //loadObjects()
+        loadObjects()
         ItemManager.makeItems()
 
         SkillDic.addAll()
