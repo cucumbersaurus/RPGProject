@@ -25,7 +25,7 @@ public class FriendCommand implements CommandExecutor {
                         Friend.printFriend(player);
                         break;
                     default:
-                        sender.sendMessage(command.getUsage());
+                        //sender.sendMessage(command.getUsage());
                 }
             } else if(args.length == 1 && args[0].equals("list")) {
                 sender.sendMessage(Friend.getFriends().toString());
