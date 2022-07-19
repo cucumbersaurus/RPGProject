@@ -1,5 +1,6 @@
 package project.rpg.items.thing
 
+import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Material
@@ -22,8 +23,7 @@ object Wand : WeaponBase() {
         //display name
         meta.displayName(text("전설의 막대기").color(TextColor.color(0xff55ff)))
         //lore
-        meta.lore =
-            ArrayList(listOf("이 막대기는 아주 위대하고", "전설적인 나무젓가락 입니다"))
+        meta.lore(ArrayList(listOf(text("이 막대기는 아주 위대하고"), text("전설적인 나무젓가락 입니다"))) as List<Component>?)
         //enchantments
         meta.addEnchant(Enchantment.LUCK, 1, true)
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS)

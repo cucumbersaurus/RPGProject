@@ -42,40 +42,50 @@ public class EnforceMenu extends GuiBase{
     }
 
     private void enforce(short level,Player player) {
-        Random random = new Random();
-        int result = random.nextInt(10000);
-        int success,fail;
+        int result = new Random().nextInt(10000);
+        int success;
+        int fail;
         switch (level) {
             case 0:
                 success = 9000;
                 fail = 900;
+                break;
             case 1:
                 success = 8000;
                 fail = 1500;
+                break;
             case 2:
                 success = 6500;
                 fail = 2000;
+                break;
             case 3:
                 success = 4500;
                 fail = 3000;
+                break;
             case 4:
                 success = 3000;
                 fail = 3500;
+                break;
             case 5:
                 success = 1000;
                 fail = 4000;
+                break;
             case 6:
                 success = 500;
                 fail = 3000;
+                break;
             case 7:
                 success = 100;
                 fail = 1900;
+                break;
             case 8:
                 success = 50;
                 fail = 1500;
+                break;
             case 9:
                 success = 1;
                 fail = 1000;
+                break;
             default:
                 success = -1;
                 fail = -1;

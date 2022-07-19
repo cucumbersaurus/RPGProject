@@ -12,7 +12,7 @@ public enum TitleName {  //칭호 관련
     private final String _description;  //설명
     private final String _acquisitionConditions;  //획득 조건
 
-    public static TitleBase getTitle(Player player, String name) {  //ㅇㄴ 왜 String 은 ==로 안돼냐고 oracle 만들어줘 ㄴ야ㅗㄹ넝류미ㅑㄴㄹㅇ미ㅑㅇㄹ
+    public static TitleBase getTitle(Player player, String name) {
         if (name.equals(MVPPP._name)) {
             return new MvpPP(player);
         }

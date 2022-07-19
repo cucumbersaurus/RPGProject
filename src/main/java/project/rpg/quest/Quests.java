@@ -18,7 +18,7 @@ public enum Quests {
     HI_FAIRIES("정려의 숲 페리헴", QuestType.MAIN, Collections.singletonList(Quests.NULL), 8),
     NEGOTIATION("협상", QuestType.MAIN, Collections.singletonList(Quests.NULL), 9),
     I_WANT_THAT("마법의 수정", QuestType.MAIN, Collections.singletonList(Quests.NULL), 10),
-    WIZARDY_VALLEY("마법석 골짜기", QuestType.MAIN, Collections.singletonList(Quests.NULL), 11),
+    WIZARDLY_VALLEY("마법석 골짜기", QuestType.MAIN, Collections.singletonList(Quests.NULL), 11),
     AND_WE_GO("미지의 포탈", QuestType.MAIN, Collections.singletonList(Quests.NULL), 12),
     SURVIVORS("생존자들", QuestType.MAIN, Collections.singletonList(Quests.NULL), 13),
     RAIDDDD("긴급 수비전", QuestType.MAIN, Collections.singletonList(Quests.NULL), 14),

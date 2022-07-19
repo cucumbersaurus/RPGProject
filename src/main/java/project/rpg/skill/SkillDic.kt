@@ -12,16 +12,21 @@ object SkillDic {
     private val _skillList = ArrayList<String>() //전체 스킬 이름 리스트
 
     fun makeSkill(player: Player?, skillName: String): SkillBase? {
-        if (skillName == SkillType.METEOR_STRIKE.skillName) {
-            return MeteorStrike(player)
-        } else if (skillName == SkillType.FLAME_BURST.skillName) {
-            return FlameBurst(player)
-        }else if (skillName == SkillType.TP_ARROW.skillName) {
-            return TpArrow(player)
-        } else if (skillName == SkillType.SHOONBOW.skillName) {
-            return ShoonBow(player)
+        return when (skillName) {
+            SkillType.METEOR_STRIKE.skillName -> {
+                MeteorStrike(player)
+            }
+            SkillType.FLAME_BURST.skillName -> {
+                FlameBurst(player)
+            }
+            SkillType.TP_ARROW.skillName -> {
+                TpArrow(player)
+            }
+            SkillType.SHOONBOW.skillName -> {
+                ShoonBow(player)
+            }
+            else -> null
         }
-        return null
     }
 
     fun addAll() {

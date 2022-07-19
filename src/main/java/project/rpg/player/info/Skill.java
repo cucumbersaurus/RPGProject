@@ -11,7 +11,7 @@ public class Skill {
 
     private static final Map< Player, Skill> _skills = new HashMap<>();
 
-    private final Map<String, SkillBase> _skillMap = new HashMap<>();  //스킬이 하나 말고 여러개이기 때문   위에 uuid는 나중에
+    private final Map<String, SkillBase> _skillMap = new HashMap<>();  //스킬이 하나 말고 여러개이기 때문   위에 uu id는 나중에
     private final Player _player;
 
     public static void addSkill(Player player, SkillBase skill){  //스킬 추가하기 static  addPlayer 동합

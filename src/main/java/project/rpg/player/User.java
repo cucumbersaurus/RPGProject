@@ -86,7 +86,7 @@ public class User implements ConfigurationSerializable {  //사람
 
         this._name = new Name(player);
         this._status = new Status(player);
-        this._mana = new Mana(player, this._status);
+        this._mana = new Mana(this._status);
         this._level = new Level(player);
         this._job = new Job(player);
     }

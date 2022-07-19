@@ -3,7 +3,6 @@ package project.rpg.manager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.bukkit.Bukkit;
-import org.json.simple.JSONObject;
 import project.rpg.player.User;
 
 import java.io.File;
@@ -17,10 +16,8 @@ import java.util.Map;
 
 public class FileManager {
 
-    public static final JSONObject _jsonFile = new JSONObject();
-    private static final String FILE_PATH = System.getProperty("user.dir") + "/plugins/rpg/playerDs.json";//JavaPlugin.getPlugin(Rpg.class).getDataFolder().toString();
+    private static final String FILE_PATH = System.getProperty("user.dir") + "/plugins/rpg/playerDs.json";
     private static final File _playerDs = new File(FILE_PATH);
-    private static final String _player = "players";
 
     public static void makeFile() {
         File f = new File(FILE_PATH);

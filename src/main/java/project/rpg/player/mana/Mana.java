@@ -2,7 +2,6 @@ package project.rpg.player.mana;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.Rpg;
 import project.rpg.player.User;
@@ -59,7 +58,7 @@ public class Mana implements ConfigurationSerializable {  //마나
         return _maxMana;
     }
 
-    public Mana(Player player, Status status) {
+    public Mana(Status status) {
         int mana= status.getStatusValues(StatusName.INTELLIGENCE);
         this._mana = mana*10;
         this._maxMana = mana*10;

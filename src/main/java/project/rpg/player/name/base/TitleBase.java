@@ -11,7 +11,7 @@ public abstract class TitleBase implements ConfigurationSerializable {  //칭호
     protected final String _acquisitionConditions;  //획득 조건
 
     public abstract void onEnable();  //착용시 효과    -> 교감 신경
-    public abstract void onDisable();  //착용 해제시   -> 부교감 신경 //????
+    public abstract void onDisable();  //착용 해제시   -> 부교감 신경 //???? //ㅋㅋㅋㅋ
     public abstract void eared();   //획득시 발동
 
     public String getName() {

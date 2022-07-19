@@ -30,7 +30,7 @@ public class ScoreboardUI {
         _scoreboard = manager.getNewScoreboard();
 
         Objective objective = _scoreboard.registerNewObjective("quest", "dummy", text("quest"));
-        objective.setDisplayName(ChatColor.YELLOW +"퀘스트 목록");
+        objective.displayName(text(ChatColor.YELLOW +"퀘스트 목록"));
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         int len = contents.size();

@@ -31,7 +31,7 @@ public class ConnectList<T> {
         return false;
     }
 
-    public boolean contains(T sender) {
+    public boolean containS(T sender) {
         if (first != null) {
             Node tmp = this.first;
             while (tmp.pointer != null) {
@@ -44,7 +44,7 @@ public class ConnectList<T> {
         return false;
     }
 
-    public boolean containi(T invitee) {
+    public boolean containI(T invitee) {
         if (first != null) {
             Node tmp = this.first;
             while (tmp.pointer != null) {

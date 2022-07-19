@@ -66,7 +66,7 @@ public class TpArrow extends MagicSkillBase {
         Arrow arrow = _player.launchProjectile(Arrow.class);
         arrow.setKnockbackStrength(3);
         arrow.setGravity(true);
-        arrow.setPickupRule(AbstractArrow.PickupRule.DISALLOWED);
+        arrow.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
         arrow.setVelocity(_player.getLocation().getDirection().multiply(5));
         thrownArrows.add(arrow);
 

@@ -18,10 +18,8 @@ class PlayerPotionDrinkEventListener(private val _plugin: Rpg) : Listener {
 
         if (event.item.itemMeta.hasCustomModelData()) {
             val item = getItem(event.item.itemMeta.customModelData)
-            if (item != null && getType(event.item.itemMeta.customModelData) === ItemType.POTION) {
-                if (item is PotionBase) {
-                    item.onDrink(mana, _plugin, event)
-                }
+            if (item != null && getType(event.item.itemMeta.customModelData) === ItemType.POTION && item is PotionBase) {
+                item.onDrink(mana, _plugin, event)
             }
         }
     }
