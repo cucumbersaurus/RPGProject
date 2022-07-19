@@ -14,6 +14,10 @@ public class Friend {
     }
 
     public static boolean addFriend(Player sender, Player invitee) {
+        if(sender.equals(invitee)) {
+            sender.sendMessage("그건 당신입니다.");
+            return false;
+        }
         if (!_friends.contain(sender, invitee)) {
             if (Bukkit.getOnlinePlayers().contains(invitee)) {
                 sender.sendMessage(ChatColor.BLUE + invitee.getName() + "에게 친구 요청을 보냈습니다");
@@ -56,5 +60,9 @@ public class Friend {
     public static boolean acceptFriend(Player invitee, String send) {
         Player sender = Bukkit.getPlayer(send);
         return acceptFriend(sender, invitee);
+    }
+
+    public static void printFriend(Player player) {
+        player.sendMessage(_friends.toString());
     }
 }

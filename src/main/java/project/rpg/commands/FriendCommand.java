@@ -21,6 +21,9 @@ public class FriendCommand implements CommandExecutor {
                     case "accept":
                         Friend.acceptFriend(player,args[1]);
                         break;
+                    case "print":
+                        Friend.printFriend(player);
+                        break;
                     default:
                         sender.sendMessage(command.getUsage());
                 }

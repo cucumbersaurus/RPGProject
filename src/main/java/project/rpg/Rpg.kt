@@ -57,9 +57,9 @@ class Rpg : JavaPlugin() {
         getCommand("level")!!.setExecutor(LevelCommand())
         getCommand("craft")!!.setExecutor(CraftCommand())
         getCommand("friend")!!.setExecutor(FriendCommand())
-        kommand {
+        /*kommand {
             TestCommand.register(this, this@Rpg)
-        }
+        }*/
     }
 
     private fun registerTabCompleter(){
