@@ -31,7 +31,7 @@ public class FileManager {
             Bukkit.getLogger().info("playerDs.json not exist");
             try {
                 if(f.createNewFile()){
-                    Bukkit.getLogger().info(" playerDs.json made");
+                    Bukkit.getLogger().info("playerDs.json made");
                 }
             } catch (IOException e) {
                 Bukkit.getLogger().info(FILE_PATH);
