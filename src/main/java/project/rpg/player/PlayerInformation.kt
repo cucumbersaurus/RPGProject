@@ -21,6 +21,7 @@ object PlayerInformation {
 
     fun deleteInfo(player: Player) {
         ActionBarUI.deletePlayer(player)
+        User.removeUser(player)
     }
 
     @JvmStatic

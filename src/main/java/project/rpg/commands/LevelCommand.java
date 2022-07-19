@@ -5,8 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-
-import static project.rpg.player.User._playerMap;
+import project.rpg.player.User;
 
 public class LevelCommand implements CommandExecutor {
 
@@ -18,7 +17,12 @@ public class LevelCommand implements CommandExecutor {
             if (args.length == 2) {
                 switch (args[0]) {
                     case "add":
-                        _playerMap.get(player.getUniqueId()).getLevel().addExp(Integer.parseInt(args[1]));
+                        User.getPlayer(player).getLevel().addExp(Integer.parseInt(args[1]));
+                        break;
+                    case "remove":
+                        User.getPlayer(player).getLevel().addExp(-Integer.parseInt(args[1]));
+                        break;
+                    default:
                         break;
                 }
             }

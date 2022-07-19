@@ -11,8 +11,6 @@ import project.rpg.player.status.base.StatusName;
 import java.util.HashMap;
 import java.util.Map;
 
-import static project.rpg.player.User._playerMap;
-
 public class Mana implements ConfigurationSerializable {  //마나
 
     private int _mana;  //현재 마나
@@ -20,7 +18,7 @@ public class Mana implements ConfigurationSerializable {  //마나
 
     public static void startManaRefilling(Rpg plugin){  //어짜피 인스턴스 변수 보다 이게 나을 듯
         Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, ()->{
-            for(User user : _playerMap.values()){
+            for(User user : User.getPlayerList()){
                 if(user.getMana()._mana < user.getMana()._maxMana)  user.getMana().addMana(1);
             }
         }, 10, 10);

@@ -3,6 +3,7 @@ package project.rpg.manager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.bukkit.Bukkit;
+import project.rpg.Rpg;
 import project.rpg.player.User;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Objects;
 
 public class FileManager {
 
@@ -39,18 +41,22 @@ public class FileManager {
     }
 
     public static void saveFile() {
-        try(FileOutputStream out = new FileOutputStream(_playerDs)) {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            String jsonString = gson.toJson(User.serializeAll());
+        Rpg plugin = (Rpg) Bukkit.getPluginManager().getPlugin("Rpg");
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Objects.requireNonNull(plugin), ()->{
 
-            byte[] utf8JsonString = jsonString.getBytes(StandardCharsets.UTF_8);
+            try(FileOutputStream out = new FileOutputStream(_playerDs)) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                String jsonString = gson.toJson(User.serializeAll());
 
-            out.write(utf8JsonString);
-            out.flush();
+                byte[] utf8JsonString = jsonString.getBytes(StandardCharsets.UTF_8);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                out.write(utf8JsonString);
+                out.flush();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public static void getFile() {

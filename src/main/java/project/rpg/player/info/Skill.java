@@ -1,63 +1,46 @@
 package project.rpg.player.info;
 
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 import project.rpg.skill.base.SkillBase;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class Skill {
+public class Skill implements ConfigurationSerializable {
 
-    private static final Map< Player, Skill> _skills = new HashMap<>();
+    private final Map<String, SkillBase> _skillMap = new HashMap<>();
+    private final Player _player;//스킬 사용시 필요
 
-    private final Map<String, SkillBase> _skillMap = new HashMap<>();  //스킬이 하나 말고 여러개이기 때문   위에 uu id는 나중에
-    private final Player _player;
-
-    public static void addSkill(Player player, SkillBase skill){  //스킬 추가하기 static  addPlayer 동합
-        Map<String, SkillBase> skills = _skills.get(player).getSkillMap();
-        if (_skills.containsKey(player)) {
-            skills.put(skill._name, skill);
-        } else {
-            if (skill!=null) {
-                skills = new HashMap<>();
-                skills.put(skill._name, skill);
-            }
-        }
+    public void addSkill(SkillBase skill){ //스킬 추가하기
+        _skillMap.put(Objects.requireNonNull(skill)._name, skill);
     }
 
-    public void addSkill(SkillBase skillBase) {  //스킬 추가하기 not static
-        addSkill(_player,skillBase);
-    }
 
-    public static void removePlayer(Player player){  //플레이어 삭제
-        _skills.remove(player);
-    }
-
-    public static List<SkillBase> getSkillList(Player player){ //전체 스킬 목록 가져오기
-        Skill skills = _skills.get(player);
-
-        return (List<SkillBase>) skills.getSkillMap().values();
+    public List<SkillBase> getSkillList(){ //전체 스킬 목록 가져오기
+        return new ArrayList<>(_skillMap.values());
     }
 
     public Map<String, SkillBase> getSkillMap(){
         return _skillMap;
     }
 
-    public static SkillBase getSkill(Player player,String skillName){ //특정 스킬 가져오기
-        Map<String, SkillBase> skills = Skill._skills.get(player).getSkillMap();
-        if (skills.containsKey(skillName)) {
-            return skills.get(skillName);
-        }
-        return null;
-    }
-
-    public SkillBase getSkill(String skillName) {
-        return getSkill(_player,skillName);
+    public SkillBase getSkill(String skillName) { //특정 스킬 가져오기
+        return _skillMap.get(skillName);
     }
 
     public Skill(Player player) {
-        _skills.put(player, this);
         _player = player;
     }
+
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        return new HashMap<>();//구현 예정
+    }
+
+    public void executeSkill(Event event, String skillName){
+        //구현 예정
+    }
+
 }

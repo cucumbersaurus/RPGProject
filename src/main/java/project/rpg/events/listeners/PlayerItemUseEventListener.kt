@@ -12,7 +12,6 @@ import project.rpg.items.ItemType
 import project.rpg.items.base.WeaponBase
 import project.rpg.manager.ItemManager
 import project.rpg.player.User
-import project.rpg.player.info.Skill
 import project.rpg.skill.SkillType
 import project.rpg.skill.base.MagicSkillBase
 import project.rpg.skill.base.SkillBase
@@ -46,7 +45,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
     }
 
     private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:Material):Boolean{
-        val skill:SkillBase? = Skill.getSkill(player, skillType.skillName)
+        val skill = User.getPlayer(player).skill.getSkill(skillType.skillName)
         if(skill != null && skill is MagicSkillBase){
             if(usedItem.type == skillItem){        event.isCancelled=true
                 event.isCancelled=true
@@ -65,7 +64,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
     }
 
     private fun useSkill(player: Player, skillType:SkillType, event: PlayerInteractEvent, usedItem: ItemStack, skillItem:ItemStack, mana:Int):Boolean {
-        val skill:SkillBase? = Skill.getSkill(player, skillType.skillName)
+        val skill = User.getPlayer(player).skill.getSkill(skillType.skillName)
         if(ItemManager.isEquals(usedItem, skillItem) && skill != null){
             event.isCancelled=true
             if(User.getPlayer(player).mana.useMana(mana)){

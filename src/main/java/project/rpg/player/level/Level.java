@@ -4,11 +4,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import project.rpg.player.User;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static project.rpg.player.User._playerMap;
 
 public class Level implements ConfigurationSerializable {  //레벨
 
@@ -26,8 +25,8 @@ public class Level implements ConfigurationSerializable {  //레벨
 
     public void levelUp() {   //레벨업!
         this._exp = this._exp - getNeedForNextLev();
-        _playerMap.get(_player.getUniqueId()).getStatus().addAdditionalStatusPoint(5);
-        _playerMap.get(_player.getUniqueId()).getMana().reloadMaxMana();
+        User.getPlayer(_player).getStatus().addAdditionalStatusPoint(5);
+        User.getPlayer(_player).getMana().reloadMaxMana();
         _level++;
         _player.sendMessage(ChatColor.YELLOW + "Level Up!");
     }
