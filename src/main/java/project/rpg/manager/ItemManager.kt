@@ -6,15 +6,18 @@ import project.rpg.items.Items
 import project.rpg.items.thing.ManaRefillPotion
 import project.rpg.items.thing.Wand
 import project.rpg.items.base.ItemBase
+import project.rpg.items.thing.TheMeteor
 
 object ItemManager {
     //private val itemMap: MutableMap<Items, ItemBase> = EnumMap(Items::class.java)
     private val wand: ItemBase = Wand
     private val manaRefillPotion: ItemBase = ManaRefillPotion
+    private val meteor: TheMeteor = TheMeteor
 
     fun makeItems() {
         wand.createItem()
         manaRefillPotion.createItem()
+        meteor.createItem()
 
         //itemMap[Items.WAND] = wand
         //itemMap[Items.MANA_REFILLING_POTION] = manaRefillPotion

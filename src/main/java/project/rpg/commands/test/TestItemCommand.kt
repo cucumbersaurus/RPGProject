@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import project.rpg.items.thing.ManaRefillPotion
+import project.rpg.items.thing.TheMeteor
 import project.rpg.items.thing.Wand
 
 class TestItemCommand : CommandExecutor {
@@ -14,6 +15,8 @@ class TestItemCommand : CommandExecutor {
                 sender.inventory.addItem(Wand.item!!.clone())
             } else if (args[0] == "mana_refilling_potion") {
                 sender.inventory.addItem(ManaRefillPotion.item!!.clone())
+            } else if (args[0] == "meteor") {
+                sender.inventory.addItem(TheMeteor.item!!.clone())
             }
         }
         return false

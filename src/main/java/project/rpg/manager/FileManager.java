@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Objects;
 
-public class FileManager {
+public final class FileManager {
 
     private static final String FILE_PATH = System.getProperty("user.dir") + "/plugins/rpg/playerDs.json";
     private static final File _playerDs = new File(FILE_PATH);

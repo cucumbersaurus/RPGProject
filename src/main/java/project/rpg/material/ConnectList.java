@@ -57,6 +57,7 @@ public class ConnectList<T> {
         return false;
     }
 
+    @Deprecated
     public boolean containL(T a) {
         if (first != null) {
             Node tmp = this.first;
@@ -71,6 +72,7 @@ public class ConnectList<T> {
         return false;
     }
 
+    @Deprecated
     public boolean containR(T b) {
         if (first != null) {
             Node tmp = this.first;
