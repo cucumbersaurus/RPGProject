@@ -33,8 +33,8 @@ object ItemManager {
 
     @JvmStatic
     fun getType(value: Int): ItemType? {
-        for (type in ItemType.values()) {
-            if (type.value==value) return type
+        for (item in Items.values()) {
+            if (item.value==value) return item.type
         }
         return null
     }
