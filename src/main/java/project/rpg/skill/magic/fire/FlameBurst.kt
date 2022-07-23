@@ -2,7 +2,7 @@ package project.rpg.skill.magic.fire
 
 import org.bukkit.entity.Player
 import project.rpg.skill.SkillType
-import project.rpg.skill.base.MagicSkillBase
+import project.rpg.skill.magic.MagicSkillBase
 
 class FlameBurst(player: Player?) : MagicSkillBase() {
     override fun onEnable() {

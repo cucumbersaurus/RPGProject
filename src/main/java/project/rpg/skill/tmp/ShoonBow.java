@@ -6,7 +6,7 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import project.rpg.skill.SkillType;
-import project.rpg.skill.base.MagicSkillBase;
+import project.rpg.skill.magic.MagicSkillBase;
 
 public class ShoonBow extends MagicSkillBase {
     @Override

@@ -10,10 +10,10 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.util.Vector;
-import project.rpg.material.ListQueue;
+import project.rpg.dataStructures.ListQueue;
 import project.rpg.player.User;
 import project.rpg.skill.SkillType;
-import project.rpg.skill.base.MagicSkillBase;
+import project.rpg.skill.magic.MagicSkillBase;
 
 import static net.kyori.adventure.text.Component.text;
 

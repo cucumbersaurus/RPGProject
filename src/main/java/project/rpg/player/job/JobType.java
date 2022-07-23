@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Jobs implements ConfigurationSerializable {
+public enum JobType implements ConfigurationSerializable {
 
     JOBLESS("백수","무직",0),
 
@@ -59,7 +59,7 @@ public enum Jobs implements ConfigurationSerializable {
         return _id;
     }
 
-    Jobs(String name, String description, int id){
+    JobType(String name, String description, int id){
         this._name = name;
         this._description = description;
         this._id = id;
@@ -86,74 +86,74 @@ public enum Jobs implements ConfigurationSerializable {
             case 3:
                 return new MagicSwordsMan(player);
             case 4:
-                //return Jobs.MAGE_KNIGHT;
+                //return JobType.MAGE_KNIGHT;
                 return null;
             case 5:
-                //return Jobs.KNIGHT;
+                //return JobType.KNIGHT;
                 return null;
             case 6:
-                //return Jobs.HOLY_KNIGHT;
+                //return JobType.HOLY_KNIGHT;
                 return null;
             case 7:
-                //return Jobs.KNIGHT_MASTER;
+                //return JobType.KNIGHT_MASTER;
                 return null;
             case 8:
-                //return Jobs.SWORD_EXPERT;
+                //return JobType.SWORD_EXPERT;
                 return null;
             case 9:
-                //return Jobs.SWORD_MASTER;
+                //return JobType.SWORD_MASTER;
                 return null;
             case 10:
                 return new Warrior(player);
             case 11:
-                //return Jobs.BERSERK;
+                //return JobType.BERSERK;
                 return null;
             case 12:
-                //return Jobs.TANKER;
+                //return JobType.TANKER;
                 return null;
             case 13:
-                //return Jobs.SLAYER;
+                //return JobType.SLAYER;
                 return null;
             case 14:
-                //return Jobs.SPEAR_FIGHTER;
+                //return JobType.SPEAR_FIGHTER;
                 return null;
             case 15:
-                //return Jobs.SPEAR_THROWER;
+                //return JobType.SPEAR_THROWER;
                 return null;
             case 16:
-                //return Jobs.LANCER;
+                //return JobType.LANCER;
                 return null;
             case 17:
-                //return Jobs.FIGHTER;
+                //return JobType.FIGHTER;
                 return null;
             case 18:
-                //return Jobs.COMBATANT;
+                //return JobType.COMBATANT;
                 return null;
             case 19:
                 return new Thief(player);
             case 20:
-                //return Jobs.ASSASSIN;
+                //return JobType.ASSASSIN;
                 return null;
             case 21:
-                //return Jobs.GHOST;
+                //return JobType.GHOST;
                 return null;
             case 22:
-                //return Jobs.DANCER;
+                //return JobType.DANCER;
                 return null;
             case 23:
-                //return Jobs.PIRATE;
+                //return JobType.PIRATE;
                 return null;
             case 24:
-                //return Jobs.CAPTAIN;
+                //return JobType.CAPTAIN;
                 return null;
             case 25:
-                //return Jobs.TRACKER;
+                //return JobType.TRACKER;
                 return null;
             case 26:
-                //return Jobs.SHADOW;
+                //return JobType.SHADOW;
                 return null;
             case 27:
-                //return Jobs.STALKER;
+                //return JobType.STALKER;
                 return null;
             case 100:
                 return new Wizard(player);

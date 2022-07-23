@@ -7,7 +7,7 @@ import org.bukkit.entity.Player
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.skill.SkillType
-import project.rpg.skill.base.MagicSkillBase
+import project.rpg.skill.magic.MagicSkillBase
 
 class MeteorStrike(player: Player?) : MagicSkillBase() {
     override fun onEnable() {

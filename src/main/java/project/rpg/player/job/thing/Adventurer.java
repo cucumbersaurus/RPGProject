@@ -2,7 +2,7 @@ package project.rpg.player.job.thing;
 
 import org.bukkit.entity.Player;
 import project.rpg.player.job.JobBase;
-import project.rpg.player.job.Jobs;
+import project.rpg.player.job.JobType;
 
 public class Adventurer extends JobBase {
 
@@ -13,9 +13,9 @@ public class Adventurer extends JobBase {
 
     @Override
     public void setNextJobs() {
-        this._nextJobs.add(Jobs.SWORDSMAN);
-        this._nextJobs.add(Jobs.WARRIOR);
-        this._nextJobs.add(Jobs.THIEF);
+        this._nextJobs.add(JobType.SWORDSMAN);
+        this._nextJobs.add(JobType.WARRIOR);
+        this._nextJobs.add(JobType.THIEF);
         //궁수
         //이류무사 dlc
     }
@@ -26,7 +26,7 @@ public class Adventurer extends JobBase {
     }
 
     public Adventurer(Player player) {
-        super(Jobs.ADVENTURER,  player);
+        super(JobType.ADVENTURER, player);
     }
 
 }

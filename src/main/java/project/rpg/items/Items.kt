@@ -2,9 +2,9 @@ package project.rpg.items
 
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.base.ItemBase
-import project.rpg.items.thing.ManaRefillPotion
-import project.rpg.items.thing.TheMeteor
-import project.rpg.items.thing.Wand
+import project.rpg.items.objects.ManaRefillPotion
+import project.rpg.items.objects.TheMeteor
+import project.rpg.items.objects.Wand
 
 enum class Items(val value: Int, val _item: ItemBase?, val type:ItemType) {
     NULL(0, null,ItemType.NULL),

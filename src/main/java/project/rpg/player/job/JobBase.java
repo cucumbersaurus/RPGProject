@@ -15,8 +15,8 @@ public abstract class JobBase implements ConfigurationSerializable {
     protected String _description;
     protected int _id;
 
-    private final Jobs _jobType;
-    protected List<Jobs> _nextJobs = new ArrayList<>();
+    private final JobType _jobType;
+    protected List<JobType> _nextJobs = new ArrayList<>();
     protected Map<Pose, SkillBase> _jobSkills = new EnumMap<>(Pose.class);
 
     protected final Player _player;
@@ -33,7 +33,7 @@ public abstract class JobBase implements ConfigurationSerializable {
         return _name;
     }
 
-    public Jobs getJobType(){
+    public JobType getJobType(){
         return _jobType;
     }
 
@@ -45,7 +45,7 @@ public abstract class JobBase implements ConfigurationSerializable {
         return _id;
     }
 
-    public List<Jobs> getNextJob() {
+    public List<JobType> getNextJob() {
         return _nextJobs;
     }
 
@@ -53,11 +53,11 @@ public abstract class JobBase implements ConfigurationSerializable {
         return _jobSkills;
     }
 
-    public void setNextJobs(List<Jobs> nextJobs) {
+    public void setNextJobs(List<JobType> nextJobs) {
         _nextJobs = nextJobs;
     }
 
-    protected JobBase(Jobs job, Player player) {
+    protected JobBase(JobType job, Player player) {
         _jobType = job;
         _name = job.getName();
         _description = job.getDescription();
@@ -78,7 +78,7 @@ public abstract class JobBase implements ConfigurationSerializable {
         map.put("id", _id);
 
         Map<String, Object> nextJobsMap = new HashMap<>();
-        for(Jobs i:_nextJobs){
+        for(JobType i:_nextJobs){
             nextJobsMap.put("job", i.serialize());
         }
         map.put("nextJobs", nextJobsMap);
@@ -96,12 +96,12 @@ public abstract class JobBase implements ConfigurationSerializable {
     //Todo: 아직 완성되지 않음
     public static JobBase deserialize(@NotNull Map<String, String> map){
         //리턴할 객체 생성
-        JobBase jobBase = Jobs.getJob(Integer.parseInt(map.get("id")), Bukkit.getPlayer(map.get("player")));
+        JobBase jobBase = JobType.getJob(Integer.parseInt(map.get("id")), Bukkit.getPlayer(map.get("player")));
 
         //nextJobs deserialize
-        List<Jobs> nextJobs = new ArrayList<>();
+        List<JobType> nextJobs = new ArrayList<>();
         for(int i=0;i<110;i++){
-            JobBase job = Jobs.getJob(i, jobBase.getPlayer());
+            JobBase job = JobType.getJob(i, jobBase.getPlayer());
             if(job!=null&&Integer.parseInt(map.get("id"))==i){
                 nextJobs.add(job.getJobType());
             }

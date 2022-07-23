@@ -2,7 +2,7 @@ package project.rpg.player.job.thing;
 
 import org.bukkit.entity.Player;
 import project.rpg.player.job.JobBase;
-import project.rpg.player.job.Jobs;
+import project.rpg.player.job.JobType;
 
 public class Wizard extends JobBase {
 
@@ -22,7 +22,7 @@ public class Wizard extends JobBase {
     }
 
     public Wizard(Player player) {
-        super(Jobs.WIZARD,  player);
+        super(JobType.WIZARD, player);
     }
 
 }

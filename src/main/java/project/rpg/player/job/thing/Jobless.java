@@ -2,7 +2,7 @@ package project.rpg.player.job.thing;
 
 import org.bukkit.entity.Player;
 import project.rpg.player.job.JobBase;
-import project.rpg.player.job.Jobs;
+import project.rpg.player.job.JobType;
 
 public class Jobless extends JobBase {
 
@@ -13,8 +13,8 @@ public class Jobless extends JobBase {
 
     @Override
     public void setNextJobs() {
-        this._nextJobs.add(Jobs.WARRIOR);
-        this._nextJobs.add(Jobs.WIZARD);
+        this._nextJobs.add(JobType.WARRIOR);
+        this._nextJobs.add(JobType.WIZARD);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class Jobless extends JobBase {
     }
 
     public Jobless(Player player) {
-        super(Jobs.JOBLESS, player);
+        super(JobType.JOBLESS, player);
     }
 
 }

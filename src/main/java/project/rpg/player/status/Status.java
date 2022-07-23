@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.player.status.base.StatusBase;
 import project.rpg.player.status.base.StatusName;
-import project.rpg.player.status.thing.*;
+import project.rpg.player.status.objects.*;
 
 import java.util.EnumMap;
 import java.util.HashMap;

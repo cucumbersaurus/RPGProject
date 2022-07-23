@@ -1,4 +1,4 @@
-package project.rpg.player.status.thing;
+package project.rpg.player.status.objects;
 
 import org.bukkit.entity.Player;
 import project.rpg.player.User;

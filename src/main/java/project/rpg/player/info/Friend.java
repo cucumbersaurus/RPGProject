@@ -3,8 +3,8 @@ package project.rpg.player.info;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import project.rpg.material.ConnectList;
-import project.rpg.material.Direction;
+import project.rpg.dataStructures.ConnectList;
+import project.rpg.dataStructures.Direction;
 
 public class Friend {
 

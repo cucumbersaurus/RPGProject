@@ -2,7 +2,7 @@ package project.rpg.player.job.thing;
 
 import org.bukkit.entity.Player;
 import project.rpg.player.job.JobBase;
-import project.rpg.player.job.Jobs;
+import project.rpg.player.job.JobType;
 
 public class SwordsMan extends JobBase { //이름 바꿀예정
 
@@ -22,7 +22,7 @@ public class SwordsMan extends JobBase { //이름 바꿀예정
     }
 
     public SwordsMan(Player player) {
-        super(Jobs.SWORDSMAN, player);
+        super(JobType.SWORDSMAN, player);
     }
 
 }

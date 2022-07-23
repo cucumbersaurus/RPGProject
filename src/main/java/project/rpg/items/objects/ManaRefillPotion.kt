@@ -1,4 +1,4 @@
-package project.rpg.items.thing
+package project.rpg.items.objects
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
@@ -13,7 +13,6 @@ import project.rpg.items.Items
 import project.rpg.items.base.PotionBase
 import project.rpg.player.User
 import project.rpg.player.mana.Mana
-import java.util.*
 
 object ManaRefillPotion : PotionBase() {
     override fun createItem() {

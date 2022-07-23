@@ -1,4 +1,4 @@
-package project.rpg.material;
+package project.rpg.dataStructures;
 
 public class ListQueue<T> {
 

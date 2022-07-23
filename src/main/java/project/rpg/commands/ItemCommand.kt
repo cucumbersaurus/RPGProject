@@ -1,14 +1,14 @@
-package project.rpg.commands.test
+package project.rpg.commands
 
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
-import project.rpg.items.thing.ManaRefillPotion
-import project.rpg.items.thing.TheMeteor
-import project.rpg.items.thing.Wand
+import project.rpg.items.objects.ManaRefillPotion
+import project.rpg.items.objects.TheMeteor
+import project.rpg.items.objects.Wand
 
-class TestItemCommand : CommandExecutor {
+class ItemCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (sender is Player && args.isNotEmpty()) {
             if (args[0] == "wand") {

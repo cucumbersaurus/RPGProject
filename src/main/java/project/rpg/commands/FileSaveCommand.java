@@ -1,4 +1,4 @@
-package project.rpg.commands.test;
+package project.rpg.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.manager.FileManager;
 
-public class FileSaveTestCommand implements CommandExecutor {
+public class FileSaveCommand implements CommandExecutor {
 
 
     @Override

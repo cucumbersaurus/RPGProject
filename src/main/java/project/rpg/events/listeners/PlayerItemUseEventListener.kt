@@ -13,8 +13,8 @@ import project.rpg.items.base.WeaponBase
 import project.rpg.manager.ItemManager
 import project.rpg.player.User
 import project.rpg.skill.SkillType
-import project.rpg.skill.base.MagicSkillBase
 import project.rpg.skill.base.SkillBase
+import project.rpg.skill.magic.MagicSkillBase
 
 class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
 

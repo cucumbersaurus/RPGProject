@@ -10,16 +10,7 @@ class CustomCraftingUI(player: Player) : GuiBase(player, 54, text("아이템 제
     override fun init(player: Player) {
         for(i in 0..53){
             when(i){
-                10 -> continue
-                11 -> continue
-                12 -> continue
-                19 -> continue
-                20 -> continue
-                21 -> continue
-                28  -> continue
-                29 -> continue
-                30 -> continue
-                24 -> continue
+                10, 11, 12, 19, 20, 21, 28, 29, 30, 24 -> continue
             }
             setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, "background", false)
         }

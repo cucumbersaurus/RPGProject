@@ -3,8 +3,6 @@ package project.rpg
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
-import project.rpg.commands.test.FileSaveTestCommand
-import project.rpg.commands.test.TestItemCommand
 import project.rpg.commands.test.TitleTestCommand
 import project.rpg.events.listeners.*
 import project.rpg.manager.FileManager
@@ -48,10 +46,10 @@ class Rpg : JavaPlugin() {
 
     private fun registerCommands(){
         getCommand("quests")!!.setExecutor(QuestToggleCommand())
-        getCommand("savef")!!.setExecutor(FileSaveTestCommand())
+        getCommand("saveFile")!!.setExecutor(FileSaveCommand())
         getCommand("status")!!.setExecutor(StatusCommand())
         getCommand("titleTest")!!.setExecutor(TitleTestCommand())
-        getCommand("testItem")!!.setExecutor(TestItemCommand())
+        getCommand("item")!!.setExecutor(ItemCommand())
         getCommand("skill")!!.setExecutor(SkillCommand())
         getCommand("menu")!!.setExecutor(MainMenuCommand())
         getCommand("level")!!.setExecutor(LevelCommand())

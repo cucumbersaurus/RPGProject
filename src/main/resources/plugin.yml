@@ -13,14 +13,14 @@ libraries:
 commands:
   quests:
     description: /quests true 또는 /quests false 로 메뉴 표시
-  savef:
+  saveFile:
     description: /save status
   status:
     description: status 커멘드
     usage: "Usage: /<command> [info/add]"
   user:
   titleTest:
-  testItem:
+  item:
   skill:
     description: skill 커멘드
     usage: "Usage: /<command> add [스킬이름]"
