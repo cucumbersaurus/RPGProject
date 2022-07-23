@@ -1,8 +1,11 @@
 package project.rpg.player.job;
 
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import project.rpg.player.job.thing.*;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,6 +55,10 @@ public enum Jobs implements ConfigurationSerializable {
         return _description;
     }
 
+    public int getId() {
+        return _id;
+    }
+
     Jobs(String name, String description, int id){
         this._name = name;
         this._description = description;
@@ -66,5 +73,93 @@ public enum Jobs implements ConfigurationSerializable {
         map.put("id", _id);
 
         return map;
+    }
+
+    public static @Nullable JobBase getJob(int id, Player player){
+        switch(id){
+            case 0:
+                return new Jobless(player);
+            case 1:
+                return new Adventurer(player);
+            case 2:
+                return new SwordsMan(player);
+            case 3:
+                return new MagicSwordsMan(player);
+            case 4:
+                //return Jobs.MAGE_KNIGHT;
+                return null;
+            case 5:
+                //return Jobs.KNIGHT;
+                return null;
+            case 6:
+                //return Jobs.HOLY_KNIGHT;
+                return null;
+            case 7:
+                //return Jobs.KNIGHT_MASTER;
+                return null;
+            case 8:
+                //return Jobs.SWORD_EXPERT;
+                return null;
+            case 9:
+                //return Jobs.SWORD_MASTER;
+                return null;
+            case 10:
+                return new Warrior(player);
+            case 11:
+                //return Jobs.BERSERK;
+                return null;
+            case 12:
+                //return Jobs.TANKER;
+                return null;
+            case 13:
+                //return Jobs.SLAYER;
+                return null;
+            case 14:
+                //return Jobs.SPEAR_FIGHTER;
+                return null;
+            case 15:
+                //return Jobs.SPEAR_THROWER;
+                return null;
+            case 16:
+                //return Jobs.LANCER;
+                return null;
+            case 17:
+                //return Jobs.FIGHTER;
+                return null;
+            case 18:
+                //return Jobs.COMBATANT;
+                return null;
+            case 19:
+                return new Thief(player);
+            case 20:
+                //return Jobs.ASSASSIN;
+                return null;
+            case 21:
+                //return Jobs.GHOST;
+                return null;
+            case 22:
+                //return Jobs.DANCER;
+                return null;
+            case 23:
+                //return Jobs.PIRATE;
+                return null;
+            case 24:
+                //return Jobs.CAPTAIN;
+                return null;
+            case 25:
+                //return Jobs.TRACKER;
+                return null;
+            case 26:
+                //return Jobs.SHADOW;
+                return null;
+            case 27:
+                //return Jobs.STALKER;
+                return null;
+            case 100:
+                return new Wizard(player);
+            default:
+                return null;
+                //throw new IllegalStateException("Unexpected Job value: " + id);
+        }
     }
 }

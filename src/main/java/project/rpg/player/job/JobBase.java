@@ -1,5 +1,6 @@
 package project.rpg.player.job;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Pose;
@@ -12,6 +13,9 @@ public abstract class JobBase implements ConfigurationSerializable {
 
     protected String _name;
     protected String _description;
+    protected int _id;
+
+    private final Jobs _jobType;
     protected List<Jobs> _nextJobs = new ArrayList<>();
     protected Map<Pose, SkillBase> _jobSkills = new EnumMap<>(Pose.class);
 
@@ -21,12 +25,24 @@ public abstract class JobBase implements ConfigurationSerializable {
     public abstract void setNextJobs();
     public abstract void setJobSkills();
 
+    public Player getPlayer() {
+        return _player;
+    }
+
     public String getName() {
         return _name;
     }
 
+    public Jobs getJobType(){
+        return _jobType;
+    }
+
     public String getDescription() {
         return _description;
+    }
+
+    public int getId(){
+        return _id;
     }
 
     public List<Jobs> getNextJob() {
@@ -37,14 +53,20 @@ public abstract class JobBase implements ConfigurationSerializable {
         return _jobSkills;
     }
 
-    protected JobBase(String name, String description, Player player) {
-        this._name = name;
-        this._description = description;
-        this._player = player;
+    public void setNextJobs(List<Jobs> nextJobs) {
+        _nextJobs = nextJobs;
+    }
 
-        this.setNextJobs();
-        this.setJobSkills();
-        this.reload();
+    protected JobBase(Jobs job, Player player) {
+        _jobType = job;
+        _name = job.getName();
+        _description = job.getDescription();
+        _id = job.getId();
+        _player = player;
+
+        setNextJobs();
+        setJobSkills();
+        reload();
     }
 
     @Override
@@ -53,15 +75,40 @@ public abstract class JobBase implements ConfigurationSerializable {
         map.put("player", _player.getName());
         map.put("name", _name);
         map.put("description", _description);
+        map.put("id", _id);
 
         Map<String, Object> nextJobsMap = new HashMap<>();
         for(Jobs i:_nextJobs){
-            nextJobsMap.put("name", i.serialize());
+            nextJobsMap.put("job", i.serialize());
         }
-        map.put("jobs", nextJobsMap);
-        map.put("jobSkills", _jobSkills);
+        map.put("nextJobs", nextJobsMap);
 
+        /*
+        Map<String, Object>jobSkillsMap = new HashMap<>();
+        for(Map.Entry<Pose, SkillBase>entry : _jobSkills.entrySet()){
+            jobSkillsMap.put(entry.getKey().name(), entry.getValue().serialize());
+        }
+        map.put("jobSkills", _jobSkills);
+        */
+        //구현 포기 사유 :  Pose 가 적절하지 않은것 같음, skill 이 아직 user 와 완전히 통합되지 않음
         return map;
+    }
+    //Todo: 아직 완성되지 않음
+    public static JobBase deserialize(@NotNull Map<String, String> map){
+        //리턴할 객체 생성
+        JobBase jobBase = Jobs.getJob(Integer.parseInt(map.get("id")), Bukkit.getPlayer(map.get("player")));
+
+        //nextJobs deserialize
+        List<Jobs> nextJobs = new ArrayList<>();
+        for(int i=0;i<110;i++){
+            JobBase job = Jobs.getJob(i, jobBase.getPlayer());
+            if(job!=null&&Integer.parseInt(map.get("id"))==i){
+                nextJobs.add(job.getJobType());
+            }
+        }
+        jobBase.setNextJobs(nextJobs);
+
+        return jobBase;
     }
 
 }

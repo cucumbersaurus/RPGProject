@@ -23,7 +23,7 @@ public class Jobless extends JobBase {
     }
 
     public Jobless(Player player) {
-        super(Jobs.JOBLESS.getName(),Jobs.JOBLESS.getDescription(),player);
+        super(Jobs.JOBLESS, player);
     }
 
 }

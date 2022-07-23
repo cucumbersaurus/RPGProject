@@ -1,5 +1,6 @@
 package project.rpg.player.level;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
@@ -43,8 +44,16 @@ public class Level implements ConfigurationSerializable {  //레벨
         return _level;
     }
 
+    public void setLevel(long level) {
+        _level = level;
+    }
+
     public long getExp() {
         return _exp;
+    }
+
+    public void setExp(long exp){
+        _exp = exp;
     }
 
     public Level(Player player) {
@@ -59,4 +68,12 @@ public class Level implements ConfigurationSerializable {  //레벨
         map.put("exp", _exp);
         return map;
     }
+
+    public static Level deserialize(Map<String, String> map) {
+        Level level = new Level(Bukkit.getPlayer(map.get("player")));
+        level.setLevel(Long.parseLong(map.get("level")));
+        level.setExp(Long.parseLong(map.get("exp")));
+        return level;
+    }
+
 }

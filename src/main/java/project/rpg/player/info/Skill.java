@@ -39,6 +39,10 @@ public class Skill implements ConfigurationSerializable {
         return new HashMap<>();//구현 예정
     }
 
+    public static Skill deserialize(@NotNull Map<String, String> map){
+        return null;//구현 예정
+    }
+
     public void executeSkill(Event event, String skillName){
         //구현 예정
     }

@@ -45,7 +45,11 @@ public class Mana implements ConfigurationSerializable {  //마나
     }
 
     public void setMaxMana(int amount) {
-        this._maxMana = amount;
+        _maxMana = amount;
+    }
+
+    public void setMana(int amount) {
+        _mana = amount;
     }
 
     public int getMana() {
@@ -68,5 +72,12 @@ public class Mana implements ConfigurationSerializable {  //마나
         map.put("mana", _mana);
         map.put("maxMana", _maxMana);
         return map;
+    }
+
+    public static Mana deserialize(Map<String, String> map, Status status) {
+        Mana mana = new Mana(status);
+        mana.setMaxMana(Integer.parseInt(map.get("maxMana")));
+        mana.setMana(Integer.parseInt(map.get("mana")));
+        return mana;
     }
 }

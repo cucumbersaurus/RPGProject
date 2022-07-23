@@ -1,10 +1,13 @@
 package project.rpg.ui.inventory
 
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.SkullMeta
 import project.rpg.player.User
 import project.rpg.player.status.Status
 import project.rpg.player.status.base.StatusName
@@ -108,28 +111,9 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             true
         )
         setItem(
-            Component.text("정보 info"), ArrayList(
-                listOf(
-                    Component.text("================"),
-                    Component.text(_user!!.name.name),
-                    Component.text(_user!!.level.level.toString() + ".lv"),
-                    Component.text(_user!!.level.exp.toString() + " / " + _user!!.level.needForNextLev),
-                    Component.text(" "),
-                    Component.text(" "),
-                    Component.text("hp : " + _status!!.getStatusValues(StatusName.HEALTH)),
-                    Component.text("strength : " + _status!!.getStatusValues(StatusName.STRENGTH)),
-                    Component.text("agility : " + _status!!.getStatusValues(StatusName.AGILITY)),
-                    Component.text("defense : " + _status!!.getStatusValues(StatusName.DEFENSE)),
-                    Component.text("speed : " + _status!!.getStatusValues(StatusName.SPEED)),
-                    Component.text("luck : " + _status!!.getStatusValues(StatusName.LUCK)),
-                    Component.text("intelligence : " + _status!!.getStatusValues(StatusName.INTELLIGENCE)),
-                    Component.text("handicraft : " + _status!!.getStatusValues(StatusName.HANDICRAFT)),
-                    Component.text(" "),
-                    Component.text("more : " + _status!!.additionalStatusPoint),
-                    Component.text("================")
-                )
-            ), Material.PLAYER_HEAD,
-            1, 31, "stats.info", false
+            getPlayerHead(player),
+            31,
+            "stats.info"
         )
         setItem(
             Component.text("현재 페이지/새로고침"),
@@ -197,5 +181,36 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
         _player!!.playSound(_player!!.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
         _user!!.status.reloadMap()
         init(_player!!)
+    }
+
+    private fun getPlayerHead(player: Player): ItemStack {
+        val playerHead = ItemStack(Material.PLAYER_HEAD)
+        val meta = playerHead.itemMeta as SkullMeta
+        meta.owningPlayer = player
+        meta.displayName(Component.text("정보 info").color(TextColor.color(0xffff55)))
+        meta.lore(
+            listOf(
+                Component.text("================"),
+                Component.text(_user!!.name.name),
+                Component.text(_user!!.level.level.toString() + ".lv"),
+                Component.text(_user!!.level.exp.toString() + " / " + _user!!.level.needForNextLev),
+                Component.text(" "),
+                Component.text(" "),
+                Component.text("hp : " + _status!!.getStatusValues(StatusName.HEALTH)),
+                Component.text("strength : " + _status!!.getStatusValues(StatusName.STRENGTH)),
+                Component.text("agility : " + _status!!.getStatusValues(StatusName.AGILITY)),
+                Component.text("defense : " + _status!!.getStatusValues(StatusName.DEFENSE)),
+                Component.text("speed : " + _status!!.getStatusValues(StatusName.SPEED)),
+                Component.text("luck : " + _status!!.getStatusValues(StatusName.LUCK)),
+                Component.text("intelligence : " + _status!!.getStatusValues(StatusName.INTELLIGENCE)),
+                Component.text("handicraft : " + _status!!.getStatusValues(StatusName.HANDICRAFT)),
+                Component.text(" "),
+                Component.text("more : " + _status!!.additionalStatusPoint),
+                Component.text("================")
+
+            ) as List<Component>?
+        )
+        playerHead.itemMeta = meta
+        return playerHead
     }
 }

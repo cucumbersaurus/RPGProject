@@ -11,9 +11,11 @@ public class FileSaveTestCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        FileManager.makeFile();
-        FileManager.saveFile();
-        FileManager.getFile();
+        //FileManager.makeFile();
+        //FileManager.saveFile();
+        FileManager.makeDir();
+        FileManager.asyncSaveAll();
+        //FileManager.getFile();
 
         return false;
     }

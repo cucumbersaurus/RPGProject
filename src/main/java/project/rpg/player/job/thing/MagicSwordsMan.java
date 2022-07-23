@@ -22,7 +22,7 @@ public class MagicSwordsMan extends JobBase {
     }
 
     public MagicSwordsMan(Player player) {
-        super(Jobs.MAGIC_SWORDSMAN.getName(),Jobs.MAGIC_SWORDSMAN.getDescription(), player);
+        super(Jobs.MAGIC_SWORDSMAN, player);
     }
 
 }

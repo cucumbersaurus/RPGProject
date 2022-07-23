@@ -22,7 +22,7 @@ public class Wizard extends JobBase {
     }
 
     public Wizard(Player player) {
-        super(Jobs.WIZARD.getName(), Jobs.WIZARD.getDescription(), player);
+        super(Jobs.WIZARD,  player);
     }
 
 }

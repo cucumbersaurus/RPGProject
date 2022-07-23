@@ -26,7 +26,7 @@ public class Adventurer extends JobBase {
     }
 
     public Adventurer(Player player) {
-        super(Jobs.ADVENTURER.getName(),Jobs.ADVENTURER.getDescription(), player);
+        super(Jobs.ADVENTURER,  player);
     }
 
 }

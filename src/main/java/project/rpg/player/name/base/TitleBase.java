@@ -1,7 +1,15 @@
 package project.rpg.player.name.base;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import project.rpg.player.name.title.HOGU;
+import project.rpg.player.name.title.MvpPP;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class TitleBase implements ConfigurationSerializable {  //칭호 베이스
 
@@ -28,4 +36,32 @@ public abstract class TitleBase implements ConfigurationSerializable {  //칭호
         this._description = description;
         this._acquisitionConditions = condition;
     }
+
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("player", _player);
+        map.put("name", _name);
+        map.put("description", _description);
+        map.put("acquisitionConditions", _acquisitionConditions);
+        return map;
+    }
+
+    public static @Nullable TitleBase deserialize(@NotNull Map<String, String> map) {
+        TitleBase titleBase =null;
+        Player player = Bukkit.getPlayer(map.get("player"));
+        String typt = map.get("name");
+        switch (typt) {
+            case "[MVP++]":
+                titleBase = new MvpPP(player);
+                break;
+            case "HOGU":
+                titleBase = new HOGU(player);
+                break;
+            default:
+                break;
+        }
+        return titleBase;
+    }
+
 }

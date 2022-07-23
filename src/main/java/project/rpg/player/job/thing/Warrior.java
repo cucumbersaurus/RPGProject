@@ -22,7 +22,7 @@ public class Warrior extends JobBase {
     }
 
     public Warrior(Player player) {
-        super(Jobs.WARRIOR.getName(),Jobs.WARRIOR.getDescription(), player);
+        super(Jobs.WARRIOR, player);
     }
 
 }

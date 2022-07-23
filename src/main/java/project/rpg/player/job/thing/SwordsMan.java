@@ -22,7 +22,7 @@ public class SwordsMan extends JobBase { //이름 바꿀예정
     }
 
     public SwordsMan(Player player) {
-        super(Jobs.SWORDSMAN.getName(),Jobs.SWORDSMAN.getDescription(), player);
+        super(Jobs.SWORDSMAN, player);
     }
 
 }

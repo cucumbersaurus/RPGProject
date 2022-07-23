@@ -1,11 +1,9 @@
 package project.rpg
 
-import io.github.monun.kommand.kommand
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
 import project.rpg.commands.test.FileSaveTestCommand
-import project.rpg.commands.test.TestCommand
 import project.rpg.commands.test.TestItemCommand
 import project.rpg.commands.test.TitleTestCommand
 import project.rpg.events.listeners.*
@@ -43,6 +41,8 @@ class Rpg : JavaPlugin() {
 
     override fun onDisable() {
         saveObjects()
+        logger.info("saving files...")
+        //Thread.sleep(1000)
         logger.info("RPG plugin disabled")
     }
 
@@ -80,13 +80,16 @@ class Rpg : JavaPlugin() {
     }
 
     private fun loadObjects() {
-        FileManager.makeFile()
-        FileManager.getFile()
+        FileManager.makeDir()
+        //FileManager.makeFile()
+        //FileManager.getFile()
     }
 
     private fun saveObjects() {
-        FileManager.makeFile()
-        FileManager.saveFile()
+        //FileManager.makeFile()
+        //FileManager.saveFile()
+        FileManager.makeDir()
+        FileManager.syncedSaveAll()
     }
 
     private fun checkOnlinePlayers() {

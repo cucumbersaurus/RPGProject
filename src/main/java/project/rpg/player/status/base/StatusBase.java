@@ -40,6 +40,10 @@ public abstract class StatusBase implements ConfigurationSerializable {  //ìŠ¤í…
         return _value;
     }
 
+    public void setValue(int value) {
+        _value = value;
+    }
+
     protected StatusBase(StatusName status) {
         this._value = 10;
         this._name = status.getStatus();

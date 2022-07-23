@@ -22,7 +22,7 @@ public class Thief extends JobBase {
     }
 
     public Thief(Player player) {
-        super(Jobs.THIEF.getName(),Jobs.THIEF.getDescription(), player);
+        super(Jobs.THIEF, player);
     }
 
 }
