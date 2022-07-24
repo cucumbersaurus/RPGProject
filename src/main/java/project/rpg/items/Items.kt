@@ -6,11 +6,11 @@ import project.rpg.items.objects.ManaRefillPotion
 import project.rpg.items.objects.TheMeteor
 import project.rpg.items.objects.Wand
 
-enum class Items(val value: Int, val _item: ItemBase?, val type:ItemType) {
-    NULL(0, null,ItemType.NULL),
-    WAND(1, Wand,ItemType.WEAPON),
-    MANA_REFILLING_POTION(2, ManaRefillPotion,ItemType.POTION),
-    THE_METEOR(3, TheMeteor,ItemType.WEAPON),;
+enum class Items(val value: Int, val _item: ItemBase?, val type:ItemType, val _name : String) {
+    NULL(0, null,ItemType.NULL,"null"),
+    WAND(1, Wand,ItemType.WEAPON,"wand"),
+    MANA_REFILLING_POTION(2, ManaRefillPotion,ItemType.POTION,"mana_refilling_potion"),
+    THE_METEOR(3, TheMeteor,ItemType.WEAPON,"meteor"),;
 
     val item: ItemStack?
         get() = _item!!.item
