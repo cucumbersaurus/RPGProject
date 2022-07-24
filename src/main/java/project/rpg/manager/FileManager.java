@@ -60,6 +60,9 @@ public final class FileManager {
         return false;
     }
 
+    /**
+     * @deprecated Use {@link #asyncSaveFile(Player player)}
+     */
     @Deprecated
     public static void asyncSaveFile() {
         Rpg plugin = (Rpg) Bukkit.getPluginManager().getPlugin("Rpg");

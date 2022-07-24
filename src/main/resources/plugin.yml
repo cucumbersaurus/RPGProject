@@ -13,22 +13,27 @@ libraries:
 commands:
   quests:
     description: /quests true 또는 /quests false 로 메뉴 표시
+    aliases: [퀘스트, 볃ㄴㅅㄴ]
   saveFile:
-    description: /save status
+    description: /save
   status:
     description: status 커멘드
     usage: "Usage: /<command> [info/add]"
   user:
   titleTest:
   item:
+    aliases : [아이템, ㅑㅅ드]
   skill:
     description: skill 커멘드
     usage: "Usage: /<command> add [스킬이름]"
-    aliases: s
+    aliases: [스킬, 나ㅑㅣㅣ]
   menu:
+    aliases: [메뉴, ㅡ두ㅕ]
   craft:
+    aliases: [제작, ㅊㄱㅁㄽ]
   level:
+    aliases: [레벨, ㅣㄷㅍ디]
   friend:
     description: friend 커멘드
     usage: "Usage: /<command> [add/accept] [사람이름]"
-    aliases: f
+    aliases: [frn, 친구, ㄹ갸둥]

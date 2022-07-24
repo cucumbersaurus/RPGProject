@@ -6,10 +6,8 @@ import project.rpg.commands.*
 import project.rpg.commands.test.TitleTestCommand
 import project.rpg.events.listeners.*
 import project.rpg.manager.FileManager
-import project.rpg.manager.ItemManager
 import project.rpg.player.PlayerInformation
 import project.rpg.player.mana.Mana
-import project.rpg.skill.SkillDic
 import project.rpg.ui.ActionBarUI
 
 class Rpg : JavaPlugin() {
@@ -18,10 +16,8 @@ class Rpg : JavaPlugin() {
     val actionBar = ActionBarUI(this)
 
     override fun onLoad(){
-        loadObjects()
-        ItemManager.makeItems()
-
-        SkillDic.addAll()
+        loadData()
+        Initializer.initializeAll()
     }
 
     override fun onEnable() {
@@ -38,7 +34,7 @@ class Rpg : JavaPlugin() {
     }
 
     override fun onDisable() {
-        saveObjects()
+        saveData()
         logger.info("saving files...")
         //Thread.sleep(1000)
         logger.info("RPG plugin disabled")
@@ -77,13 +73,13 @@ class Rpg : JavaPlugin() {
         server.pluginManager.registerEvents(PlayerPotionDrinkEventListener(this), this)
     }
 
-    private fun loadObjects() {
+    private fun loadData() {
         FileManager.makeDir()
         //FileManager.makeFile()
         //FileManager.getFile()
     }
 
-    private fun saveObjects() {
+    private fun saveData() {
         //FileManager.makeFile()
         //FileManager.saveFile()
         FileManager.makeDir()
