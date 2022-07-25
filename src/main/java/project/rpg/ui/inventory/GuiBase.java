@@ -50,7 +50,7 @@ public abstract class GuiBase {
      * @param event 인벤토리 클릭 이벤트
      *              이벤트 발생시 특정 아이템에 대한 기능 실행 구현(필수 아님)
      */
-    public abstract void onClick(InventoryClickEvent event);
+    public abstract void onClick(@NotNull InventoryClickEvent event);
 
     /**
      * @param name 아이템의 표기 이름 (Component)

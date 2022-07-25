@@ -18,7 +18,7 @@ public class User implements ConfigurationSerializable {  //사람
 
     protected static final Map<UUID, User> _playerMap = new HashMap<>();  //이 해쉬맵 하나로 모든 데이터 관리!!
 
-    private Player _player;
+    private final Player _player;
 
     private Name _name;
     private Status _status;
