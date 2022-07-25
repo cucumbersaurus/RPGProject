@@ -60,6 +60,7 @@ class Rpg : JavaPlugin() {
         getCommand("quests")!!.tabCompleter = QuestToggleCommand()
         getCommand("skill")!!.tabCompleter = SkillCommand()
         getCommand("status")!!.tabCompleter = StatusCommand()
+        getCommand("friend")!!.tabCompleter = FriendCommand()
     }
 
     private fun registerEvents() {

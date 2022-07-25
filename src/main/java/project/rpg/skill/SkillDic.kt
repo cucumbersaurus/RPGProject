@@ -9,8 +9,7 @@ import project.rpg.skill.tmp.TpArrow
 
 object SkillDic {
     //이거 SkillCommand 에서 switch 문 말고 if로 단순화 할려고
-    private val skillList = ArrayList<String>() //전체 스킬 이름 리스트
-
+    val skillList = ArrayList<String>() //전체 스킬 이름 리스트
     fun makeSkill(player: Player?, skillName: String): SkillBase? {
         return when (skillName) {
             SkillType.METEOR_STRIKE.skillName -> {

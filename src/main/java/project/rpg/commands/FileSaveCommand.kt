@@ -1,22 +1,17 @@
-package project.rpg.commands;
+package project.rpg.commands
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.jetbrains.annotations.NotNull;
-import project.rpg.manager.FileManager;
+import org.bukkit.command.Command
+import org.bukkit.command.CommandExecutor
+import org.bukkit.command.CommandSender
+import project.rpg.manager.FileManager
 
-public class FileSaveCommand implements CommandExecutor {
-
-
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+class FileSaveCommand : CommandExecutor {
+    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         //FileManager.makeFile();
         //FileManager.saveFile();
-        FileManager.makeDir();
-        FileManager.asyncSaveAll();
+        FileManager.makeDir()
+        FileManager.asyncSaveAll()
         //FileManager.getFile();
-
-        return false;
+        return false
     }
 }

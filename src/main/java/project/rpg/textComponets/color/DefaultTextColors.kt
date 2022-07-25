@@ -21,10 +21,9 @@ enum class DefaultTextColors(originalColor: TextColor) {
     YELLOW(TextColor.color(0xffff55)),
     WHITE(TextColor.color(0xffffff));
 
-    var color: TextColor
+    val color: TextColor;
     
     init{
         color = originalColor
     }
-
 }

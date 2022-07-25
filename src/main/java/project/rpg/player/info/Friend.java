@@ -1,10 +1,16 @@
 package project.rpg.player.info;
 
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.event.HoverEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import project.rpg.dataStructures.ConnectList;
 import project.rpg.dataStructures.Direction;
+import project.rpg.textComponets.color.DefaultTextColors;
+
+import static net.kyori.adventure.text.Component.text;
 
 public class Friend {
 
@@ -16,7 +22,7 @@ public class Friend {
 
     public static boolean addFriend(Player sender, Player invitee) {
         if (sender.equals(invitee)) {
-            sender.sendMessage(ChatColor.RED + "그건 당신입니다.");
+            sender.sendMessage(ChatColor.RED + "나 자신은 영원한 인생의 친구입니다.");
             return false;
         }
 
@@ -24,11 +30,22 @@ public class Friend {
             if (Bukkit.getOnlinePlayers().contains(invitee)) {
                 _friends.add(sender, invitee, Direction.LTR);
                 if (_friends.isConnected(sender, invitee)) {
-                    sender.sendMessage(ChatColor.BLUE + sender.getName() + "에게 온 친구 요청을 받았습니다");
-                    invitee.sendMessage(ChatColor.BLUE + invitee.getName() + "(이)가 친구 요청을 받았습니다");
+                    sender.sendMessage(text("에게 온 친구 요청을 받았습니다").color(DefaultTextColors.BLUE.getColor()));
+                    invitee.sendMessage(text("(이)가 친구 요청을 받았습니다").color(DefaultTextColors.BLUE.getColor()));
                 } else {
                     sender.sendMessage(ChatColor.BLUE + invitee.getName() + "에게 친구 요청을 보냈습니다");
                     invitee.sendMessage(ChatColor.BLUE + sender.getName() + "(이)가 친구 요청을 보냈습니다");
+
+                    TextComponent.Builder hoverText = text();
+                    hoverText.append(text("눌러서 친구 요청 받기"));
+
+                    TextComponent.Builder message = text();
+                    message.append(
+                            text("(이)가 친구 요청을 보냈습니다")
+                                    .color(DefaultTextColors.BLUE.getColor())
+                                    .hoverEvent(HoverEvent.showText(hoverText.build()))
+                                    .clickEvent(ClickEvent.runCommand("/friend accept " + sender.getName())));
+                    invitee.sendMessage(text().build());
                 }
                 return true;
             } else {
@@ -38,7 +55,7 @@ public class Friend {
         }
 
         if (_friends.isConnected(sender, invitee)) {
-            sender.sendMessage(ChatColor.RED + "이미 " + invitee.getName() + "와 친구입니다");
+            sender.sendMessage(ChatColor.RED + "이미 " + invitee.getName() + "(와)과 친구입니다");
             return false;
         } else {
             if (_friends.getDirect(sender, invitee) == Direction.LTR) {
