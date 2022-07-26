@@ -1,7 +1,6 @@
 package project.rpg.items.objects
 
 import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.format.TextColor
 import org.bukkit.*
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -45,7 +44,6 @@ object TpSword: WeaponBase() {
     private fun itemLore():List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("희한하게 생긴 검이다"))
-        lore.add(Component.text("순보!!"))
         return lore
     }
 }

@@ -71,7 +71,7 @@ class Rpg : JavaPlugin() {
         server.pluginManager.registerEvents(PlayerJoinEventListener(), this)
         server.pluginManager.registerEvents(PlayerQuitEventListener(), this)
         server.pluginManager.registerEvents(RespawnEventListener(this), this)
-        server.pluginManager.registerEvents(PlayerPotionDrinkEventListener(this), this)
+        server.pluginManager.registerEvents(PlayerItemConsumeEventListener(this), this)
     }
 
     private fun loadData() {

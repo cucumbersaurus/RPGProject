@@ -4,21 +4,15 @@ import org.bukkit.inventory.ItemStack
 import project.rpg.items.ItemType
 import project.rpg.items.Items
 import project.rpg.items.base.ItemBase
-import project.rpg.items.objects.ManaRefillPotion
-import project.rpg.items.objects.TheMeteor
-import project.rpg.items.objects.Wand
+import project.rpg.items.objects.*
 
 object ItemManager {
     //private val itemMap: MutableMap<Items, ItemBase> = EnumMap(Items::class.java)
-    private val wand: ItemBase = Wand
-    private val manaRefillPotion: ItemBase = ManaRefillPotion
-    private val meteor: TheMeteor = TheMeteor
 
     fun makeItems() {
-        wand.createItem()
-        manaRefillPotion.createItem()
-        meteor.createItem()
-
+        for (item in Items.values()) {
+            item._item?.createItem()
+        }
         //itemMap[Items.WAND] = wand
         //itemMap[Items.MANA_REFILLING_POTION] = manaRefillPotion
     }

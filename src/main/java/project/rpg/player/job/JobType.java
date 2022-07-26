@@ -76,6 +76,13 @@ public enum JobType implements ConfigurationSerializable {
     }
 
     public static @Nullable JobBase getJob(int id, Player player){
+        for (JobType job : JobType.values()) {
+            if (job._id==id) {
+                //return
+            }
+        }
+        //return
+
         switch(id){
             case 0:
                 return new Jobless(player);
