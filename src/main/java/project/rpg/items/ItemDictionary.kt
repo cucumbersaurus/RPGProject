@@ -9,14 +9,12 @@ object ItemDictionary {
 
     fun initialize(){
         for(i in Items.values()){
-            itemDictionary[i.name] = i._item;
+            itemDictionary[i._name] = i._item;
         }
     }
 
     fun getNewItem(itemName: String): ItemStack? {
         return itemDictionary[itemName]?.item?.clone()
     }
-
-
 
 }

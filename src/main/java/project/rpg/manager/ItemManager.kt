@@ -34,6 +34,16 @@ object ItemManager {
     }
 
     @JvmStatic
+    fun getName(value: Int) : String?{
+        for (item in Items.values()) {
+            if (item.value == value) {
+                return item._name
+            }
+        }
+        return null
+    }
+
+    @JvmStatic
     fun isEquals(item1: ItemStack, item2: ItemStack): Boolean {
         val meta1 = item1.itemMeta
         val meta2 = item2.itemMeta

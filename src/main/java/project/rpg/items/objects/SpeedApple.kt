@@ -15,8 +15,8 @@ object SpeedApple : FoodBase() {
         val item = ItemStack(Material.APPLE)
         val meta = item.itemMeta
 
-        meta.displayName(Component.text("속도 사과").color(DefaultTextColors.AQUA.color))
-        meta.lore(SpeedApple.itemLore())
+        meta.displayName(Component.text("속력 사과").color(DefaultTextColors.AQUA.color))
+        meta.lore(itemLore())
         meta.setCustomModelData(Items.SPEED_APPLE.value)
 
         item.itemMeta = meta
@@ -25,7 +25,7 @@ object SpeedApple : FoodBase() {
 
     override fun onConsume(event: PlayerItemConsumeEvent?, hunger:Int, saturation:Int) {
         val player = event!!.player
-        player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 30, 3, true,true,true))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 30*20, 2, true,true,true))
         super.onConsume(event,hunger,saturation)
     }
 

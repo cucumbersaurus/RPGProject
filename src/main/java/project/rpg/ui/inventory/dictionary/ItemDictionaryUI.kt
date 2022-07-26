@@ -3,9 +3,12 @@ package project.rpg.ui.inventory.dictionary
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Material
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
+import project.rpg.items.ItemDictionary
 import project.rpg.items.Items
+import project.rpg.manager.ItemManager
 import project.rpg.textComponets.color.DefaultTextColors
 import project.rpg.ui.inventory.GuiBase
 
@@ -29,7 +32,11 @@ class ItemDictionaryUI(player: Player) : GuiBase(player, 54, text("아이템 도
         when (getValue(event.slot)) {
             Button.BACKGROUND.name ->{}
             Button.ITEM.name ->{
-
+                //player.inventory.addItem(ItemDictionary.getNewItem(ItemManager.getName(event.slot-10)!!)!!)
+                //일단은 event.slot - 10 로 했고 고민중
+                ItemManager.getName(event.slot - 10)
+                    ?.let { s -> ItemDictionary.getNewItem(s)?.let { player.inventory.addItem(it) } }
+                player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
             }
             Button.CLOSE.name ->{
                 forceCloseGUI(player)
