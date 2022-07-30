@@ -1,7 +1,6 @@
 package project.rpg.items
 
 import org.bukkit.inventory.ItemStack
-import project.rpg.items.base.ItemBase
 
 object ItemDictionary {
 
@@ -9,7 +8,7 @@ object ItemDictionary {
 
     fun initialize(){
         for(i in Items.values()){
-            itemDictionary[i._name] = i._item;
+            itemDictionary[i._name] = i.itemBase
         }
     }
 

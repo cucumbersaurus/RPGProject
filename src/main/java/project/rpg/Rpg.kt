@@ -45,7 +45,7 @@ class Rpg : JavaPlugin() {
         getCommand("saveFile")!!.setExecutor(FileSaveCommand())
         getCommand("status")!!.setExecutor(StatusCommand())
         getCommand("titleTest")!!.setExecutor(TitleTestCommand())
-        getCommand("item")!!.setExecutor(ItemCommand())
+        getCommand("getItem")!!.setExecutor(ItemCommand())
         getCommand("skill")!!.setExecutor(SkillCommand())
         getCommand("menu")!!.setExecutor(MainMenuCommand())
         getCommand("level")!!.setExecutor(LevelCommand())
@@ -91,6 +91,7 @@ class Rpg : JavaPlugin() {
         Bukkit.getScheduler().scheduleSyncDelayedTask(this, {
             for (player in Bukkit.getOnlinePlayers()) {
                 PlayerInformation.makeInfo(player)
+                //FileManager.getFile(player)
             }
             logger.info("RPG plugin loading completed")
         }, 10)

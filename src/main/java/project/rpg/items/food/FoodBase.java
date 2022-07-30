@@ -1,7 +1,8 @@
-package project.rpg.items.base;
+package project.rpg.items.food;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
+import project.rpg.items.ItemBase;
 
 public abstract class FoodBase extends ItemBase {
 

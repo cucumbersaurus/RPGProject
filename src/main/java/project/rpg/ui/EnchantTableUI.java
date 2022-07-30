@@ -20,7 +20,7 @@ public class EnchantTableUI extends GuiBase {
     }
 
     @Override
-    public void onClick(InventoryClickEvent event) {
+    public void onClick(@NotNull InventoryClickEvent event) {
 
     }
 }

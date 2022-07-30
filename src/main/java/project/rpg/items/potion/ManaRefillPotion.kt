@@ -1,4 +1,4 @@
-package project.rpg.items.objects.potion
+package project.rpg.items.potion
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
@@ -10,7 +10,6 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.PotionMeta
 import project.rpg.Rpg
 import project.rpg.items.Items
-import project.rpg.items.base.PotionBase
 import project.rpg.player.User
 import project.rpg.player.mana.Mana
 

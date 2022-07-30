@@ -80,7 +80,7 @@ public abstract class GuiBase {
      * @param slot 아이템을 보여줄 위치
      * @param value 아이템을 클릭했을때의 식별자 (onClick() 에서 분기문 작성시 식별자)
      */
-    protected void setItem(ItemStack item, int slot, String value){
+    protected void setItem(ItemStack item, int slot, @NotNull String value){
         _slotMap.put(slot, value);
         _inventory.setItem(slot, item);
     }
@@ -110,7 +110,7 @@ public abstract class GuiBase {
     /**
      * @param player 강제로 닫을 인벤토리를 보고 있는 플레이어
      */
-    public void forceCloseGUI(Player player){//강제로 닫기
+    public void forceCloseGUI(@NotNull Player player){//강제로 닫기
         player.closeInventory();
         _slotMap = null;
         guiMap_.remove((player));

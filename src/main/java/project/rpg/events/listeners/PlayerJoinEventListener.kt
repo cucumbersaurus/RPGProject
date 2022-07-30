@@ -1,11 +1,11 @@
 package project.rpg.events.listeners
 
 import net.kyori.adventure.text.Component.text
-import net.kyori.adventure.text.format.TextColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
 import project.rpg.player.PlayerInformation
+import project.rpg.textComponets.color.TextColors
 
 class PlayerJoinEventListener : Listener {
     @EventHandler
@@ -13,9 +13,12 @@ class PlayerJoinEventListener : Listener {
         val player = event.player
         PlayerInformation.makeInfo(player)
         event.joinMessage(
-            text("앗 야생의 ").color(TextColor.color(0x55ff55))
-                .append(text(player.name).color(TextColor.color(0xffff55)))
-                .append(text("(이)가 들어왔다!")).color(TextColor.color(0x55ff55))
+            text("앗 야생의 ").color(TextColors.GREEN_YELLOW.color)
+                .append(text("『").color(TextColors.MEDIUM_TURQUOISE.color))
+                .append(text(player.name).color(TextColors.ORANGE.color))
+                .append(text("』").color(TextColors.MEDIUM_TURQUOISE.color))
+                .append(text("(이)가 들어왔다!").color(TextColors.GREEN_YELLOW.color))
         )
+        //FileManager.getFile(player)
     }
 }

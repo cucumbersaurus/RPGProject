@@ -6,9 +6,7 @@ import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
-import project.rpg.items.ItemDictionary
 import project.rpg.items.Items
-import project.rpg.manager.ItemManager
 import project.rpg.textComponets.color.DefaultTextColors
 import project.rpg.ui.inventory.GuiBase
 
@@ -18,9 +16,9 @@ class ItemDictionaryUI(player: Player) : GuiBase(player, 54, text("아이템 도
         setItem(text("닫기"), null, Material.BARRIER, 1, 49, Button.CLOSE.name, false)
 
         for(i in Items.values()){
-            val slot = 9*((i.value/7)+1)+i.value%7+1
+            val slot = 9*(i.value/7)+i.value%7+10
             if(i.value==0){
-                setItem(text("NULL").color(TextColor.color(DefaultTextColors.RED.color)), null, Material.BARRIER, 1, slot, Button.CLOSE.name, false)
+                setItem(text("NULL").color(TextColor.color(DefaultTextColors.RED.color)), null, Material.BARRIER, 1, slot, Button.ITEM.name, false)
             }
             else setItem(i.item?.clone(), slot, Button.ITEM.name)
         }
@@ -32,10 +30,7 @@ class ItemDictionaryUI(player: Player) : GuiBase(player, 54, text("아이템 도
         when (getValue(event.slot)) {
             Button.BACKGROUND.name ->{}
             Button.ITEM.name ->{
-                //player.inventory.addItem(ItemDictionary.getNewItem(ItemManager.getName(event.slot-10)!!)!!)
-                //(i-8)-2*(i//9)
-                ItemManager.getName((event.slot - 8)-2*(event.slot/9))
-                    ?.let { s -> ItemDictionary.getNewItem(s)?.let { player.inventory.addItem(it) } }
+                player.inventory.addItem(Items.values()[slotToItem(event.slot)].item!!)
                 player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
             }
             Button.CLOSE.name ->{
@@ -61,6 +56,10 @@ class ItemDictionaryUI(player: Player) : GuiBase(player, 54, text("아이템 도
             setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, Button.BACKGROUND.name, false)
 
         }
+    }
+
+    private fun slotToItem(slot: Int):Int{
+        return (slot-8)-2*(slot/9)
     }
 
     private enum class Button {

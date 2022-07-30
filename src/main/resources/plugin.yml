@@ -21,7 +21,7 @@ commands:
     usage: "Usage: /<command> [info/add]"
   user:
   titleTest:
-  item:
+  getItem:
     aliases : [아이템, ㅑㅅ드]
   skill:
     description: skill 커멘드

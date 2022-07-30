@@ -1,6 +1,5 @@
-package project.rpg.items.base
+package project.rpg.items
 
-import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 abstract class ItemBase {

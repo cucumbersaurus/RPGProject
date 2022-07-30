@@ -5,8 +5,8 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import project.rpg.Rpg
 import project.rpg.items.ItemType
-import project.rpg.items.base.FoodBase
-import project.rpg.items.base.PotionBase
+import project.rpg.items.food.FoodBase
+import project.rpg.items.potion.PotionBase
 import project.rpg.manager.ItemManager.getItem
 import project.rpg.manager.ItemManager.getType
 import project.rpg.player.User

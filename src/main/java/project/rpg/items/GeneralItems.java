@@ -1,4 +1,4 @@
-package project.rpg.items.base;
+package project.rpg.items;
 
 public abstract class GeneralItems extends ItemBase {
 

@@ -24,7 +24,7 @@ public class EnforceMenu extends GuiBase{
     }
 
     @Override
-    public void onClick(InventoryClickEvent event) {
+    public void onClick(@NotNull InventoryClickEvent event) {
         event.setCancelled(true);
         String value = getValue(event.getSlot());
         switch (value) {

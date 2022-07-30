@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import project.rpg.Rpg
 import project.rpg.items.ItemType
-import project.rpg.items.base.WeaponBase
+import project.rpg.items.weapon.WeaponBase
 import project.rpg.manager.ItemManager
 import project.rpg.player.User
 import project.rpg.skill.SkillType
@@ -31,7 +31,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
                 val item = ItemManager.getItem(event.item!!.itemMeta.customModelData)
                 if (event.action.isRightClick && item!=null && ItemManager.getType(event.item!!.itemMeta.customModelData)==ItemType.WEAPON) {
                     if (item is WeaponBase) {
-                        item.onEnable(player)
+                        item.onEnable(event.action, player)
                         plugin.actionBar.updateActionBar()
                         event.isCancelled = true
                     }

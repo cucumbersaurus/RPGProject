@@ -172,7 +172,7 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
                 reloadUi()
             }
             "stats.reload" -> reloadUi()
-            "stats.close" -> forceCloseGUI(_player)
+            "stats.close" -> forceCloseGUI(_player!!)
             else -> {}
         }
     }

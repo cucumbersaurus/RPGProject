@@ -1,4 +1,4 @@
-package project.rpg.items.objects.weapon
+package project.rpg.items.weapon
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
@@ -9,12 +9,12 @@ import org.bukkit.Particle
 import org.bukkit.Sound
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
 import project.rpg.items.Items
-import project.rpg.items.base.WeaponBase
 
 object TheMeteor: WeaponBase() {
     override fun createItem() {
@@ -30,7 +30,7 @@ object TheMeteor: WeaponBase() {
     }
 
     @skill(name = "meteor")
-    override fun onEnable(player: Player?) {
+    override fun onEnable(action: Action, player: Player?) {
         for (entity in player!!.getNearbyEntities(7.0, 7.0, 7.0)) {
             if (entity is Player && entity.gameMode==GameMode.CREATIVE) {
                 continue

@@ -1,15 +1,14 @@
 package project.rpg.ui.inventory
 
-import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
-import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
+import project.rpg.textComponets.color.DefaultTextColors
 
-class MainMenu(player: Player) : GuiBase(player, 54, Component.text("메인 메뉴")) {
+class MainMenu(player: Player) : GuiBase(player, 54, text("메인 메뉴")) {
     override fun init(player: Player) {
         for (i in 0..53) {
             setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, Button.BACKGROUND.name, false)
@@ -29,7 +28,7 @@ class MainMenu(player: Player) : GuiBase(player, 54, Component.text("메인 메�
         val playerHead = ItemStack(Material.PLAYER_HEAD)
         val meta = playerHead.itemMeta as SkullMeta
         meta.owningPlayer = player
-        meta.displayName(Component.text("내 프로필").color(TextColor.color(0xffff55)))
+        meta.displayName(text("내 프로필").color(DefaultTextColors.YELLOW.color))
         playerHead.itemMeta = meta
         return playerHead
     }
@@ -57,7 +56,7 @@ class MainMenu(player: Player) : GuiBase(player, 54, Component.text("메인 메�
         }
     }
 
-    private enum class Button() {
+    private enum class Button {
         BACKGROUND,
         FRIENDS_PARTY,
         QUESTS,

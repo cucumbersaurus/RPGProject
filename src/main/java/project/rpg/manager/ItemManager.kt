@@ -1,31 +1,31 @@
 package project.rpg.manager
 
 import org.bukkit.inventory.ItemStack
+import project.rpg.items.ItemBase
 import project.rpg.items.ItemType
 import project.rpg.items.Items
-import project.rpg.items.base.ItemBase
-import project.rpg.items.objects.*
 
 object ItemManager {
-    //private val itemMap: MutableMap<Items, ItemBase> = EnumMap(Items::class.java)
 
     fun makeItems() {
         for (item in Items.values()) {
-            item._item?.createItem()
+            item.itemBase?.createItem()
         }
         //itemMap[Items.WAND] = wand
         //itemMap[Items.MANA_REFILLING_POTION] = manaRefillPotion
     }
 
     @JvmStatic
+    @Deprecated("시간복잡도가 너무 큼")
     fun getItem(value: Int): ItemBase? {
         for (item in Items.values()) {
-            if (item.value==value) return item._item
+            if (item.value==value) return item.itemBase
         }
         return null
     }
 
     @JvmStatic
+    @Deprecated("시간복잡도가 너무 큼")
     fun getType(value: Int): ItemType? {
         for (item in Items.values()) {
             if (item.value==value) return item.type
@@ -34,6 +34,7 @@ object ItemManager {
     }
 
     @JvmStatic
+    @Deprecated("시간복잡도가 너무 큼")
     fun getName(value: Int) : String?{
         for (item in Items.values()) {
             if (item.value == value) {

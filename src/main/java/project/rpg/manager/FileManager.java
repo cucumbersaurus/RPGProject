@@ -13,18 +13,14 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.MessageFormat;
 import java.util.Map;
 import java.util.Objects;
 
 public final class FileManager {
 
-    @Deprecated
-    private static final String FILE_PATH = System.getProperty("user.dir") + "/plugins/Rpg/playerDs.json";
     private static final String ROOT_PATH = System.getProperty("user.dir") + "\\plugins\\Rpg";
     private static final String ROOT_DATA_PATH = ROOT_PATH + "\\playerData";
-    private static final File _playerDs = new File(FILE_PATH);
 
     public static void makeDir() {
         File rpg = new File(ROOT_PATH);
@@ -59,30 +55,6 @@ public final class FileManager {
         }
         return false;
     }
-
-    /**
-     * @deprecated Use {@link #asyncSaveFile(Player player)}
-     */
-    @Deprecated
-    public static void asyncSaveFile() {
-        Rpg plugin = (Rpg) Bukkit.getPluginManager().getPlugin("Rpg");
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Objects.requireNonNull(plugin), ()->{
-
-            try(FileOutputStream out = new FileOutputStream(_playerDs)) {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                String jsonString = gson.toJson(User.serializeAll());
-
-                byte[] utf8JsonString = jsonString.getBytes(StandardCharsets.UTF_8);
-
-                out.write(utf8JsonString);
-                out.flush();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-    }
-
     public static void asyncSaveFile(Player player) {
         final String PLAYER_FILE_PATH = MessageFormat.format("{0}\\{1}.json", ROOT_DATA_PATH, player.getUniqueId());
         Rpg plugin = (Rpg) Bukkit.getPluginManager().getPlugin("Rpg");
@@ -134,16 +106,14 @@ public final class FileManager {
         }
     }
 
-    @Deprecated
-    public static void getFile() {
-        try(Reader reader = Files.newBufferedReader(Paths.get(_playerDs.getAbsolutePath()))){
+    public static void getFile(Player player) {
+        try(Reader reader = Files.newBufferedReader(new File(MessageFormat.format("{0}\\{1}.json", ROOT_DATA_PATH, player.getUniqueId())).toPath())){
             Gson gson = new Gson();
-            Map<?, ?> map =  gson.fromJson(reader, Map.class);
-            //여기를 어떻게 처리하지?
+            Map<String, String> map =  (Map<String, String>) gson.fromJson(reader , Map.class);
+            User.deserialize(map);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     FileManager() {

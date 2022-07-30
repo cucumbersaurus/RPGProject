@@ -1,4 +1,4 @@
-package project.rpg.items.objects.food
+package project.rpg.items.food
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
@@ -7,7 +7,6 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.items.Items
-import project.rpg.items.base.FoodBase
 import project.rpg.textComponets.color.DefaultTextColors
 
 object SpeedApple : FoodBase() {

@@ -1,17 +1,16 @@
-package project.rpg.items.objects.weapon
+package project.rpg.items.weapon
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
 import org.bukkit.Particle
-import org.bukkit.entity.Arrow
 import org.bukkit.entity.Fireball
 import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.annotation.skill
 import project.rpg.items.Items
-import project.rpg.items.base.WeaponBase
 import project.rpg.player.User
-import project.rpg.textComponets.color.DefaultTextColors
+import project.rpg.textComponets.color.TextColors
 
 object FlameBurst : WeaponBase() {
 
@@ -19,7 +18,7 @@ object FlameBurst : WeaponBase() {
         val item = ItemStack(Material.FIRE_CHARGE)
         val meta = item.itemMeta
 
-        meta.displayName(Component.text("화염 폭발").color(DefaultTextColors.MAROON.color))
+        meta.displayName(Component.text("화염 폭발").color(TextColors.MAROON.color))
         meta.lore(itemLore())
         meta.setCustomModelData(Items.FLAME_BURST.value)
 
@@ -28,7 +27,7 @@ object FlameBurst : WeaponBase() {
     }
 
     @skill(name = "flame_burst")
-    override fun onEnable(player: Player) {
+    override fun onEnable(action: Action, player: Player) {
         val mana = User.getPlayer(player).mana
 
         if (mana.useMana(10)) {

@@ -1,4 +1,4 @@
-package project.rpg.items.objects.weapon
+package project.rpg.items.weapon
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
@@ -6,15 +6,15 @@ import org.bukkit.Particle
 import org.bukkit.Sound
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
 import project.rpg.effect.objects.Burns
 import project.rpg.items.Items
-import project.rpg.items.base.WeaponBase
 import project.rpg.player.User
-import project.rpg.textComponets.color.DefaultTextColors
+import project.rpg.textComponets.color.TextColors
 
 object BlazingMark : WeaponBase() {
 
@@ -22,7 +22,7 @@ object BlazingMark : WeaponBase() {
         val item = ItemStack(Material.BLAZE_ROD)
         val meta = item.itemMeta
 
-        meta.displayName(Component.text("타오르는 표시").color(DefaultTextColors.CRIMSON.color))
+        meta.displayName(Component.text("타오르는 표시").color(TextColors.CRIMSON.color))
         meta.lore(itemLore())
         meta.setCustomModelData(Items.BLAZING_MARK.value)
 
@@ -31,7 +31,7 @@ object BlazingMark : WeaponBase() {
     }
 
     @skill(name = "blazing_mark")
-    override fun onEnable(player: Player) {
+    override fun onEnable(action: Action, player: Player) {
         val mana = User.getPlayer(player).mana
 
         if (mana.useMana(10)) {

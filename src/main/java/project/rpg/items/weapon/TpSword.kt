@@ -1,12 +1,12 @@
-package project.rpg.items.objects.weapon
+package project.rpg.items.weapon
 
 import net.kyori.adventure.text.Component
 import org.bukkit.*
 import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.annotation.skill
 import project.rpg.items.Items
-import project.rpg.items.base.WeaponBase
 import project.rpg.textComponets.color.DefaultTextColors
 
 object TpSword: WeaponBase() {
@@ -24,7 +24,7 @@ object TpSword: WeaponBase() {
     }
 
     @skill(name = "shoon bow")
-    override fun onEnable(player: Player?) {
+    override fun onEnable(action: Action, player: Player?) {
         player!!.world.spawnParticle(Particle.GLOW, player.location, 25, 0.5, 1.0, 0.5, 0.7)
         var location: Location? = null
         for (all in Bukkit.getOnlinePlayers()) {

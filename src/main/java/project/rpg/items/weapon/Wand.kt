@@ -1,4 +1,4 @@
-package project.rpg.items.objects.weapon
+package project.rpg.items.weapon
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
@@ -7,11 +7,11 @@ import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import project.rpg.annotation.skill
 import project.rpg.items.Items
-import project.rpg.items.base.WeaponBase
 import project.rpg.player.User
 
 object Wand : WeaponBase() {
@@ -34,7 +34,7 @@ object Wand : WeaponBase() {
     }
 
     @skill(name="lightning")
-    override fun onEnable(player : Player) {
+    override fun onEnable(action: Action, player : Player) {
         var location = player.location
         val mana = User.getPlayer(player).mana
         if (mana.useMana(10)) {
