@@ -33,8 +33,8 @@ class ItemDictionaryUI(player: Player) : GuiBase(player, 54, text("아이템 도
             Button.BACKGROUND.name ->{}
             Button.ITEM.name ->{
                 //player.inventory.addItem(ItemDictionary.getNewItem(ItemManager.getName(event.slot-10)!!)!!)
-                //일단은 event.slot - 10 로 했고 고민중
-                ItemManager.getName(event.slot - 10)
+                //(i-8)-2*(i//9)
+                ItemManager.getName((event.slot - 8)-2*(event.slot/9))
                     ?.let { s -> ItemDictionary.getNewItem(s)?.let { player.inventory.addItem(it) } }
                 player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
             }

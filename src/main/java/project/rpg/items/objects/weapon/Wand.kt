@@ -1,4 +1,4 @@
-package project.rpg.items.objects
+package project.rpg.items.objects.weapon
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text

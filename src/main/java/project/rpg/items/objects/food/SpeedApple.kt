@@ -1,4 +1,4 @@
-package project.rpg.items.objects
+package project.rpg.items.objects.food
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
