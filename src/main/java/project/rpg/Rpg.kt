@@ -8,7 +8,7 @@ import project.rpg.events.listeners.*
 import project.rpg.manager.FileManager
 import project.rpg.player.PlayerInformation
 import project.rpg.player.mana.Mana
-import project.rpg.ui.ActionBarUI
+import project.rpg.ui.text.ActionBarUI
 
 class Rpg : JavaPlugin() {
 

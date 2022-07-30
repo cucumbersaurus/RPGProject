@@ -1,17 +1,18 @@
-package project.rpg.ui.inventory;
+package project.rpg.ui.inventory.blockInterection;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
+import project.rpg.ui.inventory.GuiBase;
 
 import java.util.Random;
 
 import static net.kyori.adventure.text.Component.text;
 
-public class EnforceMenu extends GuiBase{
+public class EnforceUI extends GuiBase {
 
-    public EnforceMenu(@NotNull Player player){
+    public EnforceUI(@NotNull Player player){
         super(player, 54,  text("메인 메뉴"));
     }
 

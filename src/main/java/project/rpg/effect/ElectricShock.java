@@ -1,11 +1,10 @@
-package project.rpg.effect.objects;
+package project.rpg.effect;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import project.rpg.Rpg;
-import project.rpg.effect.EffectBase;
 
 public class ElectricShock extends EffectBase {
 

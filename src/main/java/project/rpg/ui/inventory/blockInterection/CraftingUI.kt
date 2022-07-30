@@ -1,11 +1,12 @@
-package project.rpg.ui.inventory
+package project.rpg.ui.inventory.blockInterection
 
 import net.kyori.adventure.text.Component.text
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
+import project.rpg.ui.inventory.GuiBase
 
-class CustomCraftingUI(player: Player) : GuiBase(player, 54, text("아이템 제작")) {
+class CraftingUI(player: Player) : GuiBase(player, 54, text("아이템 제작")) {
 
     override fun init(player: Player) {
         for(i in 0..53){

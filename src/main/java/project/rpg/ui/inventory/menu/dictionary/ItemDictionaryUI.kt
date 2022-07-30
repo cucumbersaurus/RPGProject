@@ -1,4 +1,4 @@
-package project.rpg.ui.inventory.dictionary
+package project.rpg.ui.inventory.menu.dictionary
 
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor

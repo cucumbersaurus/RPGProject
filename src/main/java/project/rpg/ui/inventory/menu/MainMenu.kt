@@ -1,4 +1,4 @@
-package project.rpg.ui.inventory
+package project.rpg.ui.inventory.menu
 
 import net.kyori.adventure.text.Component.text
 import org.bukkit.Material
@@ -7,6 +7,7 @@ import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
 import project.rpg.textComponets.color.DefaultTextColors
+import project.rpg.ui.inventory.GuiBase
 
 class MainMenu(player: Player) : GuiBase(player, 54, text("메인 메뉴")) {
     override fun init(player: Player) {

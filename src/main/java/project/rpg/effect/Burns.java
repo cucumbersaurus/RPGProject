@@ -1,7 +1,6 @@
-package project.rpg.effect.objects;
+package project.rpg.effect;
 
 import org.bukkit.entity.LivingEntity;
-import project.rpg.effect.EffectBase;
 
 public class Burns extends EffectBase {
 

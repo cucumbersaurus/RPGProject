@@ -1,4 +1,4 @@
-package project.rpg.ui
+package project.rpg.ui.text
 
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor

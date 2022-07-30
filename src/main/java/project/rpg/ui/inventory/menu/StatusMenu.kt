@@ -1,4 +1,4 @@
-package project.rpg.ui.inventory
+package project.rpg.ui.inventory.menu
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.TextColor
@@ -11,6 +11,7 @@ import org.bukkit.inventory.meta.SkullMeta
 import project.rpg.player.User
 import project.rpg.player.status.Status
 import project.rpg.player.status.base.StatusName
+import project.rpg.ui.inventory.GuiBase
 
 class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 메뉴")) {
     private var _user: User? = null

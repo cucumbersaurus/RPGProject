@@ -3,7 +3,7 @@ package project.rpg.player
 import org.bukkit.entity.Player
 import project.rpg.player.info.Skill
 import project.rpg.player.status.base.StatusName
-import project.rpg.ui.ActionBarUI
+import project.rpg.ui.text.ActionBarUI
 
 object PlayerInformation {
     fun makeInfo(player: Player) {

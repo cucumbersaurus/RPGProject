@@ -1,9 +1,6 @@
-package project.rpg.effect.objects;
+package project.rpg.effect;
 
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import project.rpg.effect.EffectBase;
 
 public class Sacred extends EffectBase {
 

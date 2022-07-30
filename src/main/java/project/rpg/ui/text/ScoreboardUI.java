@@ -1,4 +1,4 @@
-package project.rpg.ui;
+package project.rpg.ui.text;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

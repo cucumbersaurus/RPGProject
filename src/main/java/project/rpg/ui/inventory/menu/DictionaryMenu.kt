@@ -1,10 +1,11 @@
-package project.rpg.ui.inventory
+package project.rpg.ui.inventory.menu
 
 import net.kyori.adventure.text.Component.text
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
-import project.rpg.ui.inventory.dictionary.ItemDictionaryUI
+import project.rpg.ui.inventory.GuiBase
+import project.rpg.ui.inventory.menu.dictionary.ItemDictionaryUI
 
 class DictionaryMenu(player: Player) : GuiBase(player, 54, text("도감")) {
     override fun init(player: Player) {

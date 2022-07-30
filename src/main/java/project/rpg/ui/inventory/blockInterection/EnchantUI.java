@@ -1,4 +1,4 @@
-package project.rpg.ui;
+package project.rpg.ui.inventory.blockInterection;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -7,10 +7,10 @@ import project.rpg.ui.inventory.GuiBase;
 
 import static net.kyori.adventure.text.Component.text;
 
-public class EnchantTableUI extends GuiBase {
+public class EnchantUI extends GuiBase {
 
 
-    protected EnchantTableUI(@NotNull Player p) {
+    protected EnchantUI(@NotNull Player p) {
         super(p, 54, text("마법부여대"));
     }
 

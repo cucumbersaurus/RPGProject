@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
-import project.rpg.effect.objects.Burns
+import project.rpg.effect.Burns
 import project.rpg.items.Items
 import project.rpg.player.User
 import project.rpg.textComponets.color.TextColors

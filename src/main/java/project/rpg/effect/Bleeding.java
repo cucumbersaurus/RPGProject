@@ -1,10 +1,9 @@
-package project.rpg.effect.objects;
+package project.rpg.effect;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
 import project.rpg.Rpg;
-import project.rpg.effect.EffectBase;
 
 public class Bleeding extends EffectBase {
 

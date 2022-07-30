@@ -7,7 +7,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import project.rpg.ui.ScoreboardUI;
+import project.rpg.ui.text.ScoreboardUI;
 
 import java.util.ArrayList;
 import java.util.Arrays;
