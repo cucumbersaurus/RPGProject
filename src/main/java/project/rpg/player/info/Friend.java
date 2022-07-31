@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import project.rpg.dataStructures.ConnectList;
-import project.rpg.dataStructures.Direction;
 import project.rpg.textComponets.color.DefaultTextColors;
 
 import static net.kyori.adventure.text.Component.text;
@@ -28,7 +27,7 @@ public class Friend {
 
         if (!_friends.contain(sender, invitee)) {
             if (Bukkit.getOnlinePlayers().contains(invitee)) {
-                _friends.add(sender, invitee, Direction.LTR);
+                _friends.add(sender, invitee, ConnectList.Direction.LTR);
                 if (_friends.isConnected(sender, invitee)) {
                     sender.sendMessage(text("에게 온 친구 요청을 받았습니다").color(DefaultTextColors.BLUE.getColor()));
                     invitee.sendMessage(text("(이)가 친구 요청을 받았습니다").color(DefaultTextColors.BLUE.getColor()));
@@ -58,8 +57,8 @@ public class Friend {
             sender.sendMessage(ChatColor.RED + "이미 " + invitee.getName() + "(와)과 친구입니다");
             return false;
         } else {
-            if (_friends.getDirect(sender, invitee) == Direction.LTR) {
-                _friends.add(sender,invitee,Direction.C);
+            if (_friends.getDirect(sender, invitee) == ConnectList.Direction.LTR) {
+                _friends.add(sender,invitee,ConnectList.Direction.C);
                 sender.sendMessage(ChatColor.BLUE + invitee.getName() + "에게 온 친구 요청을 받았습니다");
                 invitee.sendMessage(ChatColor.BLUE + sender.getName() + "(이)가 친구 요청을 받았습니다");
                 return true;
@@ -82,7 +81,7 @@ public class Friend {
     public static boolean acceptFriend(Player invitee, Player sender) {
         if (_friends.contain(sender, invitee)) {
             if (!_friends.isConnected(sender,invitee)) {
-                _friends.add(sender,invitee,Direction.C);
+                _friends.add(sender,invitee,ConnectList.Direction.C);
                 invitee.sendMessage(ChatColor.BLUE + sender.getName() + "에게 온 친구 요청을 받았습니다");
                 sender.sendMessage(ChatColor.BLUE + invitee.getName() + "(이)가 친구 요청을 받았습니다");
                 return true;

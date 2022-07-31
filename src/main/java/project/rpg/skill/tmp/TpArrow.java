@@ -10,6 +10,7 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.NotNull;
 import project.rpg.dataStructures.ListQueue;
 import project.rpg.player.User;
 import project.rpg.skill.SkillType;
@@ -21,7 +22,7 @@ public class TpArrow extends MagicSkillBase {
     private final ListQueue<Arrow> thrownArrows = new ListQueue<>();
 
     @Override
-    public void onEnable(Player player, Action action) {
+    public void onEnable(@NotNull Player player, Action action) {
         if(action.isRightClick()){
             onRightClick(player);
         }
@@ -33,9 +34,9 @@ public class TpArrow extends MagicSkillBase {
     private void onRightClick(Player player) {
         if (this._coolTime==0) {
             for(Player all : Bukkit.getOnlinePlayers()){
-                all.playSound(_player.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 0.6f, 2);
+                all.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 0.6f, 2);
             }
-            Vector direction = _player.getLocation().getDirection();
+            Vector direction = player.getLocation().getDirection();
             Arrow arrow = getNextValidArrow();
             if(arrow==null){
                 player.showTitle(Title.title(text(" "), text("소환되어있는 화살이 없습니다!").color(TextColor.color(0xff5555))));
@@ -44,8 +45,8 @@ public class TpArrow extends MagicSkillBase {
             }
             else {
                 arrow.remove();
-                _player.teleport(arrow.getLocation().setDirection(direction));
-                _player.getWorld().spawnParticle(Particle.GLOW, _player.getLocation(), 100, 0.5, 1, 0.5);
+                player.teleport(arrow.getLocation().setDirection(direction));
+                player.getWorld().spawnParticle(Particle.GLOW, player.getLocation(), 100, 0.5, 1, 0.5);
             }
             this._coolTime = this._skillTime;
         }
@@ -63,11 +64,11 @@ public class TpArrow extends MagicSkillBase {
             }
         }
 
-        Arrow arrow = _player.launchProjectile(Arrow.class);
+        Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setKnockbackStrength(3);
         arrow.setGravity(true);
         arrow.setPickupStatus(AbstractArrow.PickupStatus.DISALLOWED);
-        arrow.setVelocity(_player.getLocation().getDirection().multiply(5));
+        arrow.setVelocity(player.getLocation().getDirection().multiply(5));
         thrownArrows.add(arrow);
 
         player.sendMessage(text("남은 화살 수 : ").append(text(thrownArrows.getSize())));
@@ -82,8 +83,7 @@ public class TpArrow extends MagicSkillBase {
         return arrow;
     }
 
-    public TpArrow(Player p){
-        this._player = p;
+    public TpArrow(){
         this._name = SkillType.TP_ARROW.getSkillName();
         this._description = "특수한 술식으로 마킹된 공간으로 술자를 역소환하는 술법";
         this.needMana = 5;

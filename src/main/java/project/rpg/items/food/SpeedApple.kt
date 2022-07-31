@@ -2,7 +2,9 @@ package project.rpg.items.food
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.event.player.PlayerItemConsumeEvent
+import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
@@ -14,9 +16,11 @@ object SpeedApple : FoodBase() {
         val item = ItemStack(Material.APPLE)
         val meta = item.itemMeta
 
-        meta.displayName(Component.text("속력 사과").color(DefaultTextColors.AQUA.color))
+        meta.displayName(Component.text("바람의 사과").color(DefaultTextColors.AQUA.color))
         meta.lore(itemLore())
         meta.setCustomModelData(Items.SPEED_APPLE.value)
+        meta.addEnchant(Enchantment.LURE, 1, true)
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS)
 
         item.itemMeta = meta
         super.item = item

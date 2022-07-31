@@ -13,13 +13,13 @@ object SkillDic {
     fun makeSkill(player: Player?, skillName: String): SkillBase? {
         return when (skillName) {
             SkillType.METEOR_STRIKE.skillName -> {
-                MeteorStrike(player)
+                MeteorStrike()
             }
             SkillType.FLAME_BURST.skillName -> {
-                FlameBurst(player)
+                FlameBurst()
             }
             SkillType.TP_ARROW.skillName -> {
-                TpArrow(player)
+                TpArrow()
             }
             SkillType.SHOONBOW.skillName -> {
                 ShoonBow(player)

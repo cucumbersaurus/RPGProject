@@ -30,8 +30,10 @@ class ItemDictionaryUI(player: Player) : GuiBase(player, 54, text("아이템 도
         when (getValue(event.slot)) {
             Button.BACKGROUND.name ->{}
             Button.ITEM.name ->{
-                player.inventory.addItem(Items.values()[slotToItem(event.slot)].item!!)
-                player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
+                if(player.isOp) {
+                    player.inventory.addItem(Items.values()[slotToItem(event.slot)].item!!)
+                    player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
+                }
             }
             Button.CLOSE.name ->{
                 forceCloseGUI(player)

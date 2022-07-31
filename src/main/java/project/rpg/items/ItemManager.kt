@@ -1,9 +1,6 @@
-package project.rpg.manager
+package project.rpg.items
 
 import org.bukkit.inventory.ItemStack
-import project.rpg.items.ItemBase
-import project.rpg.items.ItemType
-import project.rpg.items.Items
 
 object ItemManager {
 

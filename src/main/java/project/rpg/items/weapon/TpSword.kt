@@ -30,8 +30,7 @@ object TpSword: WeaponBase() {
         for (all in Bukkit.getOnlinePlayers()) {
             all.playSound(player.location, Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 0.6f, 2f)
             if (all != player) {
-                if (location == null || player.location.distance(all.location) < player.location
-                        .distance(location)
+                if (location == null || player.location.distance(all.location) < player.location.distance(location)
                 ) {
                     location = all.location
                 }

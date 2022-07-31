@@ -6,7 +6,7 @@ public class Burns extends EffectBase {
 
     @Override
     public void effect() {
-        this._entity.setFireTicks(this._second);
+        this._entity.setFireTicks(this._second*20);
     }
 
     public Burns(LivingEntity entity, int second) {

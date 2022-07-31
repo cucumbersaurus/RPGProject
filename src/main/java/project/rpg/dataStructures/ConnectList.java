@@ -181,4 +181,8 @@ public class ConnectList<T> {
             this.direction = d;
         }
     }
+
+    public enum Direction {
+        NULL, LTR, RTL, C;
+    }
 }

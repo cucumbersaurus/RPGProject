@@ -5,20 +5,19 @@ import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
-import project.rpg.annotation.skill
 import project.rpg.items.Items
-import project.rpg.player.User
+import project.rpg.skill.electricity.Lightning
 
 object Wand : WeaponBase() {
 
     override fun createItem() {
         val item = ItemStack(Material.STICK, 1)
         val meta = item.itemMeta
+        skill = Lightning()
 
         //display name
         meta.displayName(text("전설의 막대기").color(TextColor.color(0xff55ff)))
@@ -33,16 +32,7 @@ object Wand : WeaponBase() {
         super.item = item
     }
 
-    @skill(name="lightning")
     override fun onEnable(action: Action, player : Player) {
-        var location = player.location
-        val mana = User.getPlayer(player).mana
-        if (mana.useMana(10)) {
-            if (player.getTargetBlock(30) != null) {
-                location = player.getTargetBlock(30)!!.location
-            }
-
-            player.world.spawnEntity(location, EntityType.LIGHTNING)
-        }
+        skill.onEnable(player, action)
     }
 }
