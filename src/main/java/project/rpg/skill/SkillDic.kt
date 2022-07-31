@@ -2,8 +2,7 @@ package project.rpg.skill
 
 import org.bukkit.entity.Player
 import project.rpg.skill.base.SkillBase
-import project.rpg.skill.magic.fire.FlameBurst
-import project.rpg.skill.magic.fire.MeteorStrike
+import project.rpg.skill.magic.fire.*
 import project.rpg.skill.tmp.ShoonBow
 import project.rpg.skill.tmp.TpArrow
 
@@ -24,6 +23,12 @@ object SkillDic {
             SkillType.SHOONBOW.skillName -> {
                 ShoonBow(player)
             }
+            SkillType.EXPLOSION.skillName -> {
+                Explosion()
+            }
+            SkillType.LAVA_ZONE.skillName -> {
+                LavaZone()
+            }
             else -> null
         }
     }
@@ -33,6 +38,8 @@ object SkillDic {
         skillList.add(SkillType.FLAME_BURST.skillName)
         skillList.add(SkillType.TP_ARROW.skillName)
         skillList.add(SkillType.SHOONBOW.skillName)
+        skillList.add(SkillType.EXPLOSION.skillName)
+        skillList.add(SkillType.LAVA_ZONE.skillName)
     }
 
     fun isExist(skillName: String): Boolean {

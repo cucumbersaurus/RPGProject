@@ -5,8 +5,10 @@ public enum SkillType {
     NULL("null"),
     METEOR_STRIKE("meteor_strike"),
     FLAME_BURST("flame_burst"),
+    EXPLOSION("explosion"),
     TP_ARROW("tp_arrow"),
-    SHOONBOW("shoonbow");
+    SHOONBOW("shoonbow"),
+    LAVA_ZONE("lava_zone");
 
     private final String _skillName;
 
