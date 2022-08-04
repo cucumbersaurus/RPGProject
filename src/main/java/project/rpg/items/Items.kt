@@ -4,6 +4,7 @@ import org.bukkit.inventory.ItemStack
 import project.rpg.items.food.SpeedApple
 import project.rpg.items.potion.ManaRefillPotion
 import project.rpg.items.weapon.*
+import project.rpg.items.weapon.magic.*
 
 enum class Items(val value: Int, val itemBase: ItemBase?, val type:ItemType, val _name : String) {
 
@@ -16,8 +17,10 @@ enum class Items(val value: Int, val itemBase: ItemBase?, val type:ItemType, val
     BLAZING_MARK(6, BlazingMark, ItemType.WEAPON,"blazing_mark"),
     FLAME_BURST(7, FlameBurst, ItemType.WEAPON,"flame_burst"),
     TP_ARROW(8, TpArrow, ItemType.WEAPON, "tp_arrow"),
-    EXPLOSION(9,Explosion,ItemType.WEAPON,"explosion"),
-    LAVA_ZONE(10,LavaZone,ItemType.WEAPON,"lava_zone")
+    EXPLOSION(9, Explosion,ItemType.WEAPON,"explosion"),
+    LAVA_ZONE(10, LavaZone,ItemType.WEAPON,"lava_zone"),
+    INFERNO(11,Inferno,ItemType.WEAPON,"inferno"),
+    FLARE_CLOCK(12,FlareClock,ItemType.WEAPON,"flare_clock")
     ;
 
     val item: ItemStack?

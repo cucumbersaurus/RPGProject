@@ -1,4 +1,4 @@
-package project.rpg.items.weapon
+package project.rpg.items.weapon.magic
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
@@ -6,6 +6,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
+import project.rpg.items.weapon.WeaponBase
 import project.rpg.skill.magic.fire.FlameBurst
 import project.rpg.textComponets.color.TextColors
 
@@ -31,6 +32,7 @@ object FlameBurst : WeaponBase() {
     private fun itemLore():List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("와 배워 화염구다~"))
+        lore.add(Component.text("플레임 버스트"))
         return lore
     }
 

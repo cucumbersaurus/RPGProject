@@ -1,4 +1,4 @@
-package project.rpg.items.weapon
+package project.rpg.items.weapon.magic
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
@@ -8,6 +8,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
+import project.rpg.items.weapon.WeaponBase
 import project.rpg.skill.magic.fire.MeteorStrike
 import project.rpg.textComponets.color.DefaultTextColors
 
@@ -32,6 +33,7 @@ object TheMeteor: WeaponBase() {
     private fun itemLore():List<Component> {
         val lore = ArrayList<Component>()
         lore.add(text("펑펑!!"))
+        lore.add(text("메테오 스트라이크"))
         return lore
     }
 }

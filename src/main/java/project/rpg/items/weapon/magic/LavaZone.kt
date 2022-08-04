@@ -1,38 +1,38 @@
-package project.rpg.items.weapon
+package project.rpg.items.weapon.magic
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
-import project.rpg.annotation.skill
 import project.rpg.items.Items
-import project.rpg.skill.magic.fire.BlazingMark
+import project.rpg.items.weapon.WeaponBase
 import project.rpg.textComponets.color.TextColors
 
-object BlazingMark : WeaponBase() {
+object LavaZone : WeaponBase() {
 
     override fun createItem() {
-        val item = ItemStack(Material.BLAZE_ROD)
+        val item = ItemStack(Material.LAVA_BUCKET)
         val meta = item.itemMeta
-        skill = BlazingMark()
+        skill = project.rpg.skill.magic.fire.LavaZone()
 
-        meta.displayName(Component.text("타오르는 표식").color(TextColors.CRIMSON.color))
+        meta.displayName(Component.text("화염 지대").color(TextColors.CRIMSON.color))
         meta.lore(itemLore())
-        meta.setCustomModelData(Items.BLAZING_MARK.value)
+        meta.setCustomModelData(Items.LAVA_ZONE.value)
 
         item.itemMeta = meta
         super.item = item
     }
 
-    @skill(name = "blazing_mark")
-    override fun onEnable(action: Action?, player: Player) {
+    override fun onEnable(action: Action, player: Player) {
         skill.onEnable(player, action)
     }
 
     private fun itemLore():List<Component> {
         val lore = ArrayList<Component>()
-        lore.add(Component.text("앗 뜨거ㅓㅓ"))
+        lore.add(Component.text("화염 지대!"))
+        lore.add(Component.text("라바존"))
         return lore
     }
+
 }

@@ -29,17 +29,23 @@ object SkillDic {
             SkillType.LAVA_ZONE.skillName -> {
                 LavaZone()
             }
+            SkillType.BLAZING_MARK.skillName -> {
+                BlazingMark()
+            }
+            SkillType.INFERNO.skillName -> {
+                Inferno()
+            }
+            SkillType.FLARE_CLOCK.skillName -> {
+                FlareClock()
+            }
             else -> null
         }
     }
 
     fun addAll() {
-        skillList.add(SkillType.METEOR_STRIKE.skillName)
-        skillList.add(SkillType.FLAME_BURST.skillName)
-        skillList.add(SkillType.TP_ARROW.skillName)
-        skillList.add(SkillType.SHOONBOW.skillName)
-        skillList.add(SkillType.EXPLOSION.skillName)
-        skillList.add(SkillType.LAVA_ZONE.skillName)
+        for (skill in SkillType.values()) {
+            skillList.add(skill.skillName)
+        }
     }
 
     fun isExist(skillName: String): Boolean {

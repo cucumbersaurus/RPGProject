@@ -7,7 +7,6 @@ import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
 import project.rpg.effect.Burns
 import project.rpg.effect.Slow
-import project.rpg.items.weapon.LavaZone
 import project.rpg.player.User
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
@@ -18,7 +17,7 @@ class LavaZone : MagicSkillBase() {
         val mana = User.getPlayer(player).mana
 
         if (mana.useMana(10)) {
-            player.world.spawnParticle(Particle.FLAME, player.location, 1000, 5.0, 0.0, 5.0, 0.1)
+            player.world.spawnParticle(Particle.FLAME, player.location, 1000, 5.0, 0.0, 5.0, 0.01)
             for (entity in player.getNearbyEntities(5.0,0.0,5.0)) {
                 if (entity is LivingEntity) {
                     Slow(entity, 5)

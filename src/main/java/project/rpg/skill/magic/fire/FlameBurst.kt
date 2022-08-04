@@ -17,6 +17,7 @@ class FlameBurst : MagicSkillBase() {
         if (mana.useMana(10)) {
             val fireball: Fireball = player.launchProjectile(Fireball::class.java)
             fireball.velocity = player.location.direction.multiply(5)
+            //TODO : 방어력 2초간 무시
         }
         player.world.spawnParticle(Particle.FLAME, player.location, 100, 0.25, 3.0, 0.25, 0.1)
     }

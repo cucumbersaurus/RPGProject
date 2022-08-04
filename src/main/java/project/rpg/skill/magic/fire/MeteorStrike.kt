@@ -9,6 +9,8 @@ import org.bukkit.event.block.Action
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
+import project.rpg.effect.Burns
+import project.rpg.effect.Stun
 import project.rpg.player.User
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
@@ -27,6 +29,9 @@ class MeteorStrike : MagicSkillBase() {
 
                 if (entity is LivingEntity) {
                     entity.world.spawnParticle(Particle.FLAME, entity.location, 400, 0.25, 3.0, 0.25, 0.1)
+                    Burns(entity,2)
+                    Stun(entity,1)
+                    //TODO : 방어력 50% 감소
 
                     if (player != entity) {
                         if (entity.health > 10) {

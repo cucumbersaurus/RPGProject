@@ -20,7 +20,6 @@ class Explosion : MagicSkillBase() {
         if (mana.useMana(15)) {
             val fireball = player.launchProjectile(Fireball::class.java)
             fireball.velocity = player.location.direction.multiply(7)
-            fireball.setIsIncendiary(false)
             fireball.yield = 10f
             fireball.shooter= player
             while (true) {
@@ -38,7 +37,7 @@ class Explosion : MagicSkillBase() {
     }
 
     init {
-        _name = SkillType.METEOR_STRIKE.skillName
+        _name = SkillType.EXPLOSION.skillName
         _description = "화염구를 발사한다. 적중 여부와 상관 없이 터지며 폭발의 여파에 영향을 받은 몹들은 화상효과와 스턴 1초가 부여된다."
         circle = 3
         needMana = 5
