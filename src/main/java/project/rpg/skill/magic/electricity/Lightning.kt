@@ -1,4 +1,4 @@
-package project.rpg.skill.electricity
+package project.rpg.skill.magic.electricity
 
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player

@@ -27,7 +27,9 @@ enum class Items(val value: Int, val itemBase: ItemBase?, val type:ItemType, val
     WATER_ARROW(14,WaterArrow,ItemType.WEAPON,"water_arrow"),
     FROZEN_TRACE(15,FrozenTrace,ItemType.WEAPON,"frozen_trace"),
     ICE_WAVE(16,IceWave,ItemType.WEAPON,"ice_wave"),
-    ICE_SPEAR(17,IceSpear,ItemType.WEAPON,"ice_spear")
+    ICE_SPEAR(17,IceSpear,ItemType.WEAPON,"ice_spear"),
+    ETERNAL_FROST(18,EternalFrost,ItemType.WEAPON,"eternal_frost"),
+    LIGHTNING_STORM(19,LightningStorm,ItemType.WEAPON,"lightning_storm")
     ;
 
     val item: ItemStack?

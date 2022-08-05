@@ -2,11 +2,9 @@ package project.rpg.skill
 
 import org.bukkit.entity.Player
 import project.rpg.skill.base.SkillBase
+import project.rpg.skill.magic.electricity.LightningStorm
 import project.rpg.skill.magic.fire.*
-import project.rpg.skill.magic.water.FrozenTrace
-import project.rpg.skill.magic.water.IceSpear
-import project.rpg.skill.magic.water.PureShield
-import project.rpg.skill.magic.water.WaterArrow
+import project.rpg.skill.magic.water.*
 import project.rpg.skill.tmp.ShoonBow
 import project.rpg.skill.tmp.TpArrow
 
@@ -53,6 +51,12 @@ object SkillDic {
             }
             SkillType.ICE_SPEAR.skillName -> {
                 IceSpear()
+            }
+            SkillType.ETERNAL_FROST.skillName -> {
+                EternalFrost()
+            }
+            SkillType.LIGHTLING_STORM.skillName -> {
+                LightningStorm()
             }
             else -> null
         }
