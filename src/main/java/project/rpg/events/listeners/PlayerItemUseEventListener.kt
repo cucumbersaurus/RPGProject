@@ -17,11 +17,11 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
         val item = event.item
 
         if(item!=null){
-            if(checkWorldEditWand(item)){
+            /*if(checkWorldEditWand(item)){
                 event.isCancelled=true
                 return
-            }
-            else{
+            }*/
+            //else{
                 if(item.itemMeta.hasCustomModelData()) {
                     val id = item.itemMeta.customModelData
                     val usedItem = Items.values()[id]
@@ -31,7 +31,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
                         event.isCancelled=true
                     }
                 }
-            }
+            //}
         }
     }
 

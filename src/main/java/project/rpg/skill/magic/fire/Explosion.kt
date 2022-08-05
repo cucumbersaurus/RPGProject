@@ -17,11 +17,12 @@ class Explosion : MagicSkillBase() {
     override fun onEnable(player: Player, action: Action?) {
         val mana = User.getPlayer(player).mana
 
-        if (mana.useMana(15)) {
+        if (mana.useMana(needMana)) {
             val fireball = player.launchProjectile(Fireball::class.java)
-            fireball.velocity = player.location.direction.multiply(7)
+            fireball.velocity = player.location.direction.multiply(5)
             fireball.yield = 10f
             fireball.shooter= player
+            player.world.spawnParticle(Particle.FLAME, player.location, 100, 0.25, 3.0, 0.25, 0.1)
             while (true) {
                 if (fireball.isOnGround) {
                     for ( entity in fireball.getNearbyEntities(3.0, 3.0, 3.0)) {
@@ -33,13 +34,12 @@ class Explosion : MagicSkillBase() {
                 }
             }
         }
-        player.world.spawnParticle(Particle.FLAME, player.location, 100, 0.25, 3.0, 0.25, 0.1)
     }
 
     init {
         _name = SkillType.EXPLOSION.skillName
         _description = "화염구를 발사한다. 적중 여부와 상관 없이 터지며 폭발의 여파에 영향을 받은 몹들은 화상효과와 스턴 1초가 부여된다."
         circle = 3
-        needMana = 5
+        needMana = 15
     }
 }

@@ -16,7 +16,7 @@ class LavaZone : MagicSkillBase() {
     override fun onEnable(player: Player, action: Action?) {
         val mana = User.getPlayer(player).mana
 
-        if (mana.useMana(10)) {
+        if (mana.useMana(needMana)) {
             player.world.spawnParticle(Particle.FLAME, player.location, 1000, 5.0, 0.0, 5.0, 0.01)
             for (entity in player.getNearbyEntities(5.0,0.0,5.0)) {
                 if (entity is LivingEntity) {
@@ -31,6 +31,6 @@ class LavaZone : MagicSkillBase() {
         _name = SkillType.LAVA_ZONE.skillName
         _description = "몹에게 화염구를 발사한다. 적중 시 몹에게 화상 효과를 부여하며 방어력을 2초간 무시한다."
         circle = 3
-        needMana = 5
+        needMana = 10
     }
 }

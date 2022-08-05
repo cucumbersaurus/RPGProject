@@ -16,8 +16,13 @@ class ItemCommand : CommandExecutor, TabCompleter {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (sender is Player && args.isNotEmpty()) {
             val item: ItemStack? = ItemDictionary.getNewItem(args[0])
-            if(item !=null) sender.inventory.addItem(item)
-            else sender.sendMessage(text("없는 아이템 입니다. 명령어를 확인해 주세요.").color(DefaultTextColors.RED.color))
+            if(item !=null) {
+                sender.inventory.addItem(item)
+                sender.sendMessage(item.displayName())
+            }
+            else {
+                sender.sendMessage(text("없는 아이템 입니다. 명령어를 확인해 주세요.").color(DefaultTextColors.RED.color))
+            }
         }
         return false
     }

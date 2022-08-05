@@ -3,6 +3,10 @@ package project.rpg.skill
 import org.bukkit.entity.Player
 import project.rpg.skill.base.SkillBase
 import project.rpg.skill.magic.fire.*
+import project.rpg.skill.magic.water.FrozenTrace
+import project.rpg.skill.magic.water.IceSpear
+import project.rpg.skill.magic.water.PureShield
+import project.rpg.skill.magic.water.WaterArrow
 import project.rpg.skill.tmp.ShoonBow
 import project.rpg.skill.tmp.TpArrow
 
@@ -37,6 +41,18 @@ object SkillDic {
             }
             SkillType.FLARE_CLOCK.skillName -> {
                 FlareClock()
+            }
+            SkillType.PURE_SHIELD.skillName -> {
+                PureShield()
+            }
+            SkillType.WATER_ARROW.skillName -> {
+                WaterArrow()
+            }
+            SkillType.FROZEN_TRACE.skillName -> {
+                FrozenTrace()
+            }
+            SkillType.ICE_SPEAR.skillName -> {
+                IceSpear()
             }
             else -> null
         }

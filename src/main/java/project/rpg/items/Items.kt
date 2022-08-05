@@ -3,7 +3,9 @@ package project.rpg.items
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.food.SpeedApple
 import project.rpg.items.potion.ManaRefillPotion
-import project.rpg.items.weapon.*
+import project.rpg.items.weapon.TpArrow
+import project.rpg.items.weapon.TpSword
+import project.rpg.items.weapon.Wand
 import project.rpg.items.weapon.magic.*
 
 enum class Items(val value: Int, val itemBase: ItemBase?, val type:ItemType, val _name : String) {
@@ -20,7 +22,12 @@ enum class Items(val value: Int, val itemBase: ItemBase?, val type:ItemType, val
     EXPLOSION(9, Explosion,ItemType.WEAPON,"explosion"),
     LAVA_ZONE(10, LavaZone,ItemType.WEAPON,"lava_zone"),
     INFERNO(11,Inferno,ItemType.WEAPON,"inferno"),
-    FLARE_CLOCK(12,FlareClock,ItemType.WEAPON,"flare_clock")
+    FLARE_CLOCK(12,FlareClock,ItemType.WEAPON,"flare_clock"),
+    PURE_SHIELD(13,PureShield,ItemType.WEAPON,"pure_shield"),
+    WATER_ARROW(14,WaterArrow,ItemType.WEAPON,"water_arrow"),
+    FROZEN_TRACE(15,FrozenTrace,ItemType.WEAPON,"frozen_trace"),
+    ICE_WAVE(16,IceWave,ItemType.WEAPON,"ice_wave"),
+    ICE_SPEAR(17,IceSpear,ItemType.WEAPON,"ice_spear")
     ;
 
     val item: ItemStack?

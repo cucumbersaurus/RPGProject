@@ -5,8 +5,6 @@ import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
-import org.bukkit.plugin.Plugin
-import project.rpg.Rpg
 import project.rpg.annotation.skill
 import project.rpg.effect.Burns
 import project.rpg.player.User
@@ -18,7 +16,7 @@ class FlareClock : MagicSkillBase() {
     override fun onEnable(player: Player, action: Action?) {
         val mana = User.getPlayer(player).mana
 
-        if (mana.useMana(20)) {
+        if (mana.useMana(needMana)) {
             val entity = player.getTargetEntity(40, false)
             if (entity!=null) {
                 entity.isGlowing = true
@@ -34,7 +32,7 @@ class FlareClock : MagicSkillBase() {
                     Bukkit.getScheduler().runTaskLater(it, Runnable {
                         entity.isGlowing = false
                         Burns(entity as LivingEntity?,10)
-                        entity.world.createExplosion(player,entity.location, 64f,true,true)
+                        entity.world.createExplosion(player,entity.location, 32f,true,true)
                     }, (20 * 5).toLong())
                 }
                 //TODO : 공격력 20% 감소

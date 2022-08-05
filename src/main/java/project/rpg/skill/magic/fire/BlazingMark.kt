@@ -17,11 +17,12 @@ class BlazingMark: MagicSkillBase() {
     override fun onEnable(player: Player, action: Action?) {
         val mana = User.getPlayer(player).mana
 
-        if (mana.useMana(10)) {
+        if (mana.useMana(needMana)) {
             val entity = player.getTargetEntity(10, false)
             if (entity != null && entity is LivingEntity) {
                 Burns(entity, 8)
                 //TODO : 방어력 감소 20% 7초
+                player.world.spawnParticle(Particle.FLAME, player.location, 100, 0.25, 3.0, 0.25, 0.1)
             }
             if (entity is Player) {
                 entity.addPotionEffect(PotionEffect(PotionEffectType.WEAKNESS, 20 * 7, 2, true))
@@ -31,7 +32,6 @@ class BlazingMark: MagicSkillBase() {
                 p.playSound(player.location, Sound.BLOCK_BLASTFURNACE_FIRE_CRACKLE, 0.6f, 1f)
             }
         }
-        player.world.spawnParticle(Particle.FLAME, player.location, 100, 0.25, 3.0, 0.25, 0.1)
     }
     init {
         _name = SkillType.BLAZING_MARK.skillName

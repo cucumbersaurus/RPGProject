@@ -1,11 +1,15 @@
 package project.rpg.ui.inventory.blockInterection;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import project.rpg.ui.inventory.GuiBase;
 
+import java.util.List;
 import java.util.Random;
 
 import static net.kyori.adventure.text.Component.text;
@@ -42,7 +46,7 @@ public class EnforceUI extends GuiBase {
         }
     }
 
-    private void enforce(short level,Player player) {
+    private void enforce(short level,Player player,@NotNull InventoryClickEvent event) {
         int result = new Random().nextInt(10000);
         int success;
         int fail;
@@ -92,26 +96,32 @@ public class EnforceUI extends GuiBase {
                 fail = -1;
         }
         if (success==-1) {
-            onNotAble(player);
+            onNotAble(player,event);
         } else {
             if (result<=success){
-                onSuccess(player);
+                onSuccess(player,event);
             } else if(result<=success+fail) {
-                onFail(player);
+                onFail(player,event);
             } else {
-                onBreak(player);
+                onBreak(player, event);
             }
         }
     }
-    private void onNotAble(Player player) {  //풀강이거나 강화못하는 아이템
+    private void onNotAble(Player player,@NotNull InventoryClickEvent event) {  //풀강이거나 강화못하는 아이템
+        player.playSound(player, Sound.BLOCK_ANVIL_BREAK,0.6f,1f);
+        event.setCancelled(true);
     }
 
-    private void onSuccess(Player player){  //성공시  강화단계 +1
+    private void onSuccess(Player player,@NotNull InventoryClickEvent event){  //성공시  강화단계 +1
+        player.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP,0.6f,1f);
+        ItemStack item = event.getCurrentItem();
+        List<Component> lore = item.lore();
     }
 
-    private void onFail(Player player) { //실패시   강화단계 -1, 0이면 파괴
+    private void onFail(Player player,@NotNull InventoryClickEvent event) { //실패시   강화단계 -1, 0이면 파괴
     }
 
-    private void onBreak(Player player) {  //파괴시  아이템 삭제
+    private void onBreak(Player player,@NotNull InventoryClickEvent event) {  //파괴시  아이템 삭제
+        player.playSound(player, Sound.BLOCK_ANVIL_DESTROY,0.6f,1f);
     }
 }
