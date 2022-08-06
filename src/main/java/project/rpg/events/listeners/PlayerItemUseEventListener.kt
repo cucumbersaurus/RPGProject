@@ -7,6 +7,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import project.rpg.Rpg
 import project.rpg.items.Items
+import project.rpg.items.disposable.DisposableBase
 import project.rpg.items.weapon.WeaponBase
 
 class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
@@ -29,6 +30,9 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
                         usedItem.itemBase.onEnable(event.action, player)
                         plugin.actionBar.updateActionBar(player)
                         event.isCancelled=true
+                    } else if (usedItem.itemBase is DisposableBase) {
+                        usedItem.itemBase.onUse(player)
+                        //TODO : 아이템 갯수 하나 줄이기
                     }
                 }
             //}

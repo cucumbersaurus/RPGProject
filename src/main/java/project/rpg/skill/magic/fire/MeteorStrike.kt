@@ -6,11 +6,10 @@ import org.bukkit.Sound
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
 import project.rpg.effect.Burns
 import project.rpg.effect.Damage
+import project.rpg.effect.Slow
 import project.rpg.effect.Stun
 import project.rpg.player.User
 import project.rpg.skill.SkillType
@@ -38,7 +37,7 @@ class MeteorStrike : MagicSkillBase() {
                         Damage(entity,10)
 
                         entity.fireTicks = 20 * 2
-                        entity.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 20, 2, true))
+                        Slow(entity,20)
                     }
                 }
             }

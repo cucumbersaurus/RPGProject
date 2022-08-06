@@ -10,6 +10,7 @@ enum class ItemType(val value: Int) {
     MATERIAL(4),
     FOOD(5),
     TROPHY(6),
-    JAPTEM(7);
+    JAPTEM(7),
+    DISPOSABLE(8);
 
 }

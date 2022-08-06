@@ -1,8 +1,12 @@
 package project.rpg.items
 
 import org.bukkit.inventory.ItemStack
+import project.rpg.items.disposable.ManaStone
+import project.rpg.items.food.HighEnrichmentCandy
 import project.rpg.items.food.SpeedApple
+import project.rpg.items.potion.HealingPotion
 import project.rpg.items.potion.ManaRefillPotion
+import project.rpg.items.potion.TearOfDragon
 import project.rpg.items.weapon.TpArrow
 import project.rpg.items.weapon.TpSword
 import project.rpg.items.weapon.Wand
@@ -30,7 +34,14 @@ enum class Items(val value: Int, val itemBase: ItemBase?, val type:ItemType, val
     ICE_SPEAR(17,IceSpear,ItemType.WEAPON,"ice_spear"),
     ETERNAL_FROST(18,EternalFrost,ItemType.WEAPON,"eternal_frost"),
     LIGHTNING_STORM(19,LightningStorm,ItemType.WEAPON,"lightning_storm"),
-    THUNDER_CHARGING(20,ThunderCharging,ItemType.WEAPON,"thunder_charging")
+    THUNDER_CHARGING(20,ThunderCharging,ItemType.WEAPON,"thunder_charging"),
+    LIGHTNING_CHAIN(21,LightningChain,ItemType.WEAPON,"lightning_chain"),
+    SHOCK_WAVE(22,ShockWave,ItemType.WEAPON,"shock_wave"),
+    GIGANTIC_THUNDER(23,GiganticThunder,ItemType.WEAPON,"gigantic_thunder"),
+    HIGH_ENRICHMENT_CANDY(24,HighEnrichmentCandy,ItemType.FOOD,"high_enrichment_candy"),
+    MANA_STONE(25,ManaStone,ItemType.DISPOSABLE,"mana_stone"),
+    TEAR_OF_DRAGON(26,TearOfDragon,ItemType.POTION,"tear_of_dragon"),
+    HEALING_POTION(27,HealingPotion,ItemType.POTION,"healing_potion")
     ;
 
     val item: ItemStack?

@@ -2,9 +2,7 @@ package project.rpg.skill
 
 import org.bukkit.entity.Player
 import project.rpg.skill.base.SkillBase
-import project.rpg.skill.magic.electricity.LightningChain
-import project.rpg.skill.magic.electricity.LightningStorm
-import project.rpg.skill.magic.electricity.ThunderCharging
+import project.rpg.skill.magic.electricity.*
 import project.rpg.skill.magic.fire.*
 import project.rpg.skill.magic.water.*
 import project.rpg.skill.tmp.ShoonBow
@@ -65,6 +63,12 @@ object SkillDic {
             }
             SkillType.LIGHTNING_CHAIN.skillName -> {
                 LightningChain()
+            }
+            SkillType.SHOCK_WAVE.skillName -> {
+                ShockWave()
+            }
+            SkillType.GIGANTIC_THUNDER.skillName -> {
+                GiganticThunder()
             }
             else -> null
         }

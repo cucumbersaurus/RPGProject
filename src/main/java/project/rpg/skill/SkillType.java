@@ -20,7 +20,9 @@ public enum SkillType {
     ETERNAL_FROST("eternal_frost"),
     LIGHTNING_STORM("lightning_storm"),
     THUNDER_CHARGING("thunder_charging"),
-    LIGHTNING_CHAIN("lightning_chain");
+    LIGHTNING_CHAIN("lightning_chain"),
+    SHOCK_WAVE("shock_wave"),
+    GIGANTIC_THUNDER("gigantic_thunder");
 
     private final String _skillName;
 
