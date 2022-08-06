@@ -2,7 +2,9 @@ package project.rpg.skill
 
 import org.bukkit.entity.Player
 import project.rpg.skill.base.SkillBase
+import project.rpg.skill.magic.electricity.LightningChain
 import project.rpg.skill.magic.electricity.LightningStorm
+import project.rpg.skill.magic.electricity.ThunderCharging
 import project.rpg.skill.magic.fire.*
 import project.rpg.skill.magic.water.*
 import project.rpg.skill.tmp.ShoonBow
@@ -55,8 +57,14 @@ object SkillDic {
             SkillType.ETERNAL_FROST.skillName -> {
                 EternalFrost()
             }
-            SkillType.LIGHTLING_STORM.skillName -> {
+            SkillType.LIGHTNING_STORM.skillName -> {
                 LightningStorm()
+            }
+            SkillType.THUNDER_CHARGING.skillName -> {
+                ThunderCharging()
+            }
+            SkillType.LIGHTNING_CHAIN.skillName -> {
+                LightningChain()
             }
             else -> null
         }

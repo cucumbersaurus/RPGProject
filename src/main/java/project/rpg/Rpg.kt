@@ -72,6 +72,7 @@ class Rpg : JavaPlugin() {
         server.pluginManager.registerEvents(PlayerQuitEventListener(), this)
         server.pluginManager.registerEvents(RespawnEventListener(this), this)
         server.pluginManager.registerEvents(PlayerItemConsumeEventListener(this), this)
+        server.pluginManager.registerEvents(ProjectileListener(this), this)
     }
 
     private fun loadData() {

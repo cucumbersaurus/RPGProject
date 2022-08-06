@@ -1,4 +1,4 @@
-package project.rpg.skill.magic.water
+package project.rpg.skill.magic.electricity
 
 import org.bukkit.Bukkit
 import org.bukkit.Particle
@@ -12,19 +12,18 @@ import project.rpg.player.User
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
-class IceSpear : MagicSkillBase() {
-    @skill(name = "ice_spear")
+class ThunderCharging : MagicSkillBase() {
+    @skill(name = "water_arrow")
     override fun onEnable(player: Player, action: Action?) {
         val mana = User.getPlayer(player).mana
 
         if (mana.useMana(needMana)) {
             val arrow = player.launchProjectile(Arrow::class.java)
-            arrow.knockbackStrength = 5
+            arrow.knockbackStrength = 2
             arrow.setGravity(true)
-            arrow.damage = 7.0
             arrow.pickupStatus = AbstractArrow.PickupStatus.DISALLOWED
-
-            player.world.spawnParticle(Particle.WATER_DROP, player.location, 100, 0.25, 3.0, 0.25, 0.1)
+            arrow.damage = 4.0
+            player.world.spawnParticle(Particle.ELECTRIC_SPARK, player.location, 100, 0.25, 3.0, 0.25, 0.1)
 
             val pluginManager = Bukkit.getPluginManager()
             try {
@@ -34,16 +33,16 @@ class IceSpear : MagicSkillBase() {
             }
             val plugin = pluginManager.getPlugin("Rpg")
 
-            arrow.setMetadata(SkillType.ICE_SPEAR.skillName, FixedMetadataValue(plugin!!,true))
+            arrow.setMetadata(SkillType.THUNDER_CHARGING.skillName, FixedMetadataValue(plugin!!,true))
 
-            arrow.velocity = player.location.direction.multiply(3)
+            arrow.velocity = player.location.direction.multiply(2)
         }
     }
 
     init {
-        _name = SkillType.ICE_SPEAR.skillName
-        _description = "적에게 얼음 송곳을 발사한다. 투사체가 적중 시 적중한 적에서 스턴 3초와 슬로우 5초를 건다. 만일 적중 실패시 주변 반경 2블럭의 적에게 슬로우 2초를 준다."
-        circle = 3
+        _name = SkillType.THUNDER_CHARGING.skillName
+        _description = "일자로 나가는 공격을 발사한다. 만일 적중시 몹에게 스턴 1초와 자신의 마나 1 을 추가 회복한다."
+        circle = 2
         needMana = 5
     }
 }

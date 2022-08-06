@@ -1,5 +1,6 @@
 package project.rpg.skill.magic.electricity
 
+import org.bukkit.Particle
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
@@ -19,6 +20,7 @@ class Lightning: MagicSkillBase() {
             }
 
             player.world.spawnEntity(location, EntityType.LIGHTNING)
+            player.world.spawnParticle(Particle.ELECTRIC_SPARK, player.location, 100, 0.25, 0.75, 0.25, 0.1)
         }
     }
 

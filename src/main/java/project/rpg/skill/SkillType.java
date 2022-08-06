@@ -18,7 +18,9 @@ public enum SkillType {
     ICE_WAVE("ice_wave"),
     ICE_SPEAR("ice_spear"),
     ETERNAL_FROST("eternal_frost"),
-    LIGHTLING_STORM("lightning_storm");
+    LIGHTNING_STORM("lightning_storm"),
+    THUNDER_CHARGING("thunder_charging"),
+    LIGHTNING_CHAIN("lightning_chain");
 
     private final String _skillName;
 

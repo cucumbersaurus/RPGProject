@@ -19,13 +19,15 @@ class LightningStorm : MagicSkillBase() {
                 player.world.getNearbyEntities(player.getTargetBlock(20)!!.location,0.5,0.5,0.5)
                 location = player.getTargetBlock(20)!!.location
             }
+            //TODO: 위치 조정
+            player.world.spawnParticle(Particle.ELECTRIC_SPARK, player.location, 100, 0.25, 0.75, 0.25, 0.1)
             player.world.spawnParticle(Particle.WHITE_ASH,location.add(0.0,10.0,0.0),3000,8.0,0.5,8.0,0.01)
             player.world.spawnEntity(location, EntityType.LIGHTNING)
         }
     }
 
     init {
-        _name = SkillType.LIGHTLING_STORM.skillName
+        _name = SkillType.LIGHTNING_STORM.skillName
         _description = "번개구름을 소환한다. 번개에 맞은 적은 감전 3초가 부여되며 공격력이 3초간 10% 증가한다."
         circle = 2
         needMana = 5
