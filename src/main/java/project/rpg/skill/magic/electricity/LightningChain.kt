@@ -1,5 +1,6 @@
 package project.rpg.skill.magic.electricity
 
+import org.bukkit.Bukkit
 import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
@@ -17,21 +18,36 @@ class LightningChain : MagicSkillBase() {
         val mana = User.getPlayer(player).mana
 
         if (mana.useMana(needMana)) {
-            val entity = player.getTargetEntity(10, false)
+            val entity = player.getTargetEntity(20, false)
+
+            val pluginManager = Bukkit.getPluginManager()
+            try {
+                Class.forName("project.rpg.Rpg")
+            } catch (exception: ClassNotFoundException) {
+                return
+            }
+            val plugin = pluginManager.getPlugin("Rpg")
+
+
             if (entity!=null && entity is LivingEntity) {
+                var locationEntity = entity
                 Damage(entity,4)
                 ElectricShock(entity,2)
-                entity.world.spawnParticle(Particle.ELECTRIC_SPARK, entity.location, 100, 0.25, 0.5, 0.25, 0.1)
-                var count = 1
-                for (target in entity.getNearbyEntities(4.0,4.0,4.0)) {
-                    if (target is LivingEntity) {
-                        Damage(entity,4)
-                        ElectricShock(entity,2)
-                        target.world.spawnParticle(Particle.ELECTRIC_SPARK, target.location, 100, 0.25, 0.5, 0.25, 0.1)
-                        count++
-                    }
-                    if (count == 4) {
-                        break;
+                entity.world.spawnParticle(Particle.SPIT, entity.location, 50, 0.25, 0.5, 0.25, 0.1)
+
+                for (i in 0..3) {
+                    plugin?.let {
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(it, {
+                            for (target in locationEntity?.getNearbyEntities(8.0, 8.0, 8.0)!!) {
+                                if (target is LivingEntity) {
+                                    Damage(target,4)
+                                    ElectricShock(target,2)
+                                    target.world.spawnParticle(Particle.SPIT, target.location, 50, 0.25, 0.5, 0.25, 0.1)
+                                    locationEntity = target
+                                    break
+                                }
+                            }
+                        },20)
                     }
                 }
             }

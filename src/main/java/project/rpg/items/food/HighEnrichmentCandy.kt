@@ -13,7 +13,7 @@ import project.rpg.textComponets.color.TextColors
 
 object HighEnrichmentCandy : FoodBase() {
     override fun createItem() {
-        val item = ItemStack(Material.CHORUS_FRUIT)
+        val item = ItemStack(Material.BEETROOT)
         val meta = item.itemMeta
 
         meta.displayName(Component.text("고농축 사탕").color(TextColors.STEEL_BLUE.color))

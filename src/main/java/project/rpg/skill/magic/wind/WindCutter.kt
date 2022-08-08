@@ -1,32 +1,27 @@
-package project.rpg.skill.magic.electricity
+package project.rpg.skill.magic.wind
 
 import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
-import project.rpg.effect.Damage
-import project.rpg.effect.ElectricShock
+import project.rpg.effect.Bleeding
 import project.rpg.player.User
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
-class ShockWave : MagicSkillBase() {
-    @skill(name = "shock_wave")
+class WindCutter : MagicSkillBase() {
+    @skill(name = "wind_cutter")
     override fun onEnable(player: Player, action: Action?) {
         val mana = User.getPlayer(player).mana
 
         if (mana.useMana(needMana)) {
-            for (entity in player.getNearbyEntities(3.0,3.0,3.0)) {
-                if (entity is LivingEntity) {
-                    ElectricShock(entity, 5)
-                    Damage(entity,3)
-                    entity.world.spawnParticle(Particle.ELECTRIC_SPARK, entity.location, 100, 0.25, 0.5, 0.25, 0.1)
-                }
+            val entity = player.getTargetEntity(10, false)
+            if (entity != null && entity is LivingEntity) {
+                Bleeding(entity, 3)
+                //TODO : 방어력 감소 50% 5초
+                entity.world.spawnParticle(Particle.WHITE_ASH, entity.location, 100, 0.25, 0.5, 0.25, 0.1)
             }
-            player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 20*2, 2, true))
         }
     }
 

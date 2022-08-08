@@ -7,18 +7,18 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
 import project.rpg.items.weapon.WeaponBase
-import project.rpg.skill.magic.electricity.GiganticThunder
+import project.rpg.skill.magic.wind.Tempest
 import project.rpg.textComponets.color.TextColors
 
-object GiganticThunder : WeaponBase() {
+object Tempest : WeaponBase() {
     override fun createItem() {
-        val item = ItemStack(Material.YELLOW_CANDLE)
+        val item = ItemStack(Material.OXEYE_DAISY)
         val meta = item.itemMeta
-        skill = GiganticThunder()
+        skill = Tempest()
 
-        meta.displayName(Component.text("거대 번개").color(TextColors.PALE_GOLDEN_ROD.color))
+        meta.displayName(Component.text("나는 바람이다").color(TextColors.PALE_TURQUOISE.color))
         meta.lore(itemLore())
-        meta.setCustomModelData(Items.GIGANTIC_THUNDER.value)
+        meta.setCustomModelData(Items.TEMPEST.value)
 
         item.itemMeta = meta
         super.item = item
@@ -30,8 +30,8 @@ object GiganticThunder : WeaponBase() {
 
     private fun itemLore():List<Component> {
         val lore = ArrayList<Component>()
-        lore.add(Component.text("번개여 쳐라"))
-        lore.add(Component.text("기간트 썬더"))
+        lore.add(Component.text("바람의 힘!"))
+        lore.add(Component.text("탬페스트"))
         return lore
     }
 }

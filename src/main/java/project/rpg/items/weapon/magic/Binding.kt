@@ -7,18 +7,18 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
 import project.rpg.items.weapon.WeaponBase
-import project.rpg.skill.magic.electricity.GiganticThunder
+import project.rpg.skill.magic.earth.Binding
 import project.rpg.textComponets.color.TextColors
 
-object GiganticThunder : WeaponBase() {
+object Binding : WeaponBase() {
     override fun createItem() {
-        val item = ItemStack(Material.YELLOW_CANDLE)
+        val item = ItemStack(Material.CHAIN)
         val meta = item.itemMeta
-        skill = GiganticThunder()
+        skill = Binding()
 
-        meta.displayName(Component.text("거대 번개").color(TextColors.PALE_GOLDEN_ROD.color))
+        meta.displayName(Component.text("봉쇄").color(TextColors.DIM_GRAY.color))
         meta.lore(itemLore())
-        meta.setCustomModelData(Items.GIGANTIC_THUNDER.value)
+        meta.setCustomModelData(Items.BINDING.value)
 
         item.itemMeta = meta
         super.item = item
@@ -30,8 +30,8 @@ object GiganticThunder : WeaponBase() {
 
     private fun itemLore():List<Component> {
         val lore = ArrayList<Component>()
-        lore.add(Component.text("번개여 쳐라"))
-        lore.add(Component.text("기간트 썬더"))
+        lore.add(Component.text("봉쇄죠?"))
+        lore.add(Component.text("바인딩"))
         return lore
     }
 }

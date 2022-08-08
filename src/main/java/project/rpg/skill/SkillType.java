@@ -22,7 +22,13 @@ public enum SkillType {
     THUNDER_CHARGING("thunder_charging"),
     LIGHTNING_CHAIN("lightning_chain"),
     SHOCK_WAVE("shock_wave"),
-    GIGANTIC_THUNDER("gigantic_thunder");
+    GIGANTIC_THUNDER("gigantic_thunder"),
+    HEAVEN_WING("heaven_wing"),
+    WIND_CUTTER("wind_cutter"),
+    TEMPEST("tempest"),
+    BINDING("binding"),
+
+    ;
 
     private final String _skillName;
 

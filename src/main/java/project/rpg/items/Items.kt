@@ -41,7 +41,12 @@ enum class Items(val value: Int, val itemBase: ItemBase?, val type:ItemType, val
     HIGH_ENRICHMENT_CANDY(24,HighEnrichmentCandy,ItemType.FOOD,"high_enrichment_candy"),
     MANA_STONE(25,ManaStone,ItemType.DISPOSABLE,"mana_stone"),
     TEAR_OF_DRAGON(26,TearOfDragon,ItemType.POTION,"tear_of_dragon"),
-    HEALING_POTION(27,HealingPotion,ItemType.POTION,"healing_potion")
+    HEALING_POTION(27,HealingPotion,ItemType.POTION,"healing_potion"),
+    HEAVEN_WING(28,HeavenWing,ItemType.WEAPON,"heaven_wing"),
+    WIND_CUTTER(29,WindCutter,ItemType.WEAPON,"wind_cutter"),
+    TEMPEST(30,Tempest,ItemType.WEAPON,"tempest"),
+    BINDING(31,Binding,ItemType.WEAPON,"binding"),
+
     ;
 
     val item: ItemStack?

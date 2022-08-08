@@ -13,7 +13,7 @@ import project.rpg.textComponets.color.TextColors
 
 object ManaStone : DisposableBase() {
     override fun createItem() {
-        val item = ItemStack(Material.APPLE)
+        val item = ItemStack(Material.DIAMOND)
         val meta = item.itemMeta
 
         meta.displayName(Component.text("마나 스톤").color(TextColors.MEDIUM_SLATE_BLUE.color))
@@ -29,7 +29,13 @@ object ManaStone : DisposableBase() {
     override fun onUse(player: Player) {
         val mana = User.getPlayer(player).mana
         Damage(player,60)
-        mana.addMana(70)
+
+        val leftUntilFull = mana.maxMana - mana.mana
+        if (leftUntilFull >= 70) {
+            mana.addMana(70)
+        } else {
+            mana.addMana(mana.maxMana - mana.mana)
+        }
     }
 
     private fun itemLore():List<Component> {

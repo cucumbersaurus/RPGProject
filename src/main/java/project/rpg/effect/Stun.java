@@ -8,11 +8,14 @@ public class Stun extends EffectBase {
 
     @Override
     public void effect() {
-        this._entity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20*_second, 7,true));
+        this._entity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20*_second, 7,false,false,false));
     }
 
     public Stun(LivingEntity entity, int second) {
         super(entity, second);
+    }
+    public Stun(LivingEntity entity,long tick) {
+        super(entity,tick);
     }
 
 }

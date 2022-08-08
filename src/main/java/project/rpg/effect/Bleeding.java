@@ -21,9 +21,12 @@ public class Bleeding extends EffectBase {
         Plugin plugin = pluginManager.getPlugin("Rpg");
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(Objects.requireNonNull(plugin), () -> {
-            _entity.setHealth(_entity.getHealth()*0.99);
-            _entity.getWorld().spawnParticle(Particle.DAMAGE_INDICATOR, _entity.getLocation(), 100, 0.25, 0.25, 0.25, 0.1);
-        },20, 20L *_second);
+            new Damage(_entity, (int) (_entity.getHealth()/100));
+            if (!_entity.isDead()) {
+                _entity.getWorld().spawnParticle(Particle.DAMAGE_INDICATOR, _entity.getLocation(), 7, 0.25, 0.25, 0.25, 0.1);
+            }
+        },30, 20L * _second);
+        //TODO : 지속시간
     }
 
     public Bleeding(LivingEntity entity, int second) {

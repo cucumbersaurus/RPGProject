@@ -2,9 +2,12 @@ package project.rpg.skill
 
 import org.bukkit.entity.Player
 import project.rpg.skill.base.SkillBase
+import project.rpg.skill.magic.earth.Binding
 import project.rpg.skill.magic.electricity.*
 import project.rpg.skill.magic.fire.*
 import project.rpg.skill.magic.water.*
+import project.rpg.skill.magic.wind.HeavenWing
+import project.rpg.skill.magic.wind.Tempest
 import project.rpg.skill.tmp.ShoonBow
 import project.rpg.skill.tmp.TpArrow
 
@@ -69,6 +72,15 @@ object SkillDic {
             }
             SkillType.GIGANTIC_THUNDER.skillName -> {
                 GiganticThunder()
+            }
+            SkillType.HEAVEN_WING.skillName -> {
+                HeavenWing()
+            }
+            SkillType.TEMPEST.skillName -> {
+                Tempest()
+            }
+            SkillType.BINDING.skillName -> {
+                Binding()
             }
             else -> null
         }
