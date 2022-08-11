@@ -5,6 +5,7 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerItemConsumeEvent
+import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.PotionMeta
 import org.bukkit.potion.PotionEffect
@@ -26,6 +27,7 @@ object TearOfDragon : PotionBase() {
         //아이템 아이디 설정
         meta.setCustomModelData(Items.TEAR_OF_DRAGON.value)
 
+        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS)
         meta.color = Color.fromRGB(0xa8d1cc)
 
         item.itemMeta = meta

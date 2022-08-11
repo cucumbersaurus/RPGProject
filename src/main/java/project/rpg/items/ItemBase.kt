@@ -7,6 +7,8 @@ abstract class ItemBase {
         protected set
 
     abstract fun createItem()
+
+    /*
     override operator fun equals(other: Any?): Boolean {//만들어 봤지만 쓸모가 있을까?
         if (other==null){
             return false
@@ -29,4 +31,5 @@ abstract class ItemBase {
     override fun hashCode(): Int {//이게 뭘까? 만들라 해서 만들긴 했는데  (ㅋㅋㅋㅋㅋㅋㅋ)
         return item?.hashCode() ?: 0
     }
+    */
 }

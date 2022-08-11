@@ -6,6 +6,7 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerItemConsumeEvent
+import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.PotionMeta
 import project.rpg.Rpg
@@ -25,6 +26,7 @@ object ManaRefillPotion : PotionBase() {
         //아이템 아이디 설정
         meta.setCustomModelData(Items.MANA_REFILLING_POTION.value)
 
+        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS)
         meta.color = Color.AQUA
 
         item.itemMeta = meta

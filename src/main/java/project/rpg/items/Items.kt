@@ -50,5 +50,5 @@ enum class Items(val value: Int, val itemBase: ItemBase?, val type:ItemType, val
     ;
 
     val item: ItemStack?
-        get() = itemBase!!.item
+        get() = itemBase?.item
 }
