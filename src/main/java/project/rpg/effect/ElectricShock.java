@@ -23,7 +23,7 @@ public class ElectricShock extends EffectBase {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(Objects.requireNonNull(plugin), () -> {
             new Stun(_entity,1L);
             if (!this._entity.isDead()) {
-                this._entity.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, this._entity.getLocation(), 100, 0.25, 0.5, 0.25, 0.1);
+                this._entity.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, this._entity.getLocation(), 7, 0.25, 0.5, 0.25, 0.1);
             }
         },20, 1);
         //TODO : 지속시간

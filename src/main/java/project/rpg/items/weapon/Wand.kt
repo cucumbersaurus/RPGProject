@@ -32,7 +32,7 @@ object Wand : MagicItemBase() {
         super.item = item
     }
 
-    override fun onEnable(player: Player, action: Action) {
+    override fun onEnable(player: Player, action: Action?) {
         skill.onEnable(player, action)
     }
 }

@@ -26,7 +26,7 @@ object Explosion : MagicItemBase() {
     }
 
     @skill(name = "flame_burst")
-    override fun onEnable(player: Player, action: Action) {
+    override fun onEnable(player: Player, action: Action?) {
         skill.onEnable(player,action)
     }
 

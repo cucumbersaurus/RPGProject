@@ -1,11 +1,8 @@
-package project.rpg.skill.base;
+package project.rpg.skill.base
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.block.Action;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
 
-public interface Operable {
-
-    void onEnable(@NotNull Player player, @NotNull Action action);
+interface Operable {
+    fun onEnable(player: Player, action: Action?)
 }

@@ -24,8 +24,8 @@ object TpSword: MagicItemBase() {
     }
 
     @skill(name = "shoon bow")
-    override fun onEnable(player: Player?, action: Action) {
-        player!!.world.spawnParticle(Particle.GLOW, player.location, 25, 0.5, 1.0, 0.5, 0.7)
+    override fun onEnable(player: Player, action: Action?) {
+        player.world.spawnParticle(Particle.GLOW, player.location, 25, 0.5, 1.0, 0.5, 0.7)
         var location: Location? = null
         for (all in Bukkit.getOnlinePlayers()) {
             all.playSound(player.location, Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 0.6f, 2f)

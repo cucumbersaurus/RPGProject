@@ -39,7 +39,7 @@ class LightningChain : MagicSkillBase() {
                     plugin?.let {
                         Bukkit.getScheduler().scheduleSyncDelayedTask(it, {
                             for (target in locationEntity?.getNearbyEntities(8.0, 8.0, 8.0)!!) {
-                                if (target is LivingEntity) {
+                                if (target is LivingEntity&&target!=player) {
                                     Damage(target,4)
                                     ElectricShock(target,2)
                                     target.world.spawnParticle(Particle.SPIT, target.location, 50, 0.25, 0.5, 0.25, 0.1)

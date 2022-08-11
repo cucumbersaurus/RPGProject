@@ -7,12 +7,13 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import project.rpg.skill.SkillType;
 import project.rpg.skill.magic.MagicSkillBase;
 
 public class ShoonBow extends MagicSkillBase {
     @Override
-    public void onEnable(@NotNull Player player, Action action) {
+    public void onEnable(@NotNull Player player, @Nullable Action action) {
         if (this._skillTime==0) {
             player.getWorld().spawnParticle(Particle.GLOW, player.getLocation(), 25, 0.5, 1, 0.5, 0.7);
             Location location = null;

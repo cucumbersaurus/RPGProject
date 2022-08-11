@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import project.rpg.dataStructures.ListQueue;
 import project.rpg.player.User;
 import project.rpg.skill.SkillType;
@@ -22,7 +23,7 @@ public class TpArrow extends MagicSkillBase {
     private final ListQueue<Arrow> thrownArrows = new ListQueue<>();
 
     @Override
-    public void onEnable(@NotNull Player player, Action action) {
+    public void onEnable(@NotNull Player player, @Nullable Action action) {
         if(action.isRightClick()){
             onRightClick(player);
         }
