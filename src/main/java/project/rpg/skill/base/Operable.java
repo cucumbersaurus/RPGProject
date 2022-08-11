@@ -7,5 +7,5 @@ import org.jetbrains.annotations.Nullable;
 
 public interface Operable {
 
-    void onEnable(@NotNull Player player, @Nullable Action action);
+    void onEnable(@NotNull Player player, @NotNull Action action);
 }

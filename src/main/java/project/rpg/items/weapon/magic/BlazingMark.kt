@@ -7,11 +7,11 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.annotation.skill
 import project.rpg.items.Items
-import project.rpg.items.weapon.WeaponBase
+import project.rpg.items.weapon.MagicItemBase
 import project.rpg.skill.magic.fire.BlazingMark
 import project.rpg.textComponets.color.TextColors
 
-object BlazingMark : WeaponBase() {
+object BlazingMark : MagicItemBase() {
 
     override fun createItem() {
         val item = ItemStack(Material.BLAZE_ROD)
@@ -27,7 +27,7 @@ object BlazingMark : WeaponBase() {
     }
 
     @skill(name = "blazing_mark")
-    override fun onEnable(action: Action?, player: Player) {
+    override fun onEnable(player: Player, action: Action?) {
         skill.onEnable(player, action)
     }
 

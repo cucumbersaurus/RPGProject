@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
 import project.rpg.skill.magic.electricity.Lightning
 
-object Wand : WeaponBase() {
+object Wand : MagicItemBase() {
 
     override fun createItem() {
         val item = ItemStack(Material.STICK, 1)
@@ -32,7 +32,7 @@ object Wand : WeaponBase() {
         super.item = item
     }
 
-    override fun onEnable(action: Action, player : Player) {
+    override fun onEnable(player: Player, action: Action) {
         skill.onEnable(player, action)
     }
 }

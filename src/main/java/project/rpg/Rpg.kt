@@ -1,6 +1,7 @@
 package project.rpg
 
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
 import project.rpg.commands.test.TitleTestCommand
@@ -21,7 +22,7 @@ class Rpg : JavaPlugin() {
     }
 
     override fun onEnable() {
-        logger.info("RPG plugin loading!")
+        logger.info("RPG plugin loading!" + ChatColor.AQUA)
         checkOnlinePlayers()
 
         registerEvents()
@@ -35,9 +36,9 @@ class Rpg : JavaPlugin() {
 
     override fun onDisable() {
         saveData()
-        logger.info("saving files...")
+        logger.info("saving files..." + ChatColor.YELLOW)
         //Thread.sleep(1000)
-        logger.info("RPG plugin disabled")
+        logger.info("RPG plugin disabled" + ChatColor.AQUA)
     }
 
     private fun registerCommands(){

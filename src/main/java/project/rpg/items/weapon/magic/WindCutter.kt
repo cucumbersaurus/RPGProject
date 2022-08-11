@@ -6,11 +6,11 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
-import project.rpg.items.weapon.WeaponBase
+import project.rpg.items.weapon.MagicItemBase
 import project.rpg.skill.magic.wind.WindCutter
 import project.rpg.textComponets.color.TextColors
 
-object WindCutter : WeaponBase() {
+object WindCutter : MagicItemBase() {
     override fun createItem() {
         val item = ItemStack(Material.BAMBOO)
         val meta = item.itemMeta
@@ -24,7 +24,7 @@ object WindCutter : WeaponBase() {
         super.item = item
     }
 
-    override fun onEnable(action: Action, player: Player) {
+    override fun onEnable(player: Player, action: Action) {
         skill.onEnable(player, action)
     }
 

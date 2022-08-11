@@ -6,11 +6,11 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
-import project.rpg.items.weapon.WeaponBase
+import project.rpg.items.weapon.MagicItemBase
 import project.rpg.skill.magic.electricity.ShockWave
 import project.rpg.textComponets.color.DefaultTextColors
 
-object ShockWave : WeaponBase() {
+object ShockWave : MagicItemBase() {
     override fun createItem() {
         val item = ItemStack(Material.YELLOW_BANNER)
         val meta = item.itemMeta
@@ -24,7 +24,7 @@ object ShockWave : WeaponBase() {
         super.item = item
     }
 
-    override fun onEnable(action: Action, player: Player) {
+    override fun onEnable(player: Player, action: Action) {
         skill.onEnable(player, action)
     }
 

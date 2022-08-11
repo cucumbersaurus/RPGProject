@@ -6,11 +6,11 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
-import project.rpg.items.weapon.WeaponBase
+import project.rpg.items.weapon.MagicItemBase
 import project.rpg.skill.magic.water.FrozenTrace
 import project.rpg.textComponets.color.TextColors
 
-object FrozenTrace : WeaponBase() {
+object FrozenTrace : MagicItemBase() {
     override fun createItem() {
         val item = ItemStack(Material.DIAMOND_BOOTS)
         val meta = item.itemMeta
@@ -24,7 +24,7 @@ object FrozenTrace : WeaponBase() {
         super.item = item
     }
 
-    override fun onEnable(action: Action, player: Player) {
+    override fun onEnable(player: Player, action: Action) {
         skill.onEnable(player, action)
     }
 

@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack
 import project.rpg.Rpg
 import project.rpg.items.Items
 import project.rpg.items.disposable.DisposableBase
-import project.rpg.items.weapon.WeaponBase
+import project.rpg.items.weapon.MagicItemBase
 
 class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
 
@@ -26,8 +26,8 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
                 if(item.itemMeta.hasCustomModelData()) {
                     val id = item.itemMeta.customModelData
                     val usedItem = Items.values()[id]
-                    if (usedItem.itemBase is WeaponBase) {
-                        usedItem.itemBase.onEnable(event.action, player)
+                    if (usedItem.itemBase is MagicItemBase) {
+                        usedItem.itemBase.onEnable(player, event.action)
                         plugin.actionBar.updateActionBar(player)
                         event.isCancelled=true
                     } else if (usedItem.itemBase is DisposableBase) {

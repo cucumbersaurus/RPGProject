@@ -8,11 +8,11 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
-import project.rpg.items.weapon.WeaponBase
+import project.rpg.items.weapon.MagicItemBase
 import project.rpg.skill.magic.fire.MeteorStrike
 import project.rpg.textComponets.color.DefaultTextColors
 
-object TheMeteor: WeaponBase() {
+object TheMeteor: MagicItemBase() {
     override fun createItem() {
         val item = ItemStack(Material.FIRE_CHARGE)
         val meta = item.itemMeta
@@ -26,7 +26,7 @@ object TheMeteor: WeaponBase() {
         super.item = item
     }
 
-    override fun onEnable(action: Action, player: Player) {
+    override fun onEnable(player: Player, action: Action) {
         skill.onEnable(player, action)
     }
 

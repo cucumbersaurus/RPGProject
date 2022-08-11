@@ -7,10 +7,10 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.annotation.skill
 import project.rpg.items.Items
-import project.rpg.items.weapon.WeaponBase
+import project.rpg.items.weapon.MagicItemBase
 import project.rpg.textComponets.color.TextColors
 
-object Explosion : WeaponBase() {
+object Explosion : MagicItemBase() {
 
     override fun createItem() {
         val item = ItemStack(Material.FIRE_CHARGE)
@@ -26,7 +26,7 @@ object Explosion : WeaponBase() {
     }
 
     @skill(name = "flame_burst")
-    override fun onEnable(action: Action, player: Player) {
+    override fun onEnable(player: Player, action: Action) {
         skill.onEnable(player,action)
     }
 

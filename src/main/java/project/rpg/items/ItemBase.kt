@@ -26,7 +26,7 @@ abstract class ItemBase {
         }
     }
 
-    override fun hashCode(): Int {//이게 뭘까? 만들라 해서 만들긴 했는데
+    override fun hashCode(): Int {//이게 뭘까? 만들라 해서 만들긴 했는데  (ㅋㅋㅋㅋㅋㅋㅋ)
         return item?.hashCode() ?: 0
     }
 }

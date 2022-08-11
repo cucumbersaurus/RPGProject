@@ -7,18 +7,18 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
 import project.rpg.items.weapon.MagicItemBase
-import project.rpg.skill.magic.water.PureShield
+import project.rpg.skill.magic.wind.HeavenWing
 import project.rpg.textComponets.color.TextColors
 
-object PureShield : MagicItemBase() {
+object HeavenWing : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.HEART_OF_THE_SEA)
+        val item = ItemStack(Material.PHANTOM_MEMBRANE)
         val meta = item.itemMeta
-        skill = PureShield()
+        skill = HeavenWing()
 
-        meta.displayName(Component.text("회복").color(TextColors.AQUAMARINE.color))
+        meta.displayName(Component.text("날아올라!~").color(TextColors.TURQUOISE.color))
         meta.lore(itemLore())
-        meta.setCustomModelData(Items.PURE_SHIELD.value)
+        meta.setCustomModelData(Items.HEAVEN_WING.value)
 
         item.itemMeta = meta
         super.item = item
@@ -30,8 +30,8 @@ object PureShield : MagicItemBase() {
 
     private fun itemLore():List<Component> {
         val lore = ArrayList<Component>()
-        lore.add(Component.text("방어 & 회복"))
-        lore.add(Component.text("퓨어 쉴드"))
+        lore.add(Component.text("저 하늘 높이"))
+        lore.add(Component.text("헤븐 윙"))
         return lore
     }
 }
