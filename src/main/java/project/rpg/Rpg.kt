@@ -1,5 +1,8 @@
 package project.rpg
 
+import io.github.monun.heartbeat.coroutines.HeartbeatScope
+import io.github.monun.kommand.kommand
+import kotlinx.coroutines.launch
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.plugin.java.JavaPlugin
@@ -29,8 +32,9 @@ class Rpg : JavaPlugin() {
         registerCommands()
         registerTabCompleter()
 
-        actionBar.startActionBar()
-        Mana.startManaRefilling(this)
+        //actionBar.startActionBar()
+        actionBar.startCoroutineActionBar()
+        Mana.startManaRefilling()
 
     }
 
@@ -52,9 +56,14 @@ class Rpg : JavaPlugin() {
         getCommand("level")!!.setExecutor(LevelCommand())
         getCommand("craft")!!.setExecutor(CraftCommand())
         getCommand("friend")!!.setExecutor(FriendCommand())
-        /*kommand {
-            TestCommand.register(this, this@Rpg)
-        }*/
+        kommand {
+            //TestCommand.register(this, this@Rpg)
+            register("user"){
+                executes {
+                    sender.sendMessage("test")
+                }
+            }
+        }
     }
 
     private fun registerTabCompleter(){
@@ -90,12 +99,12 @@ class Rpg : JavaPlugin() {
     }
 
     private fun checkOnlinePlayers() {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this, {
+        HeartbeatScope().launch {
             for (player in Bukkit.getOnlinePlayers()) {
                 PlayerInformation.makeInfo(player)
                 //FileManager.getFile(player)
             }
             logger.info("RPG plugin loading completed")
-        }, 10)
+        }
     }
 }

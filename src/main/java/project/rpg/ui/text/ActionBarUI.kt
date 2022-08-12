@@ -1,5 +1,8 @@
 package project.rpg.ui.text
 
+import io.github.monun.heartbeat.coroutines.HeartbeatScope
+import io.github.monun.heartbeat.coroutines.Suspension
+import kotlinx.coroutines.launch
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Bukkit
@@ -13,19 +16,32 @@ class ActionBarUI(private val _plugin: Rpg) {
             sendActionBarToPlayer(player)
         }
     }
+    fun startCoroutineActionBar(){
+        Thread.sleep(10)
+        HeartbeatScope().launch {
+            val suspension = Suspension()
+            while(true) {
+                suspension.delay(50 * 20L)
 
-    fun startActionBar() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(_plugin, showActionBar, 20, 10)
+                for (player in Bukkit.getOnlinePlayers()) {
+                    sendActionBarToPlayer(player)
+                }
+            }
+        }
     }
 
     fun updateActionBar() {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, showActionBar, 0)
+        HeartbeatScope().launch {
+            for (player in Bukkit.getOnlinePlayers()) {
+                sendActionBarToPlayer(player)
+            }
+        }
     }
 
     fun updateActionBar(player: Player) {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(_plugin, {
+        HeartbeatScope().launch {
             sendActionBarToPlayer(player)
-        }, 0)
+        }
     }
 
     private fun sendActionBarToPlayer(player: Player){

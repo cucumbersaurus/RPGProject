@@ -4,36 +4,51 @@ main:  project.rpg.Rpg
 api-version: 1.18
 authors: [ Cucumbersaurus, Behappy ]
 libraries:
-  - io.github.monun:kommand-core:2.11.0
+  - io.github.monun:kommand-core:2.12.0
   - io.github.monun:invfx:3.1.0
   - org.jetbrains.kotlin:kotlin-stdlib:1.5.21
   - org.jetbrains.kotlin:kotlin-reflect:1.5.21
   - org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0
+  - io.github.monun:tap-core:4.6.1
+  - io.github.monun:heartbeat-coroutines:0.0.4
 
 commands:
   quests:
     description: /quests true 또는 /quests false 로 메뉴 표시
     aliases: [퀘스트, 볃ㄴㅅㄴ]
+
   saveFile:
     description: /save
+
   status:
     description: status 커멘드
     usage: "Usage: /<command> [info/add]"
+
   user:
+
   titleTest:
+
   getItem:
     aliases : [아이템, ㅑㅅ드]
+
   skill:
     description: skill 커멘드
     usage: "Usage: /<command> add [스킬이름]"
     aliases: [스킬, 나ㅑㅣㅣ]
+
   menu:
     aliases: [메뉴, ㅡ두ㅕ]
+    permission: all
+
   craft:
     aliases: [제작, ㅊㄱㅁㄽ]
+    permission: all
+
   level:
     aliases: [레벨, ㅣㄷㅍ디]
+
   friend:
     description: friend 커멘드
     usage: "Usage: /<command> [add/accept] [사람이름]"
     aliases: [frn, 친구, ㄹ갸둥]
+    permission: all

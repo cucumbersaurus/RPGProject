@@ -1,5 +1,7 @@
 package project.rpg.skill.magic.electricity
 
+import io.github.monun.heartbeat.coroutines.HeartbeatScope
+import kotlinx.coroutines.launch
 import org.bukkit.Bukkit
 import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
@@ -36,18 +38,16 @@ class LightningChain : MagicSkillBase() {
                 entity.world.spawnParticle(Particle.SPIT, entity.location, 50, 0.25, 0.5, 0.25, 0.1)
 
                 for (i in 0..3) {
-                    plugin?.let {
-                        Bukkit.getScheduler().scheduleSyncDelayedTask(it, {
-                            for (target in locationEntity?.getNearbyEntities(8.0, 8.0, 8.0)!!) {
-                                if (target is LivingEntity&&target!=player) {
-                                    Damage(target,4)
-                                    ElectricShock(target,2)
-                                    target.world.spawnParticle(Particle.SPIT, target.location, 50, 0.25, 0.5, 0.25, 0.1)
-                                    locationEntity = target
-                                    break
-                                }
+                    HeartbeatScope().launch {
+                        for (target in locationEntity?.getNearbyEntities(8.0, 8.0, 8.0)!!) {
+                            if (target is LivingEntity&&target!=player) {
+                                Damage(target,4)
+                                ElectricShock(target,2)
+                                target.world.spawnParticle(Particle.SPIT, target.location, 50, 0.25, 0.5, 0.25, 0.1)
+                                locationEntity = target
+                                break
                             }
-                        },20)
+                        }
                     }
                 }
             }
