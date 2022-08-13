@@ -21,7 +21,7 @@ public class EnforceUI extends GuiBase {
     }
 
     @Override
-    protected void init(@NotNull Player player) {
+    protected void initialize(@NotNull Player player) {
         for(int i = 0; i < 54; i++){
             setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, "enforce.background", false);
         }

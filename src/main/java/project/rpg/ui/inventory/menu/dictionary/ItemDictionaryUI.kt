@@ -19,7 +19,7 @@ class ItemDictionaryUI(player: Player) : GuiBase(player, 54, text("아이템 도
     private var currentPage = 0
     private val totalPages = Items.values().size/28
 
-    override fun init(player: Player) {
+    override fun initialize(player: Player) {
 
         setFrame()
         setItem(text("닫기"), null, Material.BARRIER, 1, 49, Button.CLOSE.name, false)
@@ -87,7 +87,7 @@ class ItemDictionaryUI(player: Player) : GuiBase(player, 54, text("아이템 도
             val slot = 9*(i/7)+i%7+10
             removeItem(slot)
         }
-        init(player)
+        initialize(player)
     }
 
     override fun onClick(event: InventoryClickEvent) {

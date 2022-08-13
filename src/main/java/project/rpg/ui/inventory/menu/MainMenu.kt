@@ -10,7 +10,7 @@ import project.rpg.textComponets.color.DefaultTextColors
 import project.rpg.ui.inventory.GuiBase
 
 class MainMenu(player: Player) : GuiBase(player, 54, text("메인 메뉴")) {
-    override fun init(player: Player) {
+    override fun initialize(player: Player) {
         for (i in 0..53) {
             setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, Button.BACKGROUND.name, false)
         }

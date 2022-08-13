@@ -10,7 +10,7 @@ import project.rpg.effect.Damage
 import project.rpg.effect.ElectricShock
 import project.rpg.effect.Stun
 
-class LightningListener : Listener {
+class LightningEventListener : Listener {
     @EventHandler
     fun onHit(event : LightningStrikeEvent) {
         if (event.lightning.entitySpawnReason == CreatureSpawnEvent.SpawnReason.CUSTOM) {

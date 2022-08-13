@@ -8,7 +8,7 @@ import project.rpg.ui.inventory.GuiBase
 
 class CraftingUI(player: Player) : GuiBase(player, 54, text("아이템 제작")) {
 
-    override fun init(player: Player) {
+    override fun initialize(player: Player) {
         for(i in 0..53){
             when(i){
                 10, 11, 12, 19, 20, 21, 28, 29, 30, 24 -> continue

@@ -14,7 +14,8 @@ libraries:
 
 commands:
   quests:
-    description: /quests true 또는 /quests false 로 메뉴 표시
+    description: /quests true [문자열] 또는 /quests false 로 메뉴 표시
+    usage: "/quests true [문자열]\n/quests false"
     aliases: [퀘스트, 볃ㄴㅅㄴ]
 
   saveFile:

@@ -13,7 +13,7 @@ import project.rpg.effect.Stun
 import project.rpg.player.User
 import project.rpg.skill.SkillType
 
-class ProjectileListener(private val _plugin: Rpg) : Listener {
+class ProjectileEventListener(private val _plugin: Rpg) : Listener {
     @EventHandler
     fun onProjectileHit(event : ProjectileHitEvent) {
         if (event.entity is Arrow) {

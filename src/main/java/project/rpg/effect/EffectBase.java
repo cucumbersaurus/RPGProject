@@ -1,7 +1,6 @@
 package project.rpg.effect;
 
 import org.bukkit.entity.LivingEntity;
-import project.rpg.Rpg;
 
 public abstract class EffectBase {
 

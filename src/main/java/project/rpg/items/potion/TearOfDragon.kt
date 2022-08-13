@@ -48,7 +48,7 @@ object TearOfDragon : PotionBase() {
                 mana.addMana(mana.maxMana - mana.mana)
             }
             plugin.actionBar.updateActionBar(player)
-            player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION,20*20,10,true,true,true,))
+            player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION,20*20,10,true,true,true))
         }
     }
 }

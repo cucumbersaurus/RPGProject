@@ -22,7 +22,7 @@ class FlareClock : MagicSkillBase() {
                 entity.isGlowing = true
                 val pluginManager = Bukkit.getPluginManager()
                 try {
-                    Class.forName("project.rpg.Rpg");
+                    Class.forName("project.rpg.Rpg")
                 } catch (e : ClassNotFoundException) {
                     return
                 }

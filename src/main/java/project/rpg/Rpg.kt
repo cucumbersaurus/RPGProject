@@ -1,7 +1,6 @@
 package project.rpg
 
 import io.github.monun.heartbeat.coroutines.HeartbeatScope
-import io.github.monun.kommand.kommand
 import kotlinx.coroutines.launch
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -56,6 +55,7 @@ class Rpg : JavaPlugin() {
         getCommand("level")!!.setExecutor(LevelCommand())
         getCommand("craft")!!.setExecutor(CraftCommand())
         getCommand("friend")!!.setExecutor(FriendCommand())
+        /*
         kommand {
             //TestCommand.register(this, this@Rpg)
             register("user"){
@@ -64,6 +64,7 @@ class Rpg : JavaPlugin() {
                 }
             }
         }
+        */
     }
 
     private fun registerTabCompleter(){
@@ -82,7 +83,7 @@ class Rpg : JavaPlugin() {
         server.pluginManager.registerEvents(PlayerQuitEventListener(), this)
         server.pluginManager.registerEvents(RespawnEventListener(this), this)
         server.pluginManager.registerEvents(PlayerItemConsumeEventListener(this), this)
-        server.pluginManager.registerEvents(ProjectileListener(this), this)
+        server.pluginManager.registerEvents(ProjectileEventListener(this), this)
     }
 
     private fun loadData() {

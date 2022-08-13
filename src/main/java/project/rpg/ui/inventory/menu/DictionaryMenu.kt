@@ -8,7 +8,7 @@ import project.rpg.ui.inventory.GuiBase
 import project.rpg.ui.inventory.menu.dictionary.ItemDictionaryUI
 
 class DictionaryMenu(player: Player) : GuiBase(player, 54, text("도감")) {
-    override fun init(player: Player) {
+    override fun initialize(player: Player) {
         for (i in 0..53) {
             setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, Button.BACKGROUND.name, false)
         }
@@ -23,15 +23,23 @@ class DictionaryMenu(player: Player) : GuiBase(player, 54, text("도감")) {
         event.isCancelled = true
         val player = event.whoClicked as Player
         when (getValue(event.slot)) {
-            Button.BACKGROUND.name -> {return}
+            Button.BACKGROUND.name -> {
+                return
+            }
             Button.ITEMS.name -> {
                 forceCloseGUI(player)
                 ItemDictionaryUI(player)
             }
-            Button.SKILLS.name -> {}
-            Button.JOBS.name -> {}
+            Button.SKILLS.name -> {
+                return
+            }
+            Button.JOBS.name -> {
+                return
+            }
             Button.CLOSE.name -> forceCloseGUI(player)
-            else -> {return}
+            else -> {
+                return
+            }
         }
     }
 

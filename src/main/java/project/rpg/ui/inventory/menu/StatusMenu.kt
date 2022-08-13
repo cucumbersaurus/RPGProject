@@ -17,7 +17,7 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
     private var _user: User? = null
     private var _status: Status? = null
     private var _player: Player? = null
-    override fun init(player: Player) {
+    override fun initialize(player: Player) {
         _player = player
         _user = User.getPlayer(player)
         _status = _user!!.status
@@ -174,14 +174,14 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             }
             "stats.reload" -> reloadUi()
             "stats.close" -> forceCloseGUI(_player!!)
-            else -> {}
+            else -> return
         }
     }
 
     private fun reloadUi() {
         _player!!.playSound(_player!!.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
         _user!!.status.reloadMap()
-        init(_player!!)
+        initialize(_player!!)
     }
 
     private fun getPlayerHead(player: Player): ItemStack {

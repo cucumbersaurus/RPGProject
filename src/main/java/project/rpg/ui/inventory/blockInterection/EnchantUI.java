@@ -15,7 +15,7 @@ public class EnchantUI extends GuiBase {
     }
 
     @Override
-    protected void init(@NotNull Player player) {
+    protected void initialize(@NotNull Player player) {
 
     }
 
