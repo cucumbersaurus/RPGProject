@@ -53,3 +53,5 @@ commands:
     usage: "Usage: /<command> [add/accept] [사람이름]"
     aliases: [frn, 친구, ㄹ갸둥]
     permission: all
+
+  mob:

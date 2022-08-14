@@ -10,9 +10,9 @@ object PlayerInformation {
         val user = User.newUser(player)
         user.status.reloadMap()
 
-        player.healthScale = User.getPlayer(player).status.getStatusValues(StatusName.HEALTH) / 10.0
-        player.isHealthScaled = true
-        player.health = User.getPlayer(player).status.getStatusValues(StatusName.HEALTH) / 10.0
+        player.maxHealth = User.getPlayer(player).status.getStatusValues(StatusName.HEALTH) / 10.0
+        player.healthScale = 100.0
+        player.health = 1.0//User.getPlayer(player).status.getStatusValues(StatusName.HEALTH) / 10.0\
 
         Skill(player)
 
@@ -26,6 +26,6 @@ object PlayerInformation {
 
     @JvmStatic
     fun updateHealth( player: Player){
-        player.healthScale = User.getPlayer(player).status.getStatusValues(StatusName.HEALTH) / 10.0
+        player.maxHealth = User.getPlayer(player).status.getStatusValues(StatusName.HEALTH) / 10.0
     }
 }

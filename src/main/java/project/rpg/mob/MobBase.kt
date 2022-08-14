@@ -1,7 +1,9 @@
-package project.rpg.mob;
+package project.rpg.mob
 
-import org.bukkit.entity.Entity;
+import org.bukkit.entity.Entity
 
-public abstract class MobBase implements Entity {
+interface MobBase {
+
+    fun createMobFun():(entity: Entity) ->Unit
 
 }

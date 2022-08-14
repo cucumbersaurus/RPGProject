@@ -6,6 +6,7 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
+import project.rpg.commands.test.MobTest
 import project.rpg.commands.test.TitleTestCommand
 import project.rpg.events.listeners.*
 import project.rpg.manager.FileManager
@@ -55,6 +56,7 @@ class Rpg : JavaPlugin() {
         getCommand("level")!!.setExecutor(LevelCommand())
         getCommand("craft")!!.setExecutor(CraftCommand())
         getCommand("friend")!!.setExecutor(FriendCommand())
+        getCommand("mob")!!.setExecutor(MobTest())
         /*
         kommand {
             //TestCommand.register(this, this@Rpg)
