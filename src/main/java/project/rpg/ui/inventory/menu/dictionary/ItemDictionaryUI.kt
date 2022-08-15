@@ -96,10 +96,13 @@ class ItemDictionaryUI(player: Player) : GuiBase(player, 54, text("아이템 도
         when (getValue(event.slot)) {
             Button.BACKGROUND.name -> return
             Button.ITEM.name ->{
-                val item = Items.values()[slotToItem(event.slot)].item
-                if(item!=null && player.isOp ) {
-                    player.inventory.addItem(item)
-                    player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
+                val id = slotToItem(event.slot)
+                if(id<Items.values().size) {
+                    val item = Items.values()[id].item
+                    if (item != null && player.isOp) {
+                        player.inventory.addItem(item)
+                        player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
+                    }
                 }
             }
             Button.CLOSE.name ->{
