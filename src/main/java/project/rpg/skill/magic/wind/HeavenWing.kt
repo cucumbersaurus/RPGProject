@@ -16,10 +16,12 @@ class HeavenWing : MagicSkillBase() {
         val mana = User.getPlayer(player).mana
 
         if (mana.useMana(needMana)) {
-            player.world.spawnParticle(Particle.WHITE_ASH, player.location, 100, 0.25, 0.5, 0.25, 0.1)
-            player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, 20*2, 3, true))
-            player.addPotionEffect(PotionEffect(PotionEffectType.SLOW_FALLING, 20*4, 3, true))
-            player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, 20*2, 3, true))
+            with(player) {
+                world.spawnParticle(Particle.WHITE_ASH, player.location, 100, 0.25, 0.5, 0.25, 0.1)
+                addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, 20 * 2, 3, true))
+                addPotionEffect(PotionEffect(PotionEffectType.SLOW_FALLING, 20 * 4, 3, true))
+                addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, 20 * 2, 3, true))
+            }
         }
     }
 

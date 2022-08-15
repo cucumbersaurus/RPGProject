@@ -1,6 +1,7 @@
 package project.rpg.ui.inventory.menu
 
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Material
 import org.bukkit.Sound
@@ -13,7 +14,7 @@ import project.rpg.player.status.Status
 import project.rpg.player.status.base.StatusName
 import project.rpg.ui.inventory.GuiBase
 
-class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 메뉴")) {
+class StatusMenu(player: Player) : GuiBase(player, 54, text("스텟 메뉴")) {
     private var _user: User? = null
     private var _status: Status? = null
     private var _player: Player? = null
@@ -21,27 +22,27 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
         _player = player
         _user = User.getPlayer(player)
         _status = _user!!.status
-        for (i in 0..53) {
-            setItem(Component.text(" "), null, Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1, i, "stats.background", false)
+        for (i in 0..53 ) {
+            setItem(text(" "), null, Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1, i, "stats.background", false)
         }
         for (i in 0..8) {
-            setItem(Component.text(" "), null, Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false)
+            setItem(text(" "), null, Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false)
         }
         run {
             var i = 9
             while (i < 45) {
-                setItem(Component.text(" "), null, Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false)
+                setItem(text(" "), null, Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false)
                 i += 9
             }
         }
         var i = 8
         while (i < 45) {
-            setItem(Component.text(" "), null, Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false)
+            setItem(text(" "), null, Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false)
             i += 9
         }
         setItem(
-            Component.text("힘 strength"),
-            ArrayList(listOf(Component.text(_status!!.getStatusValues(StatusName.STRENGTH)))),
+            text("힘 strength"),
+            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.STRENGTH)))),
             Material.IRON_AXE,
             1,
             12,
@@ -49,8 +50,8 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             true
         )
         setItem(
-            Component.text("신속 speed"),
-            ArrayList(listOf(Component.text(_status!!.getStatusValues(StatusName.SPEED)))),
+            text("신속 speed"),
+            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.SPEED)))),
             Material.FEATHER,
             1,
             14,
@@ -58,8 +59,8 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             true
         )
         setItem(
-            Component.text("민첩 agility"),
-            ArrayList(listOf(Component.text(_status!!.getStatusValues(StatusName.AGILITY)))),
+            text("민첩 agility"),
+            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.AGILITY)))),
             Material.IRON_SWORD,
             1,
             20,
@@ -67,8 +68,8 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             true
         )
         setItem(
-            Component.text("체력 health"),
-            ArrayList(listOf(Component.text(_status!!.getStatusValues(StatusName.HEALTH)))),
+            text("체력 health"),
+            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.HEALTH)))),
             Material.GOLDEN_APPLE,
             1,
             24,
@@ -76,8 +77,8 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             true
         )
         setItem(
-            Component.text("방어 defense"),
-            ArrayList(listOf(Component.text(_status!!.getStatusValues(StatusName.DEFENSE)))),
+            text("방어 defense"),
+            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.DEFENSE)))),
             Material.IRON_CHESTPLATE,
             1,
             38,
@@ -85,8 +86,8 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             true
         )
         setItem(
-            Component.text("행운 luck"),
-            ArrayList(listOf(Component.text(_status!!.getStatusValues(StatusName.LUCK)))),
+            text("행운 luck"),
+            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.LUCK)))),
             Material.DIAMOND,
             1,
             42,
@@ -94,8 +95,8 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             true
         )
         setItem(
-            Component.text("손재주 handicraft"),
-            ArrayList(listOf(Component.text(_status!!.getStatusValues(StatusName.HANDICRAFT)))),
+            text("손재주 handicraft"),
+            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.HANDICRAFT)))),
             Material.IRON_PICKAXE,
             1,
             48,
@@ -103,8 +104,8 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             true
         )
         setItem(
-            Component.text("마력 intelligence"),
-            ArrayList(listOf(Component.text(_status!!.getStatusValues(StatusName.INTELLIGENCE)))),
+            text("마력 intelligence"),
+            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.INTELLIGENCE)))),
             Material.BOOK,
             1,
             50,
@@ -117,8 +118,8 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             "stats.info"
         )
         setItem(
-            Component.text("현재 페이지/새로고침"),
-            ArrayList(listOf(Component.text("현재 페이지를 나타냅니다."), Component.text("눌러서 새로고침"))),
+            text("현재 페이지/새로고침"),
+            ArrayList(listOf(text("현재 페이지를 나타냅니다."), text("눌러서 새로고침"))),
             Material.BEACON,
             1,
             45,
@@ -126,8 +127,8 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
             false
         )
         setItem(
-            Component.text("현재 페이지/닫기"),
-            ArrayList(listOf(Component.text("페이지 닫기"))),
+            text("현재 페이지/닫기"),
+            ArrayList(listOf(text("페이지 닫기"))),
             Material.BARRIER,
             1,
             53,
@@ -188,26 +189,26 @@ class StatusMenu(player: Player) : GuiBase(player, 54, Component.text("스텟 �
         val playerHead = ItemStack(Material.PLAYER_HEAD)
         val meta = playerHead.itemMeta as SkullMeta
         meta.owningPlayer = player
-        meta.displayName(Component.text("정보 info").color(TextColor.color(0xffff55)))
+        meta.displayName(text("정보 info").color(TextColor.color(0xffff55)))
         meta.lore(
             listOf(
-                Component.text("================"),
-                Component.text(_user!!.name.name),
-                Component.text(_user!!.level.level.toString() + ".lv"),
-                Component.text(_user!!.level.exp.toString() + " / " + _user!!.level.needForNextLev),
-                Component.text(" "),
-                Component.text(" "),
-                Component.text("hp : " + _status!!.getStatusValues(StatusName.HEALTH)),
-                Component.text("strength : " + _status!!.getStatusValues(StatusName.STRENGTH)),
-                Component.text("agility : " + _status!!.getStatusValues(StatusName.AGILITY)),
-                Component.text("defense : " + _status!!.getStatusValues(StatusName.DEFENSE)),
-                Component.text("speed : " + _status!!.getStatusValues(StatusName.SPEED)),
-                Component.text("luck : " + _status!!.getStatusValues(StatusName.LUCK)),
-                Component.text("intelligence : " + _status!!.getStatusValues(StatusName.INTELLIGENCE)),
-                Component.text("handicraft : " + _status!!.getStatusValues(StatusName.HANDICRAFT)),
-                Component.text(" "),
-                Component.text("more : " + _status!!.additionalStatusPoint),
-                Component.text("================")
+                text("================"),
+                text(_user!!.name.name),
+                text(_user!!.level.level.toString() + ".lv"),
+                text(_user!!.level.exp.toString() + " / " + _user!!.level.needForNextLev),
+                text(" "),
+                text(" "),
+                text("hp : " + _status!!.getStatusValues(StatusName.HEALTH)),
+                text("strength : " + _status!!.getStatusValues(StatusName.STRENGTH)),
+                text("agility : " + _status!!.getStatusValues(StatusName.AGILITY)),
+                text("defense : " + _status!!.getStatusValues(StatusName.DEFENSE)),
+                text("speed : " + _status!!.getStatusValues(StatusName.SPEED)),
+                text("luck : " + _status!!.getStatusValues(StatusName.LUCK)),
+                text("intelligence : " + _status!!.getStatusValues(StatusName.INTELLIGENCE)),
+                text("handicraft : " + _status!!.getStatusValues(StatusName.HANDICRAFT)),
+                text(" "),
+                text("more : " + _status!!.additionalStatusPoint),
+                text("================")
 
             ) as List<Component>?
         )

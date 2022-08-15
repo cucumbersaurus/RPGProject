@@ -77,15 +77,18 @@ class Rpg : JavaPlugin() {
     }
 
     private fun registerEvents() {
-        server.pluginManager.registerEvents(BlockClickEventListener(), this)
-        server.pluginManager.registerEvents(EntityTakeDamageEventListener(this), this)
-        server.pluginManager.registerEvents(InventoryEventListener(), this)
-        server.pluginManager.registerEvents(PlayerItemUseEventListener(this), this)
-        server.pluginManager.registerEvents(PlayerJoinEventListener(), this)
-        server.pluginManager.registerEvents(PlayerQuitEventListener(), this)
-        server.pluginManager.registerEvents(RespawnEventListener(this), this)
-        server.pluginManager.registerEvents(PlayerItemConsumeEventListener(this), this)
-        server.pluginManager.registerEvents(ProjectileEventListener(this), this)
+        val plugin = this
+        with(server.pluginManager) {
+            registerEvents(BlockClickEventListener(), plugin)
+            registerEvents(EntityTakeDamageEventListener(plugin),  plugin)
+            registerEvents(InventoryEventListener(),  plugin)
+            registerEvents(PlayerItemUseEventListener( plugin),  plugin)
+            registerEvents(PlayerJoinEventListener(),  plugin)
+            registerEvents(PlayerQuitEventListener(),  plugin)
+            registerEvents(RespawnEventListener( plugin),  plugin)
+            registerEvents(PlayerItemConsumeEventListener(plugin),  plugin)
+            registerEvents(ProjectileEventListener(plugin),  plugin)
+        }
     }
 
     private fun loadData() {

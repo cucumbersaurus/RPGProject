@@ -12,16 +12,15 @@ import project.rpg.textComponets.color.TextColors
 
 object Binding : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.CHAIN)
-        val meta = item.itemMeta
+
+        super.item = ItemStack(Material.CHAIN).apply {
+            itemMeta=itemMeta.apply {
+                displayName(Component.text("봉쇄").color(TextColors.DIM_GRAY.color))
+                lore(itemLore())
+                setCustomModelData(Items.BINDING.value)
+            }
+        }
         skill = Binding()
-
-        meta.displayName(Component.text("봉쇄").color(TextColors.DIM_GRAY.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.BINDING.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {
