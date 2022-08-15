@@ -3,13 +3,13 @@ package project.rpg.ui.inventory
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.Material
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.inventory.Inventory
+import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
-import project.rpg.extensions.setDisplayName
-import project.rpg.extensions.setGlow
 
 abstract class GuiBase protected constructor(player: Player, guiSize: Int, guiName: Component?) {
     protected val inventory : Inventory //그냥 인벤토리
@@ -54,9 +54,14 @@ abstract class GuiBase protected constructor(player: Player, guiSize: Int, guiNa
         isGlow: Boolean = false
     ) { //특정 슬롯에 특정 아이템 설정
         val item = ItemStack(material, amount).apply {
-            setDisplayName(name)
-            lore(lore)
-            if(isGlow) setGlow()
+            itemMeta = itemMeta.apply{
+                displayName(name)
+                lore(lore)
+                if(isGlow) {
+                    addEnchant(Enchantment.LURE, 0, true)
+                    addItemFlags(ItemFlag.HIDE_ENCHANTS)
+                }
+            }
         }
         slotMap!![slot] = value
         inventory.setItem(slot, item)

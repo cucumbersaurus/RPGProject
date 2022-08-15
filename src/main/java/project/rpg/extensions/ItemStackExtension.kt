@@ -5,11 +5,7 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
-fun ItemStack.setDisplayName(name:Component?){
-    this.itemMeta.apply {
-        displayName(name)
-    }
-}
+fun ItemStack.setDisplayName(name:Component?) = this.itemMeta.displayName(name)
 
 fun ItemStack.setGlow(){
     this.itemMeta.apply {
@@ -18,10 +14,4 @@ fun ItemStack.setGlow(){
     }
 }
 
-fun ItemStack.setCustomModelData(data:Int){
-    this.itemMeta.apply {
-        setCustomModelData(data)
-    }
-}
-
-
+fun ItemStack.setCustomModelData(modelData:Int) = this.itemMeta.setCustomModelData(modelData)
