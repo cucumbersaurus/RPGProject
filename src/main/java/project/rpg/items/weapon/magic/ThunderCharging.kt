@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object ThunderCharging : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.SPECTRAL_ARROW)
-        val meta = item.itemMeta
+        item = ItemStack(Material.SPECTRAL_ARROW).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("전기 지지직").color(TextColors.LIGHT_YELLOW.color))
+                lore(itemLore())
+                setCustomModelData(Items.THUNDER_CHARGING.value)
+            }
+        }
         skill = ThunderCharging()
-
-        meta.displayName(Component.text("전기 지지직").color(TextColors.LIGHT_YELLOW.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.THUNDER_CHARGING.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

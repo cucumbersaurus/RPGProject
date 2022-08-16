@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object IceSpear : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.SPECTRAL_ARROW)
-        val meta = item.itemMeta
+        item = ItemStack(Material.SPECTRAL_ARROW).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("얼음 화살").color(TextColors.SKY_BLUE.color))
+                lore(itemLore())
+                setCustomModelData(Items.ICE_SPEAR.value)
+            }
+        }
         skill = IceSpear()
-
-        meta.displayName(Component.text("얼음 화살").color(TextColors.SKY_BLUE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.ICE_SPEAR.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

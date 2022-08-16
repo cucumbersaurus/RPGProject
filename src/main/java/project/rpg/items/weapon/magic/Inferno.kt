@@ -13,16 +13,14 @@ import project.rpg.textComponets.color.TextColors
 object Inferno : MagicItemBase() {
 
     override fun createItem() {
-        val item = ItemStack(Material.MAGMA_CREAM)
-        val meta = item.itemMeta
+        item = ItemStack(Material.MAGMA_CREAM).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("레이져 빔!").color(TextColors.INDIAN_RED.color))
+                lore(itemLore())
+                setCustomModelData(Items.INFERNO.value)
+            }
+        }
         skill = Inferno()
-
-        meta.displayName(Component.text("레이져 빔!").color(TextColors.INDIAN_RED.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.INFERNO.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

@@ -14,16 +14,14 @@ import project.rpg.textComponets.color.TextColors
 object BlazingMark : MagicItemBase() {
 
     override fun createItem() {
-        val item = ItemStack(Material.BLAZE_ROD)
-        val meta = item.itemMeta
+        item = ItemStack(Material.BLAZE_ROD).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("타오르는 표식").color(TextColors.CRIMSON.color))
+                lore(itemLore())
+                setCustomModelData(Items.BLAZING_MARK.value)
+            }
+        }
         skill = BlazingMark()
-
-        meta.displayName(Component.text("타오르는 표식").color(TextColors.CRIMSON.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.BLAZING_MARK.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     @skill(name = "blazing_mark")

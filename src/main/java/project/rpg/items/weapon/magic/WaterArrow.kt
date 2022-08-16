@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object WaterArrow : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.ARROW)
-        val meta = item.itemMeta
+        item = ItemStack(Material.ARROW).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("물화살").color(TextColors.ALICE_BLUE.color))
+                lore(itemLore())
+                setCustomModelData(Items.WATER_ARROW.value)
+            }
+        }
         skill = WaterArrow()
-
-        meta.displayName(Component.text("물화살").color(TextColors.ALICE_BLUE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.WATER_ARROW.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.DefaultTextColors
 
 object ShockWave : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.YELLOW_BANNER)
-        val meta = item.itemMeta
+        item = ItemStack(Material.YELLOW_BANNER).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("놀람 파도").color(DefaultTextColors.YELLOW.color))
+                lore(itemLore())
+                setCustomModelData(Items.SHOCK_WAVE.value)
+            }
+        }
         skill = ShockWave()
-
-        meta.displayName(Component.text("놀람 파도").color(DefaultTextColors.YELLOW.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.SHOCK_WAVE.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

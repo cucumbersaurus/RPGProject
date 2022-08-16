@@ -12,7 +12,7 @@ import project.rpg.textComponets.color.TextColors
 
 object Binding : MagicItemBase() {
     override fun createItem() {
-        super.item = ItemStack(Material.CHAIN).apply {
+        item = ItemStack(Material.CHAIN).apply {
             itemMeta = itemMeta.apply {
                 displayName(Component.text("봉쇄").color(TextColors.DIM_GRAY.color))
                 lore(itemLore())

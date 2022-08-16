@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object EternalFrost : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.SNOWBALL)
-        val meta = item.itemMeta
+        item = ItemStack(Material.SNOWBALL).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("寒冷").color(TextColors.DEEP_SKY_BLUE.color))
+                lore(itemLore())
+                setCustomModelData(Items.ETERNAL_FROST.value)
+            }
+        }
         skill = EternalFrost()
-
-        meta.displayName(Component.text("寒冷").color(TextColors.DEEP_SKY_BLUE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.ETERNAL_FROST.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

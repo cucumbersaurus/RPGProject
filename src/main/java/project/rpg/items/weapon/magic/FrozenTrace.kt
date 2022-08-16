@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object FrozenTrace : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.DIAMOND_BOOTS)
-        val meta = item.itemMeta
+        item = ItemStack(Material.DIAMOND_BOOTS).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("돌진!").color(TextColors.CADET_BLUE.color))
+                lore(itemLore())
+                setCustomModelData(Items.FROZEN_TRACE.value)
+            }
+        }
         skill = FrozenTrace()
-
-        meta.displayName(Component.text("돌진!").color(TextColors.CADET_BLUE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.FROZEN_TRACE.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

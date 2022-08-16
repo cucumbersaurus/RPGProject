@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object LightningChain : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.CHAINMAIL_BOOTS)
-        val meta = item.itemMeta
+        item = ItemStack(Material.CHAINMAIL_BOOTS).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("전기 사슬?").color(TextColors.BISQUE.color))
+                lore(itemLore())
+                setCustomModelData(Items.LIGHTNING_CHAIN.value)
+            }
+        }
         skill = LightningChain()
-
-        meta.displayName(Component.text("전기 사슬?").color(TextColors.BISQUE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.LIGHTNING_CHAIN.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object GiganticThunder : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.YELLOW_CANDLE)
-        val meta = item.itemMeta
+        item = ItemStack(Material.YELLOW_CANDLE).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("거대 번개").color(TextColors.PALE_GOLDEN_ROD.color))
+                lore(itemLore())
+                setCustomModelData(Items.GIGANTIC_THUNDER.value)
+            }
+        }
         skill = GiganticThunder()
-
-        meta.displayName(Component.text("거대 번개").color(TextColors.PALE_GOLDEN_ROD.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.GIGANTIC_THUNDER.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

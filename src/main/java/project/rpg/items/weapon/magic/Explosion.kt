@@ -13,16 +13,14 @@ import project.rpg.textComponets.color.TextColors
 object Explosion : MagicItemBase() {
 
     override fun createItem() {
-        val item = ItemStack(Material.FIRE_CHARGE)
-        val meta = item.itemMeta
+        item =  ItemStack(Material.FIRE_CHARGE).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("☆폭발☆").color(TextColors.MAROON.color))
+                lore(itemLore())
+                setCustomModelData(Items.EXPLOSION.value)
+            }
+        }
         skill = project.rpg.skill.magic.fire.FlameBurst()
-
-        meta.displayName(Component.text("☆폭발☆").color(TextColors.MAROON.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.EXPLOSION.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     @skill(name = "flame_burst")

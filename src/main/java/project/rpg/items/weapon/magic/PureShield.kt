@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object PureShield : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.HEART_OF_THE_SEA)
-        val meta = item.itemMeta
+        item = ItemStack(Material.HEART_OF_THE_SEA).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("회복").color(TextColors.AQUAMARINE.color))
+                lore(itemLore())
+                setCustomModelData(Items.PURE_SHIELD.value)
+            }
+        }
         skill = PureShield()
-
-        meta.displayName(Component.text("회복").color(TextColors.AQUAMARINE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.PURE_SHIELD.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

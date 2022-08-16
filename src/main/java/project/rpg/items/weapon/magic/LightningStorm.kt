@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object LightningStorm : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.IRON_INGOT)
-        val meta = item.itemMeta
+        item = ItemStack(Material.IRON_INGOT).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("번개 구름").color(TextColors.GOLDEN_ROD.color))
+                lore(itemLore())
+                setCustomModelData(Items.LIGHTNING_STORM.value)
+            }
+        }
         skill = LightningStorm()
-
-        meta.displayName(Component.text("번개 구름").color(TextColors.GOLDEN_ROD.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.LIGHTNING_STORM.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

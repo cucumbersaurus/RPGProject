@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 object LavaZone : MagicItemBase() {
 
     override fun createItem() {
-        val item = ItemStack(Material.LAVA_BUCKET)
-        val meta = item.itemMeta
+        item = ItemStack(Material.LAVA_BUCKET).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("화염 지대").color(TextColors.CRIMSON.color))
+                lore(itemLore())
+                setCustomModelData(Items.LAVA_ZONE.value)
+            }
+        }
         skill = project.rpg.skill.magic.fire.LavaZone()
-
-        meta.displayName(Component.text("화염 지대").color(TextColors.CRIMSON.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.LAVA_ZONE.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

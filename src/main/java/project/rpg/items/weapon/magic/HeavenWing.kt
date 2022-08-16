@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object HeavenWing : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.PHANTOM_MEMBRANE)
-        val meta = item.itemMeta
+        item = ItemStack(Material.PHANTOM_MEMBRANE).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("날아올라!~").color(TextColors.TURQUOISE.color))
+                lore(itemLore())
+                setCustomModelData(Items.HEAVEN_WING.value)
+            }
+        }
         skill = HeavenWing()
-
-        meta.displayName(Component.text("날아올라!~").color(TextColors.TURQUOISE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.HEAVEN_WING.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

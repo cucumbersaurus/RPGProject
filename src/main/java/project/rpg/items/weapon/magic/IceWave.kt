@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object IceWave : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.ICE)
-        val meta = item.itemMeta
+        item = ItemStack(Material.ICE).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("얼음 파도").color(TextColors.TURQUOISE.color))
+                lore(itemLore())
+                setCustomModelData(Items.ICE_WAVE.value)
+            }
+        }
         skill = IceWave()
-
-        meta.displayName(Component.text("얼음 파도").color(TextColors.TURQUOISE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.ICE_WAVE.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

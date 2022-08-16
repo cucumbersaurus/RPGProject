@@ -13,16 +13,14 @@ import project.rpg.textComponets.color.DefaultTextColors
 object FlareClock : MagicItemBase() {
 
     override fun createItem() {
-        val item = ItemStack(Material.CLOCK)
-        val meta = item.itemMeta
+        item = ItemStack(Material.CLOCK).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("플레어 시계").color(DefaultTextColors.RED.color))
+                lore(itemLore())
+                setCustomModelData(Items.FLARE_CLOCK.value)
+            }
+        }
         skill = FlareClock()
-
-        meta.displayName(Component.text("플레어 시계").color(DefaultTextColors.RED.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.FLARE_CLOCK.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

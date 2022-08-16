@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object Tempest : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.OXEYE_DAISY)
-        val meta = item.itemMeta
+        item = ItemStack(Material.OXEYE_DAISY).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("나는 바람이다").color(TextColors.PALE_TURQUOISE.color))
+                lore(itemLore())
+                setCustomModelData(Items.TEMPEST.value)
+            }
+        }
         skill = Tempest()
-
-        meta.displayName(Component.text("나는 바람이다").color(TextColors.PALE_TURQUOISE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.TEMPEST.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {

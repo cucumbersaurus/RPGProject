@@ -12,16 +12,14 @@ import project.rpg.textComponets.color.TextColors
 
 object WindCutter : MagicItemBase() {
     override fun createItem() {
-        val item = ItemStack(Material.BAMBOO)
-        val meta = item.itemMeta
+        item = ItemStack(Material.BAMBOO).apply {
+            itemMeta = itemMeta.apply {
+                displayName(Component.text("바람 자르기").color(TextColors.LIGHT_BLUE.color))
+                lore(itemLore())
+                setCustomModelData(Items.WIND_CUTTER.value)
+            }
+        }
         skill = WindCutter()
-
-        meta.displayName(Component.text("바람 자르기").color(TextColors.LIGHT_BLUE.color))
-        meta.lore(itemLore())
-        meta.setCustomModelData(Items.WIND_CUTTER.value)
-
-        item.itemMeta = meta
-        super.item = item
     }
 
     override fun onEnable(player: Player, action: Action?) {
