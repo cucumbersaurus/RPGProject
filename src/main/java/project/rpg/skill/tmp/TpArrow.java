@@ -12,7 +12,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import project.rpg.dataStructures.ListQueue;
+import project.rpg.data.structures.ListQueue;
 import project.rpg.player.User;
 import project.rpg.skill.SkillType;
 import project.rpg.skill.magic.MagicSkillBase;

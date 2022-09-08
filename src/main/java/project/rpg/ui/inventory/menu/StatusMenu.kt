@@ -193,9 +193,9 @@ class StatusMenu(player: Player) : GuiBase(player, 54, text("스텟 메뉴")) {
         meta.lore(
             listOf(
                 text("================"),
-                text(_user!!.name.name),
-                text(_user!!.level.level.toString() + ".lv"),
-                text(_user!!.level.exp.toString() + " / " + _user!!.level.needForNextLev),
+                text(_user!!.title.name),
+                text(_user!!.levels.level.toString() + ".lv"),
+                text(_user!!.levels.exp.toString() + " / " + _user!!.levels.needForNextLev),
                 text(" "),
                 text(" "),
                 text("hp : " + _status!!.getStatusValues(StatusName.HEALTH)),

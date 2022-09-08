@@ -5,11 +5,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import project.rpg.player.info.Friends;
 import project.rpg.player.info.Skill;
 import project.rpg.player.job.Job;
-import project.rpg.player.level.Level;
+import project.rpg.player.level.Levels;
 import project.rpg.player.mana.Mana;
-import project.rpg.player.name.Name;
+import project.rpg.player.name.Title;
 import project.rpg.player.status.Status;
 
 import java.util.*;
@@ -20,13 +21,15 @@ public class User implements ConfigurationSerializable {  //사람
 
     private final Player _player;
 
-    private Name _name;
+    private Title _title;
     private Status _status;
     private Mana _mana;
-    private Level _level;
+    private Levels _levels;
     private Job _job;
 
     private Skill _skill;
+
+    private Friends _friends;//serialize 추가 필요
 
     public static @NotNull User newUser(Player player) {
         User user = new User(player);
@@ -50,10 +53,10 @@ public class User implements ConfigurationSerializable {  //사람
     public @NotNull Map<String, Object> serialize(){
         Map<String, Object> map = new HashMap<>();
         map.put("player", _player.getName());
-        map.put("name", _name.serialize());
+        map.put("title", _title.serialize());
         map.put("status", _status.serialize());
         map.put("mana", _mana.serialize());
-        map.put("level", _level.serialize());
+        map.put("levels", _levels.serialize());
         map.put("jobs", _job.serialize());
         map.put("skills", _skill.serialize());
         return map;
@@ -63,10 +66,10 @@ public class User implements ConfigurationSerializable {  //사람
         Gson gson = new Gson();
         User user = new User(Bukkit.getPlayer(map.get("player")));
 
-        user.setName(Name.deserialize(gson.fromJson(map.get("name"), HashMap.class)));
+        user.setTitle(Title.deserialize(gson.fromJson(map.get("title"), HashMap.class)));
         user.setStatus(Status.deserialize(gson.fromJson(map.get("status"), Map.class)));
-        user.setMana (Mana.deserialize(gson.fromJson(map.get("mana"), Map.class), user.getStatus()));
-        user.setLevel(Level.deserialize(gson.fromJson(map.get("level"), Map.class)));
+        user.setMana(Mana.deserialize(gson.fromJson(map.get("mana"), Map.class), user.getStatus()));
+        user.setLevels(Levels.deserialize(gson.fromJson(map.get("levels"), Map.class)));
         user.setJob(Job.deserialize(gson.fromJson(map.get("job"), Map.class)));
         //user.setSkill(Skill.deserialize(gson.fromJson(map.get("skill"), Map.class))); //구현 미완료
         user.setSkill(new Skill(user.getPlayer()));
@@ -91,12 +94,12 @@ public class User implements ConfigurationSerializable {  //사람
         return _player;
     }
 
-    public Name getName() {
-        return _name;
+    public Title getTitle() {
+        return _title;
     }
 
-    public void setName(Name name) {
-        _name = name;
+    public void setTitle(Title title) {
+        _title = title;
     }
 
     public Status getStatus() {
@@ -115,12 +118,12 @@ public class User implements ConfigurationSerializable {  //사람
         _mana = mana;
     }
 
-    public Level getLevel() {
-        return _level;
+    public Levels getLevels() {
+        return _levels;
     }
 
-    public void setLevel(Level level) {
-        _level = level;
+    public void setLevels(Levels levels) {
+        _levels = levels;
     }
 
     public Job getJob() {
@@ -139,13 +142,21 @@ public class User implements ConfigurationSerializable {  //사람
         _skill = skill;
     }
 
+    public Friends getFriends() {
+        return _friends;
+    }
+
+    public void setFriends(Friends friends){
+        _friends = friends;
+    }
+
     private User(Player player) {
         this._player = player;
 
-        this._name = new Name(player);
+        this._title = new Title(player);
         this._status = new Status(player);
         this._mana = new Mana(this._status);
-        this._level = new Level(player);
+        this._levels = new Levels(player);
         this._job = new Job(player);
         this._skill = new Skill(player);
     }

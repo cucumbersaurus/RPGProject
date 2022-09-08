@@ -44,6 +44,10 @@ class ActionBarUI(private val _plugin: Rpg) {
         }
     }
 
+    /**
+     * @param player 액션바를 보낼 플레이어
+     * @re
+     */
     private fun sendActionBarToPlayer(player: Player){
         val mana = User.getPlayer(player).mana
         val message = text()

@@ -10,7 +10,7 @@ import project.rpg.player.User;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Level implements ConfigurationSerializable {  //레벨
+public class Levels implements ConfigurationSerializable {  //레벨
 
     private long _level;  //레벨
     private long _exp;   //경험치
@@ -29,7 +29,7 @@ public class Level implements ConfigurationSerializable {  //레벨
         User.getPlayer(_player).getStatus().addAdditionalStatusPoint(5);
         User.getPlayer(_player).getMana().reloadMaxMana();
         _level++;
-        _player.sendMessage(ChatColor.YELLOW + "Level Up!");
+        _player.sendMessage(ChatColor.YELLOW + "Levels Up!");
     }
 
     public void addExp(long amount) {  //경험치 늘리기 나중에 몬스너나 퀘스트에서 이거 쓰면 될듯
@@ -56,7 +56,7 @@ public class Level implements ConfigurationSerializable {  //레벨
         _exp = exp;
     }
 
-    public Level(Player player) {
+    public Levels(Player player) {
         this._player = player;
     }
 
@@ -69,11 +69,11 @@ public class Level implements ConfigurationSerializable {  //레벨
         return map;
     }
 
-    public static Level deserialize(Map<String, String> map) {
-        Level level = new Level(Bukkit.getPlayer(map.get("player")));
-        level.setLevel(Long.parseLong(map.get("level")));
-        level.setExp(Long.parseLong(map.get("exp")));
-        return level;
+    public static Levels deserialize(Map<String, String> map) {
+        Levels levels = new Levels(Bukkit.getPlayer(map.get("player")));
+        levels.setLevel(Long.parseLong(map.get("levels")));
+        levels.setExp(Long.parseLong(map.get("exp")));
+        return levels;
     }
 
 }

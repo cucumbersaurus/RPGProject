@@ -1,4 +1,4 @@
-package project.rpg.dataStructures;
+package project.rpg.data.structures;
 
 public class ConnectList<T> {
 

@@ -17,10 +17,10 @@ public class LevelCommand implements CommandExecutor {
             if (args.length == 2) {
                 switch (args[0]) {
                     case "add":
-                        User.getPlayer(player).getLevel().addExp(Long.parseLong(args[1]));
+                        User.getPlayer(player).getLevels().addExp(Long.parseLong(args[1]));
                         break;
                     case "remove":
-                        User.getPlayer(player).getLevel().addExp(-Long.parseLong(args[1]));
+                        User.getPlayer(player).getLevels().addExp(-Long.parseLong(args[1]));
                         break;
                     default:
                         break;

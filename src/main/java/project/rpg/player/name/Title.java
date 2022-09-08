@@ -10,7 +10,7 @@ import project.rpg.player.name.base.TitleName;
 
 import java.util.*;
 
-public class Name implements ConfigurationSerializable {  //이름과 칭호
+public class Title implements ConfigurationSerializable {  //이름과 칭호
 
     private Player _player;
 
@@ -85,14 +85,14 @@ public class Name implements ConfigurationSerializable {  //이름과 칭호
         _selectedTitle = selectedTitle;
     }
 
-    public Name(Player player) {
+    public Title(Player player) {
         this._player = player;
         this._name = player.getName();
     }
 
-    public static Name deserialize(Map<String, String>map){
-        Name name = new Name(Objects.requireNonNull(Bukkit.getPlayer(map.get("player"))));
-        name.setName(map.get("name"));
+    public static Title deserialize(Map<String, String>map){
+        Title titleName = new Title(Objects.requireNonNull(Bukkit.getPlayer(map.get("player"))));
+        titleName.setName(map.get("name"));
 
         Gson gson = new Gson();
         Map<String, String> titleMap = gson.fromJson(map.get("titles"), Map.class);
@@ -100,7 +100,7 @@ public class Name implements ConfigurationSerializable {  //이름과 칭호
         for(TitleName title:TitleName.values()){
             String s = titleMap.get(title.getName());
             if(s != null){
-                name.addTitle(title.getName());
+                titleName.addTitle(title.getName());
                 //TitleName.deserialize(s) 으로 바꿀 예정
             }
         }
