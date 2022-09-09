@@ -39,7 +39,7 @@ public class EnforceUI extends GuiBase {
                 //enforce()
                 break;
             case "enforce.close":
-                forceCloseGUI( (Player) event.getWhoClicked());
+                forceCloseGUI();
                 break;
             default:
                 break;

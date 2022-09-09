@@ -12,11 +12,13 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
 abstract class GuiBase protected constructor(player: Player, guiSize: Int, guiName: Component?) {
-    protected val inventory : Inventory //그냥 인벤토리
+    protected val inventory : Inventory
+    protected val player : Player
     private var slotMap : MutableMap<Int, String?>? //인벤토리 슬롯당 태그 할당
 
 
     init {
+        this.player = player
         inventory = Bukkit.createInventory(null, guiSize, guiName!!) //새 인벤토리
         slotMap = HashMap() //새 슬롯맵
         this.initialize(player) //상속받은 클래스에서 구현
@@ -104,7 +106,7 @@ abstract class GuiBase protected constructor(player: Player, guiSize: Int, guiNa
     /**
      * @param player 강제로 닫을 인벤토리를 보고 있는 플레이어
      */
-    fun forceCloseGUI(player: Player) { //강제로 닫기
+    fun forceCloseGUI() { //강제로 닫기
         player.closeInventory()
         slotMap = null
         guiMap_.remove(player)

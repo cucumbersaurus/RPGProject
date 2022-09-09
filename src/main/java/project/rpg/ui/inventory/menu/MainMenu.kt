@@ -44,16 +44,16 @@ class MainMenu(player: Player) : GuiBase(player, 54, text("메인 메뉴")) {
             Button.REINFORCE.name -> {}
             Button.CRAFT.name -> {}
             Button.MY_PROFILE.name -> {
-                forceCloseGUI(player)
+                forceCloseGUI()
                 StatusMenu((player))
             }
             Button.DICTIONARY.name -> {
-                forceCloseGUI(event.whoClicked as Player)
+                forceCloseGUI()
                 DictionaryMenu(event.whoClicked as Player)
             }
             Button.WARP.name -> {}
             Button.SETTINGS.name -> {}
-            Button.CLOSE.name -> forceCloseGUI(player)
+            Button.CLOSE.name -> forceCloseGUI()
         }
     }
 

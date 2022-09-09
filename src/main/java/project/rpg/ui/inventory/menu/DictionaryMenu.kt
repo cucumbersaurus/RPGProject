@@ -5,7 +5,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import project.rpg.ui.inventory.GuiBase
-import project.rpg.ui.inventory.menu.dictionary.ItemDictionaryUI
+import project.rpg.ui.inventory.menu.list.dictionary.ItemDictionaryUI
 
 class DictionaryMenu(player: Player) : GuiBase(player, 54, text("도감")) {
     override fun initialize(player: Player) {
@@ -27,7 +27,7 @@ class DictionaryMenu(player: Player) : GuiBase(player, 54, text("도감")) {
                 return
             }
             Button.ITEMS.name -> {
-                forceCloseGUI(player)
+                forceCloseGUI()
                 ItemDictionaryUI(player)
             }
             Button.SKILLS.name -> {
@@ -36,7 +36,7 @@ class DictionaryMenu(player: Player) : GuiBase(player, 54, text("도감")) {
             Button.JOBS.name -> {
                 return
             }
-            Button.CLOSE.name -> forceCloseGUI(player)
+            Button.CLOSE.name -> forceCloseGUI()
             else -> {
                 return
             }

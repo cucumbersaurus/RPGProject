@@ -174,7 +174,7 @@ class StatusMenu(player: Player) : GuiBase(player, 54, text("스텟 메뉴")) {
                 reloadUi()
             }
             "stats.reload" -> reloadUi()
-            "stats.close" -> forceCloseGUI(_player!!)
+            "stats.close" -> forceCloseGUI()
             else -> return
         }
     }

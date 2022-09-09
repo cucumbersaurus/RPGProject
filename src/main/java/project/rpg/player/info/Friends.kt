@@ -12,7 +12,7 @@ import project.rpg.textComponets.color.DefaultTextColors
 
 class Friends(val player: Player) {
 
-    private val pendingList: ArrayList<Player> = ArrayList()
+    val pendingList: ArrayList<Player> = ArrayList()
 
     //sender 보내는 사람
     //invitee 받는 사람
@@ -117,12 +117,19 @@ class Friends(val player: Player) {
         }
     }
 
+    /**
+     *친구 목록을 플레이어에게 전송
+     */
     fun printFriendsList() {
         val message = text()
-        for (i in FriendsData.getPlayer(player).getFriendsList()){
+        for (i in FriendsData.getPlayer(player).linkedPlayers){
             message.append(text(("${text(i.name)} ")))
         }
         player.sendMessage(message.build())
+    }
+
+    fun getFriendsList(): ArrayList<Player> {
+        return FriendsData.getPlayer(player).linkedPlayers
     }
 
     private fun addPendingRequest(player: Player) {

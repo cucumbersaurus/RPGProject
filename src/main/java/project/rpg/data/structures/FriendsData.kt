@@ -4,9 +4,7 @@ import org.bukkit.entity.Player
 
 class FriendsData(val _player:Player){
 
-    private val linkedPlayers:ArrayList<Player> = ArrayList()
-
-    fun getFriendsList():ArrayList<Player> = linkedPlayers
+    val linkedPlayers:ArrayList<Player> = ArrayList()
 
     private fun linkTo(player:Player){
         linkedPlayers.add(player);

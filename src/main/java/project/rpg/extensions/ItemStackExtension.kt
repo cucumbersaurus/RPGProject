@@ -16,12 +16,19 @@ var ItemStack.customModelData:Int
 val ItemStack.hasCustomModelData:Boolean
     get() = itemMeta.hasCustomModelData()
 
+/**
+ * itemMeta를 여러면 조작시 성능 저하 가능성 있음
+ */
 fun ItemStack.setDisplayName(name:Component?){
     itemMeta = itemMeta.apply{
         displayName(name)
     }
 }
 
+
+/**
+ * itemMeta를 여러면 조작시 성능 저하 가능성 있음
+ */
 fun ItemStack.setGlow(){
     itemMeta = itemMeta.apply {
         addEnchant(Enchantment.LURE, 0, true)
