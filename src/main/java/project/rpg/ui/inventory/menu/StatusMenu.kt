@@ -14,7 +14,7 @@ import project.rpg.player.status.Status
 import project.rpg.player.status.base.StatusName
 import project.rpg.ui.inventory.GuiBase
 
-class StatusMenu(player: Player) : GuiBase(player, 54, text("스텟 메뉴")) {
+class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
     private var _user: User? = null
     private var _status: Status? = null
     private var _player: Player? = null

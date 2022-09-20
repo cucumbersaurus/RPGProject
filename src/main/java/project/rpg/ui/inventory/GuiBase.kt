@@ -1,6 +1,8 @@
 package project.rpg.ui.inventory
 
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.Component.text
+import net.kyori.adventure.text.TextComponent
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
@@ -11,7 +13,7 @@ import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
-abstract class GuiBase protected constructor(player: Player, guiSize: Int, guiName: Component?) {
+abstract class GuiBase protected constructor(player: Player, guiName: Component?, guiSize: Int = 54) {
     protected val inventory : Inventory
     protected val player : Player
     @Deprecated("키 대신 람다 넣는게 효율적인듯")
@@ -45,6 +47,16 @@ abstract class GuiBase protected constructor(player: Player, guiSize: Int, guiNa
     fun onClickEvent(event: InventoryClickEvent){
         val slot = event.slot
         executeSlotFunc(event, slot)
+    }
+
+    fun setFunc(slot: Int, func: ((InventoryClickEvent, Int)->Unit)){
+        slotFuncMap[slot] = func
+    }
+
+    fun fillBackGround(material: Material = Material.WHITE_STAINED_GLASS_PANE){
+        for(i in 1..53){
+            setItem(material, i)
+        }
     }
 
     @Deprecated("slotMap 더이상 사용되지 않음")
@@ -93,12 +105,12 @@ abstract class GuiBase protected constructor(player: Player, guiSize: Int, guiNa
      * @param isGlow 아이템에 인첸트 효과를 추가할지
      */
     protected fun setItem(
-        name: Component? = null,
-        lore: ArrayList<Component?>? = null,
-        material: Material = Material.AIR,
-        amount: Int=1,
-        slot: Int = 0,
+        material: Material,
+        slot: Int,
         func: ((InventoryClickEvent, Int)->Unit)? = null, //슬롯을 클릭했을때 실행되는 람다
+        name: Component? = text(" "),
+        lore: List<TextComponent>? = null,
+        amount: Int=1,
         isGlow: Boolean = false
     ) { //특정 슬롯에 특정 아이템 설정
         val item = ItemStack(material, amount).apply {
@@ -115,7 +127,7 @@ abstract class GuiBase protected constructor(player: Player, guiSize: Int, guiNa
         inventory.setItem(slot, item)
     }
 
-    @Deprecated("slotmap 더이상 사용되지 않음")
+    @Deprecated("slotMap 더이상 사용되지 않음")
     /**
      * @param item 메타데이터가 설정된 아이템
      * @param slot 아이템을 보여줄 위치

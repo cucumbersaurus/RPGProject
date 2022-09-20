@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.SkullMeta
 import project.rpg.ui.inventory.GuiBase
 import java.net.URL
 
-abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Array<T>) : GuiBase(player, 54, guiName) {
+abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Array<T>) : GuiBase(player,  guiName) {
 
     private var currentPage = 0
     private val totalPages = sourceList.size/28
