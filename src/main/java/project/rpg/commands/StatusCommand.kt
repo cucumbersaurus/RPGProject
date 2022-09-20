@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
-import project.rpg.player.User
+import project.rpg.extensions.status
 import project.rpg.player.status.base.StatusName
 
 class StatusCommand : CommandExecutor, TabCompleter {
@@ -18,7 +18,7 @@ class StatusCommand : CommandExecutor, TabCompleter {
 
         if (sender is Player) {
             player = sender
-            val status = User.getPlayer(player).status
+            val status = player.status
 
             if ("add" == args[0] ) {
                 if(args.size <= 2) {

@@ -118,10 +118,7 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
      * 모든 아이템을 삭제 후 initialize를 다시 진행
      */
     protected fun reloadUI(){
-        for(i in 0..27){
-            val slot = 9*(i/7)+i%7+10
-            removeItem(slot)
-        }
+        resetGUI()
         initialize(player)
     }
 

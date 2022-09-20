@@ -9,9 +9,10 @@ import project.rpg.ui.inventory.GuiBase
 
 class InventoryEventListener : Listener {
     @EventHandler
-    fun guiClick(e: InventoryClickEvent) {
-        val gui = GuiBase.getGUI(e.whoClicked as Player)
-        gui?.onClick(e)
+    fun guiClick(event: InventoryClickEvent) {
+        val gui = GuiBase.getGUI(event.whoClicked as Player)
+        gui?.onClick(event)
+        gui?.onClickEvent(event)
     }
 
     @EventHandler

@@ -9,12 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <title>Rpg</title>
-
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.7.0-RC2</kotlin.version>
+        <kotlin.version>1.7.20-RC</kotlin.version>
     </properties>
 
     <build>
@@ -56,7 +54,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <jvmTarget>1.8</jvmTarget>
+                    <jvmTarget>17</jvmTarget>
                 </configuration>
             </plugin>
             <plugin>
@@ -133,20 +131,20 @@
         <dependency>
             <groupId>io.github.monun</groupId>
             <artifactId>kommand-api</artifactId>
-            <version>2.12.0</version>
+            <version>2.14.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.github.monun</groupId>
             <artifactId>invfx-api</artifactId>
             <scope>compile</scope>
-            <version>3.1.0</version>
+            <version>3.2.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.monun</groupId>
             <artifactId>tap-api</artifactId>
             <scope>compile</scope>
-            <version>4.6.1</version>
+            <version>4.7.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.monun</groupId>

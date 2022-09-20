@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
-import project.rpg.player.User
+import project.rpg.extensions.skill
 import project.rpg.skill.SkillDic
 
 class SkillCommand : CommandExecutor, TabCompleter {
@@ -14,7 +14,7 @@ class SkillCommand : CommandExecutor, TabCompleter {
             if ("add" == args[0]) {
                 if (args.size >= 2){
                     if (SkillDic.isExist(args[1])) {
-                        User.getPlayer(sender).skill.addSkill(SkillDic.makeSkill(sender, args[1]))
+                        sender.skill.addSkill(SkillDic.makeSkill(sender, args[1]))
                         sender.sendMessage(args[1] + " is added ")
                     } else {
                         sender.sendMessage(command.usage)

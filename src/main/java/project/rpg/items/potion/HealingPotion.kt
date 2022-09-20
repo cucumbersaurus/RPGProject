@@ -11,7 +11,6 @@ import org.bukkit.inventory.meta.PotionMeta
 import project.rpg.Rpg
 import project.rpg.effect.Heal
 import project.rpg.items.Items
-import project.rpg.player.User
 import project.rpg.player.mana.Mana
 
 object HealingPotion : PotionBase() {
@@ -35,7 +34,6 @@ object HealingPotion : PotionBase() {
 
     override fun onDrink(mana : Mana, plugin : Rpg, event : PlayerItemConsumeEvent) {
         val player: Player = event.player
-        val mana = User.getPlayer(player).mana
         val item = event.item
 
         if (item.itemMeta.customModelData== Items.HEALING_POTION.value) {

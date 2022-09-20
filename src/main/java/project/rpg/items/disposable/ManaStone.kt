@@ -7,8 +7,8 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import project.rpg.effect.Damage
+import project.rpg.extensions.mana
 import project.rpg.items.Items
-import project.rpg.player.User
 import project.rpg.textComponets.color.TextColors
 
 object ManaStone : DisposableBase() {
@@ -27,7 +27,7 @@ object ManaStone : DisposableBase() {
     }
 
     override fun onUse(player: Player) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
         Damage(player,60)
 
         val leftUntilFull = mana.maxMana - mana.mana

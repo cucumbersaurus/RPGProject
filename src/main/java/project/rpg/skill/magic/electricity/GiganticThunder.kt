@@ -6,14 +6,14 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.CreatureSpawnEvent
 import project.rpg.annotation.skill
-import project.rpg.player.User
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class GiganticThunder : MagicSkillBase() {
     @skill(name = "shock_wave")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
         var location = player.location
 
         if (mana.useMana(needMana)) {
