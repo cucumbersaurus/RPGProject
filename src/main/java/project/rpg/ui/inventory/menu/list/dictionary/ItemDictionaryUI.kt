@@ -13,30 +13,25 @@ import project.rpg.ui.inventory.menu.list.ListUIBase
 
 class ItemDictionaryUI(player: Player) : ListUIBase<Items>(player, text("아이템 도감"), Items.values()) {
 
-    private var currentPage = 0
-    private val totalPages = Items.values().size/28
+    override fun initialize(player: Player) = setItems()
+
     override fun convertToItemStack(source: Items): ItemStack {
         lateinit var item: ItemStack
-        if(source.value == 0){
+        if (source.value == 0) {
             item = ItemStack(Material.BARRIER)
             item.setDisplayName(text("NULL").color(DefaultTextColors.RED.color))
-        }
-        else {
+        } else {
             item = source.item!!.clone()
         }
         return item
     }
 
-    override fun initialize(player: Player) = setItems()
-
-    override fun onClick(event: InventoryClickEvent) {
-        event.isCancelled = true
-        val player = event.whoClicked as Player
-        when (getValue(event.slot)) {
-            Button.BACKGROUND.name -> return
-            Button.ITEM.name ->{
-                val id = slotToIndex(event.slot)
-                if(id<Items.values().size) {
+    override val itemClickEvent: (event: InventoryClickEvent, slot: Int) -> Unit
+        get() {
+            return { event: InventoryClickEvent, slot: Int ->
+                event.isCancelled = true
+                val id = slotToIndex(slot)
+                if (id < Items.values().size) {
                     val item = Items.values()[id].item
                     if (item != null && player.isOp) {
                         player.inventory.addItem(item)
@@ -44,26 +39,5 @@ class ItemDictionaryUI(player: Player) : ListUIBase<Items>(player, text("아이�
                     }
                 }
             }
-            Button.CLOSE.name ->{
-                forceCloseGUI()
-            }
-            Button.NEXT.name->{
-                currentPage+=1
-                reloadUI()
-            }
-            Button.PREIVIOUS.name->{
-                currentPage-=1
-                reloadUI()
-            }
         }
-    }
-
-    private enum class Button {
-        BACKGROUND,
-        ITEM,
-        CLOSE,
-        NEXT,
-        PREIVIOUS,
-    }
-
 }

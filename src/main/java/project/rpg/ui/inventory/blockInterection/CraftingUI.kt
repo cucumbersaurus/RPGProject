@@ -18,7 +18,8 @@ class CraftingUI(player: Player) : GuiBase(player, text("아이템 제작")) {
                 i,
                 {event:InventoryClickEvent, _:Int->
                     event.isCancelled = true
-                })
+                }
+            )
         }
     }
 }

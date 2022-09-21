@@ -4,6 +4,7 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
 import org.bukkit.Material
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
 import project.rpg.ui.inventory.GuiBase
@@ -15,7 +16,7 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
     private val totalPages = sourceList.size/28
     private val list = sourceList
     private val listSize = sourceList.size
-
+    abstract val itemClickEvent: ((event:InventoryClickEvent, slot: Int)->Unit)?
     /**
      * 자동으로 표시 영역(7*4)에 아이템 채워넣기
      */
@@ -29,7 +30,7 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
             val slot = 9 * (pagePos / 7) + pagePos % 7 + 10
 
             val item = convertToItemStack(list[i])
-            setItem(item, slot, Button.ITEM.name)
+            setItem(item, slot, itemClickEvent)
         }
 
         when (currentPage) {
@@ -84,14 +85,26 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
 
 
     private fun makePeriviousButton() {
-        setItem(previousButton, 45, Button.PREVIOUS.name)
+        setItem(
+            previousButton,
+            45
+        ) { _: InventoryClickEvent, _: Int ->
+            currentPage -= 1
+            reloadUI()
+        }
     }
 
     /**
      * 다음 버튼 생성
      */
     private fun makeNextButton() {
-        setItem(nextButton, 53, Button.NEXT.name)
+        setItem(
+            nextButton,
+            53
+        ) { _: InventoryClickEvent, _: Int ->
+            currentPage += 1
+            reloadUI()
+        }
     }
 
     /**
@@ -99,25 +112,32 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
      */
     protected fun setFrame(material: Material = Material.WHITE_STAINED_GLASS_PANE){
         for (i in 0..8){
-            setItem(text(" "), null, material, 1, i, Button.BACKGROUND.name, false)
+            setItem(material, i)
         }
         for (i in 9..53 step 9){
-            setItem(text(" "), null, material, 1, i, Button.BACKGROUND.name, false)
+            setItem(material, i)
         }
         for (i in 17..53 step 9){
-            setItem(text(" "), null, material, 1, i, Button.BACKGROUND.name, false)
+            setItem(material, i)
         }
         for (i in 46..53){
-            setItem(text(" "), null, material, 1, i, Button.BACKGROUND.name, false)
+            setItem(material, i)
         }
-        setItem(text("닫기"), null, Material.BARRIER, 1, 49, Button.CLOSE.name, false)
+        setItem(
+            Material.BARRIER,
+            49,
+            { _: InventoryClickEvent, _: Int ->
+                forceCloseGUI()
+            },
+            text("닫기")
+        )
     }
 
     /**
      * UI를 새로고침
      * 모든 아이템을 삭제 후 initialize를 다시 진행
      */
-    protected fun reloadUI(){
+    private fun reloadUI(){
         resetGUI()
         initialize(player)
     }
@@ -129,13 +149,4 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
     protected fun slotToIndex(slot: Int): Int{
         return (slot-8)-2*(slot/9) + currentPage*28
     }
-
-    private enum class Button{
-        BACKGROUND,
-        PREVIOUS,
-        NEXT,
-        ITEM,
-        CLOSE
-    }
-
 }
