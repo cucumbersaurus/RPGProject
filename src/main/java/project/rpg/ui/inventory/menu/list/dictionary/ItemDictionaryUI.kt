@@ -13,8 +13,6 @@ import project.rpg.ui.inventory.menu.list.ListUIBase
 
 class ItemDictionaryUI(player: Player) : ListUIBase<Items>(player, text("아이템 도감"), Items.values()) {
 
-    override fun initialize(player: Player) = setItems()
-
     override fun convertToItemStack(source: Items): ItemStack {
         lateinit var item: ItemStack
         if (source.value == 0) {

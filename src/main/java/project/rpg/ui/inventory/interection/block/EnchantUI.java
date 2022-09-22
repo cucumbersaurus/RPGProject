@@ -1,4 +1,4 @@
-package project.rpg.ui.inventory.blockInterection;
+package project.rpg.ui.inventory.interection.block;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -11,7 +11,7 @@ public class EnchantUI extends GuiBase {
 
 
     protected EnchantUI(@NotNull Player p) {
-        super(p, 54, text("마법부여대"));
+        super(p, text("마법부여대"), 54);
     }
 
     @Override

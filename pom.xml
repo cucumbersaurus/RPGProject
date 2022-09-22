@@ -114,7 +114,7 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <version>1.19.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -144,7 +144,7 @@
             <groupId>io.github.monun</groupId>
             <artifactId>tap-api</artifactId>
             <scope>compile</scope>
-            <version>4.7.0</version>
+            <version>4.7.2</version>
         </dependency>
         <dependency>
             <groupId>io.github.monun</groupId>

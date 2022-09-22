@@ -45,7 +45,7 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
     open fun onClick(event: InventoryClickEvent){}
 
     fun onClickEvent(event: InventoryClickEvent){
-        val slot = event.slot
+        val slot = event.rawSlot
         executeSlotFunc(event, slot)
     }
 
@@ -54,7 +54,7 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
     }
 
     fun fillBackGround(material: Material = Material.WHITE_STAINED_GLASS_PANE){
-        for(i in 1..53){
+        for(i in 0..53){
             setItem(material, i)
         }
     }
@@ -107,7 +107,7 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
     protected fun setItem(
         material: Material,
         slot: Int,
-        func: ((InventoryClickEvent, Int)->Unit)? = null, //슬롯을 클릭했을때 실행되는 람다
+        func: ((InventoryClickEvent, Int)->Unit)? = { event, _ -> event.isCancelled = true }, //슬롯을 클릭했을때 실행되는 람다
         name: Component? = text(" "),
         lore: List<TextComponent>? = null,
         amount: Int=1,

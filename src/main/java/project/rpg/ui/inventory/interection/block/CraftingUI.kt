@@ -1,4 +1,4 @@
-package project.rpg.ui.inventory.blockInterection
+package project.rpg.ui.inventory.interection.block
 
 import net.kyori.adventure.text.Component.text
 import org.bukkit.Material

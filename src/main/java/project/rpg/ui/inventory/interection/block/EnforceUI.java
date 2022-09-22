@@ -1,4 +1,4 @@
-package project.rpg.ui.inventory.blockInterection;
+package project.rpg.ui.inventory.interection.block;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -17,7 +17,7 @@ import static net.kyori.adventure.text.Component.text;
 public class EnforceUI extends GuiBase {
 
     public EnforceUI(@NotNull Player player){
-        super(player, 54,  text("메인 메뉴"));
+        super(player, text("메인 메뉴"), 54);
     }
 
     @Override

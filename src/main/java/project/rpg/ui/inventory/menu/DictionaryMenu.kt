@@ -9,9 +9,7 @@ import project.rpg.ui.inventory.menu.list.dictionary.ItemDictionaryUI
 
 class DictionaryMenu(player: Player) : GuiBase(player, text("도감")) {
     override fun initialize(player: Player) {
-        for (i in 0..53) {
-            setItem(Material.WHITE_STAINED_GLASS, i)
-        }
+        fillBackGround()
 
         setItem(
             Material.LAVA_BUCKET,
