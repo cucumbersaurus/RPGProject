@@ -27,3 +27,18 @@ val Status.speed
 val Status.strength
     get() = this.getStatusValues(StatusName.STRENGTH)
 
+fun Status.addAgility(amount: Int = 1) = this.addStatus(StatusName.AGILITY, amount)
+
+fun Status.addDefense(amount: Int = 1) = this.addStatus(StatusName.DEFENSE, amount)
+
+fun Status.addHandicraft(amount: Int = 1) = this.addStatus(StatusName.HANDICRAFT, amount)
+
+fun Status.addMaxHealth(amount: Int = 1) = this.addStatus(StatusName.HEALTH, amount)
+
+fun Status.addIntelligence(amount: Int = 1) = this.addStatus(StatusName.INTELLIGENCE, amount)
+
+fun Status.addLuck(amount: Int = 1) = this.addStatus(StatusName.LUCK, amount)
+
+fun Status.addSpeed(amount: Int = 1) = this.addStatus(StatusName.SPEED, amount)
+
+fun Status.addStrength(amount: Int = 1) = this.addStatus(StatusName.STRENGTH, amount)

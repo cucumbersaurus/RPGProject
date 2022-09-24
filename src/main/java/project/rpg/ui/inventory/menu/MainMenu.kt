@@ -10,19 +10,71 @@ import project.rpg.textComponets.color.DefaultTextColors
 import project.rpg.ui.inventory.GuiBase
 
 class MainMenu(player: Player) : GuiBase(player,  text("메인 메뉴")) {
-    override fun initialize(player: Player) {
-        for (i in 0..53) {
-            setItem(text(" "), null, Material.WHITE_STAINED_GLASS_PANE, 1, i, Button.BACKGROUND.name, false)
+    override fun initialize() {
+        fillBackGround()
+        setItem(
+            Material.SKELETON_SKULL,
+            10,
+            null,
+            text("친구/파티")
+        )
+        setItem(
+            Material.MOJANG_BANNER_PATTERN,
+            12,
+            null,
+            text("퀘스트")
+        )
+        setItem(
+            Material.ANVIL,
+            14,
+            null,
+            text("강화"),
+        )
+        setItem(
+            Material.CRAFTING_TABLE,
+            16,
+            null,
+            text("제작"),
+        )
+        setItem(
+            getPlayerHead(player),
+            28
+        ) { event: InventoryClickEvent, _: Int ->
+            event.isCancelled = true
+            forceCloseGUI()
+            StatusMenu(player)
         }
-        setItem(text("친구/파티"), null, Material.SKELETON_SKULL, 1, 10, Button.FRIENDS_PARTY.name, false)
-        setItem(text("퀘스트"), null, Material.MOJANG_BANNER_PATTERN, 1, 12, Button.QUESTS.name, false)
-        setItem(text("강화"), null, Material.ANVIL, 1, 14, Button.REINFORCE.name, false)
-        setItem(text("제작"), null, Material.CRAFTING_TABLE, 1, 16, Button.CRAFT.name, false)
-        setItem(getPlayerHead(player), 28, Button.MY_PROFILE.name)
-        setItem(text("도감"), null, Material.KNOWLEDGE_BOOK, 1, 30, Button.DICTIONARY.name, false)
-        setItem(text("워프"), null, Material.NETHER_STAR, 1, 32, Button.WARP.name, false)
-        setItem(text("설정"), null, Material.FIREWORK_STAR, 1, 34, Button.SETTINGS.name, false)
-        setItem(text("닫기"), null, Material.BARRIER, 1, 49, Button.CLOSE.name, false)
+        setItem(
+            Material.KNOWLEDGE_BOOK,
+            30,
+            { event:InventoryClickEvent, _: Int ->
+                event.isCancelled = true
+                forceCloseGUI()
+                DictionaryMenu(player)
+            },
+            text("도감"),
+        )
+        setItem(
+            Material.NETHER_STAR,
+            32,
+            null,
+            text("워프"),
+        )
+        setItem(
+            Material.FIREWORK_STAR,
+            34,
+            null,
+            text("설정")
+        )
+        setItem(
+            Material.BARRIER,
+            49,
+            {event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                forceCloseGUI()
+            },
+            text("닫기")
+        )
     }
 
     private fun getPlayerHead(player: Player): ItemStack {
@@ -32,41 +84,5 @@ class MainMenu(player: Player) : GuiBase(player,  text("메인 메뉴")) {
         meta.displayName(text("내 프로필").color(DefaultTextColors.YELLOW.color))
         playerHead.itemMeta = meta
         return playerHead
-    }
-
-    override fun onClick(event: InventoryClickEvent) {
-        event.isCancelled = true
-        val player = event.whoClicked as Player
-        when (getValue(event.slot)) {
-            Button.BACKGROUND.name -> {return}
-            Button.FRIENDS_PARTY.name -> {}
-            Button.QUESTS.name -> {}
-            Button.REINFORCE.name -> {}
-            Button.CRAFT.name -> {}
-            Button.MY_PROFILE.name -> {
-                forceCloseGUI()
-                StatusMenu((player))
-            }
-            Button.DICTIONARY.name -> {
-                forceCloseGUI()
-                DictionaryMenu(event.whoClicked as Player)
-            }
-            Button.WARP.name -> {}
-            Button.SETTINGS.name -> {}
-            Button.CLOSE.name -> forceCloseGUI()
-        }
-    }
-
-    private enum class Button {
-        BACKGROUND,
-        FRIENDS_PARTY,
-        QUESTS,
-        REINFORCE,
-        CRAFT,
-        MY_PROFILE,
-        DICTIONARY,
-        WARP,
-        SETTINGS,
-        CLOSE,
     }
 }

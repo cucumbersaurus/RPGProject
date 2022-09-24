@@ -8,7 +8,7 @@ import project.rpg.ui.inventory.GuiBase
 import project.rpg.ui.inventory.menu.list.dictionary.ItemDictionaryUI
 
 class DictionaryMenu(player: Player) : GuiBase(player, text("도감")) {
-    override fun initialize(player: Player) {
+    override fun initialize() {
         fillBackGround()
 
         setItem(

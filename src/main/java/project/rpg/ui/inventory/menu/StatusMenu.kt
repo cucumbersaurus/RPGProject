@@ -2,215 +2,201 @@ package project.rpg.ui.inventory.menu
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
-import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
+import project.rpg.extensions.*
 import project.rpg.player.User
 import project.rpg.player.status.Status
-import project.rpg.player.status.base.StatusName
+import project.rpg.textComponets.color.DefaultTextColors
 import project.rpg.ui.inventory.GuiBase
 
 class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
-    private var _user: User? = null
-    private var _status: Status? = null
-    private var _player: Player? = null
-    override fun initialize(player: Player) {
-        _player = player
-        _user = User.getPlayer(player)
-        _status = _user!!.status
-        for (i in 0..53 ) {
-            setItem(text(" "), null, Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1, i, "stats.background", false)
-        }
-        for (i in 0..8) {
-            setItem(text(" "), null, Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false)
-        }
-        run {
-            var i = 9
-            while (i < 45) {
-                setItem(text(" "), null, Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false)
-                i += 9
-            }
-        }
-        var i = 8
-        while (i < 45) {
-            setItem(text(" "), null, Material.BLACK_STAINED_GLASS_PANE, 1, i, "stats.background", false)
-            i += 9
-        }
-        setItem(
-            text("힘 strength"),
-            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.STRENGTH)))),
-            Material.IRON_AXE,
-            1,
-            12,
-            "stats.strength",
-            true
-        )
-        setItem(
-            text("신속 speed"),
-            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.SPEED)))),
-            Material.FEATHER,
-            1,
-            14,
-            "stats.speed",
-            true
-        )
-        setItem(
-            text("민첩 agility"),
-            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.AGILITY)))),
-            Material.IRON_SWORD,
-            1,
-            20,
-            "stats.agility",
-            true
-        )
-        setItem(
-            text("체력 health"),
-            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.HEALTH)))),
-            Material.GOLDEN_APPLE,
-            1,
-            24,
-            "stats.health",
-            true
-        )
-        setItem(
-            text("방어 defense"),
-            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.DEFENSE)))),
-            Material.IRON_CHESTPLATE,
-            1,
-            38,
-            "stats.defense",
-            true
-        )
-        setItem(
-            text("행운 luck"),
-            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.LUCK)))),
-            Material.DIAMOND,
-            1,
-            42,
-            "stats.luck",
-            true
-        )
-        setItem(
-            text("손재주 handicraft"),
-            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.HANDICRAFT)))),
-            Material.IRON_PICKAXE,
-            1,
-            48,
-            "stats.handicraft",
-            true
-        )
-        setItem(
-            text("마력 intelligence"),
-            ArrayList(listOf(text(_status!!.getStatusValues(StatusName.INTELLIGENCE)))),
-            Material.BOOK,
-            1,
-            50,
-            "stats.intelligence",
-            true
-        )
-        setItem(
-            getPlayerHead(player),
-            31,
-            "stats.info"
-        )
-        setItem(
-            text("현재 페이지/새로고침"),
-            ArrayList(listOf(text("현재 페이지를 나타냅니다."), text("눌러서 새로고침"))),
-            Material.BEACON,
-            1,
-            45,
-            "stats.reload",
-            false
-        )
-        setItem(
-            text("현재 페이지/닫기"),
-            ArrayList(listOf(text("페이지 닫기"))),
-            Material.BARRIER,
-            1,
-            53,
-            "stats.close",
-            false
-        )
-    }
+    private lateinit var user: User
+    private lateinit var status: Status
+    override fun initialize() {
+        user = User.getPlayer(player)
+        status = user.status
 
-    override fun onClick(event: InventoryClickEvent) {
-        event.isCancelled = true
-        val btn = getValue(event.slot) ?: return
-        when (btn) {
-            "stats.strength" -> {
-                _status!!.addStatus(StatusName.STRENGTH, 1)
-                reloadUi()
-            }
-            "stats.health" -> {
-                _status!!.addStatus(StatusName.HEALTH, 1)
-                reloadUi()
-            }
-            "stats.agility" -> {
-                _status!!.addStatus(StatusName.AGILITY, 1)
-                reloadUi()
-            }
-            "stats.speed" -> {
-                _status!!.addStatus(StatusName.SPEED, 1)
-                reloadUi()
-            }
-            "stats.luck" -> {
-                _status!!.addStatus(StatusName.LUCK, 1)
-                reloadUi()
-            }
-            "stats.defense" -> {
-                _status!!.addStatus(StatusName.DEFENSE, 1)
-                reloadUi()
-            }
-            "stats.handicraft" -> {
-                _status!!.addStatus(StatusName.HANDICRAFT, 1)
-                reloadUi()
-            }
-            "stats.intelligence" -> {
-                _status!!.addStatus(StatusName.INTELLIGENCE, 1)
-                reloadUi()
-            }
-            "stats.reload" -> reloadUi()
-            "stats.close" -> forceCloseGUI()
-            else -> return
+        fillBackGround(Material.LIGHT_GRAY_STAINED_GLASS_PANE)
+        for (i in 0..8) {
+            setItem(Material.BLACK_STAINED_GLASS_PANE, i)
+
         }
+        for(i in 9..44 step 9){
+            setItem(Material.BLACK_STAINED_GLASS_PANE, i)
+
+        }
+        for(i in 8..44 step 9){
+            setItem(Material.BLACK_STAINED_GLASS_PANE, i)
+        }
+
+        setItem(
+            Material.IRON_AXE,
+            12,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                status.addStrength()
+                reloadUi()
+            },
+            text("힘 strength"),
+            listOf(text(status.strength)),
+            1,
+            true
+        )
+        setItem(
+            Material.FEATHER,
+            14,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                status.addSpeed()
+                reloadUi()
+            },
+            text("신속 speed"),
+            listOf(text(status.speed)),
+            1,
+            true
+        )
+        setItem(
+            Material.IRON_SWORD,
+            20,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                status.addAgility()
+                reloadUi()
+            },
+            text("민첩 agility"),
+            listOf(text(status.agility)),
+            1,
+            true
+        )
+        setItem(
+            Material.GOLDEN_APPLE,
+            24,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                status.addMaxHealth()
+                reloadUi()
+            },
+            text("체력 health"),
+            listOf(text(status.maxHealth)),
+            1,
+            true
+        )
+        setItem(
+            Material.IRON_CHESTPLATE,
+            38,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                status.addDefense()
+                reloadUi()
+            },
+            text("방어 defense"),
+            listOf(text(status.defense)),
+            1,
+            true
+        )
+        setItem(
+            Material.DIAMOND,
+            42,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                status.addLuck()
+                reloadUi()
+            },
+            text("행운 luck"),
+            listOf(text(status.luck)),
+            1,
+            true
+        )
+        setItem(
+            Material.IRON_PICKAXE,
+            48,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                status.addHandicraft()
+                reloadUi()
+            },
+            text("손재주 hadicraft"),
+            listOf(text(status.handicraft)),
+            1,
+            true
+        )
+        setItem(
+            Material.BOOK,
+            50,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                status.addIntelligence()
+                reloadUi()
+            },
+            text("마력 intelligence"),
+            listOf(text(status.intelligence)),
+            1,
+            true
+        )
+        setItem(
+            getPlayerHead(),
+            31
+        )
+        setItem(
+            Material.BEACON,
+            45,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                reloadUi()
+            },
+            text("페이지 새로고침"),
+            listOf(text("눌러서 새로고침")),
+        )
+        setItem(
+            Material.BARRIER,
+            53,
+            { event:InventoryClickEvent, _:Int ->
+                event.isCancelled = true
+                forceCloseGUI()
+            },
+            text("닫기"),
+            listOf(text("눌러서 페이지 닫기"))
+        )
     }
 
     private fun reloadUi() {
-        _player!!.playSound(_player!!.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
-        _user!!.status.reloadMap()
-        initialize(_player!!)
+        player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
+        user.status.reloadMap()
+        initialize()
     }
 
-    private fun getPlayerHead(player: Player): ItemStack {
+    private fun getPlayerHead(): ItemStack {
         val playerHead = ItemStack(Material.PLAYER_HEAD)
         val meta = playerHead.itemMeta as SkullMeta
         meta.owningPlayer = player
-        meta.displayName(text("정보 info").color(TextColor.color(0xffff55)))
+
+        meta.displayName(text("정보 info").color(DefaultTextColors.YELLOW))
         meta.lore(
             listOf(
                 text("================"),
-                text(_user!!.title.name),
-                text(_user!!.levels.level.toString() + ".lv"),
-                text(_user!!.levels.exp.toString() + " / " + _user!!.levels.needForNextLev),
+                text(user.title.name),
+                text(user.levels.level.toString() + ".lv"),
+                text(user.levels.exp.toString() + " / " + user.levels.needForNextLev),
                 text(" "),
                 text(" "),
-                text("hp : " + _status!!.getStatusValues(StatusName.HEALTH)),
-                text("strength : " + _status!!.getStatusValues(StatusName.STRENGTH)),
-                text("agility : " + _status!!.getStatusValues(StatusName.AGILITY)),
-                text("defense : " + _status!!.getStatusValues(StatusName.DEFENSE)),
-                text("speed : " + _status!!.getStatusValues(StatusName.SPEED)),
-                text("luck : " + _status!!.getStatusValues(StatusName.LUCK)),
-                text("intelligence : " + _status!!.getStatusValues(StatusName.INTELLIGENCE)),
-                text("handicraft : " + _status!!.getStatusValues(StatusName.HANDICRAFT)),
+                text("hp : " + status.maxHealth),
+                text("strength : " + status.strength),
+                text("agility : " + status.agility),
+                text("defense : " + status.defense),
+                text("speed : " + status.speed),
+                text("luck : " + status.luck),
+                text("intelligence : " + status.intelligence),
+                text("handicraft : " + status.handicraft),
                 text(" "),
-                text("more : " + _status!!.additionalStatusPoint),
+                text("more : " + status.additionalStatusPoint),
                 text("================")
 
-            ) as List<Component>?
+            ) as List<Component>
         )
         playerHead.itemMeta = meta
         return playerHead

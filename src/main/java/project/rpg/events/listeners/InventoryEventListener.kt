@@ -11,7 +11,6 @@ class InventoryEventListener : Listener {
     @EventHandler
     fun guiClick(event: InventoryClickEvent) {
         val gui = GuiBase.getGUI(event.whoClicked as Player)
-        gui?.onClick(event)
         gui?.onClickEvent(event)
     }
 

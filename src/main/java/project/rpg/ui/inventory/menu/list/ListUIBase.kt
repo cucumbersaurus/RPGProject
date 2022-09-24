@@ -24,7 +24,7 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
     /**
      * 자동으로 표시 영역(7*4)에 아이템 채워넣기
      */
-    override fun initialize(player: Player) {
+    override fun initialize() {
         HeartbeatScope().launch {
 
             val suspension = Suspension()
@@ -121,7 +121,7 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
      */
     private fun reloadUI(){
         resetGUI()
-        initialize(player)
+        initialize()
     }
 
     /**
