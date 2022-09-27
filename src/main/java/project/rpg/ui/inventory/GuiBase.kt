@@ -35,6 +35,10 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
      */
     protected abstract fun initialize()
 
+    /**
+     * InventoryClickEvent 에서 호출
+     * @param event 발생한 InventoryClickEvent 그 자체
+     */
     fun onClickEvent(event: InventoryClickEvent){
         val slot = event.rawSlot
         executeSlotFunc(event, slot)
