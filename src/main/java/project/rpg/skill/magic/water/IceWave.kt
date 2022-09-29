@@ -5,16 +5,16 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.objects.Damage
-import project.rpg.effect.objects.Stun
-import project.rpg.player.User
+import project.rpg.effect.Damage
+import project.rpg.effect.Stun
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class IceWave : MagicSkillBase() {
     @skill(name = "ice_wave")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(needMana)) {
             for (entity in player.getNearbyEntities(4.0,4.0,4.0)) {

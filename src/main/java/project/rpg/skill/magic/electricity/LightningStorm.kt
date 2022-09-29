@@ -5,13 +5,13 @@ import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.player.User
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 class LightningStorm : MagicSkillBase() {
     @skill(name = "lightning_storm")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
         var location = player.location
 
         if (mana.useMana(needMana)) {

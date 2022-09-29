@@ -6,15 +6,15 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.objects.Burns
-import project.rpg.player.User
+import project.rpg.effect.Burns
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class FlareClock : MagicSkillBase() {
     @skill(name = "flare_clock")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(needMana)) {
             val entity = player.getTargetEntity(40, false)
@@ -31,7 +31,7 @@ class FlareClock : MagicSkillBase() {
                 plugin?.let {
                     Bukkit.getScheduler().runTaskLater(it, Runnable {
                         entity.isGlowing = false
-                        Burns(entity as LivingEntity?, 10)
+                        Burns(entity as LivingEntity?,10)
                         entity.world.createExplosion(player,entity.location, 32f,true,true)
                     }, (20 * 5).toLong())
                 }

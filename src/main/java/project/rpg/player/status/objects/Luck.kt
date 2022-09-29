@@ -1,25 +1,11 @@
-package project.rpg.player.status.objects;
+package project.rpg.player.status.objects
 
-import org.bukkit.entity.Player;
-import project.rpg.player.status.base.StatusBase;
-import project.rpg.player.status.base.StatusName;
+import org.bukkit.entity.Player
+import project.rpg.player.status.base.StatusBase
+import project.rpg.player.status.base.StatusName
 
-import java.util.Map;
-
-public class Luck extends StatusBase {   //행운
-
-    public Luck() {
-        super(StatusName.LUCK);
+class Luck: StatusBase(StatusName.LUCK) {
+    override fun effect(player: Player?) {
+        TODO("구현 예정")
     }
-
-    @Override
-    public void effect(Player player) {
-    }
-
-    public static Luck deserialize(Map<String, String> map){
-        Luck luck = new Luck();
-        luck.setValue(Integer.parseInt(map.get("value")));
-        return luck;
-    }
-
 }

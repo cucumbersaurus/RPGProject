@@ -138,8 +138,7 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
     fun resetGUI(){
         slotFuncMap.clear()
         for(i in 0 until size-1){
-            val slot = 9*(i/7)+i%7+10
-            removeItem(slot)
+            removeItem(i)
         }
     }
 

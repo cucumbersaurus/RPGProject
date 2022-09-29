@@ -14,9 +14,9 @@ class RespawnEventListener(private val _plugin: Rpg) : Listener {
     fun onPlayerRespawn(event: PlayerRespawnEvent) { //스케줄러를 사용한 이유는 메인 스레드에서 하면 작동이 안됨
         val player = event.player
         HeartbeatScope().launch {
-            player.healthScale = User.getPlayer(player).status.getStatusValues(StatusName.HEALTH) / 10.0
+            player.healthScale = User.getPlayer(player)!!.status.getStatusValues(StatusName.HEALTH) / 10.0
             player.isHealthScaled = true
-            player.health = User.getPlayer(player).status.getStatusValues(StatusName.HEALTH) / 10.0
+            player.health = User.getPlayer(player)!!.status.getStatusValues(StatusName.HEALTH) / 10.0
             _plugin.actionBar.updateActionBar()
         }
     }

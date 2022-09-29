@@ -1,27 +1,12 @@
-package project.rpg.player.status.objects;
+package project.rpg.player.status.objects
 
-import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Player;
-import project.rpg.player.status.base.StatusBase;
-import project.rpg.player.status.base.StatusName;
+import org.bukkit.attribute.Attribute
+import org.bukkit.entity.Player
+import project.rpg.player.status.base.StatusBase
+import project.rpg.player.status.base.StatusName
 
-import java.util.Map;
-
-public class Agility extends StatusBase {   //공격 속도
-
-    public Agility() {
-        super(StatusName.AGILITY);
+class Agility: StatusBase(StatusName.AGILITY) {
+    override fun effect(player: Player?) {
+        player!!.getAttribute(Attribute.GENERIC_ATTACK_SPEED)!!.baseValue = 4.0 + (value - 10.0) / 10.0
     }
-
-    @Override
-    public void effect(Player player) {
-        player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4d+(this._value-10d)/10d);
-    }
-
-    public static Agility deserialize(Map<String, String> map){
-        Agility agility = new Agility();
-        agility.setValue(Integer.parseInt(map.get("value")));
-        return agility;
-    }
-
 }

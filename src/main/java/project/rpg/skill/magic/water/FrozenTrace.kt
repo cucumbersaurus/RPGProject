@@ -5,14 +5,14 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.util.Vector
 import project.rpg.annotation.skill
-import project.rpg.player.User
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class FrozenTrace: MagicSkillBase() {
     @skill(name = "frozen_trace")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(needMana)) {
             val vector = Vector(player.location.direction.x,0.1,player.location.direction.z)

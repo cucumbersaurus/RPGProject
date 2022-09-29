@@ -58,7 +58,7 @@ class Mana(status: Status) : ConfigurationSerializable {
                 val suspension = Suspension()
                 while(true) {
                     suspension.delay(50*10L)
-                    for (user in User.getPlayerList()) {
+                    for (user in User.playerList) {
                         if (user.mana.mana < user.mana.maxMana) user.mana.addMana(1)
                     }
                 }

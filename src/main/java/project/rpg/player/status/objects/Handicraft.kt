@@ -1,25 +1,11 @@
-package project.rpg.player.status.objects;
+package project.rpg.player.status.objects
 
-import org.bukkit.entity.Player;
-import project.rpg.player.status.base.StatusBase;
-import project.rpg.player.status.base.StatusName;
+import org.bukkit.entity.Player
+import project.rpg.player.status.base.StatusBase
+import project.rpg.player.status.base.StatusName
 
-import java.util.Map;
-
-public class Handicraft extends StatusBase{   //손재주
-
-    public Handicraft() {
-        super(StatusName.HANDICRAFT);
+class Handicraft: StatusBase(StatusName.HANDICRAFT) {
+    override fun effect(player: Player?) {
+        TODO("구현 예정")
     }
-
-    @Override
-    public void effect(Player player) {
-    }
-
-    public static Handicraft deserialize(Map<String, String> map){
-        Handicraft handicraft = new Handicraft();
-        handicraft.setValue(Integer.parseInt(map.get("value")));
-        return handicraft;
-    }
-
 }

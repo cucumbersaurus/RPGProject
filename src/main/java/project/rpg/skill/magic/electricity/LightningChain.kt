@@ -8,16 +8,16 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.objects.Damage
-import project.rpg.effect.objects.ElectricShock
-import project.rpg.player.User
+import project.rpg.effect.Damage
+import project.rpg.effect.ElectricShock
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class LightningChain : MagicSkillBase() {
     @skill(name = "lightning_chain")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(needMana)) {
             val entity = player.getTargetEntity(20, false)
@@ -28,21 +28,19 @@ class LightningChain : MagicSkillBase() {
             } catch (exception: ClassNotFoundException) {
                 return
             }
-            val plugin = pluginManager.getPlugin("Rpg")
-
 
             if (entity!=null && entity is LivingEntity) {
                 var locationEntity = entity
-                Damage(entity, 4)
-                ElectricShock(entity, 2)
+                Damage(entity,4)
+                ElectricShock(entity,2)
                 entity.world.spawnParticle(Particle.SPIT, entity.location, 50, 0.25, 0.5, 0.25, 0.1)
 
                 for (i in 0..3) {
                     HeartbeatScope().launch {
                         for (target in locationEntity?.getNearbyEntities(8.0, 8.0, 8.0)!!) {
                             if (target is LivingEntity&&target!=player) {
-                                Damage(target, 4)
-                                ElectricShock(target, 2)
+                                Damage(target,4)
+                                ElectricShock(target,2)
                                 target.world.spawnParticle(Particle.SPIT, target.location, 50, 0.25, 0.5, 0.25, 0.1)
                                 locationEntity = target
                                 break
