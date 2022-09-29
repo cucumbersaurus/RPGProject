@@ -11,6 +11,14 @@ import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class HeavenWing : MagicSkillBase() {
+
+    init {
+        _name = SkillType.HEAVEN_WING.skillName
+        _description = "잠시동안 떠있는다(공중부양 2초와 느린낙하 5초), 떠있는동안 체력을 재생한다."
+        circle = 2
+        needMana = 10
+    }
+
     @skill(name = "heaven_wing")
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
@@ -23,12 +31,5 @@ class HeavenWing : MagicSkillBase() {
                 addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, 20 * 2, 3, true))
             }
         }
-    }
-
-    init {
-        _name = SkillType.HEAVEN_WING.skillName
-        _description = "잠시동안 떠있는다(공중부양 2초와 느린낙하 5초), 떠있는동안 체력을 재생한다."
-        circle = 2
-        needMana = 10
     }
 }

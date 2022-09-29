@@ -10,6 +10,14 @@ import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class PureShield : MagicSkillBase() {
+
+    init {
+        _name = SkillType.PURE_SHIELD.skillName
+        _description = "플레이어의 방어력을 10초동안 20%올리고 체력 일부를 회복시킨다."
+        circle = 2
+        needMana = 5
+    }
+
     @skill(name = "pure_shield")
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
@@ -20,12 +28,5 @@ class PureShield : MagicSkillBase() {
             player.world.spawnParticle(Particle.WATER_DROP, player.location, 100, 0.25, 3.0, 0.25, 0.1)
             //TODO : 방어력 10초 동안 20% 증가
         }
-    }
-
-    init {
-        _name = SkillType.PURE_SHIELD.skillName
-        _description = "플레이어의 방어력을 10초동안 20%올리고 체력 일부를 회복시킨다."
-        circle = 2
-        needMana = 5
     }
 }

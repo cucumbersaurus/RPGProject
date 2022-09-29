@@ -14,6 +14,14 @@ import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class Inferno : MagicSkillBase() {
+
+    init {
+        _name = SkillType.INFERNO.skillName
+        _description = "단일 적에게 화염 빔을 2초간 발사한다. 이때 체력 재생이 있는 몹은 재생불가로 변하며 슬로우를 부여한다."
+        circle = 4
+        needMana = 10
+    }
+
     @skill(name = "inferno")
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
@@ -37,12 +45,5 @@ class Inferno : MagicSkillBase() {
                 p.playSound(player.location, Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 0.6f, 1f)
             }
         }
-    }
-
-    init {
-        _name = SkillType.INFERNO.skillName
-        _description = "단일 적에게 화염 빔을 2초간 발사한다. 이때 체력 재생이 있는 몹은 재생불가로 변하며 슬로우를 부여한다."
-        circle = 4
-        needMana = 10
     }
 }

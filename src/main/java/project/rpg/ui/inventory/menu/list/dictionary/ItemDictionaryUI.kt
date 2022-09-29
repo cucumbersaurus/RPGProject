@@ -13,17 +13,6 @@ import project.rpg.ui.inventory.menu.list.ListUIBase
 
 class ItemDictionaryUI(player: Player) : ListUIBase<Items>(player, text("아이템 도감"), Items.values()) {
 
-    override fun convertToItemStack(source: Items): ItemStack {
-        lateinit var item: ItemStack
-        if (source.value == 0) {
-            item = ItemStack(Material.BARRIER)
-            item.setDisplayName(text("NULL").color(DefaultTextColors.RED.color))
-        } else {
-            item = source.item!!.clone()
-        }
-        return item
-    }
-
     override val itemClickEvent: (event: InventoryClickEvent, slot: Int) -> Unit
         get() {
             return { event: InventoryClickEvent, slot: Int ->
@@ -38,4 +27,15 @@ class ItemDictionaryUI(player: Player) : ListUIBase<Items>(player, text("아이�
                 }
             }
         }
+
+    override fun convertToItemStack(source: Items): ItemStack {
+        lateinit var item: ItemStack
+        if (source.value == 0) {
+            item = ItemStack(Material.BARRIER)
+            item.setDisplayName(text("NULL").color(DefaultTextColors.RED.color))
+        } else {
+            item = source.item!!.clone()
+        }
+        return item
+    }
 }

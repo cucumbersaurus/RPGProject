@@ -17,6 +17,13 @@ import project.rpg.skill.magic.MagicSkillBase
 
 class MeteorStrike : MagicSkillBase() {
 
+    init {
+        _name = SkillType.METEOR_STRIKE.skillName
+        _description = "반경 7블럭에 적들에게 메테오를 난사한다. 범위 내의 적들에게 스턴 1초와 방어력 50% 감소를 2초간 부여하며 화상효과도 부여한다."
+        circle = 4
+        needMana = 10
+    }
+
     @skill(name = "meteor")
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
@@ -46,12 +53,5 @@ class MeteorStrike : MagicSkillBase() {
             }
             player.world.spawnParticle(Particle.FLAME, player.location, 100, 0.25, 3.0, 0.25, 0.1)
         }
-    }
-
-    init {
-        _name = SkillType.METEOR_STRIKE.skillName
-        _description = "반경 7블럭에 적들에게 메테오를 난사한다. 범위 내의 적들에게 스턴 1초와 방어력 50% 감소를 2초간 부여하며 화상효과도 부여한다."
-        circle = 4
-        needMana = 10
     }
 }

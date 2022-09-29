@@ -20,6 +20,36 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
     private val list = sourceList
     private val listSize = sourceList.size
     abstract val itemClickEvent: ((event:InventoryClickEvent, slot: Int)->Unit)?
+    private val previousButton:ItemStack
+        get() {
+            val leftArrow = ItemStack(Material.PLAYER_HEAD)
+            val skullMeta = leftArrow.itemMeta as SkullMeta
+            skullMeta.owningPlayer = player//profile이 null이 되는것을 방지하기 위해 플레이어로 더미 프로필을 생성(PlayerProfile이 interface라 인스턴스화 불가능해서 이렇게 함)
+            val profile = skullMeta.playerProfile
+            val texture = profile!!.textures
+            texture.skin = URL("https://textures.minecraft.net/texture/b3295a9f11478e6b789bf6eb06296e016c127d0a627f354fec26c27f46d417")//가문비나무 왼쪽 화살표 텍스쳐 링크
+            profile.setTextures(texture)
+            skullMeta.playerProfile = profile
+
+            skullMeta.displayName(text("이전 페이지로"))
+            leftArrow.itemMeta = skullMeta
+            return leftArrow
+        }
+    private val nextButton:ItemStack
+        get() {
+            val rightArrow = ItemStack(Material.PLAYER_HEAD)
+            val skullMeta = rightArrow.itemMeta as SkullMeta
+            skullMeta.owningPlayer = player//profile이 null이 되는것을 방지하기 위해 플레이어로 더미 프로필을 생성(PlayerProfile이 interface라 인스턴스화 불가능해서 이렇게 함)
+            val profile = skullMeta.playerProfile
+            val texture = profile!!.textures
+            texture.skin = URL("https://textures.minecraft.net/texture/6bb0c63d5afc325856625b855ff2461f1560b3d1a74a1e4619e624069c5b962")//가문비나무 오른쪽 화살표 텍스쳐 링크
+            profile.setTextures(texture)
+            skullMeta.playerProfile = profile
+
+            skullMeta.displayName(text("다음 페이지로"))
+            rightArrow.itemMeta = skullMeta
+            return rightArrow
+        }
 
     /**
      * 자동으로 표시 영역(7*4)에 아이템 채워넣기
@@ -131,38 +161,6 @@ abstract class ListUIBase<T>(player: Player, guiName: Component, sourceList: Arr
     protected fun slotToIndex(slot: Int): Int{
         return (slot-8)-2*(slot/9) + currentPage*28
     }
-
-    private val previousButton:ItemStack
-        get() {
-            val leftArrow = ItemStack(Material.PLAYER_HEAD)
-            val skullMeta = leftArrow.itemMeta as SkullMeta
-            skullMeta.owningPlayer = player//profile이 null이 되는것을 방지하기 위해 플레이어로 더미 프로필을 생성(PlayerProfile이 interface라 인스턴스화 불가능해서 이렇게 함)
-            val profile = skullMeta.playerProfile
-            val texture = profile!!.textures
-            texture.skin = URL("https://textures.minecraft.net/texture/b3295a9f11478e6b789bf6eb06296e016c127d0a627f354fec26c27f46d417")//가문비나무 왼쪽 화살표 텍스쳐 링크
-            profile.setTextures(texture)
-            skullMeta.playerProfile = profile
-
-            skullMeta.displayName(text("이전 페이지로"))
-            leftArrow.itemMeta = skullMeta
-            return leftArrow
-        }
-
-    private val nextButton:ItemStack
-        get() {
-            val rightArrow = ItemStack(Material.PLAYER_HEAD)
-            val skullMeta = rightArrow.itemMeta as SkullMeta
-            skullMeta.owningPlayer = player//profile이 null이 되는것을 방지하기 위해 플레이어로 더미 프로필을 생성(PlayerProfile이 interface라 인스턴스화 불가능해서 이렇게 함)
-            val profile = skullMeta.playerProfile
-            val texture = profile!!.textures
-            texture.skin = URL("https://textures.minecraft.net/texture/6bb0c63d5afc325856625b855ff2461f1560b3d1a74a1e4619e624069c5b962")//가문비나무 오른쪽 화살표 텍스쳐 링크
-            profile.setTextures(texture)
-            skullMeta.playerProfile = profile
-
-            skullMeta.displayName(text("다음 페이지로"))
-            rightArrow.itemMeta = skullMeta
-            return rightArrow
-        }
 
 
 }

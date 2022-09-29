@@ -12,6 +12,14 @@ import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class Tempest : MagicSkillBase() {
+
+    init {
+        _name = SkillType.TEMPEST.skillName
+        _description = "바라보는 방향으로 돌진하며 주변 적에게 데미지, 출혈, 슬로우를 준다."
+        circle = 5
+        needMana = 30
+    }
+
     @skill(name = "tempest")
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
@@ -25,12 +33,5 @@ class Tempest : MagicSkillBase() {
             player.world.spawnParticle(Particle.WHITE_ASH, player.location, 100, 0.25, 0.5, 0.25, 0.1)
             player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 20*5, 2, true))
         }
-    }
-
-    init {
-        _name = SkillType.TEMPEST.skillName
-        _description = "바라보는 방향으로 돌진하며 주변 적에게 데미지, 출혈, 슬로우를 준다."
-        circle = 5
-        needMana = 30
     }
 }
