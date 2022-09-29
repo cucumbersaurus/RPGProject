@@ -1,72 +1,133 @@
-package project.rpg.player.status
+package project.rpg.player.status;
 
-import kotlinx.serialization.Serializable
-import org.bukkit.entity.Player
-import project.rpg.player.status.base.StatusBase
-import project.rpg.player.status.base.StatusName
-import project.rpg.player.status.objects.*
-import java.util.*
+import com.google.gson.Gson;
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+import project.rpg.player.status.base.StatusBase;
+import project.rpg.player.status.base.StatusName;
+import project.rpg.player.status.objects.*;
 
-@Serializable
-data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으로 많이 둠
-    private val player: Player,
-    private val agility: Agility = Agility(),
-    private val defense: Defense = Defense(),
-    private val handicraft: Handicraft = Handicraft(),
-    private val health: Health = Health(),
-    private val intelligence: Intelligence = Intelligence(),
-    private val luck: Luck = Luck(),
-    private val speed: Speed = Speed(),
-    private val strength: Strength = Strength(),
-    ) {
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.Map;
 
-    private val statusMap: MutableMap<StatusName, StatusBase> = EnumMap(StatusName::class.java)
+public class Status implements ConfigurationSerializable {  //스텟
 
+    private final Player _player;
 
-    var additionalStatusPoint = 0
-        private set
+    private final Agility _agility;
+    private final Defense _defense;
+    private final Handicraft _handicraft;
+    private final Health _health;
+    private final Intelligence _intelligence;
+    private final Luck _luck;
+    private final Speed _speed;
+    private final Strength _strength;
 
-    init {
-        additionalStatusPoint = 1000
-        saveMap()
+    private final Map<StatusName, StatusBase> _status = new EnumMap<>(StatusName.class);
+
+    private int _additionalStatusPoint;
+
+    public void saveMap() {  //전체 저장
+        _status.put(StatusName.AGILITY, _agility);
+        _status.put(StatusName.DEFENSE, _defense);
+        _status.put(StatusName.HANDICRAFT, _handicraft);
+        _status.put(StatusName.HEALTH, _health);
+        _status.put(StatusName.INTELLIGENCE, _intelligence);
+        _status.put(StatusName.LUCK, _luck);
+        _status.put(StatusName.SPEED, _speed);
+        _status.put(StatusName.STRENGTH, _strength);
     }
 
-    private fun saveMap() {  //전체 저장
-        statusMap[StatusName.AGILITY] = agility
-        statusMap[StatusName.DEFENSE] = defense
-        statusMap[StatusName.HANDICRAFT] = handicraft
-        statusMap[StatusName.HEALTH] = health
-        statusMap[StatusName.INTELLIGENCE] = intelligence
-        statusMap[StatusName.LUCK] = luck
-        statusMap[StatusName.SPEED] = speed
-        statusMap[StatusName.STRENGTH] = strength
-    }
-
-    fun reloadMap() {  //적용 Attribute 매니져 없애
-        for (status in statusMap.values) {
-            status.effect(this.player)
+    public void reloadMap() {  //적용 Attribute 매니져 없애
+        for (StatusBase status : _status.values()) {
+            status.effect(_player);
         }
     }
 
-    fun addStatus(name: StatusName, amount: Int): Boolean {  //스텟 늘리기
-        val status = statusMap[name]
-        return status?.addValue(amount, this, this.player) ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
+    public boolean addStatus(StatusName  name, int amount) {  //스텟 늘리기
+        StatusBase status = _status.get(name);
+        if (status == null) {
+            throw new StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나");
+        } else {
+            return status.addValue(amount,this, _player);
+        }
     }
 
-    fun getStatusValues(name: StatusName): Int {
-        val status = statusMap[name]
-        return status?.value ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
+    public int getStatusValues(StatusName name) {
+        StatusBase status = _status.get(name);
+        if (status == null) {
+            throw new StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나");
+        } else {
+            return status.getValue();
+        }
     }
 
-    fun minAdditionalStatusPoint(amount: Int) {  //잔여 스텟 쓰기
-        additionalStatusPoint -= amount
+    @Override
+    public @NotNull Map<String, Object> serialize() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("player", _player.getName());
+
+        Map<String, Object> statusMap = new HashMap<>();
+        for(Map.Entry<StatusName, StatusBase> entry : _status.entrySet()) {
+            statusMap.put(entry.getKey().name(), entry.getValue().serialize());
+        }
+        map.put("status", statusMap);
+
+        return map;
     }
 
-    fun addAdditionalStatusPoint(amount: Int) {  //늘리기
-        additionalStatusPoint += amount
+    public static Status deserialize(Map<String, String> map) {
+        Gson gson = new Gson();
+        Player player = Bukkit.getPlayer(map.get("player"));
+        Agility agility = Agility.deserialize(gson.fromJson(map.get(StatusName.AGILITY.name()), Map.class));
+        Defense defense = Defense.deserialize(gson.fromJson(map.get(StatusName.DEFENSE.name()), Map.class));
+        Handicraft handicraft = Handicraft.deserialize(gson.fromJson(map.get(StatusName.HANDICRAFT.name()), Map.class));
+        Health health = Health.deserialize(gson.fromJson(map.get(StatusName.HEALTH.name()), Map.class));
+        Intelligence intelligence = Intelligence.deserialize(gson.fromJson(map.get(StatusName.INTELLIGENCE.name()), Map.class));
+        Luck luck = Luck.deserialize(gson.fromJson(map.get(StatusName.LUCK.name()), Map.class));
+        Speed speed = Speed.deserialize(gson.fromJson(map.get(StatusName.SPEED.name()), Map.class));
+        Strength strength = Strength.deserialize(gson.fromJson(map.get(StatusName.STRENGTH.name()), Map.class));
+        return new Status(player, agility, defense, handicraft, health, intelligence, luck, speed, strength);
     }
 
-    init{
-        saveMap()
+    public void minAdditionalStatusPoint(int amount) {  //잔여 스텟 쓰기
+        this._additionalStatusPoint -= amount;
+    }
+
+    public void addAdditionalStatusPoint(int amount) {  //늘리기
+        this._additionalStatusPoint += amount;
+    }
+
+    public int getAdditionalStatusPoint() {  //가져오기
+        return _additionalStatusPoint;
+    }
+
+    public Status(Player player) {
+        _player = player;
+        _agility = new Agility();
+        _defense = new Defense();
+        _handicraft = new Handicraft();
+        _health = new Health();
+        _intelligence = new Intelligence();
+        _luck = new Luck();
+        _speed = new Speed();
+        _strength = new Strength();
+        _additionalStatusPoint = 1000;//실제로는 10으로 할 예정, 지금은 테스트 용으로 많이 둠
+        saveMap();
+    }
+
+    public Status(Player player,Agility agility, Defense defense, Handicraft handicraft, Health health, Intelligence intelligence, Luck luck, Speed speed, Strength strength) {
+        _player = player;
+        _agility = agility;
+        _defense = defense;
+        _handicraft = handicraft;
+        _health = health;
+        _intelligence = intelligence;
+        _luck = luck;
+        _speed = speed;
+        _strength = strength;
     }
 }
