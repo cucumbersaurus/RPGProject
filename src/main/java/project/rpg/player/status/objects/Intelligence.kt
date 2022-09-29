@@ -1,27 +1,22 @@
-package project.rpg.player.status.objects;
+package project.rpg.player.status.objects
 
-import org.bukkit.entity.Player;
-import project.rpg.player.User;
-import project.rpg.player.status.base.StatusBase;
-import project.rpg.player.status.base.StatusName;
+import org.bukkit.entity.Player
+import project.rpg.extensions.mana
+import project.rpg.player.status.base.StatusBase
+import project.rpg.player.status.base.StatusName
 
-import java.util.Map;
-
-public class Intelligence extends StatusBase {   //마력
-
-    public Intelligence() {
-        super(StatusName.INTELLIGENCE);
+class Intelligence : StatusBase(StatusName.INTELLIGENCE) {
+    override fun effect(player: Player?) {
+        if (player != null) {
+            player.mana.maxMana = value*10
+        }
     }
 
-    @Override
-    public void effect(Player player) {
-        User.getPlayer(player).getMana().setMaxMana(this._value*10);
+    companion object {
+        fun deserialize(map: Map<String?, String>): Intelligence {
+            val intelligence = Intelligence()
+            intelligence.value = map["value"]!!.toInt()
+            return intelligence
+        }
     }
-
-    public static Intelligence deserialize(Map<String, String> map){
-        Intelligence intelligence = new Intelligence();
-        intelligence.setValue(Integer.parseInt(map.get("value")));
-        return intelligence;
-    }
-
 }

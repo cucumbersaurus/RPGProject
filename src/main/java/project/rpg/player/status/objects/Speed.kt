@@ -1,27 +1,12 @@
-package project.rpg.player.status.objects;
+package project.rpg.player.status.objects
 
-import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Player;
-import project.rpg.player.status.base.StatusBase;
-import project.rpg.player.status.base.StatusName;
+import org.bukkit.attribute.Attribute
+import org.bukkit.entity.Player
+import project.rpg.player.status.base.StatusBase
+import project.rpg.player.status.base.StatusName
 
-import java.util.Map;
-
-public class Speed extends StatusBase {   //발 빠르기
-
-    public Speed() {
-        super(StatusName.SPEED);
+class Speed: StatusBase(StatusName.SPEED) {
+    override fun effect(player: Player?) {
+        player!!.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED)!!.baseValue = 0.1 + (value - 10.0) / 1000.0
     }
-
-    @Override
-    public void effect(Player player) {
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.1d+(this._value-10d)/1000d);
-    }
-
-    public static Speed deserialize(Map<String, String> map) {
-        Speed speed = new Speed();
-        speed.setValue(Integer.parseInt(map.get("value")));
-        return speed;
-    }
-
 }
