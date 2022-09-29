@@ -14,8 +14,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class IceWave : MagicSkillBase() {
 
     init {
-        name = SkillType.ICE_WAVE.skillName
-        description = "몹에게 적중 시 넉백 1칸 과 스턴 0.2초"
+        _name = SkillType.ICE_WAVE.skillName
+        _description = "몹에게 적중 시 넉백 1칸 과 스턴 0.2초"
         circle = 1
         needMana = 5
     }

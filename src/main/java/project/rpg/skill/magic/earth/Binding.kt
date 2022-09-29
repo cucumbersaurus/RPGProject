@@ -5,16 +5,16 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.objects.Damage
-import project.rpg.effect.objects.Stun
+import project.rpg.effect.Damage
+import project.rpg.effect.Stun
 import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 class Binding : MagicSkillBase() {
 
     init {
-        name = SkillType.BINDING.skillName
-        description = "적 하나를 조준하여 투사체를 발사합니다. 이 투사체에 적중 시 적에게 스턴을 4초간 부여합니다."
+        _name = SkillType.BINDING.skillName
+        _description = "적 하나를 조준하여 투사체를 발사합니다. 이 투사체에 적중 시 적에게 스턴을 4초간 부여합니다."
         circle = 2
         needMana = 10
     }

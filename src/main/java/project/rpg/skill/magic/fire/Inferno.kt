@@ -16,8 +16,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class Inferno : MagicSkillBase() {
 
     init {
-        name = SkillType.INFERNO.skillName
-        description = "단일 적에게 화염 빔을 2초간 발사한다. 이때 체력 재생이 있는 몹은 재생불가로 변하며 슬로우를 부여한다."
+        _name = SkillType.INFERNO.skillName
+        _description = "단일 적에게 화염 빔을 2초간 발사한다. 이때 체력 재생이 있는 몹은 재생불가로 변하며 슬로우를 부여한다."
         circle = 4
         needMana = 10
     }

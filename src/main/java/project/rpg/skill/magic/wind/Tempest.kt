@@ -14,8 +14,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class Tempest : MagicSkillBase() {
 
     init {
-        name = SkillType.TEMPEST.skillName
-        description = "바라보는 방향으로 돌진하며 주변 적에게 데미지, 출혈, 슬로우를 준다."
+        _name = SkillType.TEMPEST.skillName
+        _description = "바라보는 방향으로 돌진하며 주변 적에게 데미지, 출혈, 슬로우를 준다."
         circle = 5
         needMana = 30
     }

@@ -15,8 +15,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class WaterArrow : MagicSkillBase() {
 
     init {
-        name = SkillType.WATER_ARROW.skillName
-        description = "몹에게 적중 시 넉백 1칸 과 스턴 0.2초"
+        _name = SkillType.WATER_ARROW.skillName
+        _description = "몹에게 적중 시 넉백 1칸 과 스턴 0.2초"
         circle = 2
         needMana = 5
     }

@@ -17,8 +17,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class LightningChain : MagicSkillBase() {
 
     init {
-        name = SkillType.LIGHTNING_CHAIN.skillName
-        description = "몹에게 번개를 날리는데 적중시 주변 다른 몹에게도 동일한 양의 데미지와 감전 2초를 부여한다. (최대 4회까지)"
+        _name = SkillType.LIGHTNING_CHAIN.skillName
+        _description = "몹에게 번개를 날리는데 적중시 주변 다른 몹에게도 동일한 양의 데미지와 감전 2초를 부여한다. (최대 4회까지)"
         circle = 2
         needMana = 7
     }

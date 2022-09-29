@@ -15,8 +15,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class IceSpear : MagicSkillBase() {
 
     init {
-        name = SkillType.ICE_SPEAR.skillName
-        description = "적에게 얼음 송곳을 발사한다. 투사체가 적중 시 적중한 적에서 스턴 3초와 슬로우 5초를 건다. 만일 적중 실패시 주변 반경 2블럭의 적에게 슬로우 2초를 준다."
+        _name = SkillType.ICE_SPEAR.skillName
+        _description = "적에게 얼음 송곳을 발사한다. 투사체가 적중 시 적중한 적에서 스턴 3초와 슬로우 5초를 건다. 만일 적중 실패시 주변 반경 2블럭의 적에게 슬로우 2초를 준다."
         circle = 3
         needMana = 5
     }

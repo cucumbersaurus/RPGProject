@@ -24,8 +24,13 @@ class User private constructor(val player: Player)  {
     }
 
     companion object {
+
         @JvmStatic
         private val playerMap: MutableMap<UUID, User> = HashMap()
+
+        @JvmStatic
+        val playerList: List<User>
+            get() = ArrayList(playerMap.values)
 
         @JvmStatic
         fun newUser(player: Player): User {
@@ -43,9 +48,5 @@ class User private constructor(val player: Player)  {
         fun getPlayer(player: Player): User? {
             return playerMap[player.uniqueId]
         }
-
-        @JvmStatic
-        val playerList: List<User>
-            get() = ArrayList(playerMap.values)
     }
 }

@@ -11,8 +11,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class LightningStorm : MagicSkillBase() {
 
     init {
-        name = SkillType.LIGHTNING_STORM.skillName
-        description = "번개구름을 소환한다. 번개에 맞은 적은 감전 3초가 부여되며 공격력이 3초간 10% 증가한다."
+        _name = SkillType.LIGHTNING_STORM.skillName
+        _description = "번개구름을 소환한다. 번개에 맞은 적은 감전 3초가 부여되며 공격력이 3초간 10% 증가한다."
         circle = 2
         needMana = 5
     }

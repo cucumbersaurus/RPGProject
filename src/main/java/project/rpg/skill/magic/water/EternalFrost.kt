@@ -14,8 +14,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class EternalFrost : MagicSkillBase() {
 
     init {
-        name = SkillType.ETERNAL_FROST.skillName
-        description = "적 최대 체력의 20%를 깎는다. (보스몹은 슬로우 8초와 방어력 30% 감소로 대체)"
+        _name = SkillType.ETERNAL_FROST.skillName
+        _description = "적 최대 체력의 20%를 깎는다. (보스몹은 슬로우 8초와 방어력 30% 감소로 대체)"
         circle = 4
         needMana = 20
     }

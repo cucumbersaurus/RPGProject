@@ -26,6 +26,11 @@ class Status//실제로는 10으로 할 예정, 지금은 테스트 용으로 �
     var additionalStatusPoint = 0
         private set
 
+    init {
+        additionalStatusPoint = 1000
+        saveMap()
+    }
+
     private fun saveMap() {  //전체 저장
         _status[StatusName.AGILITY] = _agility
         _status[StatusName.DEFENSE] = _defense
@@ -59,10 +64,5 @@ class Status//실제로는 10으로 할 예정, 지금은 테스트 용으로 �
 
     fun addAdditionalStatusPoint(amount: Int) {  //늘리기
         additionalStatusPoint += amount
-    }
-
-    init {
-        additionalStatusPoint = 1000
-        saveMap()
     }
 }
