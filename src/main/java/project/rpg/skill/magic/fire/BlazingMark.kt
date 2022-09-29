@@ -14,6 +14,13 @@ import project.rpg.skill.magic.MagicSkillBase
 
 class BlazingMark: MagicSkillBase() {
 
+    init {
+        _name = SkillType.BLAZING_MARK.skillName
+        _description = "단일 몹에게 화상 8초 부여와 방어력 20% 감소 7초 효과를 건다. (중첩 가능)"
+        circle = 2
+        needMana = 5
+    }
+
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
 
@@ -32,11 +39,5 @@ class BlazingMark: MagicSkillBase() {
                 p.playSound(player.location, Sound.BLOCK_BLASTFURNACE_FIRE_CRACKLE, 0.6f, 1f)
             }
         }
-    }
-    init {
-        _name = SkillType.BLAZING_MARK.skillName
-        _description = "단일 몹에게 화상 8초 부여와 방어력 20% 감소 7초 효과를 건다. (중첩 가능)"
-        circle = 2
-        needMana = 5
     }
 }

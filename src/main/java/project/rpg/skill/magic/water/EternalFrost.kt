@@ -12,6 +12,14 @@ import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class EternalFrost : MagicSkillBase() {
+
+    init {
+        _name = SkillType.ETERNAL_FROST.skillName
+        _description = "적 최대 체력의 20%를 깎는다. (보스몹은 슬로우 8초와 방어력 30% 감소로 대체)"
+        circle = 4
+        needMana = 20
+    }
+
     @skill(name = "eternal_frost")
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
@@ -26,12 +34,5 @@ class EternalFrost : MagicSkillBase() {
             }
             player.world.spawnParticle(Particle.SNOWFLAKE, player.location, 3000, 7.0, 0.0, 7.0, 0.01)
         }
-    }
-
-    init {
-        _name = SkillType.ETERNAL_FROST.skillName
-        _description = "적 최대 체력의 20%를 깎는다. (보스몹은 슬로우 8초와 방어력 30% 감소로 대체)"
-        circle = 4
-        needMana = 20
     }
 }

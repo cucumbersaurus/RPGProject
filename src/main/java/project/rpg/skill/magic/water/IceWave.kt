@@ -12,6 +12,14 @@ import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class IceWave : MagicSkillBase() {
+
+    init {
+        _name = SkillType.ICE_WAVE.skillName
+        _description = "몹에게 적중 시 넉백 1칸 과 스턴 0.2초"
+        circle = 1
+        needMana = 5
+    }
+
     @skill(name = "ice_wave")
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
@@ -25,12 +33,5 @@ class IceWave : MagicSkillBase() {
             }
             player.world.spawnParticle(Particle.WATER_DROP, player.location, 1000, 4.0, 0.0, 4.0, 0.01)
         }
-    }
-
-    init {
-        _name = SkillType.ICE_WAVE.skillName
-        _description = "몹에게 적중 시 넉백 1칸 과 스턴 0.2초"
-        circle = 1
-        needMana = 5
     }
 }

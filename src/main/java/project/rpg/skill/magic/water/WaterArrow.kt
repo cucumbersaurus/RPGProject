@@ -13,6 +13,14 @@ import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class WaterArrow : MagicSkillBase() {
+
+    init {
+        _name = SkillType.WATER_ARROW.skillName
+        _description = "몹에게 적중 시 넉백 1칸 과 스턴 0.2초"
+        circle = 2
+        needMana = 5
+    }
+
     @skill(name = "water_arrow")
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
@@ -38,12 +46,5 @@ class WaterArrow : MagicSkillBase() {
             arrow.velocity = player.location.direction.multiply(2)
 
         }
-    }
-
-    init {
-        _name = SkillType.WATER_ARROW.skillName
-        _description = "몹에게 적중 시 넉백 1칸 과 스턴 0.2초"
-        circle = 2
-        needMana = 5
     }
 }

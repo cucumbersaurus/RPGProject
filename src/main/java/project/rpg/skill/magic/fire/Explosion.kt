@@ -13,6 +13,14 @@ import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class Explosion : MagicSkillBase() {
+
+    init {
+        _name = SkillType.EXPLOSION.skillName
+        _description = "화염구를 발사한다. 적중 여부와 상관 없이 터지며 폭발의 여파에 영향을 받은 몹들은 화상효과와 스턴 1초가 부여된다."
+        circle = 3
+        needMana = 15
+    }
+
     @skill(name = "explosion")
     override fun onEnable(player: Player, action: Action?) {
         val mana = player.mana
@@ -34,12 +42,5 @@ class Explosion : MagicSkillBase() {
                 }
             }
         }
-    }
-
-    init {
-        _name = SkillType.EXPLOSION.skillName
-        _description = "화염구를 발사한다. 적중 여부와 상관 없이 터지며 폭발의 여파에 영향을 받은 몹들은 화상효과와 스턴 1초가 부여된다."
-        circle = 3
-        needMana = 15
     }
 }
