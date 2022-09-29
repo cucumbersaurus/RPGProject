@@ -9,14 +9,14 @@ import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
 import project.rpg.effect.Damage
 import project.rpg.effect.ElectricShock
-import project.rpg.player.User
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class ShockWave : MagicSkillBase() {
     @skill(name = "shock_wave")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(needMana)) {
             for (entity in player.getNearbyEntities(3.0,3.0,3.0)) {

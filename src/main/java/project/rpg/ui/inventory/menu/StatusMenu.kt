@@ -18,7 +18,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
     private lateinit var user: User
     private lateinit var status: Status
     override fun initialize() {
-        user = User.getPlayer(player)
+        user = User.getPlayer(player)!!
         status = user.status
 
         fillBackGround(Material.LIGHT_GRAY_STAINED_GLASS_PANE)

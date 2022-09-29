@@ -15,7 +15,7 @@ object PlayerInformation {
 
         player.setAttributeMaxHealth(player.status.maxHealth/10.0)
         player.healthScale = 100.0
-        player.health = 1.0//User.getPlayer(player).status.getStatusValues(StatusName.HEALTH) / 10.0\
+        player.health = 1.0
 
         Skill(player)
 

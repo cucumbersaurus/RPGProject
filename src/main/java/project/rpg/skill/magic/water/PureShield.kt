@@ -5,14 +5,14 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
 import project.rpg.effect.Heal
-import project.rpg.player.User
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class PureShield : MagicSkillBase() {
     @skill(name = "pure_shield")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(10)) {
             Heal(player,10)

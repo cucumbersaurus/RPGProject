@@ -10,14 +10,14 @@ import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
 import project.rpg.effect.Damage
 import project.rpg.effect.ElectricShock
-import project.rpg.player.User
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class LightningChain : MagicSkillBase() {
     @skill(name = "lightning_chain")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(needMana)) {
             val entity = player.getTargetEntity(20, false)
@@ -28,8 +28,6 @@ class LightningChain : MagicSkillBase() {
             } catch (exception: ClassNotFoundException) {
                 return
             }
-            val plugin = pluginManager.getPlugin("Rpg")
-
 
             if (entity!=null && entity is LivingEntity) {
                 var locationEntity = entity

@@ -9,14 +9,14 @@ import project.rpg.annotation.skill
 import project.rpg.effect.Burns
 import project.rpg.effect.Damage
 import project.rpg.effect.Slow
-import project.rpg.player.User
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class Inferno : MagicSkillBase() {
     @skill(name = "inferno")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(needMana)) {
 

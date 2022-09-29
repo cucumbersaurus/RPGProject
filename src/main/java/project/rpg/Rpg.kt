@@ -9,7 +9,6 @@ import project.rpg.commands.*
 import project.rpg.commands.test.MobTest
 import project.rpg.commands.test.TitleTestCommand
 import project.rpg.events.listeners.*
-import project.rpg.manager.FileManager
 import project.rpg.player.PlayerInformation
 import project.rpg.player.mana.Mana
 import project.rpg.ui.text.ActionBarUI
@@ -92,23 +91,18 @@ class Rpg : JavaPlugin() {
     }
 
     private fun loadData() {
-        FileManager.makeDir()
-        //FileManager.makeFile()
-        //FileManager.getFile()
+        TODO("JSON serialization not implemented yet")
     }
 
     private fun saveData() {
-        //FileManager.makeFile()
-        //FileManager.saveFile()
-        FileManager.makeDir()
-        FileManager.syncedSaveAll()
+        TODO("JSON serialization not implemented yet")
     }
 
     private fun checkOnlinePlayers() {
         HeartbeatScope().launch {
             for (player in Bukkit.getOnlinePlayers()) {
                 PlayerInformation.makeInfo(player)
-                //FileManager.getFile(player)
+                TODO("JSON serialization not implemented yet")
             }
             logger.info("RPG plugin loading completed")
         }

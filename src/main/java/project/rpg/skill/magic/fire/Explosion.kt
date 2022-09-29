@@ -8,14 +8,14 @@ import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
 import project.rpg.effect.Burns
 import project.rpg.effect.Stun
-import project.rpg.player.User
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class Explosion : MagicSkillBase() {
     @skill(name = "explosion")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(needMana)) {
             val fireball = player.launchProjectile(Fireball::class.java)

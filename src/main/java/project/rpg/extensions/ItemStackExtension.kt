@@ -35,7 +35,3 @@ fun ItemStack.setGlow(){
         addItemFlags(ItemFlag.HIDE_ENCHANTS)
     }
 }
-
-fun ItemStack.equals(other:ItemStack):Boolean {
-    return hasCustomModelData && other.hasCustomModelData && customModelData == other.customModelData
-}

@@ -1,41 +1,26 @@
-package project.rpg.player.status.objects;
+package project.rpg.player.status.objects
 
-import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Player;
-import project.rpg.player.PlayerInformation;
-import project.rpg.player.status.Status;
-import project.rpg.player.status.base.StatusBase;
-import project.rpg.player.status.base.StatusName;
+import org.bukkit.attribute.Attribute
+import org.bukkit.entity.Player
+import project.rpg.player.PlayerInformation.updateHealth
+import project.rpg.player.status.Status
+import project.rpg.player.status.base.StatusBase
+import project.rpg.player.status.base.StatusName
+import java.util.*
 
-import java.util.Map;
-import java.util.Objects;
-
-public class Health extends StatusBase {   //체력
-
-    public Health() {
-        super(StatusName.HEALTH);
-    }
-
-    @Override
-    public boolean addValue(int amount, Status status, Player player){  //스텟 더하기
-        if(status.getAdditionalStatusPoint() >= amount) {
-            this._value += amount;
-            status.minAdditionalStatusPoint(amount);
-            PlayerInformation.updateHealth(player);
-            return true;
+class Health: StatusBase(StatusName.HEALTH) {
+    override fun addValue(amount: Int, status: Status, player: Player?): Boolean {  //스텟 더하기
+        if (status.additionalStatusPoint >= amount) {
+            value += amount
+            status.minAdditionalStatusPoint(amount)
+            updateHealth(player!!)
+            return true
         }
-        return false;
+        return false
     }
 
-    @Override
-    public void effect(Player player) {
-        Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(20d + (this._value-10d));
+    override fun effect(player: Player?) {
+        Objects.requireNonNull(player!!.getAttribute(Attribute.GENERIC_MAX_HEALTH))?.baseValue =
+            20.0 + (value - 10.0)
     }
-
-    public static Health deserialize(Map<String, String> map){
-        Health health = new Health();
-        health.setValue(Integer.parseInt(map.get("value")));
-        return health;
-    }
-
 }

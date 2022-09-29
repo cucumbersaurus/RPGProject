@@ -8,14 +8,14 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.metadata.FixedMetadataValue
 import project.rpg.annotation.skill
-import project.rpg.player.User
+import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class ThunderCharging : MagicSkillBase() {
     @skill(name = "water_arrow")
     override fun onEnable(player: Player, action: Action?) {
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
 
         if (mana.useMana(needMana)) {
             val arrow = player.launchProjectile(Arrow::class.java)

@@ -64,7 +64,7 @@ public final class FileManager {
 
                 try (FileOutputStream out = new FileOutputStream(PLAYER_FILE_PATH)) {
                     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                    String jsonString = gson.toJson(User.getPlayer(player).serialize());
+                    String jsonString = gson.toJson(User.getPlayer(player));//.serialize()); 컴파일을 위한 임시 처리
                     byte[] utf8JsonString = jsonString.getBytes(StandardCharsets.UTF_8);
 
                     out.write(utf8JsonString);
@@ -83,7 +83,7 @@ public final class FileManager {
         if(makeFile(PLAYER_FILE_PATH)) {
             try (FileOutputStream out = new FileOutputStream(PLAYER_FILE_PATH)) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                String jsonString = gson.toJson(User.getPlayer(player).serialize());
+                String jsonString = gson.toJson(User.getPlayer(player));//.serialize()); 컴파일을 위한 임시 처리
                 byte[] utf8JsonString = jsonString.getBytes(StandardCharsets.UTF_8);
 
                 out.write(utf8JsonString);
@@ -110,7 +110,7 @@ public final class FileManager {
         try(Reader reader = Files.newBufferedReader(new File(MessageFormat.format("{0}\\{1}.json", ROOT_DATA_PATH, player.getUniqueId())).toPath())){
             Gson gson = new Gson();
             Map<String, String> map =  (Map<String, String>) gson.fromJson(reader , Map.class);
-            User.deserialize(map);
+            //User.deserialize(map); 컴파일을 위한 임시 처리
         } catch (IOException e) {
             e.printStackTrace();
         }

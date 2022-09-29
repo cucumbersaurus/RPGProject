@@ -8,7 +8,7 @@ import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import project.rpg.Rpg
-import project.rpg.player.User
+import project.rpg.extensions.mana
 
 class ActionBarUI(private val _plugin: Rpg) {
     private val showActionBar = Runnable {
@@ -49,7 +49,7 @@ class ActionBarUI(private val _plugin: Rpg) {
      * @re
      */
     private fun sendActionBarToPlayer(player: Player){
-        val mana = User.getPlayer(player).mana
+        val mana = player.mana
         val message = text()
         message.append(
         text().color(TextColor.color(0xff5555)).

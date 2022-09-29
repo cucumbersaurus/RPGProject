@@ -102,12 +102,15 @@ class EnforceUI(player: Player) : GuiBase(player, Component.text("메인 메뉴"
         player.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.6f, 1f)
         val item = event.currentItem
         val lore = item!!.lore()
+        TODO("not implemented")
     }
 
     private fun onFail(player: Player, event: InventoryClickEvent) { //실패시   강화단계 -1, 0이면 파괴
+        TODO("not implemented")
     }
 
     private fun onBreak(player: Player, event: InventoryClickEvent) {  //파괴시  아이템 삭제
         player.playSound(player, Sound.BLOCK_ANVIL_DESTROY, 0.6f, 1f)
+        TODO("not implemented")
     }
 }
