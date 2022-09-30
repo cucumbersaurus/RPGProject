@@ -21,17 +21,17 @@ public class MvpPP extends TitleBase {  //MVP++   https://www.notion.so/MVP-cc9e
 
     @Override
     public void onEnable() {
-        this._player.setGlowing(true);  //발광 추가 팀색깔로 발광되던데 팀 추가는 나중에
+        this.player.setGlowing(true);  //발광 추가 팀색깔로 발광되던데 팀 추가는 나중에
     }
 
     @Override
     public void onDisable() {
-        this._player.setGlowing(false);  //꺼짐
+        this.player.setGlowing(false);  //꺼짐
     }
 
     @Override
     public void eared() {
-        _player.getInventory().addItem(Objects.requireNonNull(GoldenTrophy.getInstance().getItem()));  //황금 트로비 지급
+        player.getInventory().addItem(Objects.requireNonNull(GoldenTrophy.getInstance().getItem()));  //황금 트로비 지급
     }
 
     public MvpPP(Player player) {
@@ -41,10 +41,10 @@ public class MvpPP extends TitleBase {  //MVP++   https://www.notion.so/MVP-cc9e
     @Override
     public @NotNull Map<String, Object> serialize() {
         Map<String, Object> map = new HashMap<>();
-        map.put("player", _player.getName());
-        map.put("name", _name);
-        map.put("description", _description);
-        map.put("acquisitionConditions", _acquisitionConditions);
+        map.put("player", player.getName());
+        map.put("name", name);
+        map.put("description", description);
+        map.put("acquisitionConditions", acquisitionConditions);
         return map;
     }
 }

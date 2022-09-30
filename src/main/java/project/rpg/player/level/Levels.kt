@@ -1,83 +1,40 @@
-package project.rpg.player.level;
+package project.rpg.player.level
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import project.rpg.player.User;
+import kotlinx.serialization.Serializable
+import org.bukkit.ChatColor
+import org.bukkit.entity.Player
+import project.rpg.player.User.Companion.getPlayer
 
-import java.util.HashMap;
-import java.util.Map;
+@Serializable
+data class Levels(
+    private val _player: Player, //레벨 업 채팅 보낼 때 필요
 
-public class Levels implements ConfigurationSerializable {  //레벨
+    var level: Long = 0, //레벨
+    var exp: Long = 0, //경험치
 
-    private long _level;  //레벨
-    private long _exp;   //경험치
-    private final Player _player;  //레벨 업 채팅 보낼 때 필요
+) {
 
-    public long getNeedForNextLev() {  //다음까지 남은 경험치
-        return 5 * (this._level * this._level + this._level);
+    //다음까지 남은 경험치
+    val needForNextLev: Long
+        get() =//다음까지 남은 경험치
+            5 * (level * level + level)
+
+    fun hasEnoughExp(): Boolean {  //경험치 충분한지 확인
+        return exp >= needForNextLev
     }
 
-    public boolean hasEnoughExp() {  //경험치 충분한지 확인
-        return this._exp >= getNeedForNextLev();
+    fun levelUp() {   //레벨업!
+        exp = exp - needForNextLev
+        getPlayer(_player!!)!!.status.addAdditionalStatusPoint(5)
+        getPlayer(_player)!!.mana.reloadMaxMana()
+        level++
+        _player.sendMessage(ChatColor.YELLOW.toString() + "Levels Up!")
     }
 
-    public void levelUp() {   //레벨업!
-        this._exp = this._exp - getNeedForNextLev();
-        User.getPlayer(_player).getStatus().addAdditionalStatusPoint(5);
-        User.getPlayer(_player).getMana().reloadMaxMana();
-        _level++;
-        _player.sendMessage(ChatColor.YELLOW + "Levels Up!");
-    }
-
-    /**
-     *
-     * @param amount 늘릴 경험치량
-     */
-    public void addExp(long amount) {  //경험치 늘리기 나중에 몬스너나 퀘스트에서 이거 쓰면 될듯
-        this._exp += amount;
-
+    fun addExp(amount: Long) {  //경험치 늘리기 나중에 몬스너나 퀘스트에서 이거 쓰면 될듯
+        exp += amount
         while (hasEnoughExp()) {
-            levelUp();
+            levelUp()
         }
     }
-
-    public long getLevel() {
-        return _level;
-    }
-
-    public void setLevel(long level) {
-        _level = level;
-    }
-
-    public long getExp() {
-        return _exp;
-    }
-
-    public void setExp(long exp){
-        _exp = exp;
-    }
-
-    public Levels(Player player) {
-        this._player = player;
-    }
-
-    @Override
-    public @NotNull Map<String, Object> serialize() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("player", _player.getName());
-        map.put("level", _level);
-        map.put("exp", _exp);
-        return map;
-    }
-
-    public static Levels deserialize(Map<String, String> map) {
-        Levels levels = new Levels(Bukkit.getPlayer(map.get("player")));
-        levels.setLevel(Long.parseLong(map.get("levels")));
-        levels.setExp(Long.parseLong(map.get("exp")));
-        return levels;
-    }
-
 }
