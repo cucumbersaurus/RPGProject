@@ -1,11 +1,13 @@
 package project.rpg.player.status.base
 
+import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 import project.rpg.player.status.Status
 
-abstract class StatusBase protected constructor(status: StatusName) {
+@Serializable
+abstract class StatusBase protected constructor( val status: StatusName) {
     //스텟 베이스
-    private val statusName: String
+    private val statusName: String = status.status
     var value = 10 //스텟 수
 
     abstract fun effect(player: Player?) //스텟 효과
@@ -18,7 +20,4 @@ abstract class StatusBase protected constructor(status: StatusName) {
         return false
     }
 
-    init {
-        statusName = status.status
-    }
 }

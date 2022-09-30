@@ -32,10 +32,10 @@ public class HOGU extends TitleBase {  //https://www.notion.so/HOGU-6bb38af75523
     @Override
     public @NotNull Map<String, Object> serialize() {
         Map<String, Object> map = new HashMap<>();
-        map.put("player", _player.getName());
-        map.put("name", _name);
-        map.put("description", _description);
-        map.put("acquisitionConditions", _acquisitionConditions);
+        map.put("player", player.getName());
+        map.put("name", name);
+        map.put("description", description);
+        map.put("acquisitionConditions", acquisitionConditions);
         return map;
     }
 }
