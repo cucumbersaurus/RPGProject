@@ -1,10 +1,12 @@
 package project.rpg.player.status.objects
 
+import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 import project.rpg.extensions.mana
 import project.rpg.player.status.base.StatusBase
 import project.rpg.player.status.base.StatusName
 
+@Serializable
 class Intelligence : StatusBase(StatusName.INTELLIGENCE) {
     override fun effect(player: Player?) {
         if (player != null) {

@@ -1,28 +1,28 @@
 package project.rpg.player.status
 
+import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 import project.rpg.player.status.base.StatusBase
 import project.rpg.player.status.base.StatusName
 import project.rpg.player.status.objects.*
 import java.util.*
 
-class Status//실제로는 10으로 할 예정, 지금은 테스트 용으로 많이 둠
-    (player: Player) {
-    //스텟
-    private val _player: Player = player
-    private val _agility: Agility = Agility()
-    private val _defense: Defense = Defense()
-    private val _handicraft: Handicraft = Handicraft()
-    private val _health: Health = Health()
-    private val _intelligence: Intelligence = Intelligence()
-    private val _luck: Luck = Luck()
-    private val _speed: Speed = Speed()
-    private val _strength: Strength = Strength()
-    private val _status: MutableMap<StatusName, StatusBase> = EnumMap(
-        StatusName::class.java
-    )
+@Serializable
+data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으로 많이 둠
+    private val player: Player,
+    private val agility: Agility = Agility(),
+    private val defense: Defense = Defense(),
+    private val handicraft: Handicraft = Handicraft(),
+    private val health: Health = Health(),
+    private val intelligence: Intelligence = Intelligence(),
+    private val luck: Luck = Luck(),
+    private val speed: Speed = Speed(),
+    private val strength: Strength = Strength(),
+    ) {
 
-    //가져오기
+    private val statusMap: MutableMap<StatusName, StatusBase> = EnumMap(StatusName::class.java)
+
+
     var additionalStatusPoint = 0
         private set
 
@@ -32,29 +32,29 @@ class Status//실제로는 10으로 할 예정, 지금은 테스트 용으로 �
     }
 
     private fun saveMap() {  //전체 저장
-        _status[StatusName.AGILITY] = _agility
-        _status[StatusName.DEFENSE] = _defense
-        _status[StatusName.HANDICRAFT] = _handicraft
-        _status[StatusName.HEALTH] = _health
-        _status[StatusName.INTELLIGENCE] = _intelligence
-        _status[StatusName.LUCK] = _luck
-        _status[StatusName.SPEED] = _speed
-        _status[StatusName.STRENGTH] = _strength
+        statusMap[StatusName.AGILITY] = agility
+        statusMap[StatusName.DEFENSE] = defense
+        statusMap[StatusName.HANDICRAFT] = handicraft
+        statusMap[StatusName.HEALTH] = health
+        statusMap[StatusName.INTELLIGENCE] = intelligence
+        statusMap[StatusName.LUCK] = luck
+        statusMap[StatusName.SPEED] = speed
+        statusMap[StatusName.STRENGTH] = strength
     }
 
     fun reloadMap() {  //적용 Attribute 매니져 없애
-        for (status in _status.values) {
-            status.effect(_player)
+        for (status in statusMap.values) {
+            status.effect(this.player)
         }
     }
 
     fun addStatus(name: StatusName, amount: Int): Boolean {  //스텟 늘리기
-        val status = _status[name]
-        return status?.addValue(amount, this, _player) ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
+        val status = statusMap[name]
+        return status?.addValue(amount, this, this.player) ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
     }
 
     fun getStatusValues(name: StatusName): Int {
-        val status = _status[name]
+        val status = statusMap[name]
         return status?.value ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
     }
 
@@ -64,5 +64,9 @@ class Status//실제로는 10으로 할 예정, 지금은 테스트 용으로 �
 
     fun addAdditionalStatusPoint(amount: Int) {  //늘리기
         additionalStatusPoint += amount
+    }
+
+    init{
+        saveMap()
     }
 }

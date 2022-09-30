@@ -1,5 +1,6 @@
 package project.rpg.player
 
+import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 import project.rpg.player.info.Friends
 import project.rpg.player.info.Skill
@@ -10,7 +11,8 @@ import project.rpg.player.name.Title
 import project.rpg.player.status.Status
 import java.util.*
 
-class User private constructor(val player: Player)  {
+@Serializable
+data class User(val player: Player)  {
     var title: Title = Title(player)
     var status: Status = Status(player)
     var mana: Mana = Mana(status)
