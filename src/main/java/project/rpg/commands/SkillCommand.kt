@@ -14,7 +14,7 @@ class SkillCommand : CommandExecutor, TabCompleter {
             if ("add" == args[0]) {
                 if (args.size >= 2){
                     if (SkillDic.isExist(args[1])) {
-                        sender.skill.addSkill(SkillDic.makeSkill(sender, args[1]))
+                        sender.skill.addSkill(SkillDic.makeSkill(sender, args[1])!!)
                         sender.sendMessage(args[1] + " is added ")
                     } else {
                         sender.sendMessage(command.usage)

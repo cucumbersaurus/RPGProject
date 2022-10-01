@@ -13,8 +13,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class GiganticThunder : MagicSkillBase() {
 
     init {
-        _name = SkillType.GIGANTIC_THUNDER.skillName
-        _description = "적에게 번개를 날린다. 적중시 몹에게 스턴 2초와 화상 5초, 감전 5초를 부여하며 방어력이 4초동안  50% 감소한다."
+        name = SkillType.GIGANTIC_THUNDER.skillName
+        description = "적에게 번개를 날린다. 적중시 몹에게 스턴 2초와 화상 5초, 감전 5초를 부여하며 방어력이 4초동안  50% 감소한다."
         circle = 4
         needMana = 12
     }

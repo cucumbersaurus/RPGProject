@@ -1,28 +1,19 @@
-package project.rpg.player.job.thing;
+package project.rpg.player.job.thing
 
-import org.bukkit.entity.Player;
-import project.rpg.player.job.JobBase;
-import project.rpg.player.job.JobType;
+import org.bukkit.entity.Player
+import project.rpg.player.job.JobBase
+import project.rpg.player.job.JobType
 
-public class MagicSwordsMan extends JobBase {
-
-    @Override
-    public void reload() {
+class MagicSwordsMan(player: Player) : JobBase(player, JobType.MAGIC_SWORDSMAN) {
+    override fun reload() {
         //추가 예정
     }
 
-    @Override
-    public void setNextJobs() {
+    override fun setNextJobs() {
         //추가 예정
     }
 
-    @Override
-    public void setJobSkills() {
+    override fun setJobSkills() {
         //추가 예정
     }
-
-    public MagicSwordsMan(Player player) {
-        super(JobType.MAGIC_SWORDSMAN, player);
-    }
-
 }

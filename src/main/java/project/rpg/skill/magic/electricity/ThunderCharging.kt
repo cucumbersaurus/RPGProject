@@ -15,8 +15,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class ThunderCharging : MagicSkillBase() {
 
     init {
-        _name = SkillType.THUNDER_CHARGING.skillName
-        _description = "일자로 나가는 공격을 발사한다. 만일 적중시 몹에게 스턴 1초와 자신의 마나 1 을 추가 회복한다."
+        name = SkillType.THUNDER_CHARGING.skillName
+        description = "일자로 나가는 공격을 발사한다. 만일 적중시 몹에게 스턴 1초와 자신의 마나 1 을 추가 회복한다."
         circle = 2
         needMana = 5
     }
