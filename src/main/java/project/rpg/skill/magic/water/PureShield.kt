@@ -12,8 +12,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class PureShield : MagicSkillBase() {
 
     init {
-        _name = SkillType.PURE_SHIELD.skillName
-        _description = "플레이어의 방어력을 10초동안 20%올리고 체력 일부를 회복시킨다."
+        name = SkillType.PURE_SHIELD.skillName
+        description = "플레이어의 방어력을 10초동안 20%올리고 체력 일부를 회복시킨다."
         circle = 2
         needMana = 5
     }

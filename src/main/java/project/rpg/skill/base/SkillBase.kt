@@ -1,26 +1,26 @@
-package project.rpg.skill.base;
+package project.rpg.skill.base
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.block.Action;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import kotlinx.serialization.Serializable
+import net.kyori.adventure.text.Component
+import org.bukkit.entity.Player
+import org.bukkit.event.block.Action
 
-import static net.kyori.adventure.text.Component.text;
+@Serializable
+abstract class SkillBase(
+    var name: String? = null,
+    var description: String? = null,
+    protected var skillTime: Int = 0,
+    protected var coolTime: Int = 0,
+) : Operable {
 
-public abstract class SkillBase implements Operable {
-
-    public String _name;
-    public String _description;
-    protected int _skillTime;
-    protected int _coolTime;
-
-    public void onEnable(@NotNull Player player, @Nullable Action action) {}
-
-    public void sendActionBar(Player p) { p.sendActionBar(text(this._coolTime/20 + "초 남음")); }
-    public void minTime() {
-        if (this._coolTime >0) { --this._coolTime; }
+    override fun onEnable(player: Player, action: Action?) {}
+    fun sendActionBar(p: Player) {
+        p.sendActionBar(Component.text((coolTime / 20).toString() + "초 남음"))
     }
 
-    public String getName() { return _name; }
-
+    fun minTime() {
+        if (coolTime > 0) {
+            --coolTime
+        }
+    }
 }

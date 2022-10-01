@@ -8,7 +8,7 @@ import project.rpg.player.name.base.TitleName
 @Serializable
 data class Title(    //이름과 칭호
     private val player: Player,
-    private var name: String = TitleName.NEWBIE.name, //이름
+    var name: String = TitleName.NEWBIE.name, //이름
     private var titles: MutableList<TitleBase> = ArrayList(), //칭호
 
     //현재 칭호 보여줄 때
