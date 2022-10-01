@@ -14,8 +14,8 @@ import project.rpg.skill.magic.MagicSkillBase
 class FlareClock : MagicSkillBase() {
 
     init {
-        _name = SkillType.FLARE_CLOCK.skillName
-        _description = "적중시 적에게 붉은색 발광을 5초 부여하며 5초 후에 적 근처 2칸 범위의 폭발이 일어나며 적에게는 화상 10초를 부여하며 공격력이 20% 감소합니다."
+        name = SkillType.FLARE_CLOCK.skillName
+        description = "적중시 적에게 붉은색 발광을 5초 부여하며 5초 후에 적 근처 2칸 범위의 폭발이 일어나며 적에게는 화상 10초를 부여하며 공격력이 20% 감소합니다."
         circle = 5
         needMana = 20
     }
