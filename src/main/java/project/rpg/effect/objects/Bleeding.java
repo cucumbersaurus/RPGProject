@@ -1,14 +1,15 @@
-package project.rpg.effect;
+package project.rpg.effect.objects;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
+import project.rpg.effect.EffectBase;
 
 import java.util.Objects;
 
-public class ElectricShock extends EffectBase {
+public class Bleeding extends EffectBase {
 
     @Override
     public void effect() {
@@ -21,17 +22,15 @@ public class ElectricShock extends EffectBase {
         Plugin plugin = pluginManager.getPlugin("Rpg");
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(Objects.requireNonNull(plugin), () -> {
-            new Stun(_entity,1L);
-            if (!this._entity.isDead()) {
-                this._entity.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, this._entity.getLocation(), 7, 0.25, 0.5, 0.25, 0.1);
+            new Damage(_entity, (int) (_entity.getHealth()/100));
+            if (!_entity.isDead()) {
+                _entity.getWorld().spawnParticle(Particle.DAMAGE_INDICATOR, _entity.getLocation(), 7, 0.25, 0.25, 0.25, 0.1);
             }
-        },20, 1);
-        //TODO : 지속시간
+        },20L, 20L);
     }
 
-    public ElectricShock(LivingEntity entity, int second) {
+    public Bleeding(LivingEntity entity, int second) {
         super(entity, second);
     }
-
 
 }

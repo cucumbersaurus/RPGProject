@@ -6,8 +6,8 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.Burns
-import project.rpg.effect.Stun
+import project.rpg.effect.objects.Burns
+import project.rpg.effect.objects.Stun
 import project.rpg.player.User
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
@@ -28,7 +28,7 @@ class Explosion : MagicSkillBase() {
                     for ( entity in fireball.getNearbyEntities(3.0, 3.0, 3.0)) {
                         if (entity is LivingEntity) {
                             Stun(entity, 1)
-                            Burns(entity,5)
+                            Burns(entity, 5)
                         }
                     }
                 }

@@ -1,6 +1,6 @@
 package project.rpg.data.structures;
 
-public class ConnectList<T> {
+public class ConnectList<T> { //ㅜㅜ 열심히 만들었는데 deprecated 됨
 
     Node first;
 

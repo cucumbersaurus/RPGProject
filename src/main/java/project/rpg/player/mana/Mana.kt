@@ -13,6 +13,9 @@ class Mana(status: Status) : ConfigurationSerializable {
     var mana : Int//현재 마나
     var maxMana : Int //최대 마나
 
+    /**
+     * @param amount 사용한 마나 양
+     */
     fun useMana(amount: Int): Boolean {  //마나 사용 마법이나 스킬에 넣기
         if (amount <= mana) {
             mana -= amount
@@ -21,6 +24,9 @@ class Mana(status: Status) : ConfigurationSerializable {
         return false
     }
 
+    /**
+     * @param amount 회복할 마나 양
+     */
     fun addMana(amount: Int): Boolean {  //마나 충전할 때 쓰는거 포션이나 자연재생
         if (amount + mana <= maxMana) {
             mana += amount
@@ -47,7 +53,7 @@ class Mana(status: Status) : ConfigurationSerializable {
     }
 
     companion object {
-        fun startManaRefilling() {  //어짜피 인스턴스 변수 보다 이게 나을 듯 //이제 필요 없음 ㅅㄱ
+        fun startManaRefilling() {  //어짜피 인스턴스 변수 보다 이게 나을 듯 //이제 필요 없음 ㅅㄱ //ㅋㅋㅋㅋ
             HeartbeatScope().launch{
                 val suspension = Suspension()
                 while(true) {

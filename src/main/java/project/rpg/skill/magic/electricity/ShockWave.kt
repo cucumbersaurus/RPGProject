@@ -7,8 +7,8 @@ import org.bukkit.event.block.Action
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
-import project.rpg.effect.Damage
-import project.rpg.effect.ElectricShock
+import project.rpg.effect.objects.Damage
+import project.rpg.effect.objects.ElectricShock
 import project.rpg.player.User
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
@@ -22,7 +22,7 @@ class ShockWave : MagicSkillBase() {
             for (entity in player.getNearbyEntities(3.0,3.0,3.0)) {
                 if (entity is LivingEntity) {
                     ElectricShock(entity, 5)
-                    Damage(entity,3)
+                    Damage(entity, 3)
                     entity.world.spawnParticle(Particle.ELECTRIC_SPARK, entity.location, 100, 0.25, 0.5, 0.25, 0.1)
                 }
             }

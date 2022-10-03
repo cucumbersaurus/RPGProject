@@ -1,8 +1,9 @@
-package project.rpg.effect;
+package project.rpg.effect.objects;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import project.rpg.effect.EffectBase;
 
 public class Poison extends EffectBase {
 

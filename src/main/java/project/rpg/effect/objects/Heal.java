@@ -1,8 +1,9 @@
-package project.rpg.effect;
+package project.rpg.effect.objects;
 
 import org.bukkit.entity.LivingEntity;
+import project.rpg.effect.EffectBase;
 
-public class Heal extends EffectBase{
+public class Heal extends EffectBase {
 
     @Override
     public void effect() {

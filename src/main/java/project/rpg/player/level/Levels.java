@@ -32,6 +32,10 @@ public class Levels implements ConfigurationSerializable {  //레벨
         _player.sendMessage(ChatColor.YELLOW + "Levels Up!");
     }
 
+    /**
+     *
+     * @param amount 늘릴 경험치량
+     */
     public void addExp(long amount) {  //경험치 늘리기 나중에 몬스너나 퀘스트에서 이거 쓰면 될듯
         this._exp += amount;
 

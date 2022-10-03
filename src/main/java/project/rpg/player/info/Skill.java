@@ -13,6 +13,10 @@ public class Skill implements ConfigurationSerializable {
     private final Map<String, SkillBase> _skillMap = new HashMap<>();
     private final Player _player;//스킬 사용시 필요
 
+    /**
+     *
+     * @param skill 추가할 스킬
+     */
     public void addSkill(SkillBase skill){ //스킬 추가하기
         _skillMap.put(Objects.requireNonNull(skill)._name, skill);
     }

@@ -6,9 +6,9 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.Burns
-import project.rpg.effect.Damage
-import project.rpg.effect.Slow
+import project.rpg.effect.objects.Burns
+import project.rpg.effect.objects.Damage
+import project.rpg.effect.objects.Slow
 import project.rpg.player.User
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
@@ -27,8 +27,8 @@ class Inferno : MagicSkillBase() {
             val entity = player.getTargetEntity(30, false)
             if (entity != null && entity is LivingEntity) {
                 Slow(entity, 4)
-                Burns(entity,10)
-                Damage(entity,4)
+                Burns(entity, 10)
+                Damage(entity, 4)
                 //TODO : 재생 불가, 파티클 조정
             }
 

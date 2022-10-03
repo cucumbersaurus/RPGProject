@@ -15,6 +15,13 @@ public abstract class StatusBase implements ConfigurationSerializable {  //스�
 
     public abstract void effect(Player player);  //스텟 효과
 
+    /**
+     *
+     * @param amount 늘릴 스텟 양
+     * @param status 늘릴 스텟 종류
+     * @param player 스텟 늘릴 플레이어
+     * @return 확인
+     */
     public boolean addValue(int amount, Status status, Player player){  //스텟 더하기
         if(status.getAdditionalStatusPoint() >= amount) {
             this._value += amount;

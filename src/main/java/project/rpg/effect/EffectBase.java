@@ -23,6 +23,13 @@ public abstract class EffectBase {
         this(entity, second* 20L, amplifier);
     }
 
+    /**
+     *
+     * @param entity 효과를 줄 엔티티
+     * @param tick 효과 지속 시간 틱 단위
+     * @param amplifier 효과 정도
+     *
+     */
     protected EffectBase(LivingEntity entity, long tick, int amplifier) {
         this._entity = entity;
         this._tick = tick;

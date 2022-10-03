@@ -9,7 +9,7 @@ import project.rpg.skill.base.SkillBase;
 
 import java.util.*;
 
-public abstract class JobBase implements ConfigurationSerializable {
+public abstract class JobBase implements ConfigurationSerializable {  //아직 건들면 안됨
 
     protected String _name;
     protected String _description;

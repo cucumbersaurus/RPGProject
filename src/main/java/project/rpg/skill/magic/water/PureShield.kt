@@ -4,7 +4,7 @@ import org.bukkit.Particle
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.Heal
+import project.rpg.effect.objects.Heal
 import project.rpg.player.User
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
@@ -15,7 +15,7 @@ class PureShield : MagicSkillBase() {
         val mana = User.getPlayer(player).mana
 
         if (mana.useMana(10)) {
-            Heal(player,10)
+            Heal(player, 10)
 
             player.world.spawnParticle(Particle.WATER_DROP, player.location, 100, 0.25, 3.0, 0.25, 0.1)
             //TODO : 방어력 10초 동안 20% 증가

@@ -5,8 +5,8 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.Damage
-import project.rpg.effect.Stun
+import project.rpg.effect.objects.Damage
+import project.rpg.effect.objects.Stun
 import project.rpg.player.User
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
@@ -19,8 +19,8 @@ class EternalFrost : MagicSkillBase() {
         if (mana.useMana(needMana)) {
             for (entity in player.getNearbyEntities(7.0,7.0,7.0)) {
                 if (entity is LivingEntity) {
-                    Stun(entity,3)
-                    Damage(entity, (entity.maxHealth/5).toInt())
+                    Stun(entity, 3)
+                    Damage(entity, (entity.maxHealth / 5).toInt())
                     entity.world.spawnParticle(Particle.TOWN_AURA, entity.location, 100, 0.25, 0.5, 0.25, 0.01)
                 }
             }

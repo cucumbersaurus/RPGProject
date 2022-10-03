@@ -1,6 +1,7 @@
-package project.rpg.effect;
+package project.rpg.effect.objects;
 
 import org.bukkit.entity.LivingEntity;
+import project.rpg.effect.EffectBase;
 
 public class Sacred extends EffectBase {
 
