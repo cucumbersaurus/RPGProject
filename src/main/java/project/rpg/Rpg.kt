@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
 import project.rpg.commands.test.MobTest
 import project.rpg.commands.test.TitleTestCommand
+import project.rpg.database.Database
 import project.rpg.events.listeners.*
 import project.rpg.player.PlayerInformation
 import project.rpg.player.mana.Mana
@@ -21,6 +22,7 @@ class Rpg : JavaPlugin() {
     override fun onLoad(){
         loadData()
         Initializer.initializeAll()
+        Database.createTables()
     }
 
     override fun onEnable() {
