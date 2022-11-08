@@ -1,11 +1,9 @@
 package project.rpg.player.level
 
-import kotlinx.serialization.Serializable
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import project.rpg.player.User.Companion.getPlayer
 
-@Serializable
 data class Levels(
     private val _player: Player, //레벨 업 채팅 보낼 때 필요
 

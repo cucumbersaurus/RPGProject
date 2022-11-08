@@ -1,10 +1,8 @@
 package project.rpg.player.status.base
 
-import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 import project.rpg.player.status.Status
 
-@Serializable
 abstract class StatusBase protected constructor( val status: StatusName) {
     //스텟 베이스
     private val statusName: String = status.status

@@ -8,8 +8,8 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.Damage
-import project.rpg.effect.ElectricShock
+import project.rpg.effect.objects.Damage
+import project.rpg.effect.objects.ElectricShock
 import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase

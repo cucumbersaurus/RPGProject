@@ -4,7 +4,7 @@ import org.bukkit.Particle
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.Heal
+import project.rpg.effect.objects.Heal
 import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase

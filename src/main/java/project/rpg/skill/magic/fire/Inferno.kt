@@ -6,9 +6,9 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
-import project.rpg.effect.Burns
-import project.rpg.effect.Damage
-import project.rpg.effect.Slow
+import project.rpg.effect.objects.Burns
+import project.rpg.effect.objects.Damage
+import project.rpg.effect.objects.Slow
 import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase

@@ -7,8 +7,8 @@ import org.bukkit.event.block.Action
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.annotation.skill
-import project.rpg.effect.Damage
-import project.rpg.effect.ElectricShock
+import project.rpg.effect.objects.Damage
+import project.rpg.effect.objects.ElectricShock
 import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase

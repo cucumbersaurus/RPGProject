@@ -3,12 +3,10 @@ package project.rpg.player.mana
 import io.github.monun.heartbeat.coroutines.HeartbeatScope
 import io.github.monun.heartbeat.coroutines.Suspension
 import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
 import project.rpg.player.User
 import project.rpg.player.status.Status
 import project.rpg.player.status.base.StatusName
 
-@Serializable
 data class Mana(
     val status: Status,
     var mana: Int = status.getStatusValues(StatusName.INTELLIGENCE) *10,

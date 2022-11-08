@@ -1,12 +1,10 @@
 package project.rpg.player.info
 
-import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import project.rpg.skill.base.SkillBase
 import java.util.*
 
-@Serializable
 data class Skill(
     private val player: Player,    //스킬 사용시 필요
     private val skillMap: MutableMap<String?, SkillBase> = HashMap()

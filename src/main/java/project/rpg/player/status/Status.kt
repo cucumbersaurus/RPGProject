@@ -1,13 +1,11 @@
 package project.rpg.player.status
 
-import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 import project.rpg.player.status.base.StatusBase
 import project.rpg.player.status.base.StatusName
 import project.rpg.player.status.objects.*
 import java.util.*
 
-@Serializable
 data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으로 많이 둠
     private val player: Player,
     private val agility: Agility = Agility(),

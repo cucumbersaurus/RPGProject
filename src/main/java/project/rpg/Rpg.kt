@@ -91,18 +91,17 @@ class Rpg : JavaPlugin() {
     }
 
     private fun loadData() {
-        TODO("JSON serialization not implemented yet")
+
     }
 
     private fun saveData() {
-        TODO("JSON serialization not implemented yet")
+
     }
 
     private fun checkOnlinePlayers() {
         HeartbeatScope().launch {
             for (player in Bukkit.getOnlinePlayers()) {
                 PlayerInformation.makeInfo(player)
-                TODO("JSON serialization not implemented yet")
             }
             logger.info("RPG plugin loading completed")
         }

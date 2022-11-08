@@ -1,11 +1,9 @@
 package project.rpg.player.name
 
-import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 import project.rpg.player.name.base.TitleBase
 import project.rpg.player.name.base.TitleName
 
-@Serializable
 data class Title(    //이름과 칭호
     private val player: Player,
     var name: String = TitleName.NEWBIE.name, //이름

@@ -1,6 +1,5 @@
 package project.rpg.player.info
 
-import kotlinx.serialization.Serializable
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.event.ClickEvent
 import net.kyori.adventure.text.event.HoverEvent
@@ -11,7 +10,6 @@ import project.rpg.extensions.color
 import project.rpg.extensions.friends
 import project.rpg.textComponets.color.DefaultTextColors
 
-@Serializable
 data class Friends(
     val player: Player,
     val pendingList: ArrayList<Player> = ArrayList()

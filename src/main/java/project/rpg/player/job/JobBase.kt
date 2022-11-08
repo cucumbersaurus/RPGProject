@@ -1,12 +1,10 @@
 package project.rpg.player.job
 
-import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 import org.bukkit.entity.Pose
 import project.rpg.skill.base.SkillBase
 import java.util.*
 
-@Serializable
 abstract class JobBase protected constructor(
     val player: Player,
     val jobType: JobType,

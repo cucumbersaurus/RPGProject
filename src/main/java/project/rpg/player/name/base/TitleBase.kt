@@ -1,9 +1,7 @@
 package project.rpg.player.name.base
 
-import kotlinx.serialization.Serializable
 import org.bukkit.entity.Player
 
-@Serializable
 abstract class TitleBase protected constructor(//칭호 베이스
     protected val player: Player, //onEnable 이나 disable 에서 쓸때
     val name: String, //칭호 이름
