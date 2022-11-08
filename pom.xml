@@ -12,8 +12,8 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.7.20-RC</kotlin.version>
-        <serialization.version>1.4.0</serialization.version>
+        <kotlin.version>1.7.20</kotlin.version>
+        <serialization.version>1.4.1</serialization.version>
     </properties>
 
     <build>
@@ -160,7 +160,7 @@
             <groupId>io.github.monun</groupId>
             <artifactId>tap-api</artifactId>
             <scope>compile</scope>
-            <version>4.7.2</version>
+            <version>4.7.3</version>
         </dependency>
         <dependency>
             <groupId>io.github.monun</groupId>
