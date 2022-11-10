@@ -5,10 +5,15 @@ import kotlinx.coroutines.launch
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.plugin.java.JavaPlugin
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.StdOutSqlLogger
+import org.jetbrains.exposed.sql.addLogger
+import org.jetbrains.exposed.sql.transactions.transaction
 import project.rpg.commands.*
 import project.rpg.commands.test.MobTest
 import project.rpg.commands.test.TitleTestCommand
-import project.rpg.database.Database
+import project.rpg.database.Users
 import project.rpg.events.listeners.*
 import project.rpg.player.PlayerInformation
 import project.rpg.player.mana.Mana
@@ -22,7 +27,15 @@ class Rpg : JavaPlugin() {
     override fun onLoad(){
         loadData()
         Initializer.initializeAll()
-        Database.createTables()
+        //Database.createTables()
+        Database.connect("jdbc:sqlite:./plugins/RPG/database.db", "org.sqlite.JDBC")
+        transaction{
+            addLogger(StdOutSqlLogger)
+
+            SchemaUtils.create(Users)
+
+
+        }
     }
 
     override fun onEnable() {
@@ -58,6 +71,7 @@ class Rpg : JavaPlugin() {
         getCommand("craft")!!.setExecutor(CraftCommand())
         getCommand("friend")!!.setExecutor(FriendCommand())
         getCommand("mob")!!.setExecutor(MobTest())
+        getCommand("insertsql")!!.setExecutor(SQLInsertCommand())
         /*
         kommand {
             //TestCommand.register(this, this@Rpg)
