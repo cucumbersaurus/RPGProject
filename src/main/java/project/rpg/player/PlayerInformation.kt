@@ -1,6 +1,7 @@
 package project.rpg.player
 
 import org.bukkit.entity.Player
+import project.rpg.database.Database
 import project.rpg.extensions.maxHealth
 import project.rpg.extensions.setAttributeMaxHealth
 import project.rpg.extensions.status
@@ -16,6 +17,8 @@ object PlayerInformation {
         player.setAttributeMaxHealth(player.status.maxHealth/10.0)
         player.healthScale = 100.0
         player.health = 1.0
+
+        Database.readUser(player)
 
         Skill(player)
 

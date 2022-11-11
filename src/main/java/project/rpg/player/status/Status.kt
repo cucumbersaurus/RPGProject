@@ -56,6 +56,11 @@ data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으
         return status?.value ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
     }
 
+    fun setStatusValues(name: StatusName, amount: Int){
+        val status = statusMap[name]
+        status?.value = amount
+    }
+
     fun minAdditionalStatusPoint(amount: Int) {  //잔여 스텟 쓰기
         additionalStatusPoint -= amount
     }
