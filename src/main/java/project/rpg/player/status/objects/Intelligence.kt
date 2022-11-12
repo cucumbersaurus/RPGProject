@@ -9,14 +9,7 @@ class Intelligence : StatusBase(StatusName.INTELLIGENCE) {
     override fun effect(player: Player?) {
         if (player != null) {
             player.mana.maxMana = value*10
-        }
-    }
-
-    companion object {
-        fun deserialize(map: Map<String?, String>): Intelligence {
-            val intelligence = Intelligence()
-            intelligence.value = map["value"]!!.toInt()
-            return intelligence
+            player.mana.mana = value*10
         }
     }
 }

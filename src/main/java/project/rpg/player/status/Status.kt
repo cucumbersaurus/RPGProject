@@ -22,7 +22,6 @@ data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으
 
 
     var additionalStatusPoint = 0
-        private set
 
     init {
         additionalStatusPoint = 1000
@@ -67,9 +66,5 @@ data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으
 
     fun addAdditionalStatusPoint(amount: Int) {  //늘리기
         additionalStatusPoint += amount
-    }
-
-    init{
-        saveMap()
     }
 }

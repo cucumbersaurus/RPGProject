@@ -20,9 +20,6 @@ val Player.levels
 val Player.job
     get() = User.getPlayer(this)?.job!!
 
-val Player.skill
-    get() = User.getPlayer(this)?.skill!!
-
 val Player.friends
     get() = User.getPlayer(this)?.friends!!
 

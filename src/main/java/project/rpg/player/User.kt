@@ -2,7 +2,6 @@ package project.rpg.player
 
 import org.bukkit.entity.Player
 import project.rpg.player.info.Friends
-import project.rpg.player.info.Skill
 import project.rpg.player.job.Job
 import project.rpg.player.level.Levels
 import project.rpg.player.mana.Mana
@@ -16,7 +15,6 @@ data class User(val player: Player)  {
     var mana: Mana = Mana(status)
     var levels: Levels = Levels(player)
     var job: Job = Job(player)
-    var skill: Skill = Skill(player)
     var friends: Friends = Friends(player)
 
     fun saveMap() {

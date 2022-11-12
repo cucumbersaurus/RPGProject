@@ -35,11 +35,6 @@ commands:
   getItem:
     aliases : [아이템, ㅑㅅ드]
 
-  skill:
-    description: skill 커멘드
-    usage: "Usage: /<command> add [스킬이름]"
-    aliases: [스킬, 나ㅑㅣㅣ]
-
   menu:
     aliases: [메뉴, ㅡ두ㅕ]
     permission: all

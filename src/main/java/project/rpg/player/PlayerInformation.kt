@@ -5,27 +5,25 @@ import project.rpg.database.Database
 import project.rpg.extensions.maxHealth
 import project.rpg.extensions.setAttributeMaxHealth
 import project.rpg.extensions.status
-import project.rpg.player.info.Skill
 import project.rpg.player.status.base.StatusName
 import project.rpg.ui.text.ActionBarUI
 
 object PlayerInformation {
     fun makeInfo(player: Player) {
         val user = User.newUser(player)
-        user.status.reloadMap()
 
         player.setAttributeMaxHealth(player.status.maxHealth/10.0)
         player.healthScale = 100.0
         player.health = 1.0
 
         Database.readUser(player)
-
-        Skill(player)
+        user.status.reloadMap()
 
         ActionBarUI.addPlayer(player)
     }
 
     fun deleteInfo(player: Player) {
+        Database.writeUser(player)
         ActionBarUI.deletePlayer(player)
         User.removeUser(player)
     }

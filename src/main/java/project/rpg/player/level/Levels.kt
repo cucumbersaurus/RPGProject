@@ -1,5 +1,7 @@
 package project.rpg.player.level
 
+import io.github.monun.heartbeat.coroutines.HeartbeatScope
+import kotlinx.coroutines.launch
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import project.rpg.player.User.Companion.getPlayer
@@ -31,8 +33,10 @@ data class Levels(
 
     fun addExp(amount: Long) {  //경험치 늘리기 나중에 몬스너나 퀘스트에서 이거 쓰면 될듯
         exp += amount
-        while (hasEnoughExp()) {
-            levelUp()
+        HeartbeatScope().launch {
+            while (hasEnoughExp()) {
+                levelUp()
+            }
         }
     }
 }

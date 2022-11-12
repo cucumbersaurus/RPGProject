@@ -20,7 +20,6 @@ class Rpg : JavaPlugin() {
     val actionBar = ActionBarUI(this)
 
     override fun onLoad(){
-        loadData()
         Initializer.initializeAll()
 
         Database.run {
@@ -44,9 +43,12 @@ class Rpg : JavaPlugin() {
     }
 
     override fun onDisable() {
-        saveData()
         logger.info("saving files..." + ChatColor.YELLOW)
-        //Thread.sleep(1000)
+
+        Bukkit.getOnlinePlayers().forEach {
+            Database.writeUser(it)
+        }
+
         logger.info("RPG plugin disabled" + ChatColor.AQUA)
     }
 
@@ -56,7 +58,6 @@ class Rpg : JavaPlugin() {
         getCommand("status")!!.setExecutor(StatusCommand())
         getCommand("titleTest")!!.setExecutor(TitleTestCommand())
         getCommand("getItem")!!.setExecutor(ItemCommand())
-        getCommand("skill")!!.setExecutor(SkillCommand())
         getCommand("menu")!!.setExecutor(MainMenuCommand())
         getCommand("level")!!.setExecutor(LevelCommand())
         getCommand("craft")!!.setExecutor(CraftCommand())
@@ -77,7 +78,6 @@ class Rpg : JavaPlugin() {
 
     private fun registerTabCompleter(){
         getCommand("quests")!!.tabCompleter = QuestToggleCommand()
-        getCommand("skill")!!.tabCompleter = SkillCommand()
         getCommand("status")!!.tabCompleter = StatusCommand()
         getCommand("friend")!!.tabCompleter = FriendCommand()
     }
@@ -97,18 +97,10 @@ class Rpg : JavaPlugin() {
         }
     }
 
-    private fun loadData() {
-
-    }
-
-    private fun saveData() {
-
-    }
-
     private fun checkOnlinePlayers() {
         HeartbeatScope().launch {
-            for (player in Bukkit.getOnlinePlayers()) {
-                PlayerInformation.makeInfo(player)
+            Bukkit.getOnlinePlayers().forEach {
+                PlayerInformation.makeInfo(it)
             }
             logger.info("RPG plugin loading completed")
         }
