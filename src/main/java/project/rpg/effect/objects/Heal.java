@@ -6,7 +6,7 @@ import project.rpg.effect.EffectBase;
 public class Heal extends EffectBase {
 
     @Override
-    public void effect() {
+    public void effect(long durationMillis) {
         if (_entity.getHealth() >= _entity.getMaxHealth()-_amplifier) { //저거 Attribute 로도 된다는데 귀찮아서
             _entity.setHealth(_entity.getMaxHealth());
         } else {

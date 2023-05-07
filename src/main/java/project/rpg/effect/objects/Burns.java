@@ -6,7 +6,7 @@ import project.rpg.effect.EffectBase;
 public class Burns extends EffectBase {
 
     @Override
-    public void effect() {
+    public void effect(long durationMillis) {
         this._entity.setFireTicks(this._second*20);
     }
 

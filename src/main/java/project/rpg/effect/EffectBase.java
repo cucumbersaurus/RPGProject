@@ -9,7 +9,7 @@ public abstract class EffectBase {
     protected int _amplifier;
     protected long _tick;
 
-    public abstract void effect();
+    public abstract void effect(long durationMillis);
 
     protected EffectBase(LivingEntity entity, int second) {
         this(entity,second*20L, 1);
@@ -34,6 +34,6 @@ public abstract class EffectBase {
         this._entity = entity;
         this._tick = tick;
         this._amplifier = amplifier;
-        this.effect();
+        this.effect(_tick*50);
     }
 }

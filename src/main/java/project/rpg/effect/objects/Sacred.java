@@ -6,7 +6,7 @@ import project.rpg.effect.EffectBase;
 public class Sacred extends EffectBase {
 
     @Override
-    public void effect() {
+    public void effect(long durationMillis) {
         //TODO : 신성 구현 귀찮아
         double damage = this._entity.getLastDamage();
     }

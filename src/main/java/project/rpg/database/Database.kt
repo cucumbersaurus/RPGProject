@@ -29,15 +29,6 @@ object Database {
             tableList.forEach{
                 SchemaUtils.create(it)
             }
-            /*
-            SchemaUtils.create(
-                UserData,
-                StatusData,
-                JobData,
-                LevelData,
-            )
-            */
-
         }
     }
 

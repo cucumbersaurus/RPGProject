@@ -6,7 +6,7 @@ import project.rpg.effect.EffectBase;
 public class Damage extends EffectBase {
 
     @Override
-    public void effect() {
+    public void effect(long durationMillis) {
         if (_entity.getHealth() > _amplifier) {
             _entity.damage(10.0);
         } else {

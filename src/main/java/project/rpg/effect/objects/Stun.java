@@ -8,7 +8,7 @@ import project.rpg.effect.EffectBase;
 public class Stun extends EffectBase {
 
     @Override
-    public void effect() {
+    public void effect(long durationMillis) {
         this._entity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20*_second, 7,false,false,false));
     }
 

@@ -12,7 +12,7 @@ import java.util.Objects;
 public class ElectricShock extends EffectBase {
 
     @Override
-    public void effect() {
+    public void effect(long durationMillis) {
         PluginManager pluginManager = Bukkit.getPluginManager();
         try {
             Class.forName("project.rpg.Rpg");
