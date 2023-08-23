@@ -26,7 +26,7 @@ object LavaZone : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("화염 지대!"))
         lore.add(Component.text("라바존"))

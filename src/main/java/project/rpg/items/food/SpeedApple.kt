@@ -26,17 +26,17 @@ object SpeedApple : FoodBase() {
         super.item = item
     }
 
-    override fun onConsume(event: PlayerItemConsumeEvent?, hunger:Int, saturation:Int) {
+    override fun onConsume(event: PlayerItemConsumeEvent?, hunger: Int, saturation: Int) {
         val player = event!!.player
-        player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 30*20, 2, true,true,true))
-        super.onConsume(event,hunger,saturation)
+        player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 30 * 20, 2, true, true, true))
+        super.onConsume(event, hunger, saturation)
     }
 
     override fun onConsume(event: PlayerItemConsumeEvent?) {
-        onConsume(event,10,10)
+        onConsume(event, 10, 10)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("냠냠"))
         lore.add(Component.text("맛있다"))

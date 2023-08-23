@@ -8,9 +8,9 @@ import project.rpg.annotation.skill
 import project.rpg.extensions.mana
 import project.rpg.skill.magic.MagicSkillBase
 
-class Lightning: MagicSkillBase() {
+class Lightning : MagicSkillBase() {
 
-    @skill(name="lightning")
+    @skill(name = "lightning")
     override fun onEnable(player: Player, action: Action?) {
         var location = player.location
         val mana = player.mana

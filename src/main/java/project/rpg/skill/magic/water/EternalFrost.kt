@@ -25,10 +25,10 @@ class EternalFrost : MagicSkillBase() {
         val mana = player.mana
 
         if (mana.useMana(needMana)) {
-            for (entity in player.getNearbyEntities(7.0,7.0,7.0)) {
+            for (entity in player.getNearbyEntities(7.0, 7.0, 7.0)) {
                 if (entity is LivingEntity) {
-                    Stun(entity,3)
-                    Damage(entity, (entity.maxHealth/5).toInt())
+                    Stun(entity, 3)
+                    Damage(entity, (entity.maxHealth / 5).toInt())
                     entity.world.spawnParticle(Particle.TOWN_AURA, entity.location, 100, 0.25, 0.5, 0.25, 0.01)
                 }
             }

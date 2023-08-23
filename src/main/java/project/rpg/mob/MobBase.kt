@@ -4,6 +4,6 @@ import org.bukkit.entity.Entity
 
 interface MobBase {
 
-    fun createMobFun():(entity: Entity) ->Unit
+    fun createMobFun(): (entity: Entity) -> Unit
 
 }

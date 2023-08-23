@@ -9,7 +9,7 @@ import project.rpg.player.status.base.StatusName
 
 data class Mana(
     val status: Status,
-    var mana: Int = status.getStatusValues(StatusName.INTELLIGENCE) *10,
+    var mana: Int = status.getStatusValues(StatusName.INTELLIGENCE) * 10,
     var maxMana: Int = status.getStatusValues(StatusName.INTELLIGENCE) * 10,
 ) {
 

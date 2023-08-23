@@ -37,18 +37,18 @@ class LightningChain : MagicSkillBase() {
                 return
             }
 
-            if (entity!=null && entity is LivingEntity) {
+            if (entity != null && entity is LivingEntity) {
                 var locationEntity = entity
-                Damage(entity,4)
-                ElectricShock(entity,2)
+                Damage(entity, 4)
+                ElectricShock(entity, 2)
                 entity.world.spawnParticle(Particle.SPIT, entity.location, 50, 0.25, 0.5, 0.25, 0.1)
 
                 for (i in 0..3) {
                     HeartbeatScope().launch {
                         for (target in locationEntity?.getNearbyEntities(8.0, 8.0, 8.0)!!) {
-                            if (target is LivingEntity&&target!=player) {
-                                Damage(target,4)
-                                ElectricShock(target,2)
+                            if (target is LivingEntity && target != player) {
+                                Damage(target, 4)
+                                ElectricShock(target, 2)
                                 target.world.spawnParticle(Particle.SPIT, target.location, 50, 0.25, 0.5, 0.25, 0.1)
                                 locationEntity = target
                                 break

@@ -30,13 +30,21 @@ class Inferno : MagicSkillBase() {
 
             val target = player.getTargetBlock(30)
             val distance = target?.let { player.location.subtract(it.location) }
-            player.world.spawnParticle(Particle.FLAME,player.location,1000,distance!!.x,distance.y,distance.z,0.01)
+            player.world.spawnParticle(
+                Particle.FLAME,
+                player.location,
+                1000,
+                distance!!.x,
+                distance.y,
+                distance.z,
+                0.01
+            )
 
             val entity = player.getTargetEntity(30, false)
             if (entity != null && entity is LivingEntity) {
                 Slow(entity, 4)
-                Burns(entity,10)
-                Damage(entity,4)
+                Burns(entity, 10)
+                Damage(entity, 4)
                 //TODO : 재생 불가, 파티클 조정
             }
 

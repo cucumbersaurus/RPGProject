@@ -12,9 +12,9 @@ import project.rpg.effect.objects.Stun
 
 class LightningEventListener : Listener {
     @EventHandler
-    fun onHit(event : LightningStrikeEvent) {
+    fun onHit(event: LightningStrikeEvent) {
         if (event.lightning.entitySpawnReason == CreatureSpawnEvent.SpawnReason.CUSTOM) {
-            for (target in event.lightning.getNearbyEntities(0.5,0.5,0.5)) {
+            for (target in event.lightning.getNearbyEntities(0.5, 0.5, 0.5)) {
                 if (target is LivingEntity) {
                     Stun(target, 2)
                     Burns(target, 5)

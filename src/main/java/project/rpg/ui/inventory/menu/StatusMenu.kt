@@ -14,7 +14,7 @@ import project.rpg.player.status.Status
 import project.rpg.textComponets.color.DefaultTextColors
 import project.rpg.ui.inventory.GuiBase
 
-class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
+class StatusMenu(player: Player) : GuiBase(player, text("스텟 메뉴")) {
     private lateinit var user: User
     private lateinit var status: Status
     override fun initialize() {
@@ -26,18 +26,18 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
             setItem(Material.BLACK_STAINED_GLASS_PANE, i)
 
         }
-        for(i in 9..44 step 9){
+        for (i in 9..44 step 9) {
             setItem(Material.BLACK_STAINED_GLASS_PANE, i)
 
         }
-        for(i in 8..44 step 9){
+        for (i in 8..44 step 9) {
             setItem(Material.BLACK_STAINED_GLASS_PANE, i)
         }
 
         setItem(
             Material.IRON_AXE,
             12,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 status.addStrength()
                 reloadUi()
@@ -50,7 +50,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
         setItem(
             Material.FEATHER,
             14,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 status.addSpeed()
                 reloadUi()
@@ -63,7 +63,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
         setItem(
             Material.IRON_SWORD,
             20,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 status.addAgility()
                 reloadUi()
@@ -76,7 +76,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
         setItem(
             Material.GOLDEN_APPLE,
             24,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 status.addMaxHealth()
                 reloadUi()
@@ -89,7 +89,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
         setItem(
             Material.IRON_CHESTPLATE,
             38,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 status.addDefense()
                 reloadUi()
@@ -102,7 +102,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
         setItem(
             Material.DIAMOND,
             42,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 status.addLuck()
                 reloadUi()
@@ -115,7 +115,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
         setItem(
             Material.IRON_PICKAXE,
             48,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 status.addHandicraft()
                 reloadUi()
@@ -128,7 +128,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
         setItem(
             Material.BOOK,
             50,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 status.addIntelligence()
                 reloadUi()
@@ -145,7 +145,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
         setItem(
             Material.BEACON,
             45,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 reloadUi()
             },
@@ -155,7 +155,7 @@ class StatusMenu(player: Player) : GuiBase(player,  text("스텟 메뉴")) {
         setItem(
             Material.BARRIER,
             53,
-            { event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 forceCloseGUI()
             },

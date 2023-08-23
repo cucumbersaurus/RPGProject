@@ -26,12 +26,12 @@ class Tempest : MagicSkillBase() {
 
         if (mana.useMana(needMana)) {
             player.world.spawnParticle(Particle.WHITE_ASH, player.location, 100, 0.25, 0.5, 0.25, 0.1)
-            val vector = Vector(player.location.direction.x,player.location.direction.y,player.location.direction.z)
+            val vector = Vector(player.location.direction.x, player.location.direction.y, player.location.direction.z)
             player.velocity = vector.multiply(5)
             //TODO : 주변 엔티티 데미지, 슬로우
 
             player.world.spawnParticle(Particle.WHITE_ASH, player.location, 100, 0.25, 0.5, 0.25, 0.1)
-            player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 20*5, 2, true))
+            player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 20 * 5, 2, true))
         }
     }
 }

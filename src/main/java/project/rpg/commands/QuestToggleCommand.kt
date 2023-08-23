@@ -12,9 +12,9 @@ class QuestToggleCommand : CommandExecutor, TabCompleter {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (sender is Player) {
 
-        val scoreboardUI: ScoreboardUI =
-            if (ScoreboardUI.getPlayer(sender) != null) ScoreboardUI.getPlayer(sender)
-            else ScoreboardUI(sender)
+            val scoreboardUI: ScoreboardUI =
+                if (ScoreboardUI.getPlayer(sender) != null) ScoreboardUI.getPlayer(sender)!!
+                else ScoreboardUI(sender)
 
             if (args.isNotEmpty()) {
                 when (args[0]) {
@@ -22,6 +22,7 @@ class QuestToggleCommand : CommandExecutor, TabCompleter {
                         if (args.size > 2) scoreboardUI.setContents(args.toList().subList(1, args.size))
                         scoreboardUI.showScoreboard()
                     }
+
                     "false" -> scoreboardUI.hideScoreboard()
                     else -> sender.sendMessage(command.usage)
                 }

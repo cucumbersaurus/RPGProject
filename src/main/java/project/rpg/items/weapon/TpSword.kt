@@ -9,7 +9,7 @@ import project.rpg.annotation.skill
 import project.rpg.items.Items
 import project.rpg.textComponets.color.DefaultTextColors
 
-object TpSword: MagicItemBase() {
+object TpSword : MagicItemBase() {
 
     override fun createItem() {
         val item = ItemStack(Material.IRON_SWORD)
@@ -40,7 +40,7 @@ object TpSword: MagicItemBase() {
         }
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("희한하게 생긴 검이다"))
         return lore

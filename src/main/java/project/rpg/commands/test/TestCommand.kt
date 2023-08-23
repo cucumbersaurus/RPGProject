@@ -7,7 +7,7 @@ import org.bukkit.Bukkit
 import project.rpg.Rpg
 
 object TestCommand {
-    fun register(kommand: PluginKommand, plugin: Rpg){
+    fun register(kommand: PluginKommand, plugin: Rpg) {
         kommand.register("user") {
             then("create") {
                 then("name" to string()) {

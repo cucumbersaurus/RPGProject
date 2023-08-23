@@ -26,7 +26,7 @@ object GiganticThunder : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("번개여 쳐라"))
         lore.add(Component.text("기간트 썬더"))

@@ -9,7 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent
 import project.rpg.ui.inventory.GuiBase
 import java.util.*
 
-class EnforceUI(player: Player) : GuiBase(player, Component.text("메인 메뉴"), 54) {
+class EnforceUI(player: Player) : GuiBase(player, text("메인 메뉴"), 54) {
     override fun initialize() {
         fillBackGround()
         setItem(

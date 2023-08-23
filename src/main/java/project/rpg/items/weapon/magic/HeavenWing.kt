@@ -26,7 +26,7 @@ object HeavenWing : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("저 하늘 높이"))
         lore.add(Component.text("헤븐 윙"))

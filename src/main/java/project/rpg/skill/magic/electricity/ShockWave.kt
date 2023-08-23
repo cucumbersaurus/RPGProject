@@ -27,14 +27,14 @@ class ShockWave : MagicSkillBase() {
         val mana = player.mana
 
         if (mana.useMana(needMana)) {
-            for (entity in player.getNearbyEntities(3.0,3.0,3.0)) {
+            for (entity in player.getNearbyEntities(3.0, 3.0, 3.0)) {
                 if (entity is LivingEntity) {
                     ElectricShock(entity, 5)
-                    Damage(entity,3)
+                    Damage(entity, 3)
                     entity.world.spawnParticle(Particle.ELECTRIC_SPARK, entity.location, 100, 0.25, 0.5, 0.25, 0.1)
                 }
             }
-            player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 20*2, 2, true))
+            player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 20 * 2, 2, true))
         }
     }
 }

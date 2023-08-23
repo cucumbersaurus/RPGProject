@@ -8,8 +8,8 @@ import project.rpg.player.status.base.StatusName
 class Intelligence : StatusBase(StatusName.INTELLIGENCE) {
     override fun effect(player: Player?) {
         if (player != null) {
-            player.mana.maxMana = value*10
-            player.mana.mana = value*10
+            player.mana.maxMana = value * 10
+            player.mana.mana = value * 10
         }
     }
 }

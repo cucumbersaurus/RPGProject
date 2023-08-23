@@ -26,7 +26,7 @@ object EternalFrost : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("이 세상의 것이 아닌 추움이다.."))
         lore.add(Component.text("이터널 프로스트"))

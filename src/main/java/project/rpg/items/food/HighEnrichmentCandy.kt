@@ -26,17 +26,17 @@ object HighEnrichmentCandy : FoodBase() {
         super.item = item
     }
 
-    override fun onConsume(event: PlayerItemConsumeEvent?, hunger:Int, saturation:Int) {
+    override fun onConsume(event: PlayerItemConsumeEvent?, hunger: Int, saturation: Int) {
         val player = event!!.player
-        player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, 15*20, 5, true,true,true))
-        super.onConsume(event,hunger,saturation)
+        player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, 15 * 20, 5, true, true, true))
+        super.onConsume(event, hunger, saturation)
     }
 
     override fun onConsume(event: PlayerItemConsumeEvent?) {
-        onConsume(event,2,5)
+        onConsume(event, 2, 5)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("할일 없던 연금술사가 포션을 가마솥에 넣고 오랫동안 졸여서 만든 사탕이다."))
         lore.add(Component.text("15초간 체력 초당 10 회복 (효과 중첩 가능)"))

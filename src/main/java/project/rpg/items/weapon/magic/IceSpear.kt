@@ -26,7 +26,7 @@ object IceSpear : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("앗 얼었다"))
         lore.add(Component.text("아이스 스피오"))

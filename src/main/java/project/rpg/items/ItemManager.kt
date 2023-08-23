@@ -16,7 +16,7 @@ object ItemManager {
     @Deprecated("시간복잡도가 너무 큼")
     fun getItem(value: Int): ItemBase? {
         for (item in Items.values()) {
-            if (item.value==value) return item.itemBase
+            if (item.value == value) return item.itemBase
         }
         return null
     }
@@ -25,17 +25,17 @@ object ItemManager {
     @Deprecated("시간복잡도가 너무 큼")
     fun getType(value: Int): ItemType? {
         for (item in Items.values()) {
-            if (item.value==value) return item.type
+            if (item.value == value) return item.type
         }
         return null
     }
 
     @JvmStatic
     @Deprecated("시간복잡도가 너무 큼")
-    fun getName(value: Int) : String?{
+    fun getName(value: Int): String? {
         for (item in Items.values()) {
             if (item.value == value) {
-                return item._name
+                return item.displayName
             }
         }
         return null

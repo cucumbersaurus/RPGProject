@@ -12,7 +12,7 @@ object PlayerInformation {
     fun makeInfo(player: Player) {
         val user = User.newUser(player)
 
-        player.setAttributeMaxHealth(player.status.maxHealth/10.0)
+        player.setAttributeMaxHealth(player.status.maxHealth / 10.0)
         player.healthScale = 100.0
         player.health = 1.0
 
@@ -29,7 +29,7 @@ object PlayerInformation {
     }
 
     @JvmStatic
-    fun updateHealth( player: Player){
-        player.setAttributeMaxHealth(player.status.getStatusValues(StatusName.HEALTH)/10.0)
+    fun updateHealth(player: Player) {
+        player.setAttributeMaxHealth(player.status.getStatusValues(StatusName.HEALTH) / 10.0)
     }
 }

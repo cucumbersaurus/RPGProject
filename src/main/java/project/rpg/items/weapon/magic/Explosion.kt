@@ -13,7 +13,7 @@ import project.rpg.textComponets.color.TextColors
 object Explosion : MagicItemBase() {
 
     override fun createItem() {
-        item =  ItemStack(Material.FIRE_CHARGE).apply {
+        item = ItemStack(Material.FIRE_CHARGE).apply {
             itemMeta = itemMeta.apply {
                 displayName(Component.text("☆폭발☆").color(TextColors.MAROON.color))
                 lore(itemLore())
@@ -25,10 +25,10 @@ object Explosion : MagicItemBase() {
 
     @skill(name = "flame_burst")
     override fun onEnable(player: Player, action: Action?) {
-        skill.onEnable(player,action)
+        skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("펑펑 터져라"))
         lore.add(Component.text("익스플로젼"))

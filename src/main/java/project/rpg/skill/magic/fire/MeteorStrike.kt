@@ -36,15 +36,15 @@ class MeteorStrike : MagicSkillBase() {
 
                 if (entity is LivingEntity) {
                     entity.world.spawnParticle(Particle.FLAME, entity.location, 400, 0.25, 3.0, 0.25, 0.1)
-                    Burns(entity,2)
-                    Stun(entity,1)
+                    Burns(entity, 2)
+                    Stun(entity, 1)
                     //TODO : 방어력 50% 감소
 
                     if (player != entity) {
-                        Damage(entity,10)
+                        Damage(entity, 10)
 
                         entity.fireTicks = 20 * 2
-                        Slow(entity,20)
+                        Slow(entity, 20)
                     }
                 }
             }

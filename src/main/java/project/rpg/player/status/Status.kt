@@ -6,7 +6,8 @@ import project.rpg.player.status.base.StatusName
 import project.rpg.player.status.objects.*
 import java.util.*
 
-data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으로 많이 둠
+data class Status(
+//실제로는 10으로 할 예정, 지금은 테스트 용으로 많이 둠
     private val player: Player,
     private val agility: Agility = Agility(),
     private val defense: Defense = Defense(),
@@ -16,7 +17,7 @@ data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으
     private val luck: Luck = Luck(),
     private val speed: Speed = Speed(),
     private val strength: Strength = Strength(),
-    ) {
+) {
 
     private val statusMap: MutableMap<StatusName, StatusBase> = EnumMap(StatusName::class.java)
 
@@ -47,7 +48,8 @@ data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으
 
     fun addStatus(name: StatusName, amount: Int): Boolean {  //스텟 늘리기
         val status = statusMap[name]
-        return status?.addValue(amount, this, this.player) ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
+        return status?.addValue(amount, this, this.player)
+            ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
     }
 
     fun getStatusValues(name: StatusName): Int {
@@ -55,7 +57,7 @@ data class Status(//실제로는 10으로 할 예정, 지금은 테스트 용으
         return status?.value ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
     }
 
-    fun setStatusValues(name: StatusName, amount: Int){
+    fun setStatusValues(name: StatusName, amount: Int) {
         val status = statusMap[name]
         status?.value = amount
     }

@@ -26,7 +26,7 @@ object ThunderCharging : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("천둥..?"))
         lore.add(Component.text("썬더 차징"))

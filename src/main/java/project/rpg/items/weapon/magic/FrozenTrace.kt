@@ -26,7 +26,7 @@ object FrozenTrace : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("얼음 길만 걸어"))
         lore.add(Component.text("프로즌 트레이스"))

@@ -41,7 +41,7 @@ class WaterArrow : MagicSkillBase() {
             }
             val plugin = pluginManager.getPlugin("Rpg")
 
-            arrow.setMetadata(SkillType.WATER_ARROW.skillName,FixedMetadataValue(plugin!!,true))
+            arrow.setMetadata(SkillType.WATER_ARROW.skillName, FixedMetadataValue(plugin!!, true))
 
             arrow.velocity = player.location.direction.multiply(2)
 

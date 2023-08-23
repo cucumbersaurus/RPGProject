@@ -24,7 +24,7 @@ class StoneOfPower : AccessoryBase() {
         }
     }
 
-    private fun itemLore() : List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("인벤토리에 들고 있으면 힘 스텟이 10 늘어난 것과 같다."))
         lore.add(Component.text("와 정말 신기해"))

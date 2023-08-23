@@ -12,7 +12,7 @@ import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
-class BlazingMark: MagicSkillBase() {
+class BlazingMark : MagicSkillBase() {
 
     init {
         name = SkillType.BLAZING_MARK.skillName

@@ -19,7 +19,7 @@ public class CustomItemCraftEvent extends Event {
         return _handlerList;
     }
 
-    public void pluginEnableEvent(Rpg plugin){
+    public void pluginEnableEvent(Rpg plugin) {
         _plugin = plugin;
     }
 

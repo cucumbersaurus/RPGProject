@@ -3,7 +3,7 @@ package project.rpg.textComponets.color
 import net.kyori.adventure.text.format.TextColor
 import net.kyori.adventure.text.format.TextColor.color
 
-enum class DefaultTextColors(originalColor: TextColor){
+enum class DefaultTextColors(originalColor: TextColor) {
 
     BLACK(color(0x000000)),
     DARK_BLUE(color(0x0000aa)),
@@ -24,8 +24,8 @@ enum class DefaultTextColors(originalColor: TextColor){
     ;
 
     val color: TextColor
-    
-    init{
+
+    init {
         color = originalColor
     }
 }

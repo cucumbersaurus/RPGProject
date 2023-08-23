@@ -26,7 +26,7 @@ object LightningChain : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("지릭 .. 지릭 .... 지릭.. 지릭"))
         lore.add(Component.text("라이트닝 체인"))

@@ -9,7 +9,7 @@ import project.rpg.player.name.Title
 import project.rpg.player.status.Status
 import java.util.*
 
-data class User(val player: Player)  {
+data class User(val player: Player) {
     var title: Title = Title(player)
     var status: Status = Status(player)
     var mana: Mana = Mana(status)

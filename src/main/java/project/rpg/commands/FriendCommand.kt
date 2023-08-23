@@ -38,12 +38,13 @@ class FriendCommand : CommandExecutor, TabCompleter {
             result.add("list")
         }
         if (sender is Player && args.size == 2) {
-            when(args[0]) {
+            when (args[0]) {
                 "add" -> {
                     for (player in Bukkit.getOnlinePlayers()) {
                         result.add(player.name)
                     }
                 }
+
                 "accept" -> {
                     for (player in sender.friends.pendingList) {
                         result.add(player.name)

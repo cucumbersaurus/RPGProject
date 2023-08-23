@@ -10,6 +10,7 @@ import project.rpg.effect.objects.Stun
 import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
+
 class Binding : MagicSkillBase() {
 
     init {
@@ -25,7 +26,7 @@ class Binding : MagicSkillBase() {
 
         if (mana.useMana(needMana)) {
             val entity = player.getTargetEntity(20, false)
-            if (entity!=null && entity is LivingEntity) {
+            if (entity != null && entity is LivingEntity) {
                 Damage(entity, 1)
                 Stun(entity, 4)
                 entity.world.spawnParticle(Particle.WHITE_ASH, entity.location, 100, 0.25, 0.5, 0.25, 0.1)

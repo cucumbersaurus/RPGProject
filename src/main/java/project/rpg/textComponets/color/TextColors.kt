@@ -134,7 +134,7 @@ enum class TextColors(originalColor: TextColor) {
 
     val color: TextColor
 
-    init{
+    init {
         color = originalColor
     }
 }

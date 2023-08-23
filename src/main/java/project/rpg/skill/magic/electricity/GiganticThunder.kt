@@ -29,7 +29,7 @@ class GiganticThunder : MagicSkillBase() {
                 location = player.getTargetBlock(30)!!.location
             }
 
-            player.world.spawnEntity(location, EntityType.LIGHTNING,CreatureSpawnEvent.SpawnReason.CUSTOM)
+            player.world.spawnEntity(location, EntityType.LIGHTNING, CreatureSpawnEvent.SpawnReason.CUSTOM)
             player.world.spawnParticle(Particle.ELECTRIC_SPARK, player.location, 100, 0.25, 0.75, 0.25, 0.1)
 
             player.world.spawnParticle(Particle.ELECTRIC_SPARK, player.location, 100, 0.25, 0.5, 0.25, 0.1)

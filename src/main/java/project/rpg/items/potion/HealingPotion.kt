@@ -21,7 +21,14 @@ object HealingPotion : PotionBase() {
         //display name
         meta.displayName(Component.text("체력 회복 포션"))
         //lore
-        meta.lore(ArrayList(listOf(Component.text("이 포션을 마시면"), Component.text("최대 70의 체력를 회복합니다"))) as List<Component>?)
+        meta.lore(
+            ArrayList(
+                listOf(
+                    Component.text("이 포션을 마시면"),
+                    Component.text("최대 70의 체력를 회복합니다")
+                )
+            ) as List<Component>?
+        )
         //아이템 아이디 설정
         meta.setCustomModelData(Items.HEALING_POTION.value)
 
@@ -32,11 +39,11 @@ object HealingPotion : PotionBase() {
         super.item = item
     }
 
-    override fun onDrink(mana : Mana, plugin : Rpg, event : PlayerItemConsumeEvent) {
+    override fun onDrink(mana: Mana, plugin: Rpg, event: PlayerItemConsumeEvent) {
         val player: Player = event.player
         val item = event.item
 
-        if (item.itemMeta.customModelData== Items.HEALING_POTION.value) {
+        if (item.itemMeta.customModelData == Items.HEALING_POTION.value) {
             Heal(player, 70)
             plugin.actionBar.updateActionBar(player)
         }

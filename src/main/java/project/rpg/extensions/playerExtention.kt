@@ -27,5 +27,5 @@ val Player.GUI
     get() = GuiBase.getGUI(this)
 
 fun Player.setAttributeMaxHealth(health: Double) {
-    this.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.baseValue=health
+    this.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.baseValue = health
 }

@@ -16,11 +16,12 @@ class ActionBarUI(private val _plugin: Rpg) {
             sendActionBarToPlayer(player)
         }
     }
-    fun startCoroutineActionBar(){
+
+    fun startCoroutineActionBar() {
         Thread.sleep(10)
         HeartbeatScope().launch {
             val suspension = Suspension()
-            while(true) {
+            while (true) {
                 suspension.delay(50 * 20L)
 
                 for (player in Bukkit.getOnlinePlayers()) {
@@ -48,18 +49,21 @@ class ActionBarUI(private val _plugin: Rpg) {
      * @param player 액션바를 보낼 플레이어
      * @re
      */
-    private fun sendActionBarToPlayer(player: Player){
+    private fun sendActionBarToPlayer(player: Player) {
         val mana = player.mana
         val message = text()
         message.append(
-        text().color(TextColor.color(0xff5555)).
-        content( "체력 : " +
-                String.format("%.2f", player.health * 100) + "/" +
-                String.format("%.2f", player.healthScale * 100
-        )))
+            text().color(TextColor.color(0xff5555)).content(
+                "체력 : " +
+                        String.format("%.2f", player.health * 100) + "/" +
+                        String.format(
+                            "%.2f", player.healthScale * 100
+                        )
+            )
+        )
         message.append(
-        text().color(TextColor.color(0x5555ff)).
-        content( "          마나 : " + mana.mana + "/" + mana.maxMana))
+            text().color(TextColor.color(0x5555ff)).content("          마나 : " + mana.mana + "/" + mana.maxMana)
+        )
         player.sendActionBar(message.build())
 
     }

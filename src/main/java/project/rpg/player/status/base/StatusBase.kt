@@ -3,7 +3,7 @@ package project.rpg.player.status.base
 import org.bukkit.entity.Player
 import project.rpg.player.status.Status
 
-abstract class StatusBase protected constructor( val status: StatusName) {
+abstract class StatusBase protected constructor(val status: StatusName) {
     //스텟 베이스
     private val statusName: String = status.status
     var value = 10 //스텟 수

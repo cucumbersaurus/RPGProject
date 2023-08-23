@@ -26,7 +26,7 @@ object Tempest : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("바람의 힘!"))
         lore.add(Component.text("탬페스트"))

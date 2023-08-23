@@ -3,7 +3,7 @@ package project.rpg.player.job
 import org.bukkit.entity.Player
 import project.rpg.player.job.thing.*
 
-enum class JobType(val jobName: String, val description: String, val id: Int){
+enum class JobType(val jobName: String, val description: String, val id: Int) {
     JOBLESS("백수", "무직", 0), ADVENTURER("전사", "체력 +150| 모든 물리무기 착용 가능", 1), SWORDSMAN(
         "검사",
         "체력 +250, 공격력 +10|검",

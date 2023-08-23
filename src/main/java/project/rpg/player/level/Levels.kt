@@ -25,7 +25,7 @@ data class Levels(
 
     fun levelUp() {   //레벨업!
         exp = exp - needForNextLev
-        getPlayer(_player!!)!!.status.addAdditionalStatusPoint(5)
+        getPlayer(_player)!!.status.addAdditionalStatusPoint(5)
         getPlayer(_player)!!.mana.reloadMaxMana()
         level++
         _player.sendMessage(ChatColor.YELLOW.toString() + "Levels Up!")

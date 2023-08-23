@@ -19,69 +19,91 @@ object SkillDic {
             SkillType.METEOR_STRIKE.skillName -> {
                 MeteorStrike()
             }
+
             SkillType.FLAME_BURST.skillName -> {
                 FlameBurst()
             }
+
             SkillType.TP_ARROW.skillName -> {
                 TpArrow()
             }
+
             SkillType.SHOONBOW.skillName -> {
                 ShoonBow(player)
             }
+
             SkillType.EXPLOSION.skillName -> {
                 Explosion()
             }
+
             SkillType.LAVA_ZONE.skillName -> {
                 LavaZone()
             }
+
             SkillType.BLAZING_MARK.skillName -> {
                 BlazingMark()
             }
+
             SkillType.INFERNO.skillName -> {
                 Inferno()
             }
+
             SkillType.FLARE_CLOCK.skillName -> {
                 FlareClock()
             }
+
             SkillType.PURE_SHIELD.skillName -> {
                 PureShield()
             }
+
             SkillType.WATER_ARROW.skillName -> {
                 WaterArrow()
             }
+
             SkillType.FROZEN_TRACE.skillName -> {
                 FrozenTrace()
             }
+
             SkillType.ICE_SPEAR.skillName -> {
                 IceSpear()
             }
+
             SkillType.ETERNAL_FROST.skillName -> {
                 EternalFrost()
             }
+
             SkillType.LIGHTNING_STORM.skillName -> {
                 LightningStorm()
             }
+
             SkillType.THUNDER_CHARGING.skillName -> {
                 ThunderCharging()
             }
+
             SkillType.LIGHTNING_CHAIN.skillName -> {
                 LightningChain()
             }
+
             SkillType.SHOCK_WAVE.skillName -> {
                 ShockWave()
             }
+
             SkillType.GIGANTIC_THUNDER.skillName -> {
                 GiganticThunder()
             }
+
             SkillType.HEAVEN_WING.skillName -> {
                 HeavenWing()
             }
+
             SkillType.TEMPEST.skillName -> {
                 Tempest()
             }
+
             SkillType.BINDING.skillName -> {
                 Binding()
             }
+
             else -> null
         }
     }

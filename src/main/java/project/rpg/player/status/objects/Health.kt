@@ -8,7 +8,7 @@ import project.rpg.player.status.base.StatusBase
 import project.rpg.player.status.base.StatusName
 import java.util.*
 
-class Health: StatusBase(StatusName.HEALTH) {
+class Health : StatusBase(StatusName.HEALTH) {
     override fun addValue(amount: Int, status: Status, player: Player?): Boolean {  //스텟 더하기
         if (status.additionalStatusPoint >= amount) {
             value += amount

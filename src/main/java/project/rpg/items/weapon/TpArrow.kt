@@ -10,7 +10,7 @@ import project.rpg.items.Items
 import project.rpg.skill.tmp.TpArrow
 import project.rpg.textComponets.color.TextColors
 
-object TpArrow: MagicItemBase() {
+object TpArrow : MagicItemBase() {
     override fun createItem() {
         val item = ItemStack(Material.ARROW)
         val meta = item.itemMeta

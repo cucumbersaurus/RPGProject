@@ -14,7 +14,7 @@ class DictionaryMenu(player: Player) : GuiBase(player, text("도감")) {
         setItem(
             Material.LAVA_BUCKET,
             10,
-            { _:InventoryClickEvent, _:Int ->
+            { _: InventoryClickEvent, _: Int ->
                 forceCloseGUI()
                 ItemDictionaryUI(player)
             },
@@ -24,7 +24,7 @@ class DictionaryMenu(player: Player) : GuiBase(player, text("도감")) {
         setItem(
             Material.IRON_SWORD,
             12,
-            { _:InventoryClickEvent, _:Int ->
+            { _: InventoryClickEvent, _: Int ->
                 //스킬 도감 열기
             },
             text("스킬 도감")
@@ -33,17 +33,19 @@ class DictionaryMenu(player: Player) : GuiBase(player, text("도감")) {
         setItem(
             Material.LECTERN,
             14,
-            { _:InventoryClickEvent, _:Int ->
+            { _: InventoryClickEvent, _: Int ->
                 //직업 도감 열기
             },
-            text("직업 도감"))
+            text("직업 도감")
+        )
 
         setItem(
             Material.BARRIER,
             49,
-            { _:InventoryClickEvent, _:Int ->
+            { _: InventoryClickEvent, _: Int ->
                 forceCloseGUI()
             },
-            text("닫기"))
+            text("닫기")
+        )
     }
 }

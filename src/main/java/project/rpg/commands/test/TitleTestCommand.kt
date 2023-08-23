@@ -11,7 +11,13 @@ import java.time.Duration.ofSeconds
 class TitleTestCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (sender is Player && args.isNotEmpty()) {
-            sender.showTitle(Title.title(text(args[0]), text(args[0]),Title.Times.times(ofSeconds(20), ofSeconds(60), ofSeconds(20))))
+            sender.showTitle(
+                Title.title(
+                    text(args[0]),
+                    text(args[0]),
+                    Title.Times.times(ofSeconds(20), ofSeconds(60), ofSeconds(20))
+                )
+            )
         }
         return false
     }

@@ -23,8 +23,13 @@ class BlockClickEventListener : Listener {
                 event.isCancelled = true
                 //ui 오픈
             }
-            Material.ANVIL, Material.CHIPPED_ANVIL, Material.DAMAGED_ANVIL -> {/*ui 오픈*/ }
-            else -> {event.isCancelled = false}
+
+            Material.ANVIL, Material.CHIPPED_ANVIL, Material.DAMAGED_ANVIL -> {/*ui 오픈*/
+            }
+
+            else -> {
+                event.isCancelled = false
+            }
 
         }
     }

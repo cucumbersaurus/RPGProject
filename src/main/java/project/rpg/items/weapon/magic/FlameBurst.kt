@@ -27,7 +27,7 @@ object FlameBurst : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("와 배워 화염구다~"))
         lore.add(Component.text("플레임 버스트"))

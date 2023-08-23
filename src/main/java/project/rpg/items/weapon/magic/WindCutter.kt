@@ -26,7 +26,7 @@ object WindCutter : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("바람으로 자르기"))
         lore.add(Component.text("윈드 커터"))

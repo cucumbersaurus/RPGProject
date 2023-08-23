@@ -10,7 +10,7 @@ import project.rpg.skill.SkillDic
 
 object Initializer {
 
-    fun initializeAll(){
+    fun initializeAll() {
         ItemManager.makeItems()
         ItemDictionary.initialize()
         SkillDic.addAll()

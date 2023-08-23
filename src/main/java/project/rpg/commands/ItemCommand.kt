@@ -16,11 +16,10 @@ class ItemCommand : CommandExecutor, TabCompleter {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (sender is Player && args.isNotEmpty()) {
             val item: ItemStack? = ItemDictionary.getNewItem(args[0])
-            if(item !=null) {
+            if (item != null) {
                 sender.inventory.addItem(item)
                 sender.sendMessage(item.displayName())
-            }
-            else {
+            } else {
                 sender.sendMessage(text("없는 아이템 입니다. 명령어를 확인해 주세요.").color(DefaultTextColors.RED.color))
             }
         }
@@ -35,7 +34,7 @@ class ItemCommand : CommandExecutor, TabCompleter {
     ): MutableList<String> {
         val recommendation = ArrayList<String>()
 
-        if(args != null && args.size==1) {
+        if (args != null && args.size == 1) {
             for (item in Items.values()) {
                 recommendation.add(item.name.lowercase(Locale.getDefault()))
             }

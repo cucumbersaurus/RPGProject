@@ -26,7 +26,7 @@ object IceWave : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("I~C~E~ W~A~V~E~"))
         lore.add(Component.text("아이스 웨이브"))

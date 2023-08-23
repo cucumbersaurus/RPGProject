@@ -15,7 +15,7 @@ import project.rpg.skill.SkillType
 
 class ProjectileEventListener(private val _plugin: Rpg) : Listener {
     @EventHandler
-    fun onProjectileHit(event : ProjectileHitEvent) {
+    fun onProjectileHit(event: ProjectileHitEvent) {
         if (event.entity is Arrow) {
             if (event.entity.hasMetadata(SkillType.WATER_ARROW.skillName)) {
                 if (event.hitEntity != null && event.hitEntity is LivingEntity) {
@@ -44,7 +44,7 @@ class ProjectileEventListener(private val _plugin: Rpg) : Listener {
     }
 
     @EventHandler
-    fun onProjectileFly(event : ProjectileLaunchEvent) {
+    fun onProjectileFly(event: ProjectileLaunchEvent) {
         //arrow.world.spawnParticle(Particle.SNOWFLAKE, arrow.location, 100, 0.0, 0.0, 0.0, 0.1)
     }
 }

@@ -8,6 +8,7 @@ import project.rpg.annotation.skill
 import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
+
 class LightningStorm : MagicSkillBase() {
 
     init {
@@ -24,12 +25,12 @@ class LightningStorm : MagicSkillBase() {
 
         if (mana.useMana(needMana)) {
             if (player.getTargetBlock(20) != null) {
-                player.world.getNearbyEntities(player.getTargetBlock(20)!!.location,0.5,0.5,0.5)
+                player.world.getNearbyEntities(player.getTargetBlock(20)!!.location, 0.5, 0.5, 0.5)
                 location = player.getTargetBlock(20)!!.location
             }
             //TODO: 위치 조정
             player.world.spawnParticle(Particle.ELECTRIC_SPARK, player.location, 100, 0.25, 0.75, 0.25, 0.1)
-            player.world.spawnParticle(Particle.WHITE_ASH,location.add(0.0,10.0,0.0),3000,8.0,0.5,8.0,0.01)
+            player.world.spawnParticle(Particle.WHITE_ASH, location.add(0.0, 10.0, 0.0), 3000, 8.0, 0.5, 8.0, 0.01)
             player.world.spawnEntity(location, EntityType.LIGHTNING)
         }
     }

@@ -22,7 +22,7 @@ class PlayerItemConsumeEventListener(private val _plugin: Rpg) : Listener {
             if (item != null) {
                 if (Items.values()[id].type == ItemType.POTION && item is PotionBase) {
                     item.onDrink(mana, _plugin, event)
-                } else if (Items.values()[id].type  == ItemType.FOOD && item is FoodBase) {
+                } else if (Items.values()[id].type == ItemType.FOOD && item is FoodBase) {
                     item.onConsume(event)
                 }
             }

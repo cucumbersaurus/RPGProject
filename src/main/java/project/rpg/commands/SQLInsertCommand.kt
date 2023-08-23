@@ -7,11 +7,11 @@ import org.bukkit.entity.Player
 import project.rpg.database.Database
 
 
-class SQLInsertCommand:CommandExecutor {
+class SQLInsertCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>?): Boolean {
 
-        if(sender is Player) {
+        if (sender is Player) {
             Database.writeUser(sender)
         }
 

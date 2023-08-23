@@ -26,10 +26,10 @@ class LavaZone : MagicSkillBase() {
 
         if (mana.useMana(needMana)) {
             player.world.spawnParticle(Particle.FLAME, player.location, 1000, 5.0, 0.0, 5.0, 0.01)
-            for (entity in player.getNearbyEntities(5.0,0.0,5.0)) {
+            for (entity in player.getNearbyEntities(5.0, 0.0, 5.0)) {
                 if (entity is LivingEntity) {
                     Slow(entity, 5)
-                    Burns(entity,5)
+                    Burns(entity, 5)
                 }
             }
         }

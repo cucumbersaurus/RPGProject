@@ -25,7 +25,7 @@ class IceWave : MagicSkillBase() {
         val mana = player.mana
 
         if (mana.useMana(needMana)) {
-            for (entity in player.getNearbyEntities(4.0,4.0,4.0)) {
+            for (entity in player.getNearbyEntities(4.0, 4.0, 4.0)) {
                 if (entity is LivingEntity) {
                     Stun(entity, 4)
                     Damage(entity, 4)

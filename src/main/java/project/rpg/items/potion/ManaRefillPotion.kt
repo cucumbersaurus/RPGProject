@@ -32,11 +32,11 @@ object ManaRefillPotion : PotionBase() {
         super.item = item
     }
 
-    override fun onDrink(mana : Mana, plugin : Rpg, event : PlayerItemConsumeEvent) {
+    override fun onDrink(mana: Mana, plugin: Rpg, event: PlayerItemConsumeEvent) {
         val player: Player = event.player
         val item = event.item
 
-        if (item.itemMeta.customModelData== Items.MANA_REFILLING_POTION.value) {
+        if (item.itemMeta.customModelData == Items.MANA_REFILLING_POTION.value) {
             val leftUntilFull = mana.maxMana - mana.mana
             if (leftUntilFull >= 100) {
                 mana.addMana(100)

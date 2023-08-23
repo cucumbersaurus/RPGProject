@@ -41,7 +41,7 @@ class ThunderCharging : MagicSkillBase() {
             }
             val plugin = pluginManager.getPlugin("Rpg")
 
-            arrow.setMetadata(SkillType.THUNDER_CHARGING.skillName, FixedMetadataValue(plugin!!,true))
+            arrow.setMetadata(SkillType.THUNDER_CHARGING.skillName, FixedMetadataValue(plugin!!, true))
 
             arrow.velocity = player.location.direction.multiply(2)
         }

@@ -12,7 +12,7 @@ import project.rpg.items.weapon.MagicItemBase
 import project.rpg.skill.magic.fire.MeteorStrike
 import project.rpg.textComponets.color.DefaultTextColors
 
-object TheMeteor: MagicItemBase() {
+object TheMeteor : MagicItemBase() {
     override fun createItem() {
         item = ItemStack(Material.FIRE_CHARGE).apply {
             itemMeta = itemMeta.apply {
@@ -28,7 +28,7 @@ object TheMeteor: MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(text("펑펑!!"))
         lore.add(text("메테오 스트라이크"))

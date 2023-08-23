@@ -26,12 +26,12 @@ class FlareClock : MagicSkillBase() {
 
         if (mana.useMana(needMana)) {
             val entity = player.getTargetEntity(40, false)
-            if (entity!=null) {
+            if (entity != null) {
                 entity.isGlowing = true
                 val pluginManager = Bukkit.getPluginManager()
                 try {
                     Class.forName("project.rpg.Rpg")
-                } catch (e : ClassNotFoundException) {
+                } catch (e: ClassNotFoundException) {
                     return
                 }
                 val plugin = pluginManager.getPlugin("Rpg")
@@ -39,8 +39,8 @@ class FlareClock : MagicSkillBase() {
                 plugin?.let {
                     Bukkit.getScheduler().runTaskLater(it, Runnable {
                         entity.isGlowing = false
-                        Burns(entity as LivingEntity?,10)
-                        entity.world.createExplosion(player,entity.location, 32f,true,true)
+                        Burns(entity as LivingEntity, 10)
+                        entity.world.createExplosion(player, entity.location, 32f, true, true)
                     }, (20 * 5).toLong())
                 }
                 //TODO : 공격력 20% 감소

@@ -42,7 +42,7 @@ class IceSpear : MagicSkillBase() {
             }
             val plugin = pluginManager.getPlugin("Rpg")
 
-            arrow.setMetadata(SkillType.ICE_SPEAR.skillName, FixedMetadataValue(plugin!!,true))
+            arrow.setMetadata(SkillType.ICE_SPEAR.skillName, FixedMetadataValue(plugin!!, true))
 
             arrow.velocity = player.location.direction.multiply(3)
         }

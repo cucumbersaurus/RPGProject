@@ -5,10 +5,10 @@ import net.kyori.adventure.text.format.TextColor
 import project.rpg.textComponets.color.DefaultTextColors
 import project.rpg.textComponets.color.TextColors
 
-fun Component.color(textColor: TextColors):Component{
+fun Component.color(textColor: TextColors): Component {
     return this.color(TextColor.color(textColor.color))
 }
 
-fun Component.color(textColor: DefaultTextColors):Component{
+fun Component.color(textColor: DefaultTextColors): Component {
     return this.color(TextColor.color(textColor.color))
 }

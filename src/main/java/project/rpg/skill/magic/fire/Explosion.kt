@@ -29,14 +29,14 @@ class Explosion : MagicSkillBase() {
             val fireball = player.launchProjectile(Fireball::class.java)
             fireball.velocity = player.location.direction.multiply(5)
             fireball.yield = 10f
-            fireball.shooter= player
+            fireball.shooter = player
             player.world.spawnParticle(Particle.FLAME, player.location, 100, 0.25, 3.0, 0.25, 0.1)
             while (true) {
                 if (fireball.isOnGround) {
-                    for ( entity in fireball.getNearbyEntities(3.0, 3.0, 3.0)) {
+                    for (entity in fireball.getNearbyEntities(3.0, 3.0, 3.0)) {
                         if (entity is LivingEntity) {
                             Stun(entity, 1)
-                            Burns(entity,5)
+                            Burns(entity, 5)
                         }
                     }
                 }

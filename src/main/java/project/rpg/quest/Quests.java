@@ -11,7 +11,7 @@ public enum Quests {
     HERE_WE_GO("마왕 토벌대 모집", QuestType.MAIN, Collections.singletonList(Quests.NULL), 2),
     USING_YOUR_POWERS("소비의 기초", QuestType.MAIN, Collections.singletonList(Quests.NULL), 3),
     OOH_MAGICAL("신비한 액체", QuestType.MAIN, Collections.singletonList(Quests.NULL), 4),
-    RICH_AND_POOR("부의 재분배", QuestType.MAIN, Collections.singletonList(Quests.NULL), 5 ),
+    RICH_AND_POOR("부의 재분배", QuestType.MAIN, Collections.singletonList(Quests.NULL), 5),
     FROSTY_PLAINS("얼어붙은 설원", QuestType.MAIN, Collections.singletonList(Quests.NULL), 5),
     SHARP_EYE("예리한 눈", QuestType.MAIN, Collections.singletonList(Quests.NULL), 6),
     MANSION_OF_SECRETS("저택의 비밀", QuestType.MAIN, Collections.singletonList(Quests.NULL), 7),
@@ -39,7 +39,7 @@ public enum Quests {
     final ArrayList<Quests> subQuests = new ArrayList<>();
     private final int questId;
 
-    Quests(String questName, QuestType questType, List<Quests> subQuests, int questId){
+    Quests(String questName, QuestType questType, List<Quests> subQuests, int questId) {
         this.questName = questName;
         this.questType = questType;
         this.subQuests.addAll(subQuests);

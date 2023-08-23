@@ -11,7 +11,7 @@ data class Title(    //이름과 칭호
 
     //현재 칭호 보여줄 때
     private var selectedTitle: TitleBase? = null //선택된 칭호
-)  {
+) {
 
 
     fun addTitle(name: String): Boolean {  //칭호 추가

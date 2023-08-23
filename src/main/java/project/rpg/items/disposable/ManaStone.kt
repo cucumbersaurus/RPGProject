@@ -38,7 +38,7 @@ object ManaStone : DisposableBase() {
         }
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("피가 빠져 나간다..."))
         lore.add(Component.text("체력 60을 마나 30으로 바꾼다."))

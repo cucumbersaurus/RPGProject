@@ -9,7 +9,7 @@ import project.rpg.extensions.mana
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
-class FrozenTrace: MagicSkillBase() {
+class FrozenTrace : MagicSkillBase() {
 
     init {
         name = SkillType.FROZEN_TRACE.skillName
@@ -23,7 +23,7 @@ class FrozenTrace: MagicSkillBase() {
         val mana = player.mana
 
         if (mana.useMana(needMana)) {
-            val vector = Vector(player.location.direction.x,0.1,player.location.direction.z)
+            val vector = Vector(player.location.direction.x, 0.1, player.location.direction.z)
             player.velocity = vector.multiply(2)
             //TODO : 지나친 적들에게 스턴 3초외 슬로우 4초를 부여한다.
 

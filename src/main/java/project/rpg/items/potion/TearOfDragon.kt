@@ -22,7 +22,14 @@ object TearOfDragon : PotionBase() {
         //display name
         meta.displayName(Component.text("용의 눈물"))
         //lore
-        meta.lore(ArrayList(listOf(Component.text("이 포션을 마시면"), Component.text("공격력 200% 증가, 체력 초당 50 회복 효과를 10초간 부여 받습니다"))) as List<Component>?)
+        meta.lore(
+            ArrayList(
+                listOf(
+                    Component.text("이 포션을 마시면"),
+                    Component.text("공격력 200% 증가, 체력 초당 50 회복 효과를 10초간 부여 받습니다")
+                )
+            ) as List<Component>?
+        )
         //아이템 아이디 설정
         meta.setCustomModelData(Items.TEAR_OF_DRAGON.value)
 
@@ -33,11 +40,11 @@ object TearOfDragon : PotionBase() {
         super.item = item
     }
 
-    override fun onDrink(mana : Mana, plugin : Rpg, event : PlayerItemConsumeEvent) {
+    override fun onDrink(mana: Mana, plugin: Rpg, event: PlayerItemConsumeEvent) {
         val player: Player = event.player
         val item = event.item
 
-        if (item.itemMeta.customModelData== Items.TEAR_OF_DRAGON.value) {
+        if (item.itemMeta.customModelData == Items.TEAR_OF_DRAGON.value) {
             //TODO : 공격력 200% 증가
             val leftUntilFull = mana.maxMana - mana.mana
             if (leftUntilFull >= 500) {
@@ -46,7 +53,7 @@ object TearOfDragon : PotionBase() {
                 mana.addMana(mana.maxMana - mana.mana)
             }
             plugin.actionBar.updateActionBar(player)
-            player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION,20*20,10,true,true,true))
+            player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, 20 * 20, 10, true, true, true))
         }
     }
 }

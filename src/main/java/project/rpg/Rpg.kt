@@ -19,7 +19,7 @@ class Rpg : JavaPlugin() {
     @JvmField
     val actionBar = ActionBarUI(this)
 
-    override fun onLoad(){
+    override fun onLoad() {
         Initializer.initializeAll()
 
         Database.run {
@@ -52,7 +52,7 @@ class Rpg : JavaPlugin() {
         logger.info("RPG plugin disabled" + ChatColor.AQUA)
     }
 
-    private fun registerCommands(){
+    private fun registerCommands() {
         getCommand("quests")!!.setExecutor(QuestToggleCommand())
         getCommand("saveFile")!!.setExecutor(FileSaveCommand())
         getCommand("status")!!.setExecutor(StatusCommand())
@@ -76,7 +76,7 @@ class Rpg : JavaPlugin() {
         */
     }
 
-    private fun registerTabCompleter(){
+    private fun registerTabCompleter() {
         getCommand("quests")!!.tabCompleter = QuestToggleCommand()
         getCommand("status")!!.tabCompleter = StatusCommand()
         getCommand("friend")!!.tabCompleter = FriendCommand()
@@ -86,14 +86,14 @@ class Rpg : JavaPlugin() {
         val plugin = this
         with(server.pluginManager) {
             registerEvents(BlockClickEventListener(), plugin)
-            registerEvents(EntityTakeDamageEventListener(plugin),  plugin)
-            registerEvents(InventoryEventListener(),  plugin)
-            registerEvents(PlayerItemUseEventListener( plugin),  plugin)
-            registerEvents(PlayerJoinEventListener(),  plugin)
-            registerEvents(PlayerQuitEventListener(),  plugin)
-            registerEvents(RespawnEventListener( plugin),  plugin)
-            registerEvents(PlayerItemConsumeEventListener(plugin),  plugin)
-            registerEvents(ProjectileEventListener(plugin),  plugin)
+            registerEvents(EntityTakeDamageEventListener(plugin), plugin)
+            registerEvents(InventoryEventListener(), plugin)
+            registerEvents(PlayerItemUseEventListener(plugin), plugin)
+            registerEvents(PlayerJoinEventListener(), plugin)
+            registerEvents(PlayerQuitEventListener(), plugin)
+            registerEvents(RespawnEventListener(plugin), plugin)
+            registerEvents(PlayerItemConsumeEventListener(plugin), plugin)
+            registerEvents(ProjectileEventListener(plugin), plugin)
         }
     }
 

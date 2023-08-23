@@ -6,5 +6,4 @@ public enum ItemGrade {
     LEGEND,
     GOD,
     JOB,
-    ;
 }

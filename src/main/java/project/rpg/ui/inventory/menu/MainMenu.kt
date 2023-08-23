@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.SkullMeta
 import project.rpg.textComponets.color.DefaultTextColors
 import project.rpg.ui.inventory.GuiBase
 
-class MainMenu(player: Player) : GuiBase(player,  text("메인 메뉴")) {
+class MainMenu(player: Player) : GuiBase(player, text("메인 메뉴")) {
     override fun initialize() {
         fillBackGround()
         setItem(
@@ -47,7 +47,7 @@ class MainMenu(player: Player) : GuiBase(player,  text("메인 메뉴")) {
         setItem(
             Material.KNOWLEDGE_BOOK,
             30,
-            { event:InventoryClickEvent, _: Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 forceCloseGUI()
                 DictionaryMenu(player)
@@ -69,7 +69,7 @@ class MainMenu(player: Player) : GuiBase(player,  text("메인 메뉴")) {
         setItem(
             Material.BARRIER,
             49,
-            {event:InventoryClickEvent, _:Int ->
+            { event: InventoryClickEvent, _: Int ->
                 event.isCancelled = true
                 forceCloseGUI()
             },

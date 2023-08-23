@@ -26,7 +26,7 @@ object Binding : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("봉쇄죠?"))
         lore.add(Component.text("바인딩"))

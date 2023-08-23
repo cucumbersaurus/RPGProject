@@ -8,11 +8,11 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class ZombieKing: MobBase {
+class ZombieKing : MobBase {
 
     override fun createMobFun(): (entity: Entity) -> Unit {
         return { entity: Entity ->
-            if(entity is Mob) {
+            if (entity is Mob) {
                 with(entity) {
                     customName(Component.text("좀비왕"))
                     maxHealth = 200.0

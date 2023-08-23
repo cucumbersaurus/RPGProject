@@ -14,9 +14,9 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
 abstract class GuiBase protected constructor(player: Player, guiName: Component?, guiSize: Int = 54) {
-    protected val inventory : Inventory
-    protected val player : Player
-    private val slotFuncMap: HashMap<Int, ((InventoryClickEvent, Int)->Unit)?>
+    protected val inventory: Inventory
+    protected val player: Player
+    private val slotFuncMap: HashMap<Int, ((InventoryClickEvent, Int) -> Unit)?>
     private val size: Int
 
 
@@ -39,20 +39,20 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
      * InventoryClickEvent 에서 호출
      * @param event 발생한 InventoryClickEvent 그 자체
      */
-    fun onClickEvent(event: InventoryClickEvent){
+    fun onClickEvent(event: InventoryClickEvent) {
         val slot = event.rawSlot
         executeSlotFunc(event, slot)
     }
 
-    fun setFunc(slot: Int, func: ((InventoryClickEvent, Int)->Unit)){
+    fun setFunc(slot: Int, func: ((InventoryClickEvent, Int) -> Unit)) {
         slotFuncMap[slot] = func
     }
 
     /**
      * @param material 인벤토리를 모두 채울 아이템 종류 기본값:흰색 유리판
      */
-    fun fillBackGround(material: Material = Material.WHITE_STAINED_GLASS_PANE){
-        for(i in 0..53){
+    fun fillBackGround(material: Material = Material.WHITE_STAINED_GLASS_PANE) {
+        for (i in 0..53) {
             setItem(material, i)
         }
     }
@@ -70,17 +70,17 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
     protected fun setItem(
         material: Material,
         slot: Int,
-        func: ((InventoryClickEvent, Int)->Unit)? = { event, _ -> event.isCancelled = true }, //슬롯을 클릭했을때 실행되는 람다
+        func: ((InventoryClickEvent, Int) -> Unit)? = { event, _ -> event.isCancelled = true }, //슬롯을 클릭했을때 실행되는 람다
         name: Component? = text(" "),
         lore: List<TextComponent>? = null,
-        amount: Int=1,
+        amount: Int = 1,
         isGlow: Boolean = false
     ) { //특정 슬롯에 특정 아이템 설정
         val item = ItemStack(material, amount).apply {
-            itemMeta = itemMeta.apply{
+            itemMeta = itemMeta.apply {
                 displayName(name)
                 lore(lore)
-                if(isGlow) {
+                if (isGlow) {
                     addEnchant(Enchantment.LURE, 0, true)
                     addItemFlags(ItemFlag.HIDE_ENCHANTS)
                 }
@@ -96,7 +96,11 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
      * @param slot 아이템을 보여줄 위치
      * @param func 아이템을 클릭했을때 실행될 람다식 (없으면 null)
      */
-    protected fun setItem(item: ItemStack?, slot: Int, func: ((InventoryClickEvent, Int) -> Unit)? = { event, _ -> event.isCancelled = true}) {
+    protected fun setItem(
+        item: ItemStack?,
+        slot: Int,
+        func: ((InventoryClickEvent, Int) -> Unit)? = { event, _ -> event.isCancelled = true }
+    ) {
         slotFuncMap[slot] = func
         inventory.setItem(slot, item)
     }
@@ -113,7 +117,7 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
      * 슬롯에 해당하는 람다식 실행
      * @param slot 슬롯
      */
-    private fun executeSlotFunc(event:InventoryClickEvent, slot: Int){
+    private fun executeSlotFunc(event: InventoryClickEvent, slot: Int) {
         slotFuncMap[slot]?.invoke(event, slot)
     }
 
@@ -135,9 +139,9 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
     /**
      * 인벤토리 초기화
      */
-    fun resetGUI(){
+    fun resetGUI() {
         slotFuncMap.clear()
-        for(i in 0 until size-1){
+        for (i in 0 until size - 1) {
             removeItem(i)
         }
     }

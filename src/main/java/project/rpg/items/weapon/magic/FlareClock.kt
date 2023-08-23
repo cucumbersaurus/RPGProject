@@ -27,7 +27,7 @@ object FlareClock : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("폭팔!!"))
         lore.add(Component.text("파이어 클락"))

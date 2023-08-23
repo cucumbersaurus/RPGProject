@@ -26,7 +26,7 @@ object WaterArrow : MagicItemBase() {
         skill.onEnable(player, action)
     }
 
-    private fun itemLore():List<Component> {
+    private fun itemLore(): List<Component> {
         val lore = ArrayList<Component>()
         lore.add(Component.text("앗 차가워"))
         lore.add(Component.text("워터 에로우"))

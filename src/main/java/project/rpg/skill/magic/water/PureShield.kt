@@ -23,7 +23,7 @@ class PureShield : MagicSkillBase() {
         val mana = player.mana
 
         if (mana.useMana(10)) {
-            Heal(player,10)
+            Heal(player, 10)
 
             player.world.spawnParticle(Particle.WATER_DROP, player.location, 100, 0.25, 3.0, 0.25, 0.1)
             //TODO : 방어력 10초 동안 20% 증가

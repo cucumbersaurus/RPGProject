@@ -10,9 +10,9 @@ import project.rpg.player.status.base.StatusName
 
 class StatusCommand : CommandExecutor, TabCompleter {
 
-    private lateinit var arg1:String
-    private lateinit var arg2:String
-    private lateinit var player:Player
+    private lateinit var arg1: String
+    private lateinit var arg2: String
+    private lateinit var player: Player
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
 
@@ -20,8 +20,8 @@ class StatusCommand : CommandExecutor, TabCompleter {
             player = sender
             val status = player.status
 
-            if ("add" == args[0] ) {
-                if(args.size <= 2) {
+            if ("add" == args[0]) {
+                if (args.size <= 2) {
                     sender.sendMessage(command.usage)
                     return true
                 }
@@ -35,47 +35,54 @@ class StatusCommand : CommandExecutor, TabCompleter {
                         sendFeedback(true)
                         status.addStatus(StatusName.STRENGTH, num)
                     }
+
                     "agility" -> {
                         sendFeedback(true)
                         status.addStatus(StatusName.AGILITY, num)
                     }
+
                     "speed" -> {
                         sendFeedback(true)
                         status.addStatus(StatusName.SPEED, num)
                     }
+
                     "health" -> {
                         sendFeedback(true)
                         status.addStatus(StatusName.HEALTH, num)
                     }
+
                     "defense" -> {
                         sendFeedback(true)
                         status.addStatus(StatusName.DEFENSE, num)
                     }
+
                     "luck" -> {
                         sendFeedback(true)
                         status.addStatus(StatusName.LUCK, num)
                     }
+
                     "handicraft" -> {
                         sendFeedback(true)
                         status.addStatus(StatusName.HANDICRAFT, num)
                     }
+
                     "intelligence" -> {
                         sendFeedback(true)
                         status.addStatus(StatusName.INTELLIGENCE, num)
                     }
+
                     else -> sendFeedback(false)
                 }
                 //jsonFile_.put(playerName, playerData_.get(playerName).getMap());
                 status.reloadMap()
-            }
-            else sendFeedback(false)
+            } else sendFeedback(false)
             return true
         }
         return false
     }
 
-    private fun sendFeedback(isSuccess: Boolean){
-        if(isSuccess) player.sendMessage("$arg1 is added $arg2")
+    private fun sendFeedback(isSuccess: Boolean) {
+        if (isSuccess) player.sendMessage("$arg1 is added $arg2")
         else player.sendMessage("오타난 커맨드")
     }
 
@@ -87,8 +94,8 @@ class StatusCommand : CommandExecutor, TabCompleter {
     ): MutableList<String> {
         val recommendation = ArrayList<String>()
 
-        if(args != null){
-            when(args.size){
+        if (args != null) {
+            when (args.size) {
                 1 -> recommendation.add("add")
                 2 -> {
                     recommendation.add("strength")
