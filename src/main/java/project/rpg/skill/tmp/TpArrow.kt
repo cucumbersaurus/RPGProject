@@ -71,7 +71,7 @@ class TpArrow : MagicSkillBase() {
     }
 
     private val nextValidArrow: Arrow?
-        private get() {
+        get() {
             if (thrownArrows.isEmpty) return null
             var arrow = thrownArrows.pop()
             while (!arrow.isValid) {

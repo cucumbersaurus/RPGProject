@@ -8,42 +8,42 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
 import project.rpg.extensions.levels
 
-object LevelData: Table() {
+object LevelData : Table() {
 
     val id = integer("id").autoIncrement()//.uniqueIndex()
 
-    val level = long("level")
-    val exp = long("exp")
+    private val level = long("level")
+    private val exp = long("exp")
 
     override val primaryKey by lazy {
         super.primaryKey ?: PrimaryKey(id)
     }
 
-    fun initialize(){
+    fun initialize() {
         Database.tableList.add(this)
     }
 
-    fun insertData(player: Player):Int{
+    fun insertData(player: Player): Int {
         return transaction {
-            insert{
+            insert {
                 it[level] = player.levels.level
                 it[exp] = player.levels.exp
             } get LevelData.id
         }
     }
 
-    fun updateData(player: Player, id: Int){
+    fun updateData(player: Player, id: Int) {
         transaction {
-            LevelData.update({LevelData.id eq id}){
+            LevelData.update({ LevelData.id eq id }) {
                 it[level] = player.levels.level
                 it[exp] = player.levels.exp
             }
         }
     }
 
-    fun read(player: Player, id: Int){
+    fun read(player: Player, id: Int) {
         val levelData = transaction {
-            LevelData.select{ LevelData.id eq id}.toList()[0]
+            LevelData.select { LevelData.id eq id }.toList()[0]
         }
 
         player.levels.level = levelData[level]

@@ -4,36 +4,36 @@ import org.bukkit.entity.Player
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
-object UserData: Table() {
+object UserData : Table() {
 
-    val uuid = uuid("uuid").uniqueIndex()
-    val username = varchar("username", 16)
-    val statusData = integer("statusData").uniqueIndex()
-    val jobData = integer("jobData").uniqueIndex()
-    val levelData = integer("levelData").uniqueIndex()
+    private val uuid = uuid("uuid").uniqueIndex()
+    private val username = varchar("username", 16)
+    private val statusData = integer("statusData").uniqueIndex()
+    private val jobData = integer("jobData").uniqueIndex()
+    private val levelData = integer("levelData").uniqueIndex()
 
     override val primaryKey by lazy {
         super.primaryKey ?: PrimaryKey(uuid)
     }
 
-    fun initialize(){
+    fun initialize() {
         Database.tableList.add(this)
     }
 
-    fun isExist(player: Player): Boolean{
+    fun isExist(player: Player): Boolean {
         val uuidList = transaction {
             UserData.select { uuid eq player.uniqueId }.toList()
         }
         return uuidList.isNotEmpty()
     }
 
-    fun get(player: Player):List<ResultRow>{
+    fun get(player: Player): List<ResultRow> {
         return transaction {
-            select{ uuid eq player.uniqueId }.toList()
+            select { uuid eq player.uniqueId }.toList()
         }
     }
 
-    fun insertData(player:Player){
+    fun insertData(player: Player) {
         transaction {
             insert {
                 it[uuid] = player.uniqueId
@@ -45,12 +45,12 @@ object UserData: Table() {
         }
     }
 
-    fun updateData(player: Player){
+    fun updateData(player: Player) {
         transaction {
-            UserData.update({ uuid eq player.uniqueId}) {
+            UserData.update({ uuid eq player.uniqueId }) {
 
                 val playerData = transaction {
-                    UserData.select{ uuid eq player.uniqueId}.toList()[0]
+                    UserData.select { uuid eq player.uniqueId }.toList()[0]
                 }
 
                 it[username] = player.name
@@ -61,7 +61,7 @@ object UserData: Table() {
         }
     }
 
-    fun read(player: Player, playerData:ResultRow){
+    fun read(player: Player, playerData: ResultRow) {
         StatusData.read(player, playerData[statusData])
         JobData.read(player, playerData[jobData])
         LevelData.read(player, playerData[levelData])

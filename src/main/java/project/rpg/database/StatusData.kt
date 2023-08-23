@@ -5,24 +5,25 @@ import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import project.rpg.extensions.*
 
-object StatusData: Table() {
+object StatusData : Table() {
 
     val id = integer("id").autoIncrement().uniqueIndex()
 
-    val agility = integer("agility")
-    val defense = integer("defense")
-    val handicraft = integer("handicraft")
+    private val agility = integer("agility")
+    private val defense = integer("defense")
+    private val handicraft = integer("handicraft")
     val health = integer("health")
-    val intelligence = integer("intelligence")
-    val luck = integer("luck")
+    private val intelligence = integer("intelligence")
+    private val luck = integer("luck")
     val speed = integer("speed")
-    val strength = integer("strength")
-    val additionalPoints = integer("additionalPoints")
+    private val strength = integer("strength")
+    private val additionalPoints = integer("additionalPoints")
 
-    override val primaryKey by lazy{
+    override val primaryKey by lazy {
         super.primaryKey ?: PrimaryKey(id)
     }
-    fun initialize(){
+
+    fun initialize() {
         Database.tableList.add(this)
     }
 
@@ -32,7 +33,7 @@ object StatusData: Table() {
         }
     }
 
-    fun insertData(player: Player):Int{
+    fun insertData(player: Player): Int {
 
         return transaction {
             insert {
@@ -49,9 +50,9 @@ object StatusData: Table() {
         }
     }
 
-    fun updateData(player: Player, id: Int){
+    fun updateData(player: Player, id: Int) {
         transaction {
-            update({StatusData.id eq id}) {
+            update({ StatusData.id eq id }) {
                 it[agility] = player.status.agility
                 it[defense] = player.status.defense
                 it[handicraft] = player.status.handicraft
@@ -64,7 +65,7 @@ object StatusData: Table() {
         }
     }
 
-    fun read(player: Player, id: Int){
+    fun read(player: Player, id: Int) {
         val statusData = get(id)
 
         player.status.agility = statusData[agility]

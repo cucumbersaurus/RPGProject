@@ -9,37 +9,37 @@ import org.jetbrains.exposed.sql.update
 import project.rpg.extensions.job
 import project.rpg.player.job.JobType
 
-object JobData:Table() {
+object JobData : Table() {
 
     val id = integer("id").autoIncrement().uniqueIndex()
 
-    val jobType = text("jobType")
+    private val jobType = text("jobType")
 
     override val primaryKey by lazy {
         super.primaryKey ?: PrimaryKey(id)
     }
 
-    fun initialize(){
+    fun initialize() {
         Database.tableList.add(this)
     }
 
-    fun insertData(player: Player):Int{
+    fun insertData(player: Player): Int {
         return transaction {
-            insert{
+            insert {
                 it[jobType] = player.job.job.jobType.name
-            }get JobData.id
+            } get JobData.id
         }
     }
 
-    fun updateData(player: Player, id:Int){
-        transaction{
-            update({JobData.id eq id}){
+    fun updateData(player: Player, id: Int) {
+        transaction {
+            update({ JobData.id eq id }) {
                 it[jobType] = player.job.job.jobType.name
             }
         }
     }
 
-    fun read(player:Player, id:Int){
+    fun read(player: Player, id: Int) {
         val jobData = transaction {
             JobData.select { JobData.id eq id }.toList()[0]
         }
