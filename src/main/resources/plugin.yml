@@ -1,7 +1,7 @@
 name: Rpg
 version: '${project.version}'
-main:  project.rpg.Rpg
-api-version: 1.18
+main: project.rpg.Rpg
+api-version: 1.20
 authors: [ Cucumbersaurus, Behappy ]
 libraries:
   - io.github.monun:kommand-core:2.14.0
@@ -18,7 +18,7 @@ commands:
   quests:
     description: /quests true [문자열] 또는 /quests false 로 메뉴 표시
     usage: "/quests true [문자열]\n/quests false"
-    aliases: [퀘스트, 볃ㄴㅅㄴ]
+    aliases: [ 퀘스트, 볃ㄴㅅㄴ ]
 
   saveFile:
     description: /save
@@ -32,23 +32,23 @@ commands:
   titleTest:
 
   getItem:
-    aliases : [아이템, ㅑㅅ드]
+    aliases: [ 아이템, ㅑㅅ드 ]
 
   menu:
-    aliases: [메뉴, ㅡ두ㅕ]
+    aliases: [ 메뉴, ㅡ두ㅕ ]
     permission: all
 
   craft:
-    aliases: [제작, ㅊㄱㅁㄽ]
+    aliases: [ 제작, ㅊㄱㅁㄽ ]
     permission: all
 
   level:
-    aliases: [레벨, ㅣㄷㅍ디]
+    aliases: [ 레벨, ㅣㄷㅍ디 ]
 
   friend:
     description: friend 커멘드
     usage: "Usage: /<command> [add/accept] [사람이름]"
-    aliases: [frn, 친구, ㄹ갸둥]
+    aliases: [ frn, 친구, ㄹ갸둥 ]
     permission: all
 
   mob:

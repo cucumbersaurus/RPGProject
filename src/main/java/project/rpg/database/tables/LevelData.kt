@@ -1,4 +1,4 @@
-package project.rpg.database
+package project.rpg.database.tables
 
 import org.bukkit.entity.Player
 import org.jetbrains.exposed.sql.Table
@@ -6,6 +6,7 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
+import project.rpg.database.Database
 import project.rpg.extensions.levels
 
 object LevelData : Table() {

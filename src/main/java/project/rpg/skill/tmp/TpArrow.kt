@@ -10,13 +10,12 @@ import org.bukkit.entity.AbstractArrow
 import org.bukkit.entity.Arrow
 import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
-import project.rpg.data.structures.ListQueue
 import project.rpg.player.User.Companion.getPlayer
 import project.rpg.skill.SkillType
 import project.rpg.skill.magic.MagicSkillBase
 
 class TpArrow : MagicSkillBase() {
-    private val thrownArrows = ListQueue<Arrow>()
+    private val thrownArrows = ArrayDeque<Arrow>()
     override fun onEnable(player: Player, action: Action?) {
         if (action!!.isRightClick) {
             onRightClick(player)
@@ -51,7 +50,7 @@ class TpArrow : MagicSkillBase() {
         player.sendMessage(Component.text("남은 화살 수 : ").append(Component.text(thrownArrows.size)))
     }
 
-    fun onLeftClick(player: Player) {
+    private fun onLeftClick(player: Player) {
         if (thrownArrows.size >= 10) {
             val poppedArrow = nextValidArrow
             if (poppedArrow != null) {
@@ -72,10 +71,10 @@ class TpArrow : MagicSkillBase() {
 
     private val nextValidArrow: Arrow?
         get() {
-            if (thrownArrows.isEmpty) return null
-            var arrow = thrownArrows.pop()
+            if (thrownArrows.isEmpty()) return null
+            var arrow = thrownArrows.removeFirst()
             while (!arrow.isValid) {
-                arrow = thrownArrows.pop()
+                arrow = thrownArrows.removeFirst()
             }
             return arrow
         }

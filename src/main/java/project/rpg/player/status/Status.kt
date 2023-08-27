@@ -52,6 +52,11 @@ data class Status(
             ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")
     }
 
+    fun addStatus(name: String, amount: Int): Boolean {
+        val statusName = StatusName.valueOf(name)
+        return addStatus(statusName, amount)
+    }
+
     fun getStatusValues(name: StatusName): Int {
         val status = statusMap[name]
         return status?.value ?: throw StringIndexOutOfBoundsException("아 제대로 하세요 스텟 이름도 모르나")

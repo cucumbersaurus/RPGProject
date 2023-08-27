@@ -1,8 +1,9 @@
-package project.rpg.database
+package project.rpg.database.tables
 
 import org.bukkit.entity.Player
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
+import project.rpg.database.Database
 import project.rpg.extensions.*
 
 object StatusData : Table() {

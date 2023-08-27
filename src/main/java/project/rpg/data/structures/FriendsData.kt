@@ -2,6 +2,7 @@ package project.rpg.data.structures
 
 import org.bukkit.entity.Player
 
+@Deprecated("Friends 로 통합")
 class FriendsData(player: Player) {
 
     val linkedPlayers: ArrayList<Player> = ArrayList()

@@ -3,11 +3,9 @@ package project.rpg
 import io.github.monun.heartbeat.coroutines.HeartbeatScope
 import kotlinx.coroutines.launch
 import org.bukkit.Bukkit
-import org.bukkit.ChatColor
 import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
-import project.rpg.commands.test.MobTest
-import project.rpg.commands.test.TitleTestCommand
+import project.rpg.commands.debug.*
 import project.rpg.database.Database
 import project.rpg.events.listeners.*
 import project.rpg.player.PlayerInformation
@@ -29,7 +27,7 @@ class Rpg : JavaPlugin() {
     }
 
     override fun onEnable() {
-        logger.info("RPG plugin loading!" + ChatColor.AQUA)
+        logger.info("RPG plugin loading!")
         checkOnlinePlayers()
 
         registerEvents()
@@ -43,13 +41,13 @@ class Rpg : JavaPlugin() {
     }
 
     override fun onDisable() {
-        logger.info("saving files..." + ChatColor.YELLOW)
+        logger.info("saving files...")
 
         Bukkit.getOnlinePlayers().forEach {
             Database.writeUser(it)
         }
 
-        logger.info("RPG plugin disabled" + ChatColor.AQUA)
+        logger.info("RPG plugin disabled")
     }
 
     private fun registerCommands() {

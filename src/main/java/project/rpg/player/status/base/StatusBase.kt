@@ -5,7 +5,7 @@ import project.rpg.player.status.Status
 
 abstract class StatusBase protected constructor(val status: StatusName) {
     //스텟 베이스
-    private val statusName: String = status.status
+    private val statusName: String = status.name
     var value = 10 //스텟 수
 
     abstract fun effect(player: Player?) //스텟 효과

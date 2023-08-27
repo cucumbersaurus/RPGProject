@@ -1,4 +1,4 @@
-package project.rpg.commands
+package project.rpg.commands.debug
 
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor

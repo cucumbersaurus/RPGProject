@@ -1,4 +1,4 @@
-package project.rpg.commands.test
+package project.rpg.commands.debug
 
 import org.bukkit.Location
 import org.bukkit.command.Command

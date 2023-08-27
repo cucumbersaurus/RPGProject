@@ -1,4 +1,4 @@
-package project.rpg.commands.test
+package project.rpg.commands.debug
 
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.title.Title
