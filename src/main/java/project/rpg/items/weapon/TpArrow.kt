@@ -7,7 +7,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
-import project.rpg.skill.tmp.TpArrow
+import project.rpg.skills.tmp.TpArrow
 import project.rpg.textComponets.color.TextColors
 
 object TpArrow : MagicItemBase() {

@@ -5,10 +5,10 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.weather.LightningStrikeEvent
-import project.rpg.effect.objects.Burns
-import project.rpg.effect.objects.Damage
-import project.rpg.effect.objects.ElectricShock
-import project.rpg.effect.objects.Stun
+import project.rpg.effects.objects.Burns
+import project.rpg.effects.objects.Damage
+import project.rpg.effects.objects.ElectricShock
+import project.rpg.effects.objects.Stun
 
 class LightningEventListener : Listener {
     @EventHandler

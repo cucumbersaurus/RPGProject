@@ -7,7 +7,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
 import project.rpg.items.weapon.MagicItemBase
-import project.rpg.skill.magic.water.EternalFrost
+import project.rpg.skills.magic.water.EternalFrost
 import project.rpg.textComponets.color.TextColors
 
 object EternalFrost : MagicItemBase() {

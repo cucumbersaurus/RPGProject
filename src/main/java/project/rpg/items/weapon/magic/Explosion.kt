@@ -20,7 +20,7 @@ object Explosion : MagicItemBase() {
                 setCustomModelData(Items.EXPLOSION.value)
             }
         }
-        skill = project.rpg.skill.magic.fire.FlameBurst()
+        skill = project.rpg.skills.magic.fire.FlameBurst()
     }
 
     @skill(name = "flame_burst")

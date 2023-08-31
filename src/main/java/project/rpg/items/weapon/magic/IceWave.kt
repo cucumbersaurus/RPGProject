@@ -7,7 +7,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
 import project.rpg.items.weapon.MagicItemBase
-import project.rpg.skill.magic.water.IceWave
+import project.rpg.skills.magic.water.IceWave
 import project.rpg.textComponets.color.TextColors
 
 object IceWave : MagicItemBase() {

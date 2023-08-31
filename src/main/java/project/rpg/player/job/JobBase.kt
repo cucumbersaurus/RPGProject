@@ -2,7 +2,7 @@ package project.rpg.player.job
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.Pose
-import project.rpg.skill.base.SkillBase
+import project.rpg.skills.base.SkillBase
 import java.util.*
 
 abstract class JobBase protected constructor(

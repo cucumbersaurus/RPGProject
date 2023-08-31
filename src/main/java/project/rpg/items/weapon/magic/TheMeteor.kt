@@ -9,7 +9,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
 import project.rpg.items.weapon.MagicItemBase
-import project.rpg.skill.magic.fire.MeteorStrike
+import project.rpg.skills.magic.fire.MeteorStrike
 import project.rpg.textComponets.color.DefaultTextColors
 
 object TheMeteor : MagicItemBase() {

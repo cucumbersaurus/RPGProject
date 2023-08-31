@@ -7,7 +7,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
 import project.rpg.items.weapon.MagicItemBase
-import project.rpg.skill.magic.wind.HeavenWing
+import project.rpg.skills.magic.wind.HeavenWing
 import project.rpg.textComponets.color.TextColors
 
 object HeavenWing : MagicItemBase() {

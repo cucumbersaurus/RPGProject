@@ -6,7 +6,7 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
-import project.rpg.effect.objects.Damage
+import project.rpg.effects.objects.Damage
 import project.rpg.extensions.mana
 import project.rpg.items.Items
 import project.rpg.textComponets.color.TextColors

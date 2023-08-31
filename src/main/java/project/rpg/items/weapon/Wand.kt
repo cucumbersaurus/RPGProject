@@ -10,7 +10,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import project.rpg.items.Items
-import project.rpg.skill.magic.electricity.Lightning
+import project.rpg.skills.magic.electricity.Lightning
 
 object Wand : MagicItemBase() {
 

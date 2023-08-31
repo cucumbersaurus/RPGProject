@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack
 import project.rpg.annotation.skill
 import project.rpg.items.Items
 import project.rpg.items.weapon.MagicItemBase
-import project.rpg.skill.magic.fire.BlazingMark
+import project.rpg.skills.magic.fire.BlazingMark
 import project.rpg.textComponets.color.TextColors
 
 object BlazingMark : MagicItemBase() {

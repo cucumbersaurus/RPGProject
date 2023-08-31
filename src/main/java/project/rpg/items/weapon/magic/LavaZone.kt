@@ -19,7 +19,7 @@ object LavaZone : MagicItemBase() {
                 setCustomModelData(Items.LAVA_ZONE.value)
             }
         }
-        skill = project.rpg.skill.magic.fire.LavaZone()
+        skill = project.rpg.skills.magic.fire.LavaZone()
     }
 
     override fun onEnable(player: Player, action: Action?) {

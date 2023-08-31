@@ -6,7 +6,7 @@ import project.rpg.database.tables.StatusData
 import project.rpg.database.tables.UserData
 import project.rpg.items.ItemDictionary
 import project.rpg.items.ItemManager
-import project.rpg.skill.SkillDic
+import project.rpg.skills.SkillDic
 
 object Initializer {
 

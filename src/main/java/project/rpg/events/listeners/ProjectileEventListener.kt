@@ -8,10 +8,10 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.ProjectileLaunchEvent
 import project.rpg.Rpg
-import project.rpg.effect.objects.Slow
-import project.rpg.effect.objects.Stun
+import project.rpg.effects.objects.Slow
+import project.rpg.effects.objects.Stun
 import project.rpg.extensions.mana
-import project.rpg.skill.SkillType
+import project.rpg.skills.SkillType
 
 class ProjectileEventListener(private val _plugin: Rpg) : Listener {
     @EventHandler

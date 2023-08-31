@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.PotionMeta
 import project.rpg.Rpg
-import project.rpg.effect.objects.Heal
+import project.rpg.effects.objects.Heal
 import project.rpg.items.Items
 import project.rpg.player.mana.Mana
 

@@ -6,6 +6,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import project.rpg.ui.inventory.GuiBase
 
+@Deprecated("기본 제작대에서 커스텀 제작 구현 예정")
 class CraftingUI(player: Player) : GuiBase(player, text("아이템 제작")) {
 
     override fun initialize() {
