@@ -100,7 +100,7 @@ data class Friends(
         val hoverText = (text("클릭하여 친구 요청 받기"))
         return text().content("이미 $other(으)로부터 온 친구 요청이 있습니다.")
             .color(RED.color)
-            .appendNewline()
+            .append(text("\n"))
             .append(
                 text("여기")
                     .color(GREEN)

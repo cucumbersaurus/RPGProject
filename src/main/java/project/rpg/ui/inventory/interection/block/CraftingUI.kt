@@ -1,26 +1,29 @@
 package project.rpg.ui.inventory.interection.block
 
-import net.kyori.adventure.text.Component.text
-import org.bukkit.Material
-import org.bukkit.entity.Player
-import org.bukkit.event.inventory.InventoryClickEvent
-import project.rpg.ui.inventory.GuiBase
+import io.github.monun.heartbeat.coroutines.HeartbeatScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import org.bukkit.event.inventory.InventoryEvent
+import org.bukkit.event.inventory.InventoryMoveItemEvent
+import org.bukkit.inventory.CraftingInventory
+import project.rpg.recipes.RecipeManager
 
-@Deprecated("기본 제작대에서 커스텀 제작 구현 예정")
-class CraftingUI(player: Player) : GuiBase(player, text("아이템 제작")) {
+object CraftingUI{
+    fun clickedBy(event: InventoryEvent) = action(if (event.inventory is CraftingInventory) {event.inventory as CraftingInventory} else null)
+    fun clickedBy(event: InventoryMoveItemEvent) {
+        action(if (event.initiator is CraftingInventory) {event.initiator as CraftingInventory} else null)
+        action(if (event.source is CraftingInventory) {event.source as CraftingInventory} else null)
+        action(if (event.destination is CraftingInventory) {event.destination as CraftingInventory} else null)
+    }
 
-    override fun initialize() {
-        for (i in 0..53) {
-            when (i) {
-                10, 11, 12, 19, 20, 21, 28, 29, 30, 24 -> continue
-            }
-            setItem(
-                Material.WHITE_STAINED_GLASS_PANE,
-                i,
-                { event: InventoryClickEvent, _: Int ->
-                    event.isCancelled = true
-                }
-            )
+    private fun action(table:CraftingInventory?){
+        if(table == null) return
+        HeartbeatScope().launch {
+            delay(1L)
+            val result = RecipeManager.getRecipe(table.matrix.asList())
+            table.result = result?.result
+            //Bukkit.broadcastMessage("event, ${table.result?.type}")
         }
     }
+
 }

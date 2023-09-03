@@ -147,9 +147,20 @@ abstract class GuiBase protected constructor(player: Player, guiName: Component?
     }
 
     companion object {
-        protected val guiMap_: HashMap<Player, GuiBase?> = HashMap() //누가 어떤 창을 보고 있는지 저장
-        fun getGUI(player: Player): GuiBase? {
+        protected val guiMap_: HashMap<Player, GuiBase> = HashMap() //누가 어떤 창을 보고 있는지 저장
+        private fun getGUI(player: Player): GuiBase? {
             return guiMap_[player]
         }
+
+        fun clickedBy(event:InventoryClickEvent) {
+            val gui = getGUI(event.whoClicked as Player)
+            gui?.onClickEvent(event)
+        }
+
+        fun closedBy(event:InventoryCloseEvent) {
+            val gui = GuiBase.getGUI(event.player as Player)
+            gui?.closeGUI(event)
+        }
+
     }
 }

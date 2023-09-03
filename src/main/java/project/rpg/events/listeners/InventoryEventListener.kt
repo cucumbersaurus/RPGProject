@@ -1,22 +1,39 @@
 package project.rpg.events.listeners
 
-import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.event.inventory.InventoryCloseEvent
+import org.bukkit.event.inventory.*
 import project.rpg.ui.inventory.GuiBase
+import project.rpg.ui.inventory.interection.block.CraftingUI
 
 class InventoryEventListener : Listener {
     @EventHandler
     fun guiClick(event: InventoryClickEvent) {
-        val gui = GuiBase.getGUI(event.whoClicked as Player)
-        gui?.onClickEvent(event)
+        CraftingUI.clickedBy(event)
+        GuiBase.clickedBy(event)
+
     }
 
     @EventHandler
-    fun guiClose(e: InventoryCloseEvent) {
-        val gui = GuiBase.getGUI(e.player as Player)
-        gui?.closeGUI(e)
+    fun guiInteraction(event: InventoryDragEvent) {
+        CraftingUI.clickedBy(event)
+    }
+//    @EventHandler
+//    fun guiInteraction(event: InventoryEvent) {
+//        CraftingUI.clickedBy(event)
+//    }
+    @EventHandler
+    fun guiInteraction(event: InventoryInteractEvent) {
+        CraftingUI.clickedBy(event)
+    }
+    @EventHandler
+    fun guiInteraction(event: InventoryMoveItemEvent) {
+        CraftingUI.clickedBy(event)
+    }
+
+    @EventHandler
+    fun guiClose(event: InventoryCloseEvent) {
+        GuiBase.closedBy(event)
+        //CraftingUI.closedBy(event)
     }
 }

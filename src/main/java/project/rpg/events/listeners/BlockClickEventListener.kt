@@ -19,12 +19,15 @@ class BlockClickEventListener : Listener {
     fun playerBlockInteract(event: PlayerInteractEvent) {
         if (event.clickedBlock == null) return
         when (event.clickedBlock!!.type) {
-            Material.ENCHANTING_TABLE -> if (isOnlyInteract(event)) {
+            Material.ENCHANTING_TABLE -> if (isJustRightClick(event)) {
                 event.isCancelled = true
                 //ui 오픈
             }
 
             Material.ANVIL, Material.CHIPPED_ANVIL, Material.DAMAGED_ANVIL -> {/*ui 오픈*/
+            }
+            Material.CRAFTING_TABLE -> {
+                //CraftingUI(event)
             }
 
             else -> {
@@ -34,7 +37,7 @@ class BlockClickEventListener : Listener {
         }
     }
 
-    private fun isOnlyInteract(event: PlayerInteractEvent): Boolean { //단순 우클릭만 ui 오픈
+    private fun isJustRightClick(event: PlayerInteractEvent): Boolean { //단순 우클릭만 ui 오픈
         return if (event.action.isRightClick) {
             event.player.pose != Pose.SNEAKING
         } else false
