@@ -26,10 +26,6 @@ class BlockClickEventListener : Listener {
 
             Material.ANVIL, Material.CHIPPED_ANVIL, Material.DAMAGED_ANVIL -> {/*ui 오픈*/
             }
-            Material.CRAFTING_TABLE -> {
-                //CraftingUI(event)
-            }
-
             else -> {
                 event.isCancelled = false
             }

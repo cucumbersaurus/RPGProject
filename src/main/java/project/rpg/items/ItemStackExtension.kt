@@ -1,4 +1,4 @@
-package project.rpg.extensions
+package project.rpg.items
 
 import net.kyori.adventure.text.Component
 import org.bukkit.enchantments.Enchantment

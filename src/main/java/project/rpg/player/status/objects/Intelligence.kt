@@ -1,7 +1,7 @@
 package project.rpg.player.status.objects
 
 import org.bukkit.entity.Player
-import project.rpg.extensions.mana
+import project.rpg.player.mana
 import project.rpg.player.status.base.StatusBase
 import project.rpg.player.status.base.StatusName
 

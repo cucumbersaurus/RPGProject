@@ -1,7 +1,6 @@
 package project.rpg.player.status.base
 
-enum class StatusName() {
-
+enum class StatusName {
 
     AGILITY,  //민첩 공속
     DEFENSE,  //내구 방어

@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
 import project.rpg.database.Database
-import project.rpg.extensions.levels
+import project.rpg.player.levels
 
 object LevelData : Table() {
 

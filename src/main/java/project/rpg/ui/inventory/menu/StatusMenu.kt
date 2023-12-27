@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
 import project.rpg.extensions.*
 import project.rpg.player.User
-import project.rpg.player.status.Status
+import project.rpg.player.status.*
 import project.rpg.textComponets.color.DefaultTextColors
 import project.rpg.ui.inventory.GuiBase
 
@@ -166,7 +166,7 @@ class StatusMenu(player: Player) : GuiBase(player, text("스텟 메뉴")) {
 
     private fun reloadUi() {
         player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5f, 1f)
-        user.status.reloadMap()
+        user.status.applyChanges()
         initialize()
     }
 

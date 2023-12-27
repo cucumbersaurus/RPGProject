@@ -6,7 +6,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.CreatureSpawnEvent
 import project.rpg.annotation.skill
-import project.rpg.extensions.mana
+import project.rpg.player.mana
 import project.rpg.skills.SkillType
 import project.rpg.skills.magic.MagicSkillBase
 

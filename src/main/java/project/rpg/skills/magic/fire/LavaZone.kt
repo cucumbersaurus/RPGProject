@@ -7,7 +7,7 @@ import org.bukkit.event.block.Action
 import project.rpg.annotation.skill
 import project.rpg.effects.objects.Burns
 import project.rpg.effects.objects.Slow
-import project.rpg.extensions.mana
+import project.rpg.player.mana
 import project.rpg.skills.SkillType
 import project.rpg.skills.magic.MagicSkillBase
 

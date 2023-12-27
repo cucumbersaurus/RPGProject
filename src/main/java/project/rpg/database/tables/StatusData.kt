@@ -4,7 +4,8 @@ import org.bukkit.entity.Player
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import project.rpg.database.Database
-import project.rpg.extensions.*
+import project.rpg.player.status
+import project.rpg.player.status.*
 
 object StatusData : Table() {
 

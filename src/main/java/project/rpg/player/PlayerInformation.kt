@@ -2,9 +2,7 @@ package project.rpg.player
 
 import org.bukkit.entity.Player
 import project.rpg.database.Database
-import project.rpg.extensions.maxHealth
-import project.rpg.extensions.setAttributeMaxHealth
-import project.rpg.extensions.status
+import project.rpg.player.status.maxHealth
 import project.rpg.player.status.base.StatusName
 import project.rpg.ui.text.ActionBarUI
 
@@ -17,7 +15,7 @@ object PlayerInformation {
         player.health = 1.0
 
         Database.readUser(player)
-        user.status.reloadMap()
+        user.status.applyChanges()
 
         ActionBarUI.addPlayer(player)
     }

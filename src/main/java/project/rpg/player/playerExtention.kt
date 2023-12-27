@@ -1,8 +1,7 @@
-package project.rpg.extensions
+package project.rpg.player
 
 import org.bukkit.attribute.Attribute
 import org.bukkit.entity.Player
-import project.rpg.player.User
 
 val Player.title
     get() = User.getPlayer(this)?.title!!

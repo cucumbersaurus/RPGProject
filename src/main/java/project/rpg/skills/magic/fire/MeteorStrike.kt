@@ -11,7 +11,7 @@ import project.rpg.effects.objects.Burns
 import project.rpg.effects.objects.Damage
 import project.rpg.effects.objects.Slow
 import project.rpg.effects.objects.Stun
-import project.rpg.extensions.mana
+import project.rpg.player.mana
 import project.rpg.skills.SkillType
 import project.rpg.skills.magic.MagicSkillBase
 

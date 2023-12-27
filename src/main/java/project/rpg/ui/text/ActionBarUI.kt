@@ -8,7 +8,7 @@ import net.kyori.adventure.text.format.TextColor
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import project.rpg.Rpg
-import project.rpg.extensions.mana
+import project.rpg.player.mana
 
 class ActionBarUI(private val _plugin: Rpg) {
     private val showActionBar = Runnable {

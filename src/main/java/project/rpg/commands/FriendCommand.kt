@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
-import project.rpg.extensions.friends
+import project.rpg.player.friends
 
 class FriendCommand : CommandExecutor, TabCompleter {
 

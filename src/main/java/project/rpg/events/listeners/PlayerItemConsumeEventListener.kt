@@ -4,7 +4,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import project.rpg.Rpg
-import project.rpg.extensions.mana
+import project.rpg.player.mana
 import project.rpg.items.ItemType
 import project.rpg.items.Items
 import project.rpg.items.food.FoodBase

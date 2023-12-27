@@ -8,7 +8,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import project.rpg.effects.objects.Burns
-import project.rpg.extensions.mana
+import project.rpg.player.mana
 import project.rpg.skills.SkillType
 import project.rpg.skills.magic.MagicSkillBase
 

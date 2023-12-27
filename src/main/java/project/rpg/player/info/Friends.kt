@@ -7,7 +7,7 @@ import net.kyori.adventure.text.event.HoverEvent
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import project.rpg.extensions.color
-import project.rpg.extensions.friends
+import project.rpg.player.friends
 import project.rpg.textComponets.color.DefaultTextColors.*
 import project.rpg.textComponets.color.TextColors
 

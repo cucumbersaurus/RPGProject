@@ -11,17 +11,12 @@ class InventoryEventListener : Listener {
     fun guiClick(event: InventoryClickEvent) {
         CraftingUI.clickedBy(event)
         GuiBase.clickedBy(event)
-
     }
 
     @EventHandler
     fun guiInteraction(event: InventoryDragEvent) {
         CraftingUI.clickedBy(event)
     }
-//    @EventHandler
-//    fun guiInteraction(event: InventoryEvent) {
-//        CraftingUI.clickedBy(event)
-//    }
     @EventHandler
     fun guiInteraction(event: InventoryInteractEvent) {
         CraftingUI.clickedBy(event)
@@ -34,6 +29,11 @@ class InventoryEventListener : Listener {
     @EventHandler
     fun guiClose(event: InventoryCloseEvent) {
         GuiBase.closedBy(event)
-        //CraftingUI.closedBy(event)
+        CraftingUI.closedBy(event)
+    }
+
+    @EventHandler
+    fun craft(event:PrepareItemCraftEvent){
+
     }
 }

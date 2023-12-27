@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
-import project.rpg.extensions.status
+import project.rpg.player.status
 
 class StatusCommand : CommandExecutor, TabCompleter {
 
@@ -34,51 +34,7 @@ class StatusCommand : CommandExecutor, TabCompleter {
 
                 val num = arg2.toInt()
                 if (status.addStatus(arg1, num)) sendFeedback(true)
-//                status.addStatus(args[1], num)
-//                when (args[1]) {
-//                    "strength" -> {
-//                        sendFeedback(true)
-//                        status.addStatus(StatusName.STRENGTH, num)
-//                    }
-//
-//                    "agility" -> {
-//                        sendFeedback(true)
-//                        status.addStatus(StatusName.AGILITY, num)
-//                    }
-//
-//                    "speed" -> {
-//                        sendFeedback(true)
-//                        status.addStatus(StatusName.SPEED, num)
-//                    }
-//
-//                    "health" -> {
-//                        sendFeedback(true)
-//                        status.addStatus(StatusName.HEALTH, num)
-//                    }
-//
-//                    "defense" -> {
-//                        sendFeedback(true)
-//                        status.addStatus(StatusName.DEFENSE, num)
-//                    }
-//
-//                    "luck" -> {
-//                        sendFeedback(true)
-//                        status.addStatus(StatusName.LUCK, num)
-//                    }
-//
-//                    "handicraft" -> {
-//                        sendFeedback(true)
-//                        status.addStatus(StatusName.HANDICRAFT, num)
-//                    }
-//
-//                    "intelligence" -> {
-//                        sendFeedback(true)
-//                        status.addStatus(StatusName.INTELLIGENCE, num)
-//                    }
-//
-//                    else -> sendFeedback(false)
-//                }
-                status.reloadMap()
+                status.applyChanges()
             } else sendFeedback(false)
             return true
         }
@@ -96,14 +52,13 @@ class StatusCommand : CommandExecutor, TabCompleter {
         label: String,
         args: Array<out String>?
     ): List<String> {
-        val recommendation = ArrayList<String>()
-
-        if (args != null) {
+        return if (args != null) {
             when (args.size) {
                 1 -> recommendations[0]
                 2 -> recommendations[1]
+                else -> ArrayList()
             }
         }
-        return recommendation
+        else ArrayList()
     }
 }

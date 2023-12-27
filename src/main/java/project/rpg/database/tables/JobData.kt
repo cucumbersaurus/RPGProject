@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
 import project.rpg.database.Database
-import project.rpg.extensions.job
+import project.rpg.player.job
 import project.rpg.player.job.JobType
 
 object JobData : Table() {

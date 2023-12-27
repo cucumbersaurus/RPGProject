@@ -25,17 +25,19 @@ object TpSword : MagicItemBase() {
 
     @skill(name = "shoon bow")
     override fun onEnable(player: Player, action: Action?) {
-        player.world.spawnParticle(Particle.GLOW, player.location, 25, 0.5, 1.0, 0.5, 0.7)
-        var location: Location? = null
-        for (all in Bukkit.getOnlinePlayers()) {
-            all.playSound(player.location, Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 0.6f, 2f)
-            if (all != player) {
-                if (location == null || player.location.distance(all.location) < player.location.distance(location)
-                ) {
-                    location = all.location
+        if(action!!.isRightClick) {
+            player.world.spawnParticle(Particle.GLOW, player.location, 25, 0.5, 1.0, 0.5, 0.7)
+            var location: Location? = null
+            for (all in Bukkit.getOnlinePlayers()) {
+                all.playSound(player.location, Sound.BLOCK_AMETHYST_CLUSTER_BREAK, 0.6f, 2f)
+                if (all != player) {
+                    if (location == null || player.location.distance(all.location) < player.location.distance(location)
+                    ) {
+                        location = all.location
+                    }
+                    location.subtract(location.direction).subtract(location.direction)
+                    player.teleport(location)
                 }
-                location.subtract(location.direction).subtract(location.direction)
-                player.teleport(location)
             }
         }
     }

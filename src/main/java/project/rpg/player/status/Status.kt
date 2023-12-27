@@ -40,7 +40,7 @@ data class Status(
         statusMap[StatusName.STRENGTH] = strength
     }
 
-    fun reloadMap() {  //적용 Attribute 매니져 없애
+    fun applyChanges() {  //적용 Attribute 매니져 없애
         for (status in statusMap.values) {
             status.effect(this.player)
         }
@@ -53,7 +53,7 @@ data class Status(
     }
 
     fun addStatus(name: String, amount: Int): Boolean {
-        val statusName = StatusName.valueOf(name)
+        val statusName = StatusName.valueOf(name.uppercase())
         return addStatus(statusName, amount)
     }
 

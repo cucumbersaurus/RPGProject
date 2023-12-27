@@ -1,6 +1,5 @@
-package project.rpg.extensions
+package project.rpg.player.status
 
-import project.rpg.player.status.Status
 import project.rpg.player.status.base.StatusName
 
 var Status.agility
