@@ -4,6 +4,7 @@ import org.bukkit.inventory.ItemStack
 import project.rpg.items.disposable.ManaStone
 import project.rpg.items.food.HighEnrichmentCandy
 import project.rpg.items.food.SpeedApple
+import project.rpg.items.material.HardRock
 import project.rpg.items.potion.HealingPotion
 import project.rpg.items.potion.ManaRefillPotion
 import project.rpg.items.potion.TearOfDragon
@@ -46,6 +47,7 @@ enum class Items(val value: Int, val itemBase: ItemBase?, val type: ItemType, va
     WIND_CUTTER(29, WindCutter, ItemType.SKILL, "wind_cutter"),
     TEMPEST(30, Tempest, ItemType.SKILL, "tempest"),
     BINDING(31, Binding, ItemType.SKILL, "binding"),
+    HARD_ROCK(32, HardRock, ItemType.MATERIAL, "hard_rock")
     ;
 
     val item: ItemStack?

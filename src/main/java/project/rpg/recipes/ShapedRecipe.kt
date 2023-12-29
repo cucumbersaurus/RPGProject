@@ -6,7 +6,7 @@ interface ShapedRecipe : CraftRecipe {
 
     override val recipe: List<ItemStack?>
     override fun matches(matrix: List<ItemStack?>): CraftRecipe? {
-        require(recipe.size == matrix.size)
+        if (recipe.size != matrix.size) return null
         for (i in matrix.indices) {
 
             val item = matrix[i]?.clone()

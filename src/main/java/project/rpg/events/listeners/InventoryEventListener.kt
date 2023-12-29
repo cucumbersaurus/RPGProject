@@ -21,10 +21,6 @@ class InventoryEventListener : Listener {
     fun guiInteraction(event: InventoryInteractEvent) {
         CraftingUI.clickedBy(event)
     }
-    @EventHandler
-    fun guiInteraction(event: InventoryMoveItemEvent) {
-        CraftingUI.clickedBy(event)
-    }
 
     @EventHandler
     fun guiClose(event: InventoryCloseEvent) {

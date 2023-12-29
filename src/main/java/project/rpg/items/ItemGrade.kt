@@ -1,6 +1,6 @@
-package project.rpg.items;
+package project.rpg.items
 
-public enum ItemGrade {
+enum class ItemGrade {
     NORMAL,
     UNUSUAL,
     LEGEND,

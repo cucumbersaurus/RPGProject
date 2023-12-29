@@ -8,37 +8,6 @@ object ItemManager {
         for (item in Items.values()) {
             item.itemBase?.createItem()
         }
-        //itemMap[Items.WAND] = wand
-        //itemMap[Items.MANA_REFILLING_POTION] = manaRefillPotion
-    }
-
-    @JvmStatic
-    @Deprecated("시간복잡도가 너무 큼")
-    fun getItem(value: Int): ItemBase? {
-        for (item in Items.values()) {
-            if (item.value == value) return item.itemBase
-        }
-        return null
-    }
-
-    @JvmStatic
-    @Deprecated("시간복잡도가 너무 큼")
-    fun getType(value: Int): ItemType? {
-        for (item in Items.values()) {
-            if (item.value == value) return item.type
-        }
-        return null
-    }
-
-    @JvmStatic
-    @Deprecated("시간복잡도가 너무 큼")
-    fun getName(value: Int): String? {
-        for (item in Items.values()) {
-            if (item.value == value) {
-                return item.displayName
-            }
-        }
-        return null
     }
 
     @JvmStatic
