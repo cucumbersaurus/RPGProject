@@ -12,14 +12,11 @@ class Lightning : MagicSkillBase() {
 
     @skill(name = "lightning")
     override fun onEnable(player: Player, action: Action?) {
-        var location = player.location
         val mana = player.mana
         if (mana.useMana(10)) {
-            if (player.getTargetBlock(30) != null) {
-                location = player.getTargetBlock(30)!!.location
-            }
-
-            player.world.spawnEntity(location, EntityType.LIGHTNING)
+            val block = player.getTargetBlockExact(50)
+            val loc = block?.location ?: player.location
+            player.world.spawnEntity(loc, EntityType.LIGHTNING)
             player.world.spawnParticle(Particle.ELECTRIC_SPARK, player.location, 100, 0.25, 0.75, 0.25, 0.1)
         }
     }

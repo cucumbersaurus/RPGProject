@@ -62,16 +62,6 @@ class Rpg : JavaPlugin() {
         getCommand("friend")!!.setExecutor(FriendCommand())
         getCommand("mob")!!.setExecutor(MobTest())
         getCommand("insertsql")!!.setExecutor(SQLInsertCommand())
-        /*
-        kommand {
-            //TestCommand.register(this, this@Rpg)
-            register("user"){
-                executes {
-                    sender.sendMessage("test")
-                }
-            }
-        }
-        */
     }
 
     private fun registerTabCompleter() {
