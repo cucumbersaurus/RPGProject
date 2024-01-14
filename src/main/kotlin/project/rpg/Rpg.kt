@@ -15,7 +15,7 @@ import project.rpg.ui.text.ActionBarUI
 class Rpg : JavaPlugin() {
 
     @JvmField
-    val actionBar = ActionBarUI(this)
+    val actionBar = ActionBarUI()
 
     override fun onLoad() {
         Initializer.initializeAll()

@@ -11,7 +11,6 @@ libraries:
   - org.jetbrains.exposed:exposed-core:0.40.1
   - org.jetbrains.exposed:exposed-jdbc:0.40.1
   - org.xerial:sqlite-jdbc:3.39.3.0
-  - io.github.monun:tap-core:4.7.3
   - io.github.monun:heartbeat-coroutines:0.0.5
 
 commands:
@@ -55,4 +54,4 @@ commands:
 
   insertsql:
 
-  sample:
+  serialize:

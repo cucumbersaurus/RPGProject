@@ -13,9 +13,7 @@ object UserData : Table() {
     private val jobData = integer("jobData").uniqueIndex()
     private val levelData = integer("levelData").uniqueIndex()
 
-    override val primaryKey by lazy {
-        super.primaryKey ?: PrimaryKey(uuid)
-    }
+    override val primaryKey  = PrimaryKey(uuid)
 
     fun initialize() {
         Database.tableList.add(this)

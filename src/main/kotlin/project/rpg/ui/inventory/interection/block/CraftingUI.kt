@@ -3,6 +3,7 @@ package project.rpg.ui.inventory.interection.block
 import io.github.monun.heartbeat.coroutines.HeartbeatScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
@@ -34,8 +35,11 @@ object CraftingUI{
                         player.inventory.addItem(resultItem)
                     }
                     else {
-                        player.setItemOnCursor(resultItem)
-                        crafts = 1
+                        if(player.itemOnCursor.type == Material.AIR){
+                            player.setItemOnCursor(resultItem)
+                            crafts = 1
+                        }
+                        else crafts = 0
                     }
                     decreaseAll(table, crafts)
                 }
