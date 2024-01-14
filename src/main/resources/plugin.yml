@@ -1,17 +1,23 @@
 name: Rpg
-version: '${project.version}'
+version: $version
 main: project.rpg.Rpg
-api-version: 1.20
+api-version: $apiVersion
 authors: [ Cucumbersaurus, Behappy ]
 libraries:
-  - io.github.monun:kommand-core:3.1.7
-  - org.jetbrains.kotlin:kotlin-stdlib:1.7.20
-  - org.jetbrains.kotlin:kotlin-reflect:1.5.21
-  - org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0
-  - org.jetbrains.exposed:exposed-core:0.40.1
-  - org.jetbrains.exposed:exposed-jdbc:0.40.1
-  - org.xerial:sqlite-jdbc:3.39.3.0
+  - org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion
+  - org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion
+  - org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3
+
+  - org.jetbrains.exposed:exposed-core:$exposedVersion
+  - org.jetbrains.exposed:exposed-jdbc:$exposedVersion
+  - org.jetbrains.exposed:exposed-json:$exposedVersion
+  - org.jetbrains.exposed:exposed-kotlin-datetime:0.46.0
+  - org.xerial:sqlite-jdbc:3.41.2.2
+
+  - io.typst:bukkit-kotlin-serialization:1.0.0
+
   - io.github.monun:heartbeat-coroutines:0.0.5
+  - io.github.monun:kommand-core:3.1.7
 
 commands:
   quests:

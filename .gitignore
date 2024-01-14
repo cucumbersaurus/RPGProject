@@ -114,5 +114,10 @@ run/
 
 qodana.sarif.json
 qodana.yaml
-qodana.sarif.json
-qodana.yaml
+
+#gralde
+.gradle
+.gradle/file-system.probe
+
+#build
+build
