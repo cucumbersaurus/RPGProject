@@ -1,19 +1,24 @@
 package project.rpg.commands.debug
 
+import net.minecraft.world.entity.EntityType
 import org.bukkit.Location
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
-import org.bukkit.entity.Player
+import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer
+import project.rpg.mob.TestMob
 import project.rpg.mob.ZombieKing
 
 
 class MobTest : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>?): Boolean {
-        if (sender is Player) {
+        if (sender is CraftPlayer) {
             if (args != null) {
                 when (args.size) {
-                    0 -> ZombieKing.spawn(sender.world, sender.location)
+                    0 -> {
+                        val mob = TestMob(EntityType.SNOW_GOLEM, sender.handle.level())
+                        mob.bukkitMob.spawnAt(sender.location)
+                    }//ZombieKing.spawn(sender.world, sender.location)
                     1->{
                         val t = args[0].toInt()
                         for (i in 1..t){

@@ -1,7 +1,10 @@
 package project.rpg
 
 import io.github.monun.heartbeat.coroutines.HeartbeatScope
+import io.github.monun.kommand.getValue
+import io.github.monun.kommand.kommand
 import kotlinx.coroutines.launch
+import net.kyori.adventure.text.Component.text
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
@@ -63,6 +66,29 @@ class Rpg : JavaPlugin() {
         getCommand("mob")!!.setExecutor(MobTest())
         getCommand("insertsql")!!.setExecutor(SQLInsertCommand())
         getCommand("serialize")!!.setExecutor(SerializeCommand())
+
+        kommand {
+            register("sample") {
+                requires { isPlayer && isOp }
+                executes {
+                    sender.sendMessage(text("Hello World!"))
+                }
+                then("foo") {
+                    executes {
+                        player.sendMessage(text("Hello Foo!"))
+                    }
+                    then("myint" to int()) {
+                        executes {
+                            val myint: Int by it
+                            for (i in 0..myint) {
+                                sender.sendMessage("Hello Foo!")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     private fun registerTabCompleter() {

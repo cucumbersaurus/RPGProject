@@ -8,11 +8,13 @@ plugins {
     java
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.serialization") version "1.9.22"
+    id("io.papermc.paperweight.userdev") version "1.5.11"
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
+    maven("https://repo.papermc.io/repository/maven-public/")
 }
 
 dependencies {
@@ -31,7 +33,8 @@ dependencies {
 
     implementation("io.typst:bukkit-kotlin-serialization:1.0.0")
 
-    compileOnly("io.papermc.paper:paper-api:$paperVersion-R0.1-SNAPSHOT")
+    //compileOnly("io.papermc.paper:paper-api:$paperVersion-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.20.1-R0.1-SNAPSHOT")
 
     testImplementation(libs.org.jetbrains.kotlin.kotlin.test)
 }
@@ -51,22 +54,24 @@ tasks.withType<JavaCompile>() {
     options.encoding = "UTF-8"
 }
 
-tasks.withType<Javadoc>() {
-    options.encoding = "UTF-8"
+tasks.reobfJar{
+    val path = System.getenv("path")
+
+    doLast {
+        println("copying file to $path")
+        copy {
+            from("build/libs/rpg-1.0-SNAPSHOT.jar")
+            into(path)
+        }
+    }
 }
 
-tasks.jar{
-    val path = System.getenv("path")
-    destinationDirectory = File(path)
-}
+
 
 tasks{
-//    jar{
-//        dependsOn(processResources)
-//    }
 
     processResources {
-        filteringCharset = Charsets.UTF_8.name() // We want UTF-8 for everything
+        filteringCharset = Charsets.UTF_8.name()
         val props = mapOf(
             "version" to project.version,
             "apiVersion" to "1.20",
