@@ -7,8 +7,8 @@ object ItemDictionary {
     private val itemDictionary = HashMap<String, ItemBase?>()
 
     fun initialize() {
-        for (i in Items.values()) {
-            itemDictionary[i.displayName] = i.itemBase
+        for (i in Items.entries) {
+            itemDictionary[i.itemName] = i.itemBase
         }
     }
 

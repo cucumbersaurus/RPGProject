@@ -13,7 +13,7 @@ import project.rpg.items.weapon.TpSword
 import project.rpg.items.weapon.Wand
 import project.rpg.items.weapon.magic.*
 
-enum class Items(val value: Int, val itemBase: ItemBase?, val type: ItemType, val displayName: String) {
+enum class Items(val value: Int, val itemBase: ItemBase?, val type: ItemType, val itemName: String) {
 
     NULL(0, null, ItemType.NULL, "null"),
     WAND(1, Wand, ItemType.SKILL, "wand"),
@@ -47,7 +47,7 @@ enum class Items(val value: Int, val itemBase: ItemBase?, val type: ItemType, va
     WIND_CUTTER(29, WindCutter, ItemType.SKILL, "wind_cutter"),
     TEMPEST(30, Tempest, ItemType.SKILL, "tempest"),
     BINDING(31, Binding, ItemType.SKILL, "binding"),
-    HARD_ROCK(32, HardRock, ItemType.MATERIAL, "hard_rock")
+    HARD_ROCK(32, HardRock, ItemType.MATERIAL, "hard_rock"),
     ;
 
     val item: ItemStack?

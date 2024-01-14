@@ -52,7 +52,7 @@ class Rpg : JavaPlugin() {
 
     private fun registerCommands() {
         getCommand("quests")!!.setExecutor(QuestToggleCommand())
-        getCommand("saveFile")!!.setExecutor(FileSaveCommand())
+        //getCommand("saveFile")!!.setExecutor(FileSaveCommand())
         getCommand("status")!!.setExecutor(StatusCommand())
         getCommand("titleTest")!!.setExecutor(TitleTestCommand())
         getCommand("getItem")!!.setExecutor(ItemCommand())
@@ -62,6 +62,7 @@ class Rpg : JavaPlugin() {
         getCommand("friend")!!.setExecutor(FriendCommand())
         getCommand("mob")!!.setExecutor(MobTest())
         getCommand("insertsql")!!.setExecutor(SQLInsertCommand())
+        getCommand("serialize")!!.setExecutor(SerializeCommand())
     }
 
     private fun registerTabCompleter() {

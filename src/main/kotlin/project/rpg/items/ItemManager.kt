@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack
 object ItemManager {
 
     fun makeItems() {
-        for (item in Items.values()) {
+        for (item in Items.entries) {
             item.itemBase?.createItem()
         }
     }
