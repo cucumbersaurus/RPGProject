@@ -40,7 +40,7 @@ object TearOfDragon : PotionBase() {
         super.item = item
     }
 
-    override fun onDrink(mana: Mana, plugin: Rpg, event: PlayerItemConsumeEvent) {
+    override fun onDrink(mana: Mana, event: PlayerItemConsumeEvent) {
         val player: Player = event.player
         val item = event.item
 
@@ -52,7 +52,7 @@ object TearOfDragon : PotionBase() {
             } else {
                 mana.addMana(mana.maxMana - mana.mana)
             }
-            plugin.actionBar.updateActionBar(player)
+            Rpg.actionBar.updateActionBar(player)
             player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, 20 * 20, 10, true, true, true))
         }
     }

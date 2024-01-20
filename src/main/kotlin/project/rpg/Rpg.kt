@@ -1,24 +1,27 @@
 package project.rpg
 
 import io.github.monun.heartbeat.coroutines.HeartbeatScope
-import io.github.monun.kommand.getValue
 import io.github.monun.kommand.kommand
 import kotlinx.coroutines.launch
-import net.kyori.adventure.text.Component.text
 import org.bukkit.Bukkit
+import org.bukkit.NamespacedKey
 import org.bukkit.plugin.java.JavaPlugin
 import project.rpg.commands.*
 import project.rpg.commands.debug.*
 import project.rpg.database.Database
 import project.rpg.events.listeners.*
+import project.rpg.events.listeners.debug.CustomMobAttackEventListener
 import project.rpg.player.PlayerInformation
 import project.rpg.player.mana.Mana
 import project.rpg.ui.text.ActionBarUI
 
+
 class Rpg : JavaPlugin() {
 
-    @JvmField
-    val actionBar = ActionBarUI()
+    init{
+        actionBar = ActionBarUI()
+        plugin = this
+    }
 
     override fun onLoad() {
         Initializer.initializeAll()
@@ -63,32 +66,18 @@ class Rpg : JavaPlugin() {
         getCommand("level")!!.setExecutor(LevelCommand())
         getCommand("craft")!!.setExecutor(CraftCommand())
         getCommand("friend")!!.setExecutor(FriendCommand())
-        getCommand("mob")!!.setExecutor(MobTest())
+        //getCommand("mob")!!.setExecutor(MobTest())
         getCommand("insertsql")!!.setExecutor(SQLInsertCommand())
         getCommand("serialize")!!.setExecutor(SerializeCommand())
 
         kommand {
-            register("sample") {
-                requires { isPlayer && isOp }
-                executes {
-                    sender.sendMessage(text("Hello World!"))
-                }
-                then("foo") {
-                    executes {
-                        player.sendMessage(text("Hello Foo!"))
-                    }
-                    then("myint" to int()) {
-                        executes {
-                            val myint: Int by it
-                            for (i in 0..myint) {
-                                sender.sendMessage("Hello Foo!")
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
+            //debug/test commands
+            registerTestCommand()
+            registerSampleKommand()
+            registerMobCommand()
+
+        }
     }
 
     private fun registerTabCompleter() {
@@ -98,17 +87,19 @@ class Rpg : JavaPlugin() {
     }
 
     private fun registerEvents() {
-        val plugin = this
         with(server.pluginManager) {
             registerEvents(BlockClickEventListener(), plugin)
-            registerEvents(EntityTakeDamageEventListener(plugin), plugin)
+            registerEvents(EntityTakeDamageEventListener(), plugin)
             registerEvents(InventoryEventListener(), plugin)
-            registerEvents(PlayerItemUseEventListener(plugin), plugin)
+            registerEvents(PlayerItemUseEventListener(), plugin)
             registerEvents(PlayerJoinEventListener(), plugin)
             registerEvents(PlayerQuitEventListener(), plugin)
-            registerEvents(RespawnEventListener(plugin), plugin)
-            registerEvents(PlayerItemConsumeEventListener(plugin), plugin)
-            registerEvents(ProjectileEventListener(plugin), plugin)
+            registerEvents(RespawnEventListener(), plugin)
+            registerEvents(PlayerItemConsumeEventListener(plugin as Rpg), plugin)
+            registerEvents(ProjectileEventListener(), plugin)
+
+            //debugging/testing events
+            registerEvents(CustomMobAttackEventListener(), plugin)
         }
     }
 
@@ -119,5 +110,12 @@ class Rpg : JavaPlugin() {
             }
             logger.info("RPG plugin loading completed")
         }
+    }
+
+    companion object{
+        lateinit var actionBar: ActionBarUI
+        lateinit var plugin: JavaPlugin
+
+        fun pluginNamespacedKey(key: String):NamespacedKey = NamespacedKey(plugin, key)
     }
 }

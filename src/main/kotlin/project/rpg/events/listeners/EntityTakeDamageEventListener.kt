@@ -6,12 +6,12 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageEvent
 import project.rpg.Rpg
 
-class EntityTakeDamageEventListener(private val _plugin: Rpg) : Listener {
+class EntityTakeDamageEventListener : Listener {
     @EventHandler
     fun onEntityTakeDamage(event: EntityDamageEvent) {
         if (event.entity is Player) {
             event.damage /= 100.0
-            _plugin.actionBar.updateActionBar(event.entity as Player)
+            Rpg.actionBar.updateActionBar(event.entity as Player)
         }
     }
 }

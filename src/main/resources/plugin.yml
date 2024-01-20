@@ -32,8 +32,6 @@ commands:
     description: status 커멘드
     usage: "Usage: /<command> [info/add]"
 
-  user:
-
   titleTest:
 
   getItem:
@@ -55,8 +53,6 @@ commands:
     usage: "Usage: /<command> [add/accept] [사람이름]"
     aliases: [ frn, 친구, ㄹ갸둥 ]
     permission: all
-
-  mob:
 
   insertsql:
 

@@ -32,7 +32,7 @@ object ManaRefillPotion : PotionBase() {
         super.item = item
     }
 
-    override fun onDrink(mana: Mana, plugin: Rpg, event: PlayerItemConsumeEvent) {
+    override fun onDrink(mana: Mana, event: PlayerItemConsumeEvent) {
         val player: Player = event.player
         val item = event.item
 
@@ -43,7 +43,7 @@ object ManaRefillPotion : PotionBase() {
             } else {
                 mana.addMana(mana.maxMana - mana.mana)
             }
-            plugin.actionBar.updateActionBar(player)
+            Rpg.actionBar.updateActionBar(player)
         }
     }
 }

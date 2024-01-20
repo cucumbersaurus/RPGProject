@@ -39,13 +39,13 @@ object HealingPotion : PotionBase() {
         super.item = item
     }
 
-    override fun onDrink(mana: Mana, plugin: Rpg, event: PlayerItemConsumeEvent) {
+    override fun onDrink(mana: Mana, event: PlayerItemConsumeEvent) {
         val player: Player = event.player
         val item = event.item
 
         if (item.itemMeta.customModelData == Items.HEALING_POTION.value) {
             Heal(player, 70)
-            plugin.actionBar.updateActionBar(player)
+            Rpg.actionBar.updateActionBar(player)
         }
     }
 }

@@ -10,7 +10,7 @@ import project.rpg.items.Items
 import project.rpg.items.disposable.DisposableBase
 import project.rpg.items.weapon.MagicItemBase
 
-class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
+class PlayerItemUseEventListener() : Listener {
 
     @EventHandler
     fun itemUseEvent(event: PlayerInteractEvent) {
@@ -28,7 +28,7 @@ class PlayerItemUseEventListener(private val plugin: Rpg) : Listener {
                 val usedItem = Items.values()[id]
                 if (usedItem.itemBase is MagicItemBase) {
                     usedItem.itemBase.onEnable(player, event.action)
-                    plugin.actionBar.updateActionBar(player)
+                    Rpg.actionBar.updateActionBar(player)
                     event.isCancelled = true
                 } else if (usedItem.itemBase is DisposableBase) {
                     usedItem.itemBase.onUse(player)

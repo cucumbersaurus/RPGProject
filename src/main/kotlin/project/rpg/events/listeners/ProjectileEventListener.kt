@@ -7,13 +7,12 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.ProjectileLaunchEvent
-import project.rpg.Rpg
 import project.rpg.effects.objects.Slow
 import project.rpg.effects.objects.Stun
 import project.rpg.player.mana
 import project.rpg.skills.SkillType
 
-class ProjectileEventListener(private val _plugin: Rpg) : Listener {
+class ProjectileEventListener : Listener {
     @EventHandler
     fun onProjectileHit(event: ProjectileHitEvent) {
         if (event.entity is Arrow) {
